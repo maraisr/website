@@ -1,0 +1,59 @@
+{% import "macros/url.nunjucks" as url %}
+
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>{{title}}</title>
+
+	{% if meta_description %}
+	<meta name="description" content="{{meta_description}}"/>
+	{% endif %}
+	<meta property="og:url" content="{{url_base}}"/>
+	{% if meta_title %}
+	<meta property="og:title" content="{{meta_title}}"/>
+	{% endif %}
+	{% if meta_description %}
+	<meta property="og:description" content="{{meta_description}}"/>
+	{% endif %}
+	<meta property="og:site_name" content="Marais Rossouw"/>
+	<meta property="og:image" content="{{url_base}}{{url.asset('imgs/generic.jpg')}}"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:locale" content="en_US"/>
+	<meta name="referrer" content="always"/>
+
+	<link rel="home" href="{{url_base}}{{url.to()}}"/>
+	<link rel="canonical" href="{{url_base}}{{url.to(page)}}"/>
+
+	<link rel="shortcut icon" href="{{url.asset('imgs/favicon.ico')}}" type="image/x-icon"/>
+	<link rel="icon" href="{{url.asset('imgs/favicon.png')}}" type="image/png"/>
+
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="mobile-web-app-capable" content="yes"/>
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" media="screen"/>
+
+	<!-- build:css /assets/app.css -->
+	<link rel="stylesheet" href="{{css_path}}" media="screen"/>
+	<!-- endbuild -->
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" dir="ltr" class="{{pageClass}}">
+
+<div class="page-wrap">
+	<main>
+		{% block body %}{% endblock %}
+	</main>
+</div>
+
+<!-- build:js /assets/app.js -->
+<script src="{{js_path}}"></script>
+<!-- endbuild -->
+
+</body>
+</html>

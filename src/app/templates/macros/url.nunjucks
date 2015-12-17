@@ -1,0 +1,2 @@
+{% macro to(file='') -%}/{{file}}{% if file != '' %}/{% endif %}{% endmacro -%}
+{% macro asset(file='') -%}/assets/{{file}}{% endmacro -%}
