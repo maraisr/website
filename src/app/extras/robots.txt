@@ -1,0 +1,34 @@
+# Bing
+User-agent: Bingbot
+Disallow: /assets/fonts
+Disallow: /index.html
+Disallow: /administrator/
+
+# Google
+User-agent: Googlebot
+Disallow: /assets/fonts
+Disallow: /index.html
+Disallow: /administrator/
+
+# Yahoo
+User-agent: Slurp
+Disallow: /assets/fonts
+Disallow: /index.html
+Disallow: /administrator/
+
+# MSN
+User-agent: msnbot
+Disallow: /assets/fonts
+Disallow: /index.html
+Disallow: /administrator/
+
+# Twitter
+User-agent: Twitterbot
+Disallow: /assets/fonts
+Disallow: /index.html
+Disallow: /administrator/
+
+User-agent: *
+Disallow: /
+
+Sitemap: http://marais.io/sitemap.en_AU.xml
