@@ -1,6 +1,6 @@
 {
-	"name": "tpwebsite",
-	"siteUrl": "http://www.touchpointglobal.com",
+	"name": "website",
+	"siteUrl": "http://marais.io/",
 	"private": true,
 	"devDependencies": {
 		"browserify": "^12.0.1",
