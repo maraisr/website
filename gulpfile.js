@@ -59,10 +59,11 @@ gulp.task('js', function () {
 			insertGlobals: true,
 			fullPaths: false,
 			debug: false,
-			paths: ['./bower_components/']
+			paths: ['./bower_components/', config.js.src+'/modules/']
 		})
 		.transform($.debowerify)
 		.bundle()
+		.pipe($.plumberNotifier())
 		.pipe(source('website.js'))
 		.pipe($.streamify($.uglify({ascii_only: true})))
 		.pipe($.rename({basename: 'app', extname: '.js'}))
