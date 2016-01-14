@@ -1,7 +1,10 @@
 var p = require('./package.json'),
 	gulp = require('gulp'),
 	$ = require('gulp-load-plugins')({lazy: true, pattern: ['gulp-*', 'browserify', 'debowerify', 'run-sequence', 'imagemin-*']}),
-	source = require('vinyl-source-stream');
+	merge = require('merge-stream'),
+	source = require('vinyl-source-stream'),
+	glob = require('glob'),
+	_ = require('lodash');
 
 var config = {
 		js: {
@@ -59,7 +62,7 @@ gulp.task('js', function () {
 			insertGlobals: true,
 			fullPaths: false,
 			debug: false,
-			paths: ['./bower_components/', config.js.src+'/modules/']
+			paths: ['./bower_components/', config.js.src + '/modules/']
 		})
 		.transform($.debowerify)
 		.bundle()
@@ -141,6 +144,30 @@ gulp.task('default', function (cb) {
 	gulp.watch(config.js.src + '/**/*', ['js']);
 	gulp.watch('src/app/**/*', ['html']);
 });
+
+gulp.task('build:js', function () {
+	var files = glob.sync('*.js', {
+			cwd: 'dist/'
+		}),
+		prom = merge();
+
+	_.each(files, function (v) {
+		prom.add(gulp.src('dist/' + v)
+			.pipe($.closureCompiler({
+				fileName: v,
+				continueWithWarnings: true,
+				compilerFlags: {
+					compilation_level: 'SIMPLE_OPTIMIZATIONS',
+					language_in: 'ECMASCRIPT5',
+					language_out: 'ECMASCRIPT5_STRICT',
+					warning_level: 'QUIET'
+				}
+			}))
+			.pipe(gulp.dest('dist/')));
+	});
+
+	return prom;
+})
 
 gulp.task('build', function (cb) {
 	dev = false;
