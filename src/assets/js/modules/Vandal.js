@@ -27,7 +27,6 @@ var vandal = function (el) {
 		this.height = height || 100;
 		this.triangles = [];
 
-		// Cache Variables
 		var x, y, vertices = new Array(slices),
 			offsetX = this.width * -0.5,
 			offsetY = this.height * 0.5;
@@ -55,13 +54,13 @@ var vandal = function (el) {
 			vertices.push([offsetX + Math.random() * width, offsetY - height]);
 		}
 
-		_(_.chunk(d.triangulate(vertices), 6)).map(function (v) {
-			var vertices = [];
-			_.each(_.chunk(v, 2), function (point) {
-				vertices.push(new code.vertex(point[0], point[1]));
+		_(_.chunk(d.triangulate(vertices), 3)).map(function (v) {
+			var verticess = [];
+			_.each(v, function (point) {
+				verticess.push(new code.vertex(vertices[point][0], vertices[point][1]));
 			});
 
-			that.triangles.push(new code.triangle(vertices));
+			that.triangles.push(new code.triangle(verticess));
 		}).value();
 
 		return this.triangles;
@@ -69,9 +68,8 @@ var vandal = function (el) {
 
 	(function (p) {
 		var canvas = document.createElement('canvas');
-		canvas.style.display = 'block';
-		canvas.height = height;
 		canvas.width = width;
+		canvas.height = height;
 
 		var context = canvas.getContext('2d');
 
@@ -84,15 +82,15 @@ var vandal = function (el) {
 				context.lineTo(p.get()[0], p.get()[1]);
 			});
 			context.closePath();
-			context.strokeStyle = '#000';
-			context.fillStyle = '#fff';
+			context.strokeStyle = '#91AA9D';
+			context.fillStyle = '#3E606F';
 			context.stroke();
 			context.fill();
 		});
 
 		el[0].appendChild(canvas);
 
-	})(new code.plane(width, height, 300))
+	})(new code.plane(width * 2, height * 2, 400))
 }
 
 module.exports = {
