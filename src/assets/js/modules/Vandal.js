@@ -67,29 +67,32 @@ var vandal = function (el) {
 	};
 
 	(function (p) {
-		var canvas = document.createElement('canvas');
-		canvas.width = width;
-		canvas.height = height;
+		var _SVGNS = 'http://www.w3.org/2000/svg',
+			polygons = document.createElementNS(_SVGNS, 'svg');
 
-		var context = canvas.getContext('2d');
+		polygons.setAttribute('width', width);
+		polygons.setAttribute('height', height);
 
 		_.each(p, function (triangle) {
-			var points = triangle.getVertices();
+			var points = triangle.getVertices(),
+				polygon = document.createElementNS(_SVGNS, 'polygon');
 
-			context.beginPath();
-			context.moveTo(_.first(points).get()[0], _.first(points).get()[1]);
-			_.each(_.slice(points, 0), function (p) {
-				context.lineTo(p.get()[0], p.get()[1]);
+			polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
+			polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
+			polygon.setAttributeNS(null, 'stroke-width', '1');
+
+			var polyPoints = [];
+			_.each(points, function (p) {
+				polyPoints.push(p.get().join(','))
 			});
-			context.closePath();
-			context.strokeStyle = '#91AA9D';
-			context.fillStyle = '#3E606F';
-			context.stroke();
-			context.fill();
+
+			polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
+			polygon.setAttributeNS(null, 'style', 'fill: #3E606F; stroke: #91AA9D;');
+
+			polygons.appendChild(polygon);
 		});
 
-		el[0].appendChild(canvas);
-
+		el[0].appendChild(polygons);
 	})(new code.plane(width * 2, height * 2, 400));
 }
 

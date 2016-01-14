@@ -38,14 +38,12 @@ h1 {
 }
 
 .vandal {
-	> canvas {
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 
 .titler {
@@ -77,6 +75,7 @@ h1 {
 		background-color: #FCFFF5;
 
 		font-size: 200px;
+		font-weight: 900;
 
 		&__bit {
 			line-height: 1;
