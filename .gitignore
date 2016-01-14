@@ -1,4 +1,12 @@
 node_modules/
 .sass-cache/
+.bower_components/
 dist/
 tmp/
+
+.idea
+!.idea/.name
+!.idea/website_static.iml
+!.idea/modules.xml
+!.idea/webResources.xml
+!.idea/scopes/*

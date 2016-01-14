@@ -1,0 +1,6 @@
+{
+  "name": "maraisio",
+  "dependencies": {
+    "delaunay-fast": "~1.0.1"
+  }
+}
