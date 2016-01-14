@@ -90,7 +90,7 @@ var vandal = function (el) {
 
 		el[0].appendChild(canvas);
 
-	})(new code.plane(width * 2, height * 2, 400))
+	})(new code.plane(width * 2, height * 2, 400));
 }
 
 module.exports = {
