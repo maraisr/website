@@ -6,8 +6,23 @@ var vandal = function (el) {
 			_FILL: '#101010',
 			_STROKE: '#383838',
 			_SIZE_OFFSET: 50,
-			_COUNT: 560
+			_COUNT: 200
 		};
+
+	code.colour = function (lum) {
+		this.rgb = this.shadeRGBColor([16, 16, 16], (-1 * (lum)));
+	};
+
+	code.colour.prototype = {
+		//http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+		shadeRGBColor: function (colour, percent) {
+			var f = colour, t = percent < 0 ? 0 : 255, p = percent < 0 ? percent * -1 : percent, R = f[0], G = f[1], B = f[2];
+			return [(Math.round((t - R) * p) + R), (Math.round((t - G) * p) + G), (Math.round((t - B) * p) + B)];
+		},
+		format: function () {
+			return 'rgb(' + this.rgb.join(',') + ')';
+		}
+	}
 
 	code.vertex = function (x, y, z) {
 		this.x = x;
@@ -33,6 +48,7 @@ var vandal = function (el) {
 
 	code.triangle = function (v) {
 		this.vertices = v;
+		this.colour = new code.colour((Math.random() % 0.4));
 	}
 
 	code.vector3 = {
@@ -192,8 +208,6 @@ var vandal = function (el) {
 				var points = triangle.getVertices(),
 					polygon = document.createElementNS(_SVGNS, 'polygon');
 
-				triangle.getCentroid();
-
 				polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
 				polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
 				polygon.setAttributeNS(null, 'stroke-width', '1');
@@ -204,7 +218,10 @@ var vandal = function (el) {
 				});
 
 				polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
-				polygon.setAttributeNS(null, 'style', 'fill: ' + code._FILL + '; stroke: ' + code._STROKE + ';');
+				polygon.setAttributeNS(null, 'style', 'fill: ' + triangle.colour.format() + '; stroke: ' + code._STROKE + ';');
+
+				triangle.element = polygon;
+				triangle.direction = [Math.round(Math.random()), Math.round(Math.random())];
 
 				polygons.appendChild(polygon);
 			});

@@ -11,7 +11,14 @@
 
 <header role="header" class="titler">
 	<div class="me">
-		<img src="{{url.asset('imgs/me.png')}}" alt="A glamorous mugshot of Marais himself." class="me__pic">
+		<svg class="me__pic" align="center" xml:space="preserve" viewBox="0 0 1333 1333">
+			<defs>
+				<mask id="YmG7HY">
+					<image width="1333" height="1333" xlink:href="{{url.asset('imgs/me-alpha.png')}}"></image>
+				</mask>
+			</defs>
+			<image mask="url(#YmG7HY)" overflow="hidden" width="1333" height="1333" xlink:href="{{url.asset('imgs/me.jpg')}}"></image>
+		</svg>
 	</div>
 
 	<div class="titler__wrap">
