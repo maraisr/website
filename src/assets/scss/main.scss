@@ -41,6 +41,14 @@ h1, h2, h3 {
 	margin: 0;
 }
 
+a {
+	display: inline-block;
+	vertical-align: middle;
+
+	color: $offWhite;
+	text-decoration: none;
+}
+
 .vandal {
 	position: absolute;
 	overflow: hidden;
@@ -112,25 +120,6 @@ h1, h2, h3 {
 			text-transform: uppercase;
 		}
 	}
-
-	&__misc {
-		margin-top: 25px;
-
-		a {
-			display: inline-block;
-			vertical-align: middle;
-
-			color: $offWhite;
-			text-decoration: none;
-
-			&:not(:last-child) {
-				&:after {
-					content: '|';
-					padding: 0 5px;
-				}
-			}
-		}
-	}
 }
 
 .word-cloud {
@@ -174,5 +163,22 @@ h1, h2, h3 {
 		margin: 0 auto;
 
 		padding-top: 4%;
+	}
+}
+
+footer {
+	position: absolute;
+	z-index: 3;
+
+	bottom: 25px;
+	right: 25px;
+
+	a {
+		&:not(:last-child) {
+			&:after {
+				content: '|';
+				padding: 0 5px;
+			}
+		}
 	}
 }
