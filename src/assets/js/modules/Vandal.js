@@ -2,9 +2,7 @@ var d = require('delaunay-fast');
 
 var vandal = function (el) {
 	var _SVGNS = 'http://www.w3.org/2000/svg',
-		code = {},
-		width = el[0].offsetWidth,
-		height = el[0].offsetHeight;
+		code = {};
 
 	code.vertex = function (t, l) {
 		this.get = function () {
@@ -130,15 +128,17 @@ var vandal = function (el) {
 		},
 		getPolygons: function () {
 			return this.triangles;
+		},
+		getSize: function () {
+			return [
+				this.width,
+				this.height
+			];
 		}
 	};
 
 	code.scene = function () {
-		this.plane = new code.plane(width * 2, height * 2, 400);
-
 		this.map = document.createElementNS(_SVGNS, 'svg');
-		this.map.setAttribute('width', width);
-		this.map.setAttribute('height', height);
 	};
 
 	code.scene.prototype = {
@@ -182,7 +182,12 @@ var vandal = function (el) {
 			return this.map;
 		},
 		draw: function () {
+			this.plane = new code.plane(code.parentSize()[0], code.parentSize()[1], 400);
+			this.map.setAttribute('width', this.plane.getSize()[0]);
+			this.map.setAttribute('height', this.plane.getSize()[1]);
+
 			this.clear();
+
 			this.map.appendChild(this.genPolygons());
 			this.map.appendChild(this.getPoints());
 		},
@@ -193,11 +198,21 @@ var vandal = function (el) {
 		}
 	};
 
-	var map = new code.scene();
+	code.parentSize = function () {
+		return [
+			el[0].offsetWidth * 2,
+			el[0].offsetHeight * 2
+		];
+	};
 
+	var map = new code.scene();
 	el[0].appendChild(map.getMap());
 
 	map.draw();
+
+	addEvent(window, 'resize', function () {
+		map.draw();
+	});
 
 	// Eventually we'll need the animation frame
 	/*var last;

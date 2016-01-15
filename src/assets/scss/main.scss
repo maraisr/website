@@ -1,3 +1,5 @@
+@import 'breakpoint';
+
 $primaryColour: #3E606F;
 
 html {
@@ -42,8 +44,12 @@ h1 {
 	z-index: -1;
 	top: 0;
 	left: 0;
-	right: 0;
 	bottom: 0;
+	right: 0;
+
+	> svg {
+		display: block;
+	}
 }
 
 .titler {
@@ -74,8 +80,18 @@ h1 {
 
 		background-color: #FCFFF5;
 
-		font-size: 200px;
+		font-size: 80px;
 		font-weight: 900;
+
+		transition: font-size 0.3s;
+
+		@include breakpoint(45em) {
+			font-size: 150px;
+		}
+
+		@include breakpoint(80em) {
+			font-size: 200px;
+		}
 
 		&__bit {
 			line-height: 1;
