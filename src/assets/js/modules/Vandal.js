@@ -2,7 +2,10 @@ var d = require('delaunay-fast');
 
 var vandal = function (el) {
 	var _SVGNS = 'http://www.w3.org/2000/svg',
-		code = {};
+		code = {
+			_FILL: '#101010',
+			_STROKE: '#383838'
+		};
 
 	code.vertex = function (t, l) {
 		this.get = function () {
@@ -159,7 +162,7 @@ var vandal = function (el) {
 				});
 
 				polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
-				polygon.setAttributeNS(null, 'style', 'fill: #3E606F; stroke: #91AA9D;');
+				polygon.setAttributeNS(null, 'style', 'fill: ' + code._FILL + '; stroke: ' + code._STROKE + ';');
 
 				polygons.appendChild(polygon);
 			});
@@ -173,7 +176,7 @@ var vandal = function (el) {
 				dot.setAttributeNS(null, 'cx', d[0]);
 				dot.setAttributeNS(null, 'cy', d[1]);
 				dot.setAttributeNS(null, 'r', 4);
-				dot.setAttributeNS(null, 'style', 'fill: #91AA9D');
+				dot.setAttributeNS(null, 'style', 'fill: ' + code._STROKE);
 				dots.appendChild(dot);
 			}.bind(this));
 			return dots;

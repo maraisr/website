@@ -1,11 +1,12 @@
 @import 'breakpoint';
 
-$primaryColour: #3E606F;
+$primaryColour: #101010;
+$primaryBgColour: #292929;
 
 html {
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 
-	background-color: #193441;
+	background-color: $primaryBgColour;
 }
 
 body {
