@@ -154,6 +154,8 @@ a {
 	right: 0;
 	bottom: 0;
 
+	overflow: hidden;
+
 	pointer-events: none;
 
 	&__pic {
@@ -161,8 +163,6 @@ a {
 		height: 100%;
 
 		margin: 0 auto;
-
-		padding-top: 4%;
 	}
 }
 
