@@ -183,8 +183,8 @@ var vandal = function (el) {
 		},
 		draw: function () {
 			this.plane = new code.plane(code.parentSize()[0], code.parentSize()[1], 400);
-			this.map.setAttribute('width', this.plane.getSize()[0]);
-			this.map.setAttribute('height', this.plane.getSize()[1]);
+			this.map.setAttribute('width', this.plane.getSize()[0] / 2);
+			this.map.setAttribute('height', this.plane.getSize()[1] / 2);
 
 			this.clear();
 
@@ -208,24 +208,20 @@ var vandal = function (el) {
 	var map = new code.scene();
 	el[0].appendChild(map.getMap());
 
-	map.draw();
+	var last;
 
-	addEvent(window, 'resize', function () {
-		map.draw();
-	});
+	function draw() {
+		requestAnimationFrame(draw);
 
-	// Eventually we'll need the animation frame
-	/*var last;
+		var now = code.parentSize();
 
-	 function draw(now) {
-	 requestAnimationFrame(draw);
-	 if (!last || now - last >= 2 * 1000) {
-	 last = now;
-	 map.draw();
-	 }
-	 }
+		if (!last || last[0] != now[0] || last[1] != last[1]) {
+			map.draw();
+			last = now;
+		}
+	}
 
-	 requestAnimationFrame(draw);*/
+	requestAnimationFrame(draw);
 }
 
 module.exports = {
