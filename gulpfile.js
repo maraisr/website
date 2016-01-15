@@ -41,13 +41,13 @@ gulp.task('styles', function () {
 
 gulp.task('images', function () {
 	return gulp.src(config.images.src + '/**/*')
-		.pipe($.imagemin({
+		.pipe($.if(!dev, $.imagemin({
 			progressive: true,
 			optimizationLevel: 7,
 			multipass: true,
 			svgoPlugins: [{removeViewBox: true}],
 			use: [$.imageminPngquant(), $.imageminSvgo(), $.imageminJpegtran()]
-		}))
+		})))
 		.pipe(gulp.dest(config.images.dest));
 
 });
@@ -88,12 +88,14 @@ gulp.task('html', function () {
 		.pipe(assets.restore())
 		.pipe($.useref())
 		.pipe($.if(!dev, $.revReplace()))
+		.pipe($.if('*.html', $.minifyHtml({empty: true})))
 		.pipe($.if('*.html', $.htmlmin({
 			removeComments: true,
 			collapseWhitespace: true,
 			minifyJS: true,
 			minifyCSS: true
 		})))
+
 		.pipe(gulp.dest('dist'));
 });
 

@@ -2,6 +2,7 @@
 
 $primaryColour: #292929;
 $primaryBgColour: #101010;
+$offWhite: #FCFFF5;
 
 html {
 	-ms-overflow-style: -ms-autohiding-scrollbar;
@@ -31,9 +32,9 @@ body {
 	-webkit-tap-highlight-color: transparent;
 }
 
-h1 {
+h1, h2, h3 {
 	display: block;
-	font-weight: 700;
+	font-weight: 900;
 	line-height: 1;
 
 	padding: 0;
@@ -69,11 +70,14 @@ h1 {
 
 	&__wrap {
 		position: absolute;
+		z-index: 2;
 		top: 50%;
 
 		width: 100%;
 
 		transform: translateY(-50%);
+
+		font-size: 100px;
 
 		text-align: center;
 	}
@@ -88,27 +92,24 @@ h1 {
 
 		padding: 25px;
 
-		background-color: #FCFFF5;
+		background-color: $offWhite;
 
-		font-size: 80px;
-		font-weight: 900;
+		font-size: 60%;
 
 		transition: font-size 0.3s;
 
 		@include breakpoint(45em) {
-			font-size: 150px;
+			font-size: 90%;
 		}
 
 		@include breakpoint(80em) {
-			font-size: 200px;
+			font-size: 130%;
 		}
 
 		&__bit {
 			line-height: 1;
 
-			&--smaller {
-				font-size: 66%;
-			}
+			text-transform: uppercase;
 		}
 	}
 
@@ -119,7 +120,7 @@ h1 {
 			display: inline-block;
 			vertical-align: middle;
 
-			color: white;
+			color: $offWhite;
 			text-decoration: none;
 
 			&:not(:last-child) {
@@ -129,5 +130,49 @@ h1 {
 				}
 			}
 		}
+	}
+}
+
+.word-cloud {
+	$gap: 10px;
+
+	margin: (-1 * ($gap / 2)) auto;
+	margin-top: $gap /2;
+
+	width: 50%;
+
+	font-size: 30%;
+	font-weight: 900;
+
+	&__item {
+		display: inline-block;
+		vertical-align: middle;
+
+		margin: $gap / 2;
+
+		padding: 3px;
+		background-color: $offWhite;
+
+		text-transform: uppercase;
+	}
+}
+
+.me {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	pointer-events: none;
+
+	&__pic {
+		display: block;
+		height: 100%;
+
+		margin: 0 auto;
+
+		padding-top: 4%;
 	}
 }

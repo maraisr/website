@@ -10,16 +10,32 @@
 {% block body %}
 
 <header role="header" class="titler">
+	<div class="me">
+		<img src="{{url.asset('imgs/me.png')}}" alt="A glamorous mugshot of Marais himself." class="me__pic">
+	</div>
+
 	<div class="titler__wrap">
 		<h1 class="titler__heading">
-			<span class="titler__heading__bit">MARAIS</span>
+			<span class="titler__heading__bit">Marais</span>
 		</h1>
-		<div class="titler__misc">
-			<a href="https://github.com/maraisr" target="_blank" title="Visit my GitHub">GitHub</a><a href="https://www.linkedin.com/in/maraisr" target="_blank" title="Connect with me on LinkedIn.">LinkedIn</a>
+		<div class="word-cloud">
+			<div class="word-cloud__item">Creative</div>
+			<div class="word-cloud__item">Enthusiast</div>
+			<div class="word-cloud__item">Code</div>
+			<div class="word-cloud__item">Maestro</div>
+			<div class="word-cloud__item">Airline</div>
+			<div class="word-cloud__item">Boffin</div>
+			<div class="word-cloud__item">Music</div>
+			<div class="word-cloud__item">Conjurer</div>
 		</div>
+		<!--<div class="titler__misc">
+			<a href="https://github.com/maraisr" target="_blank" title="Visit my GitHub">GitHub</a><a href="https://www.linkedin.com/in/maraisr" target="_blank" title="Connect with me on LinkedIn.">LinkedIn</a>
+		</div>-->
 	</div>
 </header>
 
-<main class="vandal"></main>
+<main>
+	<div class="vandal"></div>
+</main>
 
 {% endblock %}
