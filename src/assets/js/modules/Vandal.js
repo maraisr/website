@@ -1,8 +1,8 @@
 var d = require('delaunay-fast');
 
 var vandal = function (el) {
-
-	var code = {},
+	var _SVGNS = 'http://www.w3.org/2000/svg',
+		code = {},
 		width = el[0].offsetWidth,
 		height = el[0].offsetHeight;
 
@@ -62,37 +62,126 @@ var vandal = function (el) {
 
 			that.triangles.push(new code.triangle(verticess));
 		}).value();
+	};
 
-		return this.triangles;
+	code.plane.prototype = {
+		getPairs: function () {
+			var edgeToAdj = function (edgelist) {
+				var adjlist = {};
+				var i, len, pair, u, v;
+				for (i = 0, len = edgelist.length; i < len; i += 1) {
+					pair = edgelist[i];
+					u = pair[0];
+					v = pair[1];
+					if (adjlist[u]) {
+						adjlist[u].push(v);
+					} else {
+						adjlist[u] = [v];
+					}
+					if (adjlist[v]) {
+						adjlist[v].push(u);
+					} else {
+						adjlist[v] = [u];
+					}
+				}
+				return adjlist;
+			};
+			var bfs = function (v, adjlist, visited) {
+				var q = [];
+				var current_group = [];
+				var i, len, adjV, nextVertex;
+				q.push(v);
+				visited[v] = true;
+				while (q.length > 0) {
+					v = q.shift();
+					current_group.push(v);
+					adjV = adjlist[v];
+					for (i = 0, len = adjV.length; i < len; i += 1) {
+						nextVertex = adjV[i];
+						if (!visited[nextVertex]) {
+							q.push(nextVertex);
+							visited[nextVertex] = true;
+						}
+					}
+				}
+				return current_group;
+			};
+
+			var groups = [],
+				visited = {},
+				v;
+
+			var pairs = [];
+			_.each(this.triangles, function (v) {
+				_.each(v.getVertices(), function (v) {
+					pairs.push(v.get());
+				})
+			});
+
+			var adjlist = edgeToAdj(pairs);
+
+			for (v in adjlist) {
+				if (adjlist.hasOwnProperty(v) && !visited[v]) {
+					groups.push(bfs(v, adjlist, visited));
+				}
+			}
+
+			return _.slice(groups, 1);
+		},
+		getPolygons: function () {
+			return this.triangles;
+		}
 	};
 
 	(function (p) {
-		var _SVGNS = 'http://www.w3.org/2000/svg',
-			polygons = document.createElementNS(_SVGNS, 'svg');
+		var map = document.createElementNS(_SVGNS, 'svg');
+		map.setAttribute('width', width);
+		map.setAttribute('height', height);
 
-		polygons.setAttribute('width', width);
-		polygons.setAttribute('height', height);
+		el[0].appendChild(map);
 
-		_.each(p, function (triangle) {
-			var points = triangle.getVertices(),
-				polygon = document.createElementNS(_SVGNS, 'polygon');
+		// Generate Polygons
+		map.appendChild((function () {
+			var polygons = document.createElementNS(_SVGNS, 'g');
 
-			polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
-			polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
-			polygon.setAttributeNS(null, 'stroke-width', '1');
+			_.each(p.getPolygons(), function (triangle) {
+				var points = triangle.getVertices(),
+					polygon = document.createElementNS(_SVGNS, 'polygon');
 
-			var polyPoints = [];
-			_.each(points, function (p) {
-				polyPoints.push(p.get().join(','))
+				polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
+				polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
+				polygon.setAttributeNS(null, 'stroke-width', '1');
+
+				var polyPoints = [];
+				_.each(points, function (p) {
+					polyPoints.push(p.get().join(','));
+				});
+
+				polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
+				polygon.setAttributeNS(null, 'style', 'fill: #3E606F; stroke: #91AA9D;');
+
+				polygons.appendChild(polygon);
 			});
 
-			polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
-			polygon.setAttributeNS(null, 'style', 'fill: #3E606F; stroke: #91AA9D;');
+			return polygons;
+		})());
 
-			polygons.appendChild(polygon);
-		});
+		// Generate Dots
+		map.appendChild((function () {
+			var dots = document.createAttributeNS(_SVGNS, 'g');
+			_.each(p.getPairs(), function (d) {
+				if ((d.length == 2)) {
+					var dot = document.createElementNS(_SVGNS, 'circle');
+					dot.setAttributeNS(null, 'cx', d[0]);
+					dot.setAttributeNS(null, 'cy', d[1]);
+					dot.setAttributeNS(null, 'r', 4);
+					dot.setAttributeNS(null, 'style', 'fill: #91AA9D');
+					map.appendChild(dot);
+				}
+			});
+			return dots;
+		})());
 
-		el[0].appendChild(polygons);
 	})(new code.plane(width * 2, height * 2, 400));
 }
 
