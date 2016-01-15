@@ -5,7 +5,8 @@ var vandal = function (el) {
 		code = {
 			_FILL: '#101010',
 			_STROKE: '#383838',
-			_SIZE_OFFSET: 50
+			_SIZE_OFFSET: 50,
+			_COUNT: 560
 		};
 
 	code.vertex = function (x, y, z) {
@@ -226,7 +227,7 @@ var vandal = function (el) {
 			return this.map;
 		},
 		draw: function () {
-			this.plane = new code.plane(code.parentSize()[0], code.parentSize()[1], 400);
+			this.plane = new code.plane(code.parentSize()[0], code.parentSize()[1], code._COUNT);
 			this.map.setAttribute('width', (this.plane.getSize()[0] / 2));
 			this.map.setAttribute('height', (this.plane.getSize()[1] / 2));
 
