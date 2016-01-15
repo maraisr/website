@@ -176,5 +176,5 @@ gulp.task('build:js', ['js'], function () {
 
 gulp.task('build', ['clean'], function (cb) {
 	dev = false;
-	$.runSequence(['styles', 'images', 'fonts', 'misc'], 'sitemap', 'build:js', 'html', cb);
+	$.runSequence(['styles', 'images', 'fonts', 'misc'], 'sitemap', 'build:js', 'html', 'gzip', cb);
 });
