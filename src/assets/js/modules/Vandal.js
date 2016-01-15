@@ -8,25 +8,66 @@ var vandal = function (el) {
 			_SIZE_OFFSET: 50
 		};
 
-	code.vertex = function (t, l) {
-		this.get = function () {
-			return [t, l]
-		}
+	code.vertex = function (x, y, z) {
+		this.x = x;
+		this.y = y;
+		this.z = z || 0;
 	};
 
-	code.triangle = function (v) {
-		var vertices = v;
+	code.vertex.prototype = {
+		get: function () {
+			return [
+				this.x,
+				this.y,
+				this.z
+			]
+		},
+		getZY: function () {
+			return [
+				this.x,
+				this.y
+			]
+		}
+	}
 
-		this.getVertices = function () {
-			return vertices;
+	code.triangle = function (v) {
+		this.vertices = v;
+	}
+
+	code.vector3 = {
+		divideScalar: function (target, s) {
+			if (s !== 0) {
+				target[0] /= s;
+				target[1] /= s;
+				target[2] /= s;
+			} else {
+				target[0] = 0;
+				target[1] = 0;
+				target[2] = 0;
+			}
+			return this;
+		}
+	}
+
+	code.triangle.prototype = {
+		getVertices: function () {
+			return this.vertices;
+		},
+		getCentroid: function () {
+			var c = _(this.getVertices())
+				.map(function (v) {
+					return _.sum(v.get());
+				}).value();
+
+			code.vector3.divideScalar(c, 3);
+
+			return c;
 		}
 	}
 
 	code.plane = function (width, height, slices) {
-		var that = this;
-
-		this.width = width || 100;
-		this.height = height || 100;
+		this.width = width;
+		this.height = height;
 		this.triangles = [];
 
 		var x, y, vertices = new Array(slices),
@@ -57,13 +98,10 @@ var vandal = function (el) {
 		}
 
 		_(_.chunk(d.triangulate(vertices), 3)).map(function (v) {
-			var verticess = [];
-			_.each(v, function (point) {
-				verticess.push(new code.vertex(vertices[point][0], vertices[point][1]));
-			});
-
-			that.triangles.push(new code.triangle(verticess));
-		}).value();
+			this.triangles.push(new code.triangle(_(v).map(function (point) {
+				return new code.vertex(vertices[point][0], vertices[point][1]);
+			}).value()));
+		}.bind(this)).value();
 	};
 
 	code.plane.prototype = {
@@ -116,7 +154,7 @@ var vandal = function (el) {
 			var pairs = [];
 			_.each(this.triangles, function (v) {
 				_.each(v.getVertices(), function (v) {
-					pairs.push(v.get());
+					pairs.push(v.getZY());
 				})
 			});
 
@@ -153,13 +191,15 @@ var vandal = function (el) {
 				var points = triangle.getVertices(),
 					polygon = document.createElementNS(_SVGNS, 'polygon');
 
+				triangle.getCentroid();
+
 				polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
 				polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
 				polygon.setAttributeNS(null, 'stroke-width', '1');
 
 				var polyPoints = [];
 				_.each(points, function (p) {
-					polyPoints.push(p.get().join(','));
+					polyPoints.push(p.getZY().join(','));
 				});
 
 				polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
