@@ -4,7 +4,8 @@ var vandal = function (el) {
 	var _SVGNS = 'http://www.w3.org/2000/svg',
 		code = {
 			_FILL: '#101010',
-			_STROKE: '#383838'
+			_STROKE: '#383838',
+			_SIZE_OFFSET: 50
 		};
 
 	code.vertex = function (t, l) {
@@ -186,8 +187,8 @@ var vandal = function (el) {
 		},
 		draw: function () {
 			this.plane = new code.plane(code.parentSize()[0], code.parentSize()[1], 400);
-			this.map.setAttribute('width', this.plane.getSize()[0] / 2);
-			this.map.setAttribute('height', this.plane.getSize()[1] / 2);
+			this.map.setAttribute('width', (this.plane.getSize()[0] / 2));
+			this.map.setAttribute('height', (this.plane.getSize()[1] / 2));
 
 			this.clear();
 
@@ -203,8 +204,8 @@ var vandal = function (el) {
 
 	code.parentSize = function () {
 		return [
-			el[0].offsetWidth * 2,
-			el[0].offsetHeight * 2
+			(el[0].offsetWidth + code._SIZE_OFFSET) * 2,
+			(el[0].offsetHeight + code._SIZE_OFFSET) * 2
 		];
 	};
 
