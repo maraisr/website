@@ -67,6 +67,7 @@ gulp.task('js', function () {
 			debug: true,
 			paths: ['./bower_components/', config.js.src + '/modules/']
 		}))
+		.pipe($.rename({basename: 'app', extname: '.js'}))
 		.pipe(gulp.dest((dev ? config.js.dest : 'tmp/js/')))
 	//.pipe($.notify('JavaScript Built! [<%= file.relative %>]'));
 });
@@ -137,8 +138,8 @@ gulp.task('gzip', function () {
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', function (cb) {
-	$.runSequence('clean', ['styles', 'images', 'js', 'fonts', 'misc'], 'html', cb);
+gulp.task('default', ['clean'], function (cb) {
+	$.runSequence(['styles', 'images', 'js', 'fonts', 'misc'], 'html', cb);
 
 	gulp.watch(config.css.src + '/**/*.scss', ['styles']);
 	gulp.watch(config.images.src + '/**/*', ['images']);
@@ -167,7 +168,6 @@ gulp.task('build:js', ['js'], function () {
 				}
 			}))
 			.pipe($.uglify({ascii_only: true}))
-			.pipe($.rename({basename: 'app', extname: '.js'}))
 			.pipe(gulp.dest('tmp/assets/')));
 	});
 
