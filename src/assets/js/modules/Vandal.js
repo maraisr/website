@@ -133,18 +133,19 @@ var vandal = function (el) {
 		}
 	};
 
-	(function (p) {
-		var map = document.createElementNS(_SVGNS, 'svg');
-		map.setAttribute('width', width);
-		map.setAttribute('height', height);
+	code.scene = function () {
+		this.plane = new code.plane(width * 2, height * 2, 400);
 
-		el[0].appendChild(map);
+		this.map = document.createElementNS(_SVGNS, 'svg');
+		this.map.setAttribute('width', width);
+		this.map.setAttribute('height', height);
+	};
 
-		// Generate Polygons
-		map.appendChild((function () {
+	code.scene.prototype = {
+		genPolygons: function () {
 			var polygons = document.createElementNS(_SVGNS, 'g');
 
-			_.each(p.getPolygons(), function (triangle) {
+			_.each(this.plane.getPolygons(), function (triangle) {
 				var points = triangle.getVertices(),
 					polygon = document.createElementNS(_SVGNS, 'polygon');
 
@@ -164,21 +165,52 @@ var vandal = function (el) {
 			});
 
 			return polygons;
-		})());
-
-		// Generate Dots
-		(function () {
-			_.each(p.getPairs(), function (d) {
+		},
+		getPoints: function () {
+			var dots = document.createElementNS(_SVGNS, 'g');
+			_.each(this.plane.getPairs(), function (d) {
 				var dot = document.createElementNS(_SVGNS, 'circle');
 				dot.setAttributeNS(null, 'cx', d[0]);
 				dot.setAttributeNS(null, 'cy', d[1]);
 				dot.setAttributeNS(null, 'r', 4);
 				dot.setAttributeNS(null, 'style', 'fill: #91AA9D');
-				map.appendChild(dot);
-			});
-		})();
+				dots.appendChild(dot);
+			}.bind(this));
+			return dots;
+		},
+		getMap: function () {
+			return this.map;
+		},
+		draw: function () {
+			this.clear();
+			this.map.appendChild(this.genPolygons());
+			this.map.appendChild(this.getPoints());
+		},
+		clear: function () {
+			for (var i = this.map.childNodes.length - 1; i >= 0; i--) {
+				this.map.removeChild(this.map.childNodes[i]);
+			}
+		}
+	};
 
-	})(new code.plane(width * 2, height * 2, 400));
+	var map = new code.scene();
+
+	el[0].appendChild(map.getMap());
+
+	map.draw();
+
+	// Eventually we'll need the animation frame
+	/*var last;
+
+	 function draw(now) {
+	 requestAnimationFrame(draw);
+	 if (!last || now - last >= 2 * 1000) {
+	 last = now;
+	 map.draw();
+	 }
+	 }
+
+	 requestAnimationFrame(draw);*/
 }
 
 module.exports = {
