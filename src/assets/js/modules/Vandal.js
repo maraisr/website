@@ -167,20 +167,16 @@ var vandal = function (el) {
 		})());
 
 		// Generate Dots
-		map.appendChild((function () {
-			var dots = document.createAttributeNS(_SVGNS, 'g');
+		(function () {
 			_.each(p.getPairs(), function (d) {
-				if ((d.length == 2)) {
-					var dot = document.createElementNS(_SVGNS, 'circle');
-					dot.setAttributeNS(null, 'cx', d[0]);
-					dot.setAttributeNS(null, 'cy', d[1]);
-					dot.setAttributeNS(null, 'r', 4);
-					dot.setAttributeNS(null, 'style', 'fill: #91AA9D');
-					map.appendChild(dot);
-				}
+				var dot = document.createElementNS(_SVGNS, 'circle');
+				dot.setAttributeNS(null, 'cx', d[0]);
+				dot.setAttributeNS(null, 'cy', d[1]);
+				dot.setAttributeNS(null, 'r', 4);
+				dot.setAttributeNS(null, 'style', 'fill: #91AA9D');
+				map.appendChild(dot);
 			});
-			return dots;
-		})());
+		})();
 
 	})(new code.plane(width * 2, height * 2, 400));
 }
