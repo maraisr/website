@@ -186,6 +186,43 @@ var vandal = function (el) {
 		}
 	};
 
+	code.light = function (map) {
+		this.pos = [];
+		this.map = map;
+
+		document.onmousemove = function (event) {
+			var dot, eventDoc, doc, body, pageX, pageY;
+
+			event = event || window.event;
+
+			if (event.pageX == null && event.clientX != null) {
+				eventDoc = (event.target && event.target.ownerDocument) || document;
+				doc = eventDoc.documentElement;
+				body = eventDoc.body;
+
+				event.pageX = event.clientX +
+					(doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+					(doc && doc.clientLeft || body && body.clientLeft || 0);
+				event.pageY = event.clientY +
+					(doc && doc.scrollTop || body && body.scrollTop || 0) -
+					(doc && doc.clientTop || body && body.clientTop || 0 );
+			}
+
+			this.pos = [event.pageX, event.pageY];
+
+			this.lightTheWay();
+		}.bind(this);
+	};
+
+	code.light.prototype = {
+		getPos: function () {
+			return this.pos;
+		},
+		lightTheWay: function () {
+
+		}
+	};
+
 	code.render = function () {
 
 	};
@@ -270,6 +307,7 @@ var vandal = function (el) {
 
 	var map = new code.scene();
 	el[0].appendChild(map.getMap());
+	new code.light(map);
 
 	var last;
 
