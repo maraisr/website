@@ -49,21 +49,7 @@ var vandal = function (el) {
 	code.triangle = function (v) {
 		this.vertices = v;
 		this.colour = new code.colour((Math.random() % 0.4));
-	}
-
-	code.vector3 = {
-		divideScalar: function (target, s) {
-			if (s !== 0) {
-				target[0] /= s;
-				target[1] /= s;
-				target[2] /= s;
-			} else {
-				target[0] = 0;
-				target[1] = 0;
-				target[2] = 0;
-			}
-			return this;
-		}
+		this.centroid = this.getCentroid();
 	}
 
 	code.triangle.prototype = {
@@ -71,14 +57,18 @@ var vandal = function (el) {
 			return this.vertices;
 		},
 		getCentroid: function () {
-			var c = _(this.getVertices())
-				.map(function (v) {
-					return _.sum(v.get());
-				}).value();
+			var vertices = this.getVertices(),
+				vertices = [
+					_.sum([vertices[0].get()[0], vertices[1].get()[0], vertices[2].get()[0]]),
+					_.sum([vertices[0].get()[1], vertices[1].get()[1], vertices[2].get()[1]]),
+					_.sum([vertices[0].get()[2], vertices[1].get()[2], vertices[2].get()[2]])
+				];
 
-			code.vector3.divideScalar(c, 3);
+			_.each(vertices, function (v, k) {
+				vertices[k] = v / 3;
+			});
 
-			return c;
+			return vertices;
 		}
 	}
 
@@ -196,6 +186,22 @@ var vandal = function (el) {
 		}
 	};
 
+	code.render = function () {
+
+	};
+
+	code.render.prototype = {
+		point: function (x, y) {
+			var dot = document.createElementNS(_SVGNS, 'circle');
+			dot.setAttributeNS(null, 'cx', x);
+			dot.setAttributeNS(null, 'cy', y);
+			dot.setAttributeNS(null, 'r', 4);
+			dot.setAttributeNS(null, 'style', 'fill: ' + code._STROKE);
+
+			return dot;
+		}
+	}
+
 	code.scene = function () {
 		this.map = document.createElementNS(_SVGNS, 'svg');
 	};
@@ -231,12 +237,7 @@ var vandal = function (el) {
 		genPoints: function () {
 			var dots = document.createElementNS(_SVGNS, 'g');
 			_.each(this.plane.getPairs(), function (d) {
-				var dot = document.createElementNS(_SVGNS, 'circle');
-				dot.setAttributeNS(null, 'cx', d[0]);
-				dot.setAttributeNS(null, 'cy', d[1]);
-				dot.setAttributeNS(null, 'r', 4);
-				dot.setAttributeNS(null, 'style', 'fill: ' + code._STROKE);
-				dots.appendChild(dot);
+				dots.appendChild(code.render.point(d[0], d[1]));
 			}.bind(this));
 			return dots;
 		},
