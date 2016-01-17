@@ -228,7 +228,7 @@ var vandal = function (el) {
 
 			return polygons;
 		},
-		getPoints: function () {
+		genPoints: function () {
 			var dots = document.createElementNS(_SVGNS, 'g');
 			_.each(this.plane.getPairs(), function (d) {
 				var dot = document.createElementNS(_SVGNS, 'circle');
@@ -251,7 +251,7 @@ var vandal = function (el) {
 			this.clear();
 
 			this.map.appendChild(this.genPolygons());
-			this.map.appendChild(this.getPoints());
+			//this.map.appendChild(this.genPoints());
 		},
 		clear: function () {
 			for (var i = this.map.childNodes.length - 1; i >= 0; i--) {
