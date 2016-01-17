@@ -186,9 +186,18 @@ var vandal = function (el) {
 		}
 	};
 
-	code.light = function (map) {
+	code.mesh = function (scene) {
+		this.scene = scene;
+	};
+
+	code.mesh.prototype = {
+		run: function () {
+
+		}
+	};
+
+	code.light = function () {
 		this.pos = [];
-		this.map = map;
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY;
@@ -209,22 +218,13 @@ var vandal = function (el) {
 			}
 
 			this.pos = [event.pageX, event.pageY];
-
-			this.lightTheWay();
 		}.bind(this);
 	};
 
-	code.light.prototype = {
-		getPos: function () {
-			return this.pos;
-		},
-		lightTheWay: function () {
+	code.light.prototype = {};
 
-		}
-	};
-
-	code.render = function () {
-
+	code.render = function (type) {
+		this.s = document.createElementNS(_SVGNS, type);
 	};
 
 	code.render.prototype = {
@@ -234,49 +234,55 @@ var vandal = function (el) {
 			dot.setAttributeNS(null, 'cy', y);
 			dot.setAttributeNS(null, 'r', 4);
 			dot.setAttributeNS(null, 'style', 'fill: ' + code._STROKE);
+			this.s.appendChild(dot);
+		},
+		polygon: function (points, fill, stroke) {
+			var polygon = document.createElementNS(_SVGNS, 'polygon');
 
-			return dot;
+			polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
+			polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
+			polygon.setAttributeNS(null, 'stroke-width', '1');
+
+			polygon.setAttributeNS(null, 'points', _(points).map(function (v) {
+				return v.join(',')
+			}).value().join(' '));
+			polygon.setAttributeNS(null, 'style', 'fill: ' + fill + '; stroke: ' + stroke + ';');
+
+			this.s.appendChild(polygon);
+
+			return polygon;
+		},
+		final: function () {
+			return this.s;
 		}
 	}
 
 	code.scene = function () {
 		this.map = document.createElementNS(_SVGNS, 'svg');
+		this.mesh = new code.mesh(this);
 	};
 
 	code.scene.prototype = {
 		genPolygons: function () {
-			var polygons = document.createElementNS(_SVGNS, 'g');
-
+			var r = new code.render('g');
 			_.each(this.plane.getPolygons(), function (triangle) {
-				var points = triangle.getVertices(),
-					polygon = document.createElementNS(_SVGNS, 'polygon');
-
-				polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
-				polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
-				polygon.setAttributeNS(null, 'stroke-width', '1');
 
 				var polyPoints = [];
-				_.each(points, function (p) {
-					polyPoints.push(p.getZY().join(','));
+				_.each(triangle.getVertices(), function (p) {
+					polyPoints.push(p.getZY());
 				});
 
-				polygon.setAttributeNS(null, 'points', polyPoints.join(' '));
-				polygon.setAttributeNS(null, 'style', 'fill: ' + triangle.colour.format() + '; stroke: ' + code._STROKE + ';');
-
-				triangle.element = polygon;
-				triangle.direction = [Math.round(Math.random()), Math.round(Math.random())];
-
-				polygons.appendChild(polygon);
+				triangle.element = r.polygon(polyPoints, triangle.colour.format(), code._STROKE);
 			});
 
-			return polygons;
+			return r.final();
 		},
 		genPoints: function () {
-			var dots = document.createElementNS(_SVGNS, 'g');
+			var r = new code.render('g');
 			_.each(this.plane.getPairs(), function (d) {
-				dots.appendChild(code.render.point(d[0], d[1]));
+				r.point(d[0], d[1]);
 			}.bind(this));
-			return dots;
+			return r.final();
 		},
 		getMap: function () {
 			return this.map;
@@ -290,6 +296,13 @@ var vandal = function (el) {
 
 			this.map.appendChild(this.genPolygons());
 			//this.map.appendChild(this.genPoints());
+
+			/*var r = new code.render('g');
+			 _.each(this.plane.getPolygons(), function (v) {
+			 r.point(v.centroid[0], v.centroid[1]);
+			 }.bind(this));
+
+			 this.map.appendChild(r.final());*/
 		},
 		clear: function () {
 			for (var i = this.map.childNodes.length - 1; i >= 0; i--) {
@@ -306,8 +319,8 @@ var vandal = function (el) {
 	};
 
 	var map = new code.scene();
+
 	el[0].appendChild(map.getMap());
-	new code.light(map);
 
 	var last;
 
