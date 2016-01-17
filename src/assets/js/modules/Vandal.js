@@ -50,6 +50,9 @@ var vandal = function (el) {
 		this.vertices = v;
 		this.colour = new code.colour((Math.random() % 0.4));
 		this.centroid = this.getCentroid();
+		this.centroidDelta = (function (c) {
+			return Math.abs(c[0] - c[1]);
+		})(this.centroid);
 	}
 
 	code.triangle.prototype = {
@@ -196,13 +199,20 @@ var vandal = function (el) {
 		}
 	};
 
-	code.light = function () {
+	code.light = function (triangles) {
 		this.pos = [];
+		this.triangles = triangles;
+		this.trianglesMap = _(triangles).map(function (v, k) {
+			return {
+				index: k,
+				centroid: v.centroid,
+				delta: v.centroidDelta
+			}
+		}).value();
 
 		document.onmousemove = function (event) {
-			var dot, eventDoc, doc, body, pageX, pageY;
-
-			event = event || window.event;
+			var dot, eventDoc, doc, body, pageX, pageY,
+				event = event || window.event;
 
 			if (event.pageX == null && event.clientX != null) {
 				eventDoc = (event.target && event.target.ownerDocument) || document;
@@ -218,10 +228,21 @@ var vandal = function (el) {
 			}
 
 			this.pos = [event.pageX, event.pageY];
-		}.bind(this);
+		}.bind(this)
 	};
 
-	code.light.prototype = {};
+	code.light.prototype = {
+		update: function () {
+			this._now = this.pos;
+			this._last;
+
+			if (!this._last || this._now[0] != this._last[0] || this._now[1] != this._last[1]) {
+				this._last = this._now;
+
+				// UPDATE LIGHTS
+			}
+		}
+	};
 
 	code.render = function (type) {
 		this.s = document.createElementNS(_SVGNS, type);
@@ -230,11 +251,15 @@ var vandal = function (el) {
 	code.render.prototype = {
 		point: function (x, y) {
 			var dot = document.createElementNS(_SVGNS, 'circle');
+
 			dot.setAttributeNS(null, 'cx', x);
 			dot.setAttributeNS(null, 'cy', y);
 			dot.setAttributeNS(null, 'r', 4);
 			dot.setAttributeNS(null, 'style', 'fill: ' + code._STROKE);
+
 			this.s.appendChild(dot);
+
+			return dot;
 		},
 		polygon: function (points, fill, stroke) {
 			var polygon = document.createElementNS(_SVGNS, 'polygon');
@@ -294,15 +319,20 @@ var vandal = function (el) {
 
 			this.clear();
 
+			this.light = new code.light(this.plane.getPolygons());
+
 			this.map.appendChild(this.genPolygons());
 			//this.map.appendChild(this.genPoints());
 
-			/*var r = new code.render('g');
-			 _.each(this.plane.getPolygons(), function (v) {
-			 r.point(v.centroid[0], v.centroid[1]);
-			 }.bind(this));
+			var r = new code.render('g');
+			_.each(this.plane.getPolygons(), function (v, k) {
+				var t = r.point(v.centroid[0], v.centroid[1]);
+			}.bind(this));
+			this.map.appendChild(r.final());
+		},
+		update: function () {
+			this.light.update();
 
-			 this.map.appendChild(r.final());*/
 		},
 		clear: function () {
 			for (var i = this.map.childNodes.length - 1; i >= 0; i--) {
@@ -324,7 +354,7 @@ var vandal = function (el) {
 
 	var last;
 
-	function draw() {
+	function draw(ts) {
 		requestAnimationFrame(draw);
 
 		var now = code.parentSize();
@@ -333,6 +363,8 @@ var vandal = function (el) {
 			map.draw();
 			last = now;
 		}
+
+		map.update();
 	}
 
 	requestAnimationFrame(draw);
