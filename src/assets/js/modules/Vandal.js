@@ -246,10 +246,10 @@ var vandal = function (el) {
 					var count = deltas.length;
 
 					_.each(deltas, function (v, k) {
-						var c = new code.colour([28, 287, 255]),
-							lum = (k / (count * 0.5));
+						var c = new code.colour([232, 12, 122]),
+							lum = (k / (count * 0.6));
 						c.shade(-1 * lum);
-						this.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + code._STROKE);
+						this.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
 					}.bind(this));
 				}
 
