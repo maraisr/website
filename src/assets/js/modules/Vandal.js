@@ -50,9 +50,8 @@ var vandal = function (el) {
 		this.vertices = v;
 		this.colour = new code.colour((Math.random() % 0.4));
 		this.centroid = this.getCentroid();
-		this.centroidDelta = (function (c) {
-			return Math.abs(c[0] - c[1]);
-		})(this.centroid);
+
+		this._dirty = false;
 	}
 
 	code.triangle.prototype = {
@@ -200,15 +199,8 @@ var vandal = function (el) {
 	};
 
 	code.light = function (triangles) {
-		this.pos = [];
+		this.pos = [0, 0];
 		this.triangles = triangles;
-		this.trianglesMap = _(triangles).map(function (v, k) {
-			return {
-				index: k,
-				centroid: v.centroid,
-				delta: v.centroidDelta
-			}
-		}).value();
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY,
@@ -237,9 +229,28 @@ var vandal = function (el) {
 			this._last;
 
 			if (!this._last || this._now[0] != this._last[0] || this._now[1] != this._last[1]) {
-				this._last = this._now;
+				if (!(this._last == this._now)) {
+					var deltas = _(this.triangles)
+						.map(function (v, k) {
+							var x = (this.pos[0] - v.centroid[0]),
+								y = (this.pos[1] - v.centroid[1]);
 
-				// UPDATE LIGHTS
+							return {
+								index: k,
+								delta: Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+							}
+						}.bind(this)).sortBy('delta').value();
+
+					_(this.triangles).filter({_dirty: true}).each(function (v) {
+						v.element.setAttributeNS(null, 'style', 'fill: ' + v.colour.format() + '; stroke: ' + code._STROKE);
+						v._dirty = false;
+					}).value();
+
+					this.triangles[deltas[0].index]._dirty = true;
+					this.triangles[deltas[0].index].element.setAttributeNS(null, 'style', 'fill: rgba(28,187,255, 0.5)');
+				}
+
+				this._last = this._now;
 			}
 		}
 	};
@@ -323,12 +334,6 @@ var vandal = function (el) {
 
 			this.map.appendChild(this.genPolygons());
 			//this.map.appendChild(this.genPoints());
-
-			var r = new code.render('g');
-			_.each(this.plane.getPolygons(), function (v, k) {
-				var t = r.point(v.centroid[0], v.centroid[1]);
-			}.bind(this));
-			this.map.appendChild(r.final());
 		},
 		update: function () {
 			this.light.update();
