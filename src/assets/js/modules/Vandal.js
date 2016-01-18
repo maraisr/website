@@ -9,18 +9,20 @@ var vandal = function (el) {
 			_COUNT: 200
 		};
 
-	code.colour = function (lum) {
-		this.rgb = this.shadeRGBColor([16, 16, 16], (-1 * (lum)));
+	code.colour = function (colour) {
+		this.colour = colour;
+		this.shaded = [0, 0, 0];
 	};
 
 	code.colour.prototype = {
 		//http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
-		shadeRGBColor: function (colour, percent) {
-			var f = colour, t = percent < 0 ? 0 : 255, p = percent < 0 ? percent * -1 : percent, R = f[0], G = f[1], B = f[2];
-			return [(Math.round((t - R) * p) + R), (Math.round((t - G) * p) + G), (Math.round((t - B) * p) + B)];
+		shade: function (percent) {
+			var f = this.colour, t = percent < 0 ? 0 : 255, p = percent < 0 ? percent * -1 : percent, R = f[0], G = f[1], B = f[2];
+			this.shaded = [(Math.round((t - R) * p) + R), (Math.round((t - G) * p) + G), (Math.round((t - B) * p) + B)];
+			return this;
 		},
 		format: function () {
-			return 'rgb(' + this.rgb.join(',') + ')';
+			return 'rgb(' + this.shaded.join(',') + ')';
 		}
 	}
 
@@ -48,7 +50,7 @@ var vandal = function (el) {
 
 	code.triangle = function (v) {
 		this.vertices = v;
-		this.colour = new code.colour((Math.random() % 0.4));
+		this.colour = new code.colour([16, 16, 16]);
 		this.centroid = this.getCentroid();
 
 		this._dirty = false;
@@ -241,13 +243,14 @@ var vandal = function (el) {
 							}
 						}.bind(this)).sortBy('delta').value();
 
-					_(this.triangles).filter({_dirty: true}).each(function (v) {
-						v.element.setAttributeNS(null, 'style', 'fill: ' + v.colour.format() + '; stroke: ' + code._STROKE);
-						v._dirty = false;
-					}).value();
+					var count = deltas.length;
 
-					this.triangles[deltas[0].index]._dirty = true;
-					this.triangles[deltas[0].index].element.setAttributeNS(null, 'style', 'fill: rgba(28,187,255, 0.5)');
+					_.each(deltas, function (v, k) {
+						var c = new code.colour([28, 287, 255]),
+							lum = (k / (count * 0.5));
+						c.shade(-1 * lum);
+						this.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + code._STROKE);
+					}.bind(this));
 				}
 
 				this._last = this._now;
@@ -308,7 +311,7 @@ var vandal = function (el) {
 					polyPoints.push(p.getZY());
 				});
 
-				triangle.element = r.polygon(polyPoints, triangle.colour.format(), code._STROKE);
+				triangle.element = r.polygon(polyPoints, triangle.colour.shade(-1 * ((Math.random() % 0.4))).format(), code._STROKE);
 			});
 
 			return r.final();
