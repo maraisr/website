@@ -9,6 +9,53 @@ var vandal = function (el) {
 			_COUNT: 200
 		};
 
+	code.vector = {
+		subtract: function (a, b) {
+			var _r = [];
+			_r[0] = a[0] - b[0];
+			_r[1] = a[1] - b[1];
+			_r[2] = a[2] - b[2];
+			return _r;
+		},
+		divideScalar: function (a, l) {
+			var _r = [];
+
+			_.each(a, function (v, k) {
+				_r[k] = ((v == 0) ? 0 : (v / l));
+			});
+
+			return _r;
+		},
+		cross: function (a, b) {
+			var _r = [];
+			_r[0] = a[1] * b[2] - a[2] * b[1];
+			_r[1] = a[2] * b[0] - a[0] * b[2];
+			_r[2] = a[0] * b[1] - a[1] * b[0];
+			return _r;
+		},
+		normalize: function (a) {
+			return this.divideScalar(a, this.length(a));
+		},
+		length: function (a) {
+			return Math.sqrt(this.lengthSquared(a));
+		},
+		lengthSquared: function (a) {
+			return a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
+		},
+		distanceSquared: function (a, b) {
+			var dx = a[0] - b[0];
+			var dy = a[1] - b[1];
+			var dz = a[2] - b[2];
+			return dx * dx + dy * dy + dz * dz;
+		},
+		distance: function (a, b) {
+			return Math.sqrt(this.distanceSquared(a, b));
+		},
+		dot: function (a, b) {
+			return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+		}
+	}
+
 	code.colour = function (colour) {
 		this.colour = colour;
 		this.shaded = [0, 0, 0];
@@ -40,7 +87,7 @@ var vandal = function (el) {
 				this.z
 			]
 		},
-		getZY: function () {
+		getXY: function () {
 			return [
 				this.x,
 				this.y
@@ -52,6 +99,7 @@ var vandal = function (el) {
 		this.vertices = v;
 		this.colour = new code.colour([16, 16, 16]);
 		this.centroid = this.getCentroid();
+		this.normal = this.getNormal();
 
 		this._dirty = false;
 	}
@@ -62,17 +110,21 @@ var vandal = function (el) {
 		},
 		getCentroid: function () {
 			var vertices = this.getVertices(),
-				vertices = [
+				vertices = code.vector.divideScalar([
 					_.sum([vertices[0].get()[0], vertices[1].get()[0], vertices[2].get()[0]]),
 					_.sum([vertices[0].get()[1], vertices[1].get()[1], vertices[2].get()[1]]),
 					_.sum([vertices[0].get()[2], vertices[1].get()[2], vertices[2].get()[2]])
-				];
-
-			_.each(vertices, function (v, k) {
-				vertices[k] = v / 3;
-			});
+				], 3);
 
 			return vertices;
+		},
+		getNormal: function () {
+			var u = code.vector.subtract(this.vertices[1].get(), this.vertices[0].get()),
+				v = code.vector.subtract(this.vertices[2].get(), this.vertices[0].get()),
+				c = code.vector.cross(u, v),
+				n = code.vector.normalize(c);
+
+			return n;
 		}
 	}
 
@@ -165,7 +217,7 @@ var vandal = function (el) {
 			var pairs = [];
 			_.each(this.triangles, function (v) {
 				_.each(v.getVertices(), function (v) {
-					pairs.push(v.getZY());
+					pairs.push(v.getXY());
 				})
 			});
 
@@ -201,7 +253,7 @@ var vandal = function (el) {
 	};
 
 	code.light = function (triangles) {
-		this.pos = [0, 0];
+		this.pos = [0, 0, 0];
 		this.triangles = triangles;
 
 		document.onmousemove = function (event) {
@@ -221,7 +273,7 @@ var vandal = function (el) {
 					(doc && doc.clientTop || body && body.clientTop || 0 );
 			}
 
-			this.pos = [event.pageX, event.pageY];
+			this.pos = [event.pageX, event.pageY, 0];
 		}.bind(this)
 	};
 
@@ -234,12 +286,21 @@ var vandal = function (el) {
 				if (!(this._last == this._now)) {
 					var deltas = _(this.triangles)
 						.map(function (v, k) {
-							var x = (this.pos[0] - v.centroid[0]),
-								y = (this.pos[1] - v.centroid[1]);
+
+							var ray = code.vector.subtract(this.pos, v.centroid),
+								n = code.vector.normalize(this.pos),
+
+								ill = code.vector.dot(v.normal, ray);
+
+							/*console.log('a', Math.max(ill, 0));
+
+							 console.log('b', Math.abs(Math.min(ill, 0)));
+
+							 console.log('c', Math.max(Math.abs(ill), 0));*/
 
 							return {
 								index: k,
-								delta: Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+								delta: code.vector.distance(this.pos, v.centroid)
 							}
 						}.bind(this)).sortBy('delta').value();
 
@@ -247,7 +308,8 @@ var vandal = function (el) {
 
 					_.each(deltas, function (v, k) {
 						var c = new code.colour([232, 12, 122]),
-							lum = (k / (count * 0.6));
+							lum = (k / (count * 0.2));
+
 						c.shade(-1 * lum);
 						this.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
 					}.bind(this));
@@ -308,19 +370,12 @@ var vandal = function (el) {
 
 				var polyPoints = [];
 				_.each(triangle.getVertices(), function (p) {
-					polyPoints.push(p.getZY());
+					polyPoints.push(p.getXY());
 				});
 
 				triangle.element = r.polygon(polyPoints, triangle.colour.shade(-1 * ((Math.random() % 0.4))).format(), code._STROKE);
 			});
 
-			return r.final();
-		},
-		genPoints: function () {
-			var r = new code.render('g');
-			_.each(this.plane.getPairs(), function (d) {
-				r.point(d[0], d[1]);
-			}.bind(this));
 			return r.final();
 		},
 		getMap: function () {
@@ -336,7 +391,6 @@ var vandal = function (el) {
 			this.light = new code.light(this.plane.getPolygons());
 
 			this.map.appendChild(this.genPolygons());
-			//this.map.appendChild(this.genPoints());
 		},
 		update: function () {
 			this.light.update();
