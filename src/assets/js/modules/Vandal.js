@@ -6,7 +6,7 @@ var vandal = function (el) {
 			_FILL: '#101010',
 			_STROKE: '#383838',
 			_SIZE_OFFSET: 50,
-			_COUNT: 550
+			_COUNT: 800
 		};
 
 	code.vector = {
