@@ -268,20 +268,23 @@ var vandal = function (el) {
 	};
 
 	code.light.prototype = {
-		// TODO: Don't take triangles as an argument, instead send the scene to the init of the light object
-		update: function (triangles) {
+		update: function (plane, run) {
 			this._now = this.pos;
 			this._last;
 
+			if (run === true) {
+				this._last = null;
+			}
+
 			if (!this._last || this._now[0] != this._last[0] || this._now[1] != this._last[1]) {
 				if (!(this._last == this._now)) {
-					var deltas = _(triangles)
+					var deltas = _(plane.triangles)
 						.map(function (v, k) {
 
 							/*var ray = code.vector.subtract(this.pos, v.centroid),
-								n = code.vector.normalize(this.pos),
+							 n = code.vector.normalize(this.pos),
 
-								ill = code.vector.dot(v.normal, ray);*/
+							 ill = code.vector.dot(v.normal, ray);*/
 
 							/*console.log('a', Math.max(ill, 0));
 
@@ -302,7 +305,7 @@ var vandal = function (el) {
 							lum = (k / (count * 0.2));
 
 						c.shade(-1 * lum);
-						triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
+						plane.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
 					}.bind(this));
 				}
 
@@ -351,7 +354,7 @@ var vandal = function (el) {
 
 	code.scene = function () {
 		this.map = document.createElementNS(_SVGNS, 'svg');
-		this.light = new code.light();
+		this.light = new code.light(this);
 	};
 
 	code.scene.prototype = {
@@ -380,9 +383,10 @@ var vandal = function (el) {
 			this.clear();
 
 			this.map.appendChild(this.genPolygons());
+			this.light.update(this.plane, true);
 		},
 		update: function () {
-			this.light.update(this.plane.getPolygons());
+			this.light.update(this.plane);
 
 		},
 		clear: function () {
