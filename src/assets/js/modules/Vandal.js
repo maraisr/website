@@ -242,19 +242,9 @@ var vandal = function (el) {
 		}
 	};
 
-	code.mesh = function (scene) {
-		this.scene = scene;
-	};
-
-	code.mesh.prototype = {
-		run: function () {
-
-		}
-	};
-
-	code.light = function (triangles) {
+	code.light = function () {
+		// TODO: Start mouse pos 2/3 from the left of the monitor, and 1/3 from the top
 		this.pos = [0, 0, 0];
-		this.triangles = triangles;
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY,
@@ -274,17 +264,17 @@ var vandal = function (el) {
 			}
 
 			this.pos = [event.pageX, event.pageY, 0];
-		}.bind(this)
+		}.bind(this);
 	};
 
 	code.light.prototype = {
-		update: function () {
+		update: function (triangles) {
 			this._now = this.pos;
 			this._last;
 
 			if (!this._last || this._now[0] != this._last[0] || this._now[1] != this._last[1]) {
 				if (!(this._last == this._now)) {
-					var deltas = _(this.triangles)
+					var deltas = _(triangles)
 						.map(function (v, k) {
 
 							/*var ray = code.vector.subtract(this.pos, v.centroid),
@@ -311,7 +301,7 @@ var vandal = function (el) {
 							lum = (k / (count * 0.2));
 
 						c.shade(-1 * lum);
-						this.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
+						triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
 					}.bind(this));
 				}
 
@@ -360,7 +350,7 @@ var vandal = function (el) {
 
 	code.scene = function () {
 		this.map = document.createElementNS(_SVGNS, 'svg');
-		this.mesh = new code.mesh(this);
+		this.light = new code.light();
 	};
 
 	code.scene.prototype = {
@@ -388,12 +378,10 @@ var vandal = function (el) {
 
 			this.clear();
 
-			this.light = new code.light(this.plane.getPolygons());
-
 			this.map.appendChild(this.genPolygons());
 		},
 		update: function () {
-			this.light.update();
+			this.light.update(this.plane.getPolygons());
 
 		},
 		clear: function () {
