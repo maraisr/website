@@ -268,6 +268,7 @@ var vandal = function (el) {
 	};
 
 	code.light.prototype = {
+		// TODO: Don't take triangles as an argument, instead send the scene to the init of the light object
 		update: function (triangles) {
 			this._now = this.pos;
 			this._last;
