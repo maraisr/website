@@ -6,7 +6,7 @@ var vandal = function (el) {
 			_FILL: '#101010',
 			_STROKE: '#383838',
 			_SIZE_OFFSET: 50,
-			_COUNT: 200
+			_COUNT: 550
 		};
 
 	code.vector = {
@@ -99,7 +99,7 @@ var vandal = function (el) {
 		this.vertices = v;
 		this.colour = new code.colour([16, 16, 16]);
 		this.centroid = this.getCentroid();
-		this.normal = this.getNormal();
+		//this.normal = this.getNormal();
 
 		this._dirty = false;
 	}
@@ -287,10 +287,10 @@ var vandal = function (el) {
 					var deltas = _(this.triangles)
 						.map(function (v, k) {
 
-							var ray = code.vector.subtract(this.pos, v.centroid),
+							/*var ray = code.vector.subtract(this.pos, v.centroid),
 								n = code.vector.normalize(this.pos),
 
-								ill = code.vector.dot(v.normal, ray);
+								ill = code.vector.dot(v.normal, ray);*/
 
 							/*console.log('a', Math.max(ill, 0));
 

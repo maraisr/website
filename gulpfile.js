@@ -1,6 +1,7 @@
 var p = require('./package.json'),
 	gulp = require('gulp'),
 	$ = require('gulp-load-plugins')({lazy: true, pattern: ['gulp-*', 'debowerify', 'run-sequence', 'imagemin-*']}),
+	fs = require('fs'),
 	merge = require('merge-stream'),
 	source = require('vinyl-source-stream'),
 	glob = require('glob'),
@@ -35,8 +36,7 @@ gulp.task('styles', function () {
 		.pipe($.csscomb())
 		.pipe($.cssmin({advanced: true, aggressiveMerging: true, keepSpecialComments: false, semanticMerging: true}))
 		.pipe($.rename({basename: 'app', extname: '.css'}))
-		.pipe(gulp.dest((dev ? config.css.dest : 'tmp/assets')))
-	//.pipe($.notify('Styles Built! [<%= file.relative %>]'));
+		.pipe(gulp.dest((dev ? config.css.dest : 'tmp/assets')));
 });
 
 gulp.task('images', function () {
@@ -69,7 +69,6 @@ gulp.task('js', function () {
 		}))
 		.pipe($.rename({basename: 'app', extname: '.js'}))
 		.pipe(gulp.dest((dev ? config.js.dest : 'tmp/js/')))
-	//.pipe($.notify('JavaScript Built! [<%= file.relative %>]'));
 });
 
 gulp.task('html', function () {
@@ -96,7 +95,7 @@ gulp.task('html', function () {
 			minifyCSS: true
 		})))
 
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('sitemap', function () {
@@ -126,7 +125,6 @@ gulp.task('misc', function () {
 gulp.task('clean', function () {
 	return gulp.src(['dist/', 'tmp/'], {read: false})
 		.pipe($.rimraf())
-	//.pipe($.notify('Assets cleared!'));
 });
 
 gulp.task('gzip', function () {
@@ -174,6 +172,29 @@ gulp.task('build:js', ['js'], function () {
 	});
 
 	return prom;
+});
+
+gulp.task('build:publish', function() {
+	var s3config = JSON.parse(fs.readFileSync('./s3config.json'));
+
+	var headers = {
+			'Content-Encoding': 'gzip'
+		},
+		s3base = {
+			accessKeyId: _.get(s3config, 'accessKeyId'),
+			secretAccessKey: _.get(s3config, 'secretAccessKey'),
+			region: 'ap-southeast-2',
+			params: {
+				Bucket: _.get(s3config, 'bucket')
+			}
+		},
+		rpt = {states: ['create', 'update', 'delete']},
+		s3 = $.awspublish.create(s3base);
+
+	return gulp.src('**/*', {cwd: 'dist/'})
+		.pipe(s3.publish(headers), 10)
+		.pipe(s3.sync())
+		.pipe($.awspublish.reporter(rpt))
 });
 
 gulp.task('build', ['clean'], function (cb) {

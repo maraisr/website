@@ -3,6 +3,7 @@ node_modules/
 bower_components/
 dist/
 tmp/
+s3config.json
 
 .idea
 !.idea/.name
