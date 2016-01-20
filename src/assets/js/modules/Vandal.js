@@ -3,13 +3,20 @@ var d = require('delaunay-fast');
 var vandal = function (el) {
 	var _SVGNS = 'http://www.w3.org/2000/svg',
 		code = {
-			_FILL: '#101010',
-			_STROKE: '#383838',
+			_DIFFUSE: [191, 216, 141],
+			_AMBIENT: [25, 52, 65],
 			_SIZE_OFFSET: 50,
 			_COUNT: 800
 		};
 
 	code.vector = {
+		add: function (a, b) {
+			var _r = a;
+			_r[0] += b[0];
+			_r[1] += b[1];
+			_r[2] += b[2];
+			return _r;
+		},
 		subtract: function (a, b) {
 			var _r = [];
 			_r[0] = a[0] - b[0];
@@ -24,6 +31,20 @@ var vandal = function (el) {
 				_r[k] = ((v == 0) ? 0 : (v / l));
 			});
 
+			return _r;
+		},
+		multiplyScalar: function (a, s) {
+			var _r = a;
+			_r[0] *= s;
+			_r[1] *= s;
+			_r[2] *= s;
+			return _r;
+		},
+		multiplyVectors: function (a, b) {
+			var _r = [];
+			_r[0] = a[0] * b[0];
+			_r[1] = a[1] * b[1];
+			_r[2] = a[2] * b[2];
 			return _r;
 		},
 		cross: function (a, b) {
@@ -53,7 +74,36 @@ var vandal = function (el) {
 		},
 		dot: function (a, b) {
 			return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-		}
+		},
+		min: function (target, value) {
+			if (target[0] < value) {
+				target[0] = value;
+			}
+			if (target[1] < value) {
+				target[1] = value;
+			}
+			if (target[2] < value) {
+				target[2] = value;
+			}
+			return this;
+		},
+		max: function (target, value) {
+			if (target[0] > value) {
+				target[0] = value;
+			}
+			if (target[1] > value) {
+				target[1] = value;
+			}
+			if (target[2] > value) {
+				target[2] = value;
+			}
+			return this;
+		},
+		clamp: function (target, min, max) {
+			this.min(target, min);
+			this.max(target, max);
+			return this;
+		},
 	}
 
 	code.colour = function (colour) {
@@ -97,12 +147,9 @@ var vandal = function (el) {
 
 	code.triangle = function (v) {
 		this.vertices = v;
-		this.colour = new code.colour([16, 16, 16]);
+		this.colour = new code.colour(code._AMBIENT);
 		this.centroid = this.getCentroid();
 		this.normal = this.getNormal();
-		this.lumWay = -1;
-
-		this._dirty = false;
 	}
 
 	code.triangle.prototype = {
@@ -244,8 +291,7 @@ var vandal = function (el) {
 	};
 
 	code.light = function () {
-		this.pos = [(code.parentSize()[0] * (1 / 3)), (code.parentSize()[1] * (1 / 3)), 1];
-		this.position = [Math.randomInRange(-code.parentSize()[0]/2, code.parentSize()[0]/2), Math.randomInRange(-code.parentSize()[1]/2, code.parentSize()[1]/2),  Math.randomInRange(10, 100)];
+		this.pos = [(code.parentSize()[0] * (0.4 / 3)), (code.parentSize()[1] * (0.4 / 3)), 1];
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY,
@@ -279,29 +325,28 @@ var vandal = function (el) {
 
 			if (!this._last || this._now[0] != this._last[0] || this._now[1] != this._last[1]) {
 				if (!(this._last == this._now)) {
-					var deltas = _(plane.triangles)
-						.map(function (v, k) {
+					_.each(plane.triangles, function (v) {
+						var ray = code.vector.subtract(this.pos, v.centroid),
+							n = code.vector.normalize(ray),
+							ill = (code.vector.dot(v.normal, n));
 
-							var ray = code.vector.subtract(this.position, v.centroid),
-							 	n = code.vector.normalize(ray),
-								ill = code.vector.dot(v.normal, n);
+						if (v.side === 0) {
+							ill = Math.abs(ill);
+						} else if (v.side === 1) {
+							ill = Math.abs(Math.min(ill, 0));
+						} else if (v.side === 2) {
+							ill = Math.max(Math.abs(ill), 0);
+						}
 
-								v.lum = Math.max(Math.abs(ill), 0);
+						var tRgb = code.vector.add(_.clone(v.colour.colour), code.vector.multiplyScalar(code.vector.multiplyVectors(code._DIFFUSE, code._AMBIENT), ill));
+						tRgb = _.map(tRgb, function (v) {
+							return Math.ceil(v);
+						});
 
-							return {
-								index: k,
-								delta: code.vector.distance(this.pos, v.centroid),
-								lum: v.lum
-							}
-						}.bind(this)).sortBy('delta').value();
+						var c = new code.colour(tRgb);
+						c.shaded = tRgb;
 
-					var count = deltas.length;
-
-					_.each(deltas, function (v, k) {
-						var c = new code.colour([232, 12, 122]);
-
-						c.shade(v.lum);
-						plane.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
+						v.element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
 					}.bind(this));
 				}
 
@@ -363,7 +408,19 @@ var vandal = function (el) {
 					polyPoints.push(p.getXY());
 				});
 
-				triangle.element = r.polygon(polyPoints, triangle.colour.shade(-1 * ((Math.random() % 0.4))).format(), code._STROKE);
+				var lum = ((Math.random() % 0.08));
+
+				if (lum < 0.009) {
+					triangle.side = 0;
+				} else if (lum < 0.03) {
+					triangle.side = 1;
+				} else if (lum < 0.1) {
+					triangle.side = 2;
+				}
+
+				triangle.colour = new code.colour(triangle.colour.shade(-1 * lum).shaded);
+
+				triangle.element = r.polygon(polyPoints, triangle.colour.format(), code._STROKE);
 			});
 
 			return r.final();
