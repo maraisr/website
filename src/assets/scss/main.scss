@@ -104,12 +104,12 @@ a {
 
 		letter-spacing: 0.5em;
 
-		font-size: 60%;
+		font-size: 40%;
 
 		transition: font-size 0.3s;
 
 		@include breakpoint(45em) {
-			font-size: 90%;
+			font-size: 80%;
 		}
 
 		@include breakpoint(80em) {
@@ -117,6 +117,7 @@ a {
 		}
 
 		&__bit {
+			display: inline-block;
 			line-height: 1;
 
 			text-transform: uppercase;
