@@ -3,7 +3,7 @@ var d = require('delaunay-fast');
 var vandal = function (el) {
 	var _SVGNS = 'http://www.w3.org/2000/svg',
 		code = {
-			_DIFFUSE: [191, 216, 141],
+			_DIFFUSE: [86, 200, 148],
 			_AMBIENT: [25, 52, 65],
 			_SIZE_OFFSET: 50,
 			_COUNT: 800
@@ -216,69 +216,6 @@ var vandal = function (el) {
 	};
 
 	code.plane.prototype = {
-		getPairs: function () {
-			var edgeToAdj = function (edgelist) {
-				var adjlist = {};
-				var i, len, pair, u, v;
-				for (i = 0, len = edgelist.length; i < len; i += 1) {
-					pair = edgelist[i];
-					u = pair[0];
-					v = pair[1];
-					if (adjlist[u]) {
-						adjlist[u].push(v);
-					} else {
-						adjlist[u] = [v];
-					}
-					if (adjlist[v]) {
-						adjlist[v].push(u);
-					} else {
-						adjlist[v] = [u];
-					}
-				}
-				return adjlist;
-			};
-			var bfs = function (v, adjlist, visited) {
-				var q = [];
-				var current_group = [];
-				var i, len, adjV, nextVertex;
-				q.push(v);
-				visited[v] = true;
-				while (q.length > 0) {
-					v = q.shift();
-					current_group.push(v);
-					adjV = adjlist[v];
-					for (i = 0, len = adjV.length; i < len; i += 1) {
-						nextVertex = adjV[i];
-						if (!visited[nextVertex]) {
-							q.push(nextVertex);
-							visited[nextVertex] = true;
-						}
-					}
-				}
-				return current_group;
-			};
-
-			var groups = [],
-				visited = {},
-				v;
-
-			var pairs = [];
-			_.each(this.triangles, function (v) {
-				_.each(v.getVertices(), function (v) {
-					pairs.push(v.getXY());
-				})
-			});
-
-			var adjlist = edgeToAdj(pairs);
-
-			for (v in adjlist) {
-				if (adjlist.hasOwnProperty(v) && !visited[v]) {
-					groups.push(bfs(v, adjlist, visited));
-				}
-			}
-
-			return _.slice(groups, 1);
-		},
 		getPolygons: function () {
 			return this.triangles;
 		},
@@ -291,7 +228,7 @@ var vandal = function (el) {
 	};
 
 	code.light = function () {
-		this.pos = [(code.parentSize()[0] * (0.4 / 3)), (code.parentSize()[1] * (0.4 / 3)), 1];
+		this.pos = [(code.parentSize()[0] * (1 / 2)), (code.parentSize()[1] * (1 / 2)), 1];
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY,
@@ -462,7 +399,7 @@ var vandal = function (el) {
 
 	var last;
 
-	function draw(ts) {
+	function draw() {
 		requestAnimationFrame(draw);
 
 		var now = code.parentSize();
