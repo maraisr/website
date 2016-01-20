@@ -99,7 +99,8 @@ var vandal = function (el) {
 		this.vertices = v;
 		this.colour = new code.colour([16, 16, 16]);
 		this.centroid = this.getCentroid();
-		//this.normal = this.getNormal();
+		this.normal = this.getNormal();
+		this.lumWay = -1;
 
 		this._dirty = false;
 	}
@@ -243,8 +244,8 @@ var vandal = function (el) {
 	};
 
 	code.light = function () {
-		// TODO: Start mouse pos 2/3 from the left of the monitor, and 1/3 from the top
-		this.pos = [0, 0, 0];
+		this.pos = [(code.parentSize()[0] * (1 / 3)), (code.parentSize()[1] * (1 / 3)), 1];
+		this.position = [Math.randomInRange(-code.parentSize()[0]/2, code.parentSize()[0]/2), Math.randomInRange(-code.parentSize()[1]/2, code.parentSize()[1]/2),  Math.randomInRange(10, 100)];
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY,
@@ -263,7 +264,7 @@ var vandal = function (el) {
 					(doc && doc.clientTop || body && body.clientTop || 0 );
 			}
 
-			this.pos = [event.pageX, event.pageY, 0];
+			this.pos = [event.pageX, event.pageY, 1];
 		}.bind(this);
 	};
 
@@ -281,30 +282,25 @@ var vandal = function (el) {
 					var deltas = _(plane.triangles)
 						.map(function (v, k) {
 
-							/*var ray = code.vector.subtract(this.pos, v.centroid),
-							 n = code.vector.normalize(this.pos),
+							var ray = code.vector.subtract(this.position, v.centroid),
+							 	n = code.vector.normalize(ray),
+								ill = code.vector.dot(v.normal, n);
 
-							 ill = code.vector.dot(v.normal, ray);*/
-
-							/*console.log('a', Math.max(ill, 0));
-
-							 console.log('b', Math.abs(Math.min(ill, 0)));
-
-							 console.log('c', Math.max(Math.abs(ill), 0));*/
+								v.lum = Math.max(Math.abs(ill), 0);
 
 							return {
 								index: k,
-								delta: code.vector.distance(this.pos, v.centroid)
+								delta: code.vector.distance(this.pos, v.centroid),
+								lum: v.lum
 							}
 						}.bind(this)).sortBy('delta').value();
 
 					var count = deltas.length;
 
 					_.each(deltas, function (v, k) {
-						var c = new code.colour([232, 12, 122]),
-							lum = (k / (count * 0.2));
+						var c = new code.colour([232, 12, 122]);
 
-						c.shade(-1 * lum);
+						c.shade(v.lum);
 						plane.triangles[v.index].element.setAttributeNS(null, 'style', 'fill: ' + c.format() + '; stroke: ' + c.format());
 					}.bind(this));
 				}
