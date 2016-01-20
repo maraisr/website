@@ -28,7 +28,7 @@ var config = {
 	dev = true;
 
 gulp.task('styles', function () {
-	return $.rubySass(config.css.src + '/main.scss', {style: 'compact', precision: 4, require: ['sass-globbing', 'breakpoint', 'susy']})
+	return $.rubySass(config.css.src + '/main.scss', {style: 'compact', precision: 4, require: ['sass-globbing', 'breakpoint', 'susy', 'support-for', 'normalize-scss']})
 		.pipe($.csscomb())
 		.pipe($.autoprefixer())
 		.pipe($.combineMq())

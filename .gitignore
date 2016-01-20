@@ -4,6 +4,7 @@ bower_components/
 dist/
 tmp/
 s3config.json
+Gemfile.lock
 
 .idea
 !.idea/.name
