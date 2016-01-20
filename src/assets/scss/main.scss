@@ -4,8 +4,9 @@
 @include normalize();
 
 $primaryColour: #292929;
-$primaryBgColour: #101010;
+$primaryBgColour: #193441;
 $offWhite: #FCFFF5;
+$borderSize: 22px;
 
 html {
 	-ms-overflow-style: -ms-autohiding-scrollbar;
@@ -14,7 +15,7 @@ html {
 }
 
 body {
-	font: 400 16px/1.2 'Raleway', 'Tahoma', 'Arial', sans-serif;
+	font: 400 16px/1.2 'Kanit', 'Tahoma', san-serif;
 
 	direction: ltr;
 	unicode-bidi: embed;
@@ -37,7 +38,7 @@ body {
 
 h1, h2, h3 {
 	display: block;
-	font-weight: 900;
+	font-weight: 700;
 	line-height: 1;
 
 	padding: 0;
@@ -99,11 +100,9 @@ a {
 
 		margin: 0 auto;
 
-		color: $primaryBgColour;
+		color: $offWhite;
 
-		padding: 10px 25px;
-
-		background-color: $offWhite;
+		letter-spacing: 0.5em;
 
 		font-size: 60%;
 
@@ -125,56 +124,12 @@ a {
 	}
 }
 
-.word-cloud {
-	$gap: 10px;
-
-	margin: (-1 * ($gap / 2)) auto;
-	margin-top: $gap /2;
-
-	width: 50%;
-
-	font-size: 30%;
-	font-weight: 900;
-
-	&__item {
-		display: inline-block;
-		vertical-align: middle;
-
-		margin: $gap / 2;
-
-		padding: 3px;
-		background-color: $offWhite;
-
-		text-transform: uppercase;
-	}
-}
-
-.me {
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
-	overflow: hidden;
-
-	pointer-events: none;
-
-	&__pic {
-		display: block;
-		height: 100%;
-
-		margin: 0 auto;
-	}
-}
-
 footer {
 	position: absolute;
 	z-index: 3;
 
-	bottom: 25px;
-	right: 25px;
+	bottom: 14px + $borderSize;
+	right: 14px + $borderSize;
 
 	a {
 		&:not(:last-child) {
@@ -182,6 +137,48 @@ footer {
 				content: '|';
 				padding: 0 5px;
 			}
+		}
+	}
+}
+
+.borders {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	z-index: 2;
+
+	&__edge {
+		position: absolute;
+
+		background-color: white;
+
+		&--top, &--bottom {
+			height: $borderSize;
+			width: 100%;
+		}
+
+		&--left, &--right {
+			height: 100%;
+			width: $borderSize;
+		}
+
+		&--top {
+			top: 0;
+		}
+
+		&--right {
+			right: 0;
+		}
+
+		&--bottom {
+			bottom: 0;
+		}
+
+		&--left {
+			left: 0;
 		}
 	}
 }
