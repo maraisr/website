@@ -228,7 +228,7 @@ var vandal = function (el) {
 	};
 
 	code.light = function () {
-		this.pos = [(code.parentSize()[0] * (1 / 2)), (code.parentSize()[1] * (1 / 2)), 1];
+		this.pos = [(code.parentSize()[0] * (2 / 3)), (code.parentSize()[1] * (1 / 3)), 1];
 
 		document.onmousemove = function (event) {
 			var dot, eventDoc, doc, body, pageX, pageY,
