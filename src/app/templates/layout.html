@@ -1,6 +1,6 @@
 {% import "macros/url.nunjucks" as url %}
 
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
@@ -51,21 +51,6 @@
 <!-- build:js /assets/app.js -->
 <script src="{{js_path}}"></script>
 <!-- endbuild -->
-
-<script>
-	WebFontConfig = {
-		google: {families: ['Kanit:400,700:latin']}
-	};
-	(function () {
-		var wf = document.createElement('script');
-		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-				'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-		wf.type = 'text/javascript';
-		wf.async = 'true';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(wf, s);
-	})();
-</script>
 
 </body>
 </html>
