@@ -147,6 +147,10 @@ a {
 			line-height: 1;
 
 			text-transform: uppercase;
+
+			&--no-space {
+				letter-spacing: 0;
+			}
 		}
 	}
 }
