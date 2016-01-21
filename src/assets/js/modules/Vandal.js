@@ -6,7 +6,7 @@ var vandal = function (el) {
 			_DIFFUSE: [86, 200, 148],
 			_AMBIENT: [25, 52, 65],
 			_SIZE_OFFSET: 50,
-			_COUNT: 800
+			_COUNT: 250
 		};
 
 	code.vector = {
@@ -182,8 +182,8 @@ var vandal = function (el) {
 		this.triangles = [];
 
 		var x, y, vertices = new Array(slices),
-			offsetX = this.width * -0.5,
-			offsetY = this.height * 0.5;
+			offsetX = 0,
+			offsetY = this.height;
 
 		for (i = vertices.length; i--;) {
 			x = offsetX + Math.random() * width;
@@ -367,8 +367,7 @@ var vandal = function (el) {
 		},
 		draw: function () {
 			this.plane = new code.plane(code.parentSize()[0], code.parentSize()[1], code._COUNT);
-			this.map.setAttribute('width', (this.plane.getSize()[0] / 2));
-			this.map.setAttribute('height', (this.plane.getSize()[1] / 2));
+			this.map.setAttribute('viewBox', '0 0 '+this.plane.getSize().join(' '));
 
 			this.clear();
 
@@ -388,8 +387,8 @@ var vandal = function (el) {
 
 	code.parentSize = function () {
 		return [
-			(el[0].offsetWidth + code._SIZE_OFFSET) * 2,
-			(el[0].offsetHeight + code._SIZE_OFFSET) * 2
+			(el[0].offsetWidth + code._SIZE_OFFSET),
+			(el[0].offsetHeight + code._SIZE_OFFSET)
 		];
 	};
 
