@@ -159,12 +159,12 @@ footer {
 	position: absolute;
 	z-index: 3;
 
-	bottom: 14px + $borderSize;
-	right: 14px + $borderSize;
+	bottom: $borderSize * 2;
+	right: $borderSize * 2;
 
 	a {
 		&:not(:last-child) {
-			margin-right: 5px;
+			margin-right: $borderSize / 2;
 		}
 	}
 
