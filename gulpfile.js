@@ -60,13 +60,13 @@ gulp.task('fonts', function () {
 gulp.task('js', function () {
 	return gulp.src(config.js.src + '/website.js')
 		.pipe($.plumberNotifier())
-		.pipe($.browserify({
+		/*.pipe($.browserify({
 			transform: $.debowerify,
 			insertGlobals: true,
 			fullPaths: false,
 			debug: true,
 			paths: ['./bower_components/', config.js.src + '/modules/']
-		}))
+		 }))*/
 		.pipe($.rename({basename: 'app', extname: '.js'}))
 		.pipe(gulp.dest((dev ? config.js.dest : 'tmp/js/')))
 });
