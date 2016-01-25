@@ -1,5 +1,6 @@
 {
   "name": "maraisio",
   "dependencies": {
+    "mosaic.js": "~0.0.1"
   }
 }

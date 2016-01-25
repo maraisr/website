@@ -82,7 +82,7 @@ gulp.task('html', function () {
 			css_path: '/assets/app.css',
 			js_path: '/assets/app.js'
 		}))
-		.pipe(assets = $.useref.assets({searchPath: ['tmp/', 'dist/']}))
+		.pipe(assets = $.useref.assets({searchPath: ['tmp/', 'dist/', 'bower_components/']}))
 		.pipe($.if(!dev, $.rev()))
 		.pipe(assets.restore())
 		.pipe($.useref())
@@ -156,19 +156,34 @@ gulp.task('build:js', ['js'], function () {
 
 	_.each(files, function (v) {
 		prom.add(gulp.src('tmp/js/' + v)
-			.pipe($.closureCompiler({
-				fileName: v,
-				continueWithWarnings: true,
-				compilerFlags: {
-					compilation_level: 'SIMPLE_OPTIMIZATIONS',
-					language_in: 'ECMASCRIPT5',
-					language_out: 'ECMASCRIPT5',
-					warning_level: 'QUIET',
-					output_wrapper: '"use strict";(function(){%output%}).call(window);'
-				}
-			}))
 			.pipe($.uglify({ascii_only: true}))
 			.pipe(gulp.dest('tmp/assets/')));
+	});
+
+	return prom;
+});
+
+gulp.task('build:jsmini', function() {
+	var files = glob.sync('*.js', {
+			cwd: 'dist/assets'
+		}),
+		prom = merge();
+
+	_.each(files, function (v) {
+		prom.add(gulp.src('dist/assets/' + v)
+		.pipe($.closureCompiler({
+			fileName: v,
+			continueWithWarnings: true,
+			compilerFlags: {
+				compilation_level: 'SIMPLE_OPTIMIZATIONS',
+				language_in: 'ECMASCRIPT5',
+				language_out: 'ECMASCRIPT5_STRICT',
+				warning_level: 'QUIET',
+				output_wrapper: '"use strict";(function(){%output%}).call(window);'
+			}
+		}))
+			.pipe($.uglify({ascii_only: true}))
+			.pipe(gulp.dest('dist/assets/')));
 	});
 
 	return prom;
@@ -199,5 +214,5 @@ gulp.task('build:publish', function() {
 
 gulp.task('build', ['clean'], function (cb) {
 	dev = false;
-	$.runSequence(['styles', 'images', 'fonts', 'misc'], 'build:js', 'html', 'sitemap', 'gzip', cb);
+	$.runSequence(['styles', 'images', 'fonts', 'misc'], 'build:js', 'html', 'sitemap', 'build:jsmini', 'gzip', cb);
 });
