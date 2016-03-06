@@ -6,5 +6,3 @@ My personal website - Static rendition.
 - Compiled through [Gulp](http://gulpjs.com/).
 
 Using a compiled version of [Mosaic.js](https://github.com/maraisr/mosaic.js).
-
-> 69, 191, 85 for the colours *for reference*
