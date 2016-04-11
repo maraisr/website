@@ -1,5 +1,5 @@
-# Static Website
-My personal website - Static rendition.
+Personal Website
+================
 
 - [Nunjucks](https://mozilla.github.io/nunjucks/) templateing engine.
 - Compiled through [Gulp](http://gulpjs.com/).
