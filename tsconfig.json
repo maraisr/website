@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"noImplicitAny": false,
+		"removeComments": false,
+		"sourceMap": true
+	},
+	"files": [
+		"./typings/main.d.ts",
+		"./src/app/entry.ts"
+	]
+}
