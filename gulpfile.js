@@ -94,7 +94,7 @@ gulp.task('watch', function () {
 });
 
 // Compile
-gulp.task('build', function (done) {
+gulp.task('build', ['clean'], function (done) {
     $.env.set({
         NODE_ENV: 'production'
     });
@@ -113,11 +113,24 @@ gulp.task('serve', function () {
 
 gulp.task('default', ['watch', 'serve']);
 
-gulp.task('publish', ['build'], function () {
+gulp.task('clean', function () {
+	return gulp.src('./dist')
+		.pipe($.clean());
+})
+
+gulp.task('gzip', ['build'], function () {
+	return gulp.src('./dist/**/*')
+		.pipe($.gzip({
+			append: false
+		}))
+		.pipe(gulp.dest('./dist/'))
+})
+
+gulp.task('publish', ['gzip'], function () {
 	var s3config = require('./s3config.json');
 
 	var headers = {
-		//'Content-Encoding': 'gzip'
+		'Content-Encoding': 'gzip'
 	},
 		s3base = {
 			accessKeyId: _.get(s3config, 'accessKeyId'),
