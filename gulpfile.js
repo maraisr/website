@@ -112,3 +112,26 @@ gulp.task('serve', function () {
 });
 
 gulp.task('default', ['watch', 'serve']);
+
+gulp.task('publish', ['build'], function () {
+	var s3config = require('./s3config.json');
+
+	var headers = {
+		//'Content-Encoding': 'gzip'
+	},
+		s3base = {
+			accessKeyId: _.get(s3config, 'accessKeyId'),
+			secretAccessKey: _.get(s3config, 'secretAccessKey'),
+			region: 'ap-southeast-2',
+			params: {
+				Bucket: _.get(s3config, 'bucket')
+			}
+		},
+		rpt = { states: ['create', 'update', 'delete'] },
+		s3 = $.awspublish.create(s3base);
+
+	return gulp.src('**/*', { cwd: 'dist/' })
+		.pipe(s3.publish(headers), 10)
+		.pipe(s3.sync())
+		.pipe($.awspublish.reporter(rpt))
+});
