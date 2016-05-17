@@ -1,11 +1,12 @@
 {
 	"dependencies": {
-		"normalize-scss": "^4.2.1",
 		"breakpoint-sass": "^2.7.0",
-		"mosaic-js": "0.1.2"
+		"mosaic-js": "0.1.2",
+		"normalize-scss": "^4.2.1"
 	},
 	"devDependencies": {
 		"autoprefixer": "^6.3.6",
+		"css-mqpacker": "^5.0.1",
 		"cssnano": "^3.5.2",
 		"file-loader": "^0.8.5",
 		"gulp": "latest",
@@ -21,6 +22,8 @@
 		"gulp-sass": "^2.3.1",
 		"gulp-sequence": "^0.4.5",
 		"gulp-util": "^3.0.7",
+		"lost": "^6.8.0",
+		"postcss-position": "^0.4.0",
 		"pug": "^2.0.0-alpha7",
 		"pug-html-loader": "^1.0.5",
 		"sass-module-importer": "^1.2.1",

@@ -49,12 +49,16 @@ gulp.task('scss', function () {
 				add: true
 			}));
 
+			res.push(require('lost'));
+			res.push(require('postcss-position'));
+
 			if (process.env.NODE_ENV == 'production') {
 				res.push(require('cssnano')({
 					discardComments: {
 						removeAll: true
 					}
-				}))
+				}));
+				res.push(require('css-mqpacker'));
 			}
 
 			return res;
