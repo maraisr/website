@@ -99,7 +99,19 @@ gulp.task('build', ['clean'], function (done) {
         NODE_ENV: 'production'
     });
 
-    $.sequence(['webpack', 'pug', 'scss', 'images', 'fonts'], done);
+    $.sequence(['webpack', 'pug', 'scss', 'images', 'fonts'], 'optim', done);
+});
+
+gulp.task('optim', function () {
+	return gulp.src('./dist/**/*.html')
+		.pipe($.htmlmin({
+			removeComments: true,
+			collapseWhitespace: true,
+			sortClassName: true,
+			minifyJS: true,
+			minifyCSS: true
+		}))
+		.pipe(gulp.dest('./dist/'));
 });
 
 // Dev server
