@@ -1,4 +1,9 @@
 {
+	"name": "maraiswebsite",
+	"version": "0.0.1",
+	"scripts": {
+		"test": "echo \"No tests for now\""
+	},
 	"dependencies": {
 		"breakpoint-sass": "^2.7.0",
 		"mosaic-js": "0.1.3",
