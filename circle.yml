@@ -1,0 +1,24 @@
+machine:
+  timezone:
+    Australia/Brisbane
+  node:
+    version: 6.2.0
+  environment:
+    NODE_ENV: 'development'
+
+database:
+  override:
+    - echo "No database"
+
+dependencies:
+  pre:
+    - npm i typings typescript gulp-cli -g
+    - typings i
+  cache_directories:
+    - "./typings/"
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - gulp publish
