@@ -15,7 +15,9 @@ dependencies:
     - npm i typings typescript gulp-cli -g
     - typings i
   cache_directories:
-    - "./typings/"
+    - ./typings/
+    - /home/ubuntu/nvm/versions/node/6.2.0/bin
+    - /home/ubuntu/nvm/versions/node/6.2.0/lib/node_modules
 
 deployment:
   production:
