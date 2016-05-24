@@ -1,17 +1,17 @@
 var gulp = require('gulp'),
-    $ = require('gulp-load-plugins')({
-        pattern: ['gulp-*', 'webpack']
-    }),
-    gutil = require('gulp-util'),
-    _ = require('lodash');
+	$ = require('gulp-load-plugins')({
+		pattern: ['gulp-*', 'webpack']
+	}),
+	gutil = require('gulp-util'),
+	_ = require('lodash');
 
 function webpackCallback(err, stats) {
-    if (err) throw $.notify(err);
+	if (err) throw $.notify(err);
 
-    gutil.log("[webpack]", stats.toString({
-        colours: true,
-        progress: true
-    }));
+	gutil.log("[webpack]", stats.toString({
+		colours: true,
+		progress: true
+	}));
 }
 
 function plumberError() {
@@ -20,20 +20,20 @@ function plumberError() {
 
 // Main tasks
 gulp.task('pug', function () {
-    return gulp.src('./src/public/**/[^_]*.pug')
+	return gulp.src('./src/public/**/[^_]*.pug')
 		.pipe(plumberError())
-        .pipe($.pug())
-        .pipe(gulp.dest('./dist/'))
+		.pipe($.pug())
+		.pipe(gulp.dest('./dist/'))
 		.pipe($.connect.reload());
 });
 
 gulp.task('webpack', function (done) {
-    $.webpack(require('./webpack.config.js'))
-        .run(function (err, stats) {
-            webpackCallback(err, stats);
+	$.webpack(require('./webpack.config.js'))
+		.run(function (err, stats) {
+			webpackCallback(err, stats);
 
-            done();
-        });
+			done();
+		});
 });
 
 gulp.task('scss', function () {
@@ -81,13 +81,13 @@ gulp.task('fonts', function () {
 
 // Build process
 gulp.task('watch', function () {
-    $.webpack(require('./webpack.config.js'))
-        .watch({
-            aggregateTimeout: 300,
-            poll: true
-        }, webpackCallback);
+	$.webpack(require('./webpack.config.js'))
+		.watch({
+			aggregateTimeout: 300,
+			poll: true
+		}, webpackCallback);
 
-    gulp.watch('./src/public/**/*.pug', ['pug']);
+	gulp.watch('./src/public/**/*.pug', ['pug']);
 	gulp.watch('./src/public/assets/scss/**/*.scss', ['scss']);
 	gulp.watch('./src/public/assets/imgs/**/*', ['images']);
 	gulp.watch('./src/public/assets/fonts/**.*', ['fonts']);
@@ -95,11 +95,11 @@ gulp.task('watch', function () {
 
 // Compile
 gulp.task('build', ['clean'], function (done) {
-    $.env.set({
-        NODE_ENV: 'production'
-    });
+	$.env.set({
+		NODE_ENV: 'production'
+	});
 
-    $.sequence(['webpack', 'pug', 'scss', 'images', 'fonts'], 'optim', done);
+	$.sequence(['webpack', 'pug', 'scss', 'images', 'fonts'], 'optim', done);
 });
 
 gulp.task('optim', function () {
@@ -116,11 +116,11 @@ gulp.task('optim', function () {
 
 // Dev server
 gulp.task('serve', function () {
-    $.connect.server({
-        livereload: true,
-        port: process.env.PORT || 3303,
-        root: ['./dist/']
-    });
+	$.connect.server({
+		livereload: true,
+		port: process.env.PORT || 3303,
+		root: ['./dist/']
+	});
 });
 
 gulp.task('default', ['watch', 'serve']);
@@ -139,7 +139,17 @@ gulp.task('gzip', ['build'], function () {
 })
 
 gulp.task('publish', ['gzip'], function () {
-	var s3config = require('./s3config.json');
+	var s3config = (function () {
+		if (process.env.S3_BUCKET) {
+			return {
+				accessKeyId: process.env.S3_ACCESS_ID,
+				secretAccessKey: process.env.S3_ACCESS_KEY,
+				bucket: process.env.S3_BUCKET
+			}
+		} else {
+			return require('./s3config.json');
+		}
+	})();
 
 	var headers = {
 		'Content-Encoding': 'gzip'
