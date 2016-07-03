@@ -61,6 +61,8 @@ gulp.task('scss', function () {
 				res.push(require('css-mqpacker'));
 			}
 
+			res.push(require('postcss-sorting')({ 'sort-order': require('cssortie') }))
+
 			return res;
 		})([])))
 		.pipe($.rename({ basename: 'main' }))
