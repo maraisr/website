@@ -19,7 +19,7 @@ function plumberError() {
 }
 
 // Main tasks
-gulp.task('pug', function() {
+gulp.task('pug', function () {
 	return gulp.src('./src/public/**/[^_]*.pug')
 		.pipe(plumberError())
 		.pipe($.pug())
@@ -27,16 +27,16 @@ gulp.task('pug', function() {
 		.pipe($.connect.reload());
 });
 
-gulp.task('webpack', function(done) {
+gulp.task('webpack', function (done) {
 	$.webpack(require('./webpack.config.js'))
-		.run(function(err, stats) {
+		.run(function (err, stats) {
 			webpackCallback(err, stats);
 
 			done();
 		});
 });
 
-gulp.task('scss', function() {
+gulp.task('scss', function () {
 	var autoprefixerOpts = {
 		browsers: [
 			'chrome >= 50',
@@ -55,7 +55,7 @@ gulp.task('scss', function() {
 		.pipe($.sass({
 			importer: require('sass-module-importer')()
 		}))
-		.pipe($.postcss((function(res) {
+		.pipe($.postcss((function (res) {
 			res.push(require('css-mqpacker'));
 			res.push(require('autoprefixer')(autoprefixerOpts));
 			res.push(require('lost'));
@@ -78,23 +78,23 @@ gulp.task('scss', function() {
 			return res;
 		})([])))
 		.pipe($.rename({ basename: 'main' }))
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest((process.env.NODE_ENV == 'production') ? './tmp/' : './dist/'))
 		.pipe($.connect.reload());
 });
 
-gulp.task('images', function() {
+gulp.task('images', function () {
 	return gulp.src('./src/public/assets/imgs/**/*')
 		.pipe($.imagemin())
 		.pipe(gulp.dest('./dist/imgs/'));
 });
 
-gulp.task('fonts', function() {
+gulp.task('fonts', function () {
 	return gulp.src('./src/public/assets/fonts/**.*')
 		.pipe(gulp.dest('./dist/fonts/'))
 });
 
 // Build process
-gulp.task('watch', function() {
+gulp.task('watch', function () {
 	$.webpack(require('./webpack.config.js'))
 		.watch({
 			aggregateTimeout: 300,
@@ -108,7 +108,7 @@ gulp.task('watch', function() {
 });
 
 // Compile
-gulp.task('build', ['clean'], function(done) {
+gulp.task('build', ['clean'], function (done) {
 	$.env.set({
 		NODE_ENV: 'production'
 	});
@@ -116,8 +116,12 @@ gulp.task('build', ['clean'], function(done) {
 	$.sequence(['webpack', 'pug', 'scss', 'images', 'fonts'], 'optim', done);
 });
 
-gulp.task('optim', function() {
+gulp.task('optim', function () {
 	return gulp.src('./dist/**/*.html')
+		.pipe($.inlineSource({
+			rootpath: './tmp/',
+			compress: true
+		}))
 		.pipe($.htmlmin({
 			removeComments: true,
 			collapseWhitespace: true,
@@ -129,7 +133,7 @@ gulp.task('optim', function() {
 });
 
 // Dev server
-gulp.task('serve', function() {
+gulp.task('serve', function () {
 	$.connect.server({
 		livereload: true,
 		port: process.env.PORT || 3303,
@@ -139,12 +143,12 @@ gulp.task('serve', function() {
 
 gulp.task('default', ['watch', 'serve']);
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
 	return gulp.src('./dist')
 		.pipe($.clean());
 })
 
-gulp.task('gzip', ['build'], function() {
+gulp.task('gzip', ['build'], function () {
 	return gulp.src('./dist/**/*')
 		.pipe($.gzip({
 			append: false
@@ -152,8 +156,8 @@ gulp.task('gzip', ['build'], function() {
 		.pipe(gulp.dest('./dist/'))
 })
 
-gulp.task('publish', ['gzip'], function() {
-	var s3config = (function() {
+gulp.task('publish', ['gzip'], function () {
+	var s3config = (function () {
 		if (process.env.S3_BUCKET) {
 			return {
 				accessKeyId: process.env.S3_ACCESS_ID,

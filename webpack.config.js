@@ -5,7 +5,7 @@ module.exports = {
         './src/app/entry.ts'
     ],
     output: {
-        path: './dist/',
+        path: (process.env.NODE_ENV == 'production') ? './tmp/' : './dist/',
         filename: '[name].js'
     },
     resolve: {
@@ -17,7 +17,7 @@ module.exports = {
             { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/ }
         ]
     },
-    plugins: (function() {
+    plugins: (function () {
         var returns = [];
 
         if (process.env.NODE_ENV == 'production') {
