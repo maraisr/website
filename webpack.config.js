@@ -14,14 +14,23 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.ts?$/, loader: 'ts' },
-            { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/}
+            { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/ }
         ]
     },
-    plugins: (function () {
+    plugins: (function() {
         var returns = [];
 
         if (process.env.NODE_ENV == 'production') {
-            returns.push(new webpack.optimize.UglifyJsPlugin());
+            returns.push(new webpack.optimize.UglifyJsPlugin({
+				preserveComments: false,
+				mangle: true,
+				compress: {
+					dead_code: true,
+					drop_debugger: true,
+					drop_console: true
+				},
+				passes: 3
+			}));
         }
 
         return returns;
