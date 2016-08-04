@@ -6,6 +6,11 @@ machine:
   environment:
     NODE_ENV: 'development'
 
+general:
+  branches:
+    only:
+      - master
+
 database:
   override:
     - echo "No database"
