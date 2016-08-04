@@ -1,46 +1,18 @@
 {
-  "name": "maraiswebsite",
-  "version": "0.0.1",
+  "name": "website",
+  "version": "2.0.0",
+  "description": "My personal website",
   "scripts": {
-    "test": "echo \"No tests for now\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "breakpoint-sass": "^2.7.0",
-    "mosaic-js": "0.1.5",
-    "normalize-scss": "^5.0.3"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maraisr/website.git"
   },
-  "devDependencies": {
-    "autoprefixer": "^6.3.7",
-    "css-mqpacker": "^5.0.1",
-    "cssnano": "^3.7.1",
-    "cssortie": "0.0.1",
-    "file-loader": "^0.9.0",
-    "gulp": "latest",
-    "gulp-awspublish": "^3.2.0",
-    "gulp-clean": "^0.3.2",
-    "gulp-connect": "^4.1.0",
-    "gulp-env": "^0.4.0",
-    "gulp-gzip": "^1.4.0",
-    "gulp-htmlmin": "^2.0.0",
-    "gulp-imagemin": "^3.0.1",
-    "gulp-load-plugins": "^1.2.4",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.1.1",
-    "gulp-pug": "^3.0.3",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2",
-    "gulp-sequence": "^0.4.5",
-    "gulp-util": "^3.0.7",
-    "lodash": "^4.13.1",
-    "lost": "^7.0.1",
-    "postcss-position": "^0.5.0",
-    "postcss-sorting": "^1.6.1",
-    "pug": "^2.0.0-beta3",
-    "pug-html-loader": "^1.0.8",
-    "sass-module-importer": "^1.2.1",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1"
-  }
+  "author": "Marais Rossouw <me@maraisr.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maraisr/website/issues"
+  },
+  "homepage": "https://github.com/maraisr/website#readme"
 }
