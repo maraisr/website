@@ -1,0 +1,51 @@
+@import 'normalize-scss';
+@import 'colours';
+
+@include normalize();
+
+$fonts: ('bold': 700, 'regular': 400);
+
+@each $type, $weight in $fonts {
+	@font-face {
+		font-family: 'Geomanist';
+		src: url('fonts/geomanist-#{$type}.eot');
+		src: url('fonts/geomanist-#{$type}.eot?#iefix') format('embedded-opentype'),
+			url('fonts/geomanist-#{$type}.woff2') format('woff2'),
+			url('fonts/geomanist-#{$type}.woff') format('woff'),
+			url('fonts/geomanist-#{$type}.ttf') format('truetype'),
+			url('fonts/geomanist-#{$type}.svg') format('svg');
+		font-weight: $weight;
+		font-style: normal;
+	}
+}
+
+:root {
+	font: 400 16px/1.2 Geomanist,Verdana,san-serif;
+
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+
+	-webkit-tap-highlight-color: transparent;
+}
+
+html {
+	background-color: $bg;
+}
+
+body {
+	direction: ltr;
+	unicode-bidi: embed;
+
+	background: transparent;
+}
+
+h1 {
+	margin: 0;
+}

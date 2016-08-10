@@ -1,7 +1,7 @@
 let gulp = require('gulp'),
 	plumb = require('gulp-plumber-notifier');
 
-gulp.task('default', ['pug', 'scss']);
+gulp.task('default', ['pug', 'scss', 'fonts']);
 
 gulp.task('watch', ['default'], () => {
 	gulp.watch('./src/app/**/*.pug', ['pug']);
@@ -60,8 +60,8 @@ gulp.task('scss', () => {
 					remove: true
 				};
 
+			steps.push('lost');
 			steps.push(['autoprefixer', prfxOpts]);
-			steps.push('postcss-sort-style-rules');
 
 			if (process.env.NODE_ENV == 'production') {
 				steps.push('css-mqpacker');
@@ -83,4 +83,9 @@ gulp.task('scss', () => {
 		})()))
 		.pipe(require('gulp-if')(!(process.env.NODE_ENV == 'production'), srcMaps.write()))
 		.pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('fonts', () => {
+	return gulp.src('./src/assets/fonts/**/*')
+		.pipe(gulp.dest('./dist/fonts/'));
 });

@@ -1,3 +1,19 @@
-@import 'normalize-scss';
+@import 'base';
 
-@include normalize();
+.fold {
+	&__intro {
+		height: 100vh;
+		lost-align: center;
+
+		h1 {
+			font-family: Geomanist;
+			text-transform: lowercase;
+
+			font-size: 5rem;
+
+			span {
+				color: $colour1;
+			}
+		}
+	}
+}
