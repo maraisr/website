@@ -35,7 +35,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sass-bulk-import": "^1.0.1",
     "gulp-sourcemaps": "^1.6.0",
-    "postcss-sort-style-rules": "^0.2.0",
+    "lost": "^7.0.4",
     "postcss-sorting": "^1.6.1",
     "posthtml-minifier": "^0.1.0",
     "sass-module-importer": "^1.2.1"
