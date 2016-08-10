@@ -1,2 +1,5 @@
 *.log
-node_modules
+node_modules/
+dist/
+s3config.json
+tmp/

@@ -21,3 +21,4 @@ deployment:
   production:
     branch: master
     commands:
+      - npm run compile
