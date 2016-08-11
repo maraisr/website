@@ -1,17 +1,36 @@
 let gulp = require('gulp'),
-	plumb = require('gulp-plumber-notifier');
+	gutil = require('gulp-util'),
+	connect = require('gulp-connect');
 
-gulp.task('default', ['pug', 'scss', 'fonts']);
+function plumb() {
+	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
+}
+
+function webpackCallback(err, stats) {
+	if (err) throw require('gulp-notify')()(err);
+
+	gutil.log("[webpack]", stats.toString({
+		colours: true,
+		progress: true
+	}));
+}
+
+gulp.task('default', ['js', 'pug', 'scss', 'fonts']);
 
 gulp.task('watch', ['default'], () => {
 	gulp.watch('./src/app/**/*.pug', ['pug']);
 	gulp.watch('./src/assets/**/*.scss', ['scss']);
+
+	require('webpack')(require('./webpack.config'))
+		.watch({
+			aggregateTimeout: 300,
+			poll: true
+		}, webpackCallback);
 });
 
 gulp.task('serve', ['watch'], () => {
-	let connect = require('gulp-connect');
-
 	connect.server({
+		livereload: true,
 		root: ['./dist/'],
 		port: 3303
 	});
@@ -31,7 +50,8 @@ gulp.task('pug', () => {
 				minifyCSS: true
 			})
 		]))
-		.pipe(gulp.dest('./dist/'));
+		.pipe(gulp.dest('./dist/'))
+		.pipe(connect.reload());
 });
 
 gulp.task('scss', () => {
@@ -89,4 +109,13 @@ gulp.task('scss', () => {
 gulp.task('fonts', () => {
 	return gulp.src('./src/assets/fonts/**/*')
 		.pipe(gulp.dest('./dist/fonts/'));
+});
+
+gulp.task('js', (done) => {
+	require('webpack')(require('./webpack.config'))
+		.run((err, stats) => {
+			webpackCallback(err, stats);
+
+			done();
+		});
 });

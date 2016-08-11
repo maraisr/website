@@ -22,27 +22,27 @@
 
 		p {
 			margin: 0;
-
-			span {
-				position: relative;
-
-				&:after, &:before {
-					position: absolute 0 0 0 0;
-					z-index: -1;
-
-					content: '';
-				}
-
-				&:before {
-					transform: translate(10%, 10%);
-					background-color: #76E3C5;
-				}
-
-				&:after {
-					transform: translate(-2%, -10%);
-					background-color: #E6B6B1;
-				}
-			}
 		}
+	}
+}
+
+.pop {
+	position: relative;
+
+	&:after, &:before {
+		position: absolute 0 0 0 0;
+		z-index: -1;
+
+		content: '';
+	}
+
+	&:before {
+		transform: translate(10%, 10%);
+		background-color: #76E3C5;
+	}
+
+	&:after {
+		transform: translate(-2%, -10%);
+		background-color: #E6B6B1;
 	}
 }
