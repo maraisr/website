@@ -1,5 +1,4 @@
 @import 'normalize-scss';
-@import 'colours';
 
 @include normalize();
 
@@ -36,7 +35,7 @@ $fonts: ('bold': 700, 'regular': 400);
 }
 
 html {
-	background-color: $bg;
+	background-color: #D6DEE1;
 }
 
 body {
