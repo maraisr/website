@@ -60,17 +60,18 @@ gulp.task('scss', () => {
 					remove: true
 				};
 
+			steps.push('postcss-position');
 			steps.push('lost');
 			steps.push(['autoprefixer', prfxOpts]);
 
 			if (process.env.NODE_ENV == 'production') {
 				steps.push('css-mqpacker');
 				steps.push(['cssnano', {
-					discardComments: { removeAll: true },
+					discardComments: {removeAll: true},
 					autoprefixer: prfxOpts,
 					safe: false
 				}]);
-				steps.push(['postcss-sorting', { 'sort-order': require('cssortie') }]);
+				steps.push(['postcss-sorting', {'sort-order': require('cssortie')}]);
 			}
 
 			return steps.map(v => {
