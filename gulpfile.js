@@ -15,7 +15,7 @@ function webpackCallback(err, stats) {
 	}));
 }
 
-gulp.task('default', ['js', 'pug', 'scss', 'fonts']);
+gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts']);
 
 gulp.task('watch', ['default'], () => {
 	gulp.watch('./src/app/**/*.pug', ['pug']);
@@ -109,6 +109,11 @@ gulp.task('scss', () => {
 gulp.task('fonts', () => {
 	return gulp.src('./src/assets/fonts/**/*')
 		.pipe(gulp.dest('./dist/fonts/'));
+});
+
+gulp.task('images', () => {
+	return gulp.src('./src/assets/img/**/*')
+		.pipe(gulp.dest('./dist/img/'));
 });
 
 gulp.task('js', (done) => {

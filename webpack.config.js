@@ -1,4 +1,5 @@
-let webpack = require('webpack');
+let webpack = require('webpack'),
+	path = require('path');
 
 module.exports = {
 	entry: [
@@ -10,6 +11,25 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['', '.js']
+	},
+	module: {
+		loaders: ((l) => {
+			if (process.env.NODE_ENV == 'production') {
+				l.push({
+					test: /\.js$/,
+					include: [
+						path.resolve(__dirname, 'src/assets/js/')
+					],
+					exclude: /(node_modules|bower_components)/,
+					loader: 'babel',
+					query: {
+						presets: ['es2015']
+					}
+				});
+			}
+
+			return l;
+		})([])
 	},
 	plugins: (() => {
 		var returns = [

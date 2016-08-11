@@ -2,18 +2,21 @@ class introWordFlip {
 	constructor(el) {
 		this.words = [
 			'JavaScript maustro',
-			'test',
-			'lol'
+			'coffee consumer',
+			'front end developer',
+			'build script extraordinaire',
+			'css genius'
 		];
+
 		this.el = el;
+		this.index = 0;
 
-		el.removeAttribute('bind-js');
-
-		this.tick();
+		setInterval(this.tick.bind(this), 1000);
 	}
 
 	tick() {
-
+		this.index = (this.index + 1 > this.words.length - 1) ? 0 : this.index + 1;
+		this.el.innerText = this.words[this.index];
 	}
 }
 
@@ -28,6 +31,8 @@ document.querySelectorAll('[bind-js]').forEach(v => {
 
 			r = r.replace(m[0], m[1].toUpperCase());
 		}
+
+		v.removeAttribute('bind-js');
 
 		return r;
 	})(v.getAttribute('bind-js'), /_{2}([a-z])/ig)) {
