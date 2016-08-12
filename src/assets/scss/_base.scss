@@ -34,6 +34,11 @@ $fonts: ('bold': 700, 'regular': 400);
 	-webkit-tap-highlight-color: transparent;
 }
 
+::selection {
+	background-color: #E6B6B1;
+	color: #fff;
+}
+
 html {
 	background-color: #D6DEE1;
 }
