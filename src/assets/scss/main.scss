@@ -1,15 +1,27 @@
 @import 'base';
 
+%container {
+	margin: 0 auto;
+
+	width: 100%;
+
+	@include mscr(1700px) {
+		width: 1690px;
+	}
+}
+
 .fold {
 	&__intro {
-		height: 100vh;
+		@extend %container;
 
-		text-align: center;
+		@media screen {
+			lost-align: center;
 
-		lost-align: center;
+			text-align: left;
+			height: 95vh;
+		}
 
 		h1 {
-			font-family: Geomanist;
 			text-transform: lowercase;
 
 			font-size: 5rem;
@@ -23,6 +35,28 @@
 		p {
 			margin: 0;
 		}
+
+		blockquote {
+			margin: 0;
+			margin-top: 10px;
+
+			line-height: 1;
+			font-size: .7rem;
+
+			text-align: right;
+
+			color: darken(#D6DEE1, 20%);
+
+			@media print {
+				visibility: hidden;
+			}
+		}
+	}
+
+	&__content {
+		@extend %container;
+
+		text-align: center;
 	}
 }
 
@@ -44,5 +78,25 @@
 	&:after {
 		transform: translate(-2%, -10%);
 		background-color: #E6B6B1;
+	}
+}
+
+.sway {
+	width: calc(100% / 2);
+
+	figure {
+		margin: 0;
+	}
+
+	figcaption, img {
+		display: inline-block;
+		vertical-align: middle;
+		lost-column: 1/2;
+	}
+
+	&--right {
+		figcaption {
+			text-align: right;
+		}
 	}
 }
