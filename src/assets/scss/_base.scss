@@ -9,17 +9,17 @@ $fonts: ('bold': 700, 'regular': 400);
 		font-family: 'Geomanist';
 		src: url('fonts/geomanist-#{$type}.eot');
 		src: url('fonts/geomanist-#{$type}.eot?#iefix') format('embedded-opentype'),
-			url('fonts/geomanist-#{$type}.woff2') format('woff2'),
-			url('fonts/geomanist-#{$type}.woff') format('woff'),
-			url('fonts/geomanist-#{$type}.ttf') format('truetype'),
-			url('fonts/geomanist-#{$type}.svg') format('svg');
+		url('fonts/geomanist-#{$type}.woff2') format('woff2'),
+		url('fonts/geomanist-#{$type}.woff') format('woff'),
+		url('fonts/geomanist-#{$type}.ttf') format('truetype'),
+		url('fonts/geomanist-#{$type}.svg') format('svg');
 		font-weight: $weight;
 		font-style: normal;
 	}
 }
 
 :root {
-	font: 400 16px/1.2 Geomanist,Verdana,san-serif;
+	font: 400 16px/1.2 Geomanist, Verdana, san-serif;
 
 	box-sizing: border-box;
 }

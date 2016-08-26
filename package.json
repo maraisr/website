@@ -4,7 +4,8 @@
   "description": "My personal website",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "build": "cross-env NODE_ENV=production gulp"
   },
   "repository": {
@@ -48,6 +49,8 @@
     "posthtml-minifier": "^0.1.0",
     "sass-module-importer": "^1.2.1",
     "ts-loader": "^0.8.2",
+    "tslint": "^3.15.1",
+    "typescript": "^1.8.10",
     "webpack": "^1.13.2"
   }
 }
