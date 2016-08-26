@@ -1,0 +1,16 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"module": "es2015",
+		"target": "es2015",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"noImplicitAny": false,
+		"removeComments": true,
+		"sourceMap": false,
+		"outDir": "tmp/"
+	},
+	"files": [
+		"./src/assets/js/main.ts"
+	]
+}
