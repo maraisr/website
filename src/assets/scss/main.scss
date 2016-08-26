@@ -11,6 +11,12 @@
 }
 
 .fold {
+	@media print {
+		&:not(:first-child) {
+			margin-top: 20px;
+		}
+	}
+
 	&__intro {
 		@extend %container;
 
@@ -24,16 +30,12 @@
 		h1 {
 			text-transform: lowercase;
 
-			font-size: 5rem;
+			font-size: 80px;
 			line-height: 1;
 
 			span {
 				color: #B04A60;
 			}
-		}
-
-		p {
-			margin: 0;
 		}
 
 		blockquote {
@@ -48,7 +50,7 @@
 			color: darken(#D6DEE1, 20%);
 
 			@media print {
-				visibility: hidden;
+				display: none;
 			}
 		}
 	}
@@ -60,43 +62,103 @@
 	}
 }
 
-.pop {
-	position: relative;
+@media screen {
+	.pop {
+		position: relative;
 
-	&:after, &:before {
-		position: absolute 0 0 0 0;
-		z-index: -1;
+		&:after, &:before {
+			position: absolute 0 0 0 0;
+			z-index: -1;
 
-		content: '';
+			content: '';
+		}
+
+		&:before {
+			transform: translate(10%, 10%);
+			background-color: #76E3C5;
+		}
+
+		&:after {
+			transform: translate(-2%, -10%);
+			background-color: #E6B6B1;
+		}
 	}
 
-	&:before {
-		transform: translate(10%, 10%);
-		background-color: #76E3C5;
-	}
-
-	&:after {
-		transform: translate(-2%, -10%);
-		background-color: #E6B6B1;
-	}
 }
 
 .sway {
-	width: calc(100% / 2);
+	margin: 0 auto;
+	width: calc(100% / 1.8);
 
-	figure {
-		margin: 0;
+	@media print {
+		width: auto;
 	}
 
-	figcaption, img {
+	figcaption, .handsome {
 		display: inline-block;
 		vertical-align: middle;
-		lost-column: 1/2;
+
+		@media screen {
+			lost-column: 1/2;
+		}
+
+		@media print {
+			vertical-align: top;
+		}
+	}
+
+	figcaption {
+		font-size: 32px;
+
+		@media print {
+			font-size: 16px;
+		}
 	}
 
 	&--right {
+		position: relative;
+
 		figcaption {
 			text-align: right;
+
+			p {
+				@media screen {
+					direction: rtl;
+					text-align: justify;
+				}
+			}
+
+			@media print {
+				text-align: left;
+			}
 		}
+
+		h3 {
+			position: absolute 50% false false 0;
+
+			transform: translate((-1 * (100%)), (-1 * (100% / 2))) rotate(-90deg);
+
+			@media print {
+				position: static;
+				transform: none;
+
+				margin-bottom: 6px;
+
+				border-bottom: 5px solid #B04A60;
+			}
+		}
+	}
+}
+
+@media print {
+	.handsome {
+		position: fixed 20px 20px false false;
+
+		width: 80px;
+		height: 80px;
+
+		overflow: hidden;
+
+		border-radius: 50%;
 	}
 }

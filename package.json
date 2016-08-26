@@ -45,6 +45,7 @@
     "gulp-util": "^3.0.7",
     "lost": "^7.0.4",
     "postcss-position": "^0.5.0",
+    "postcss-pxtorem": "^3.3.1",
     "postcss-sorting": "^1.6.1",
     "posthtml-minifier": "^0.1.0",
     "sass-module-importer": "^1.2.1",
