@@ -47,6 +47,7 @@
     "postcss-sorting": "^1.6.1",
     "posthtml-minifier": "^0.1.0",
     "sass-module-importer": "^1.2.1",
+    "ts-loader": "^0.8.2",
     "webpack": "^1.13.2"
   }
 }

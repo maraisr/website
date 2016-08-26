@@ -3,30 +3,25 @@ let webpack = require('webpack'),
 
 module.exports = {
 	entry: [
-		'./src/assets/js/main.js'
+		'./src/assets/js/main.ts'
 	],
 	output: {
 		path: './dist/',
 		filename: '[name].js'
 	},
 	resolve: {
-		extensions: ['', '.js']
+		extensions: ['', '.ts', '.js']
 	},
 	module: {
 		loaders: ((l) => {
-			if (process.env.NODE_ENV == 'production') {
-				l.push({
-					test: /\.js$/,
-					include: [
-						path.resolve(__dirname, 'src/assets/js/')
-					],
-					exclude: /(node_modules|bower_components)/,
-					loader: 'babel',
-					query: {
-						presets: ['es2015', 'babili']
-					}
-				});
-			}
+			l.push({
+				test: /\.ts$/,
+				include: [
+					path.resolve(__dirname, 'src/assets/js/')
+				],
+				exclude: /(node_modules|bower_components)/,
+				loader: (process.env.NODE_ENV == 'production') ? 'ts!babel' : 'ts'
+			});
 
 			return l;
 		})([])
