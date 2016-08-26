@@ -20,6 +20,7 @@ gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
 gulp.task('watch', ['default'], () => {
 	gulp.watch('./src/app/**/*.pug', ['pug']);
 	gulp.watch('./src/assets/**/*.scss', ['scss']);
+	gulp.watch('./src/assets/img/**/*', ['images']);
 
 	require('webpack')(require('./webpack.config'))
 		.watch({
@@ -82,6 +83,9 @@ gulp.task('scss', () => {
 
 			steps.push('postcss-position');
 			steps.push('lost');
+			steps.push(['postcss-pxtorem', {
+				selectorBlackList: [/:root/i]
+			}]);
 			steps.push(['autoprefixer', prfxOpts]);
 
 			if (process.env.NODE_ENV == 'production') {
