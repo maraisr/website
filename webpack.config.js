@@ -20,7 +20,7 @@ module.exports = {
 					path.resolve(__dirname, 'src/assets/js/')
 				],
 				exclude: /(node_modules|bower_components)/,
-				loader: (process.env.NODE_ENV == 'production') ? 'ts!babel' : 'ts'
+				loader: 'babel!ts'
 			});
 
 			return l;
@@ -48,4 +48,4 @@ module.exports = {
 
 		return returns;
 	})()
-}
+};

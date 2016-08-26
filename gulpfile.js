@@ -15,7 +15,7 @@ function webpackCallback(err, stats) {
 	}));
 }
 
-gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts']);
+gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
 
 gulp.task('watch', ['default'], () => {
 	gulp.watch('./src/app/**/*.pug', ['pug']);
@@ -103,7 +103,8 @@ gulp.task('scss', () => {
 			});
 		})()))
 		.pipe(require('gulp-if')(!(process.env.NODE_ENV == 'production'), srcMaps.write()))
-		.pipe(gulp.dest('./dist/'));
+		.pipe(gulp.dest('./dist/'))
+		.pipe(connect.reload());
 });
 
 gulp.task('fonts', () => {
@@ -117,7 +118,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('js', (done) => {
-	require('webpack')(require('./webpack.config'))
+	require('webpack')(require('./webpack.config.js'))
 		.run((err, stats) => {
 			webpackCallback(err, stats);
 
