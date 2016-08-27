@@ -44,6 +44,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "lost": "^7.0.4",
+    "moment-timezone": "^0.5.5",
     "postcss-position": "^0.5.0",
     "postcss-pxtorem": "^3.3.1",
     "postcss-sorting": "^1.6.1",
