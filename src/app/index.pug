@@ -1,5 +1,17 @@
 extends ./_layout
 
+mixin timeMix(format, time)
+	time(datetime=moment.tz(time, LOC).format()) #{moment.tz(time, LOC).format(format)}
+
+mixin rangeMix(range)
+	span (#{moment.tz(range[0], LOC).to(moment.tz(range[1], LOC), true)})
+
+mixin timeDif(range)
+	+timeMix("MMMM YYYY", range[0])
+	| -
+	+timeMix("MMMM YYYY", range[1])
+	+rangeMix(range)
+
 block body
 
 	.fold.fold--no-bg
@@ -24,3 +36,26 @@ block body
 
 							.handsome
 								img(src="img/handsome.jpg")
+
+	.fold
+		.fold__content
+			.experience
+				h2 Experience
+				ul
+					li.expereince__item
+						article
+							header
+								h4 Wordpress Developer
+								.expereince__time
+									+timeDif(['2012-01-01', '2012-09-01'])
+							main
+								p.experience__descr Began my career as a PSD to Wordpress theme developer.
+
+					li.expereince__item
+						article
+							header
+								h4 Wordpress Developer
+								.expereince__time
+									+timeDif(['2012-01-01', '2012-09-01'])
+							main
+								p.experience__descr Began my career as a PSD to Wordpress theme developer.

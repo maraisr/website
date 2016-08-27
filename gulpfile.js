@@ -40,7 +40,12 @@ gulp.task('serve', ['watch'], () => {
 gulp.task('pug', () => {
 	return gulp.src('./src/app/index.pug')
 		.pipe(plumb())
-		.pipe(require('gulp-pug')())
+		.pipe(require('gulp-pug')({
+			locals: {
+				moment: require('moment-timezone'),
+				LOC: 'Australia/Brisbane'
+			}
+		}))
 		.pipe(require('gulp-posthtml')([
 			require('posthtml-minifier')({
 				removeComments: true,
