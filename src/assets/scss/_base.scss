@@ -64,8 +64,12 @@ body {
 	}
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
 	margin: 0;
+}
+
+h2 {
+	font-size: 34px;
 }
 
 ul, ol {

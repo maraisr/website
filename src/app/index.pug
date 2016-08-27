@@ -3,14 +3,13 @@ extends ./_layout
 mixin timeMix(format, time)
 	time(datetime=moment.tz(time, LOC).format()) #{moment.tz(time, LOC).format(format)}
 
-mixin rangeMix(range)
-	span (#{moment.tz(range[0], LOC).to(moment.tz(range[1], LOC), true)})
-
 mixin timeDif(range)
 	+timeMix("MMMM YYYY", range[0])
 	| -
-	+timeMix("MMMM YYYY", range[1])
-	+rangeMix(range)
+	if range[1]
+		+timeMix("MMMM YYYY", range[1])
+	else
+		time present
 
 block body
 
@@ -31,7 +30,7 @@ block body
 					li.sway--right
 						figure
 							figcaption
-								h3 About
+								h2.offset-heading About
 								p I'm Marais Rossouw, a creative and application programmer from Australia. With over 9 years experience in the design space from every technical angle
 
 							.handsome
@@ -40,22 +39,44 @@ block body
 	.fold
 		.fold__content
 			.experience
-				h2 Experience
+				h2.offset-heading Experience
 				ul
-					li.expereince__item
+					li.experience__item
 						article
 							header
 								h4 Wordpress Developer
-								.expereince__time
+								.experience__time
 									+timeDif(['2012-01-01', '2012-09-01'])
 							main
 								p.experience__descr Began my career as a PSD to Wordpress theme developer.
+								p.experience__company Smart-SEO
 
-					li.expereince__item
+					li.experience__item
 						article
 							header
 								h4 Software Engineer
-								.expereince__time
+								.experience__time
 									+timeDif(['2013-03-01', '2014-01-01'])
 							main
 								p.experience__descr Began my career as a PSD to Wordpress theme developer.
+								p.experience__company Vuly Trampolines
+
+					li.experience__item
+						article
+							header
+								h4 Technical Director
+								.experience__time
+									+timeDif(['2014-02-01', '2015-05-01'])
+							main
+								p.experience__descr Began my career as a PSD to Wordpress theme developer.
+								p.experience__company 40/40 Creative
+
+					li.experience__item
+						article
+							header
+								h4 Senior Software Engineer
+								.experience__time
+									+timeDif(['2015-06-01'])
+							main
+								p.experience__descr Began my career as a PSD to Wordpress theme developer.
+								p.experience__company Touchpoint
