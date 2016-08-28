@@ -1,6 +1,57 @@
-import {Delaunay} from '../vendor/delaunay';
+import Delaunay from '../vendor/delaunay';
+import Colour from './colour';
 
 //TODO: Get scene.svg's poly bounds statically from an extrernal node loader
+
+class Triangle {
+	public elm: SVGPolygonElement;
+	public lum: number = 0;
+	public colour: Colour;
+
+	constructor(private points: Array<Array<number>>, type: String) {
+		this.elm = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+		this.elm.setAttribute('stroke-linejoin', 'round');
+		this.elm.setAttribute('stroke-miterlimit', '1');
+		this.elm.setAttribute('stroke-width', '1');
+
+		function intToRGB(rgb) {
+			rgb = parseInt(rgb, 16);
+			return [(rgb >> 16) & 0xff, (rgb >> 8) & 0xff, (rgb >> 0) & 0xff];
+		}
+
+		this.lum = ((rgb) => {
+			let [r,g,b] = intToRGB(rgb);
+			return (0.2126 * r + 0.7152 * g + 0.0722 * b) * 10;
+		})((type || '000').replace(/^#/, ''));
+
+		let rand = Math.random() * 0.1;
+
+		if (this.lum < 20) {
+			this.colour = (new Colour(intToRGB('333333'))).shade(rand);
+		} else if (this.lum < 40) {
+			this.colour = (new Colour(intToRGB('CC3333'))).shade(rand);
+		} else {
+			this.colour = (new Colour(intToRGB('003333'))).shade(rand);
+		}
+	}
+
+	render(): SVGPolygonElement {
+		this.elm.setAttribute('style', `fill: ${this.colour}; stroke: ${this.colour};`);
+		this.elm.setAttribute('points', this.points.join(' '));
+		return this.elm;
+	}
+}
+class Entity {
+	public triangles: Array<Triangle>;
+
+	constructor(config) {
+		this.triangles = config.triangles.map(pts => new Triangle(pts.map(pt => [config.verts[pt][0], config.verts[pt][1]]), config.type));
+	}
+
+	render() {
+		return this.triangles.map(v => v.render());
+	}
+}
 
 export default class Scene {
 	constructor() {
@@ -62,34 +113,22 @@ export default class Scene {
 							extra.push(newPoint);
 						}
 
-					} while (found != 25 && found != maxAttemts);
+					} while (found != 50 && found != maxAttemts);
 
-					return bounds.concat(extra);
-				}).map(v => {
+					var verts = bounds.concat(extra);
+
 					return {
-						verts: v,
-						triangles: chunk(new Delaunay.Delaunay(v).triangles, 3)
+						verts: verts,
+						triangles: chunk(new Delaunay(verts).triangles, 3),
+						type: v.getAttribute('fill')
 					}
 				});
 
 				var svg: SVGElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 				svg.setAttribute('viewBox', req.responseXML.querySelector('svg').getAttribute('viewBox'));
 
-				zones.forEach(v => {
-					v.triangles.forEach(vv => {
-						var poly: SVGPolygonElement = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-						poly.setAttribute('style', 'fill: black; stroke: white;');
-
-						poly.setAttribute('stroke-linejoin', 'round');
-						poly.setAttribute('stroke-miterlimit', '1');
-						poly.setAttribute('stroke-width', '1');
-
-						poly.setAttribute('points', vv.map(vvv => {
-							return [v.verts[vvv][0], v.verts[vvv][1]]
-						}));
-
-						svg.appendChild(poly);
-					});
+				zones.map(v => new Entity(v)).forEach((v: Entity) => {
+					v.render().forEach(vv => svg.appendChild(vv));
 				});
 
 				document.body.appendChild(svg);
