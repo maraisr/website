@@ -1,7 +1,7 @@
 extends ./_layout
 
 mixin timeMix(format, time)
-	time(datetime=moment.tz(time, LOC).format()) #{moment.tz(time, LOC).format(format)}
+	time.time(datetime=moment.tz(time, LOC).format()) #{moment.tz(time, LOC).format(format)}
 
 mixin timeDif(range)
 	+timeMix("MMMM YYYY", range[0])
@@ -9,7 +9,7 @@ mixin timeDif(range)
 	if range[1]
 		+timeMix("MMMM YYYY", range[1])
 	else
-		time present
+		span.time present
 
 block body
 
@@ -31,10 +31,10 @@ block body
 						figure
 							figcaption
 								h2.offset-heading About
-								p I'm Marais Rossouw, a creative and application programmer from Australia. With over 9 years experience in the design space from every technical angle
+								p South African creative and application programmer, living in Australia whose highly influcenced by developers like Evan You, and Sébastien Doeraene.
 
 							.handsome
-								img(src="img/handsome.jpg")
+								img(src="img/handsome.jpg", alt="Marais Rossouw looking handsome!")
 
 	.fold
 		.fold__content
@@ -48,8 +48,8 @@ block body
 								.experience__time
 									+timeDif(['2012-01-01', '2012-09-01'])
 							main
+								i.experience__company Smart-SEO
 								p.experience__descr Began my career as a PSD to Wordpress theme developer.
-								p.experience__company Smart-SEO
 
 					li.experience__item
 						article
@@ -58,8 +58,8 @@ block body
 								.experience__time
 									+timeDif(['2013-03-01', '2014-01-01'])
 							main
-								p.experience__descr Began my career as a PSD to Wordpress theme developer.
-								p.experience__company Vuly Trampolines
+								i.experience__company Vuly Trampolines
+								p.experience__descr Later moveed onto be a creative developer for Australias leading trampoline company.
 
 					li.experience__item
 						article
@@ -68,8 +68,8 @@ block body
 								.experience__time
 									+timeDif(['2014-02-01', '2015-05-01'])
 							main
-								p.experience__descr Began my career as a PSD to Wordpress theme developer.
-								p.experience__company 40/40 Creative
+								i.experience__company 40/40 Creative
+								p.experience__descr Led the company in all technical areas, establishing solid standards and technical direction.
 
 					li.experience__item
 						article
@@ -78,5 +78,8 @@ block body
 								.experience__time
 									+timeDif(['2015-06-01'])
 							main
-								p.experience__descr Began my career as a PSD to Wordpress theme developer.
-								p.experience__company Touchpoint
+								i.experience__company Touchpoint
+								p.experience__descr Lead frontend developer, and technical initiatives.
+
+	.fold
+		.fold__content

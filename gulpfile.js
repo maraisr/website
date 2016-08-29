@@ -41,6 +41,8 @@ gulp.task('pug', () => {
 	return gulp.src('./src/app/index.pug')
 		.pipe(plumb())
 		.pipe(require('gulp-pug')({
+			doctype: 'html5',
+			pretty: false,
 			locals: {
 				moment: require('moment-timezone'),
 				LOC: 'Australia/Brisbane'

@@ -1,4 +1,7 @@
+@lost gutter 25px;
 @lost flexbox flex;
+@lost cycle none;
+@lost clearing left;
 
 @import 'normalize-scss';
 
@@ -47,6 +50,7 @@ $fonts: ('bold': 700, 'regular': 400);
 
 html {
 	background-color: #D6DEE1;
+	color: #2C2D2E;
 
 	@media print {
 		background-color: transparent;
