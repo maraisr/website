@@ -49,6 +49,7 @@
     "postcss-pxtorem": "^3.3.1",
     "postcss-sorting": "^1.6.1",
     "posthtml-minifier": "^0.1.0",
+    "posthtml-schemas": "^1.0.0",
     "sass-module-importer": "^1.2.1",
     "ts-loader": "^0.8.2",
     "tslint": "^3.15.1",
