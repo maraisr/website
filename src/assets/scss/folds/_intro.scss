@@ -1,0 +1,39 @@
+&-intro {
+	@extend %container;
+
+	@media screen {
+		lost-align: center;
+
+		text-align: left;
+		height: 95vh;
+	}
+
+	&__body {
+		h1 {
+			text-transform: lowercase;
+
+			font-size: 80px;
+			line-height: 1;
+
+			span {
+				color: #B04A60;
+			}
+		}
+
+		blockquote {
+			margin: 0;
+			margin-top: 10px;
+
+			line-height: 1;
+			font-size: .7rem;
+
+			text-align: right;
+
+			color: darken(#D6DEE1, 20%);
+
+			@media print {
+				display: none;
+			}
+		}
+	}
+}

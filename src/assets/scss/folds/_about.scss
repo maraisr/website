@@ -1,0 +1,46 @@
+&-about {
+	padding: 155px 0;
+	padding-top: 0;
+
+	&__body {
+		@extend %container-sml;
+
+		figcaption, .handsome {
+			display: inline-block;
+			vertical-align: middle;
+
+			@media screen {
+				lost-column: 1/2;
+			}
+
+			@media print {
+				vertical-align: top;
+			}
+		}
+
+		figcaption {
+			text-align: left;
+			line-height: 1.3;
+			font-size: 32px;
+
+			transform: translateX(-85px);
+
+			@media print {
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+@media print {
+	.handsome {
+		position: fixed 20px 20px false false;
+
+		width: 80px;
+		height: 80px;
+
+		overflow: hidden;
+
+		border-radius: 50%;
+	}
+}

@@ -1,0 +1,55 @@
+&-experience {
+	@extend .calm-bg;
+
+	position: relative;
+
+	.experience {
+		@extend %container-sml;
+
+		position: relative;
+		padding: 155px 0;
+
+		text-align: left;
+
+		ul {
+			width: 100%;
+
+			li {
+				lost-column: 1/4;
+			}
+		}
+
+		&__item {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		&__time {
+			display: block;
+			margin-top: 2px;
+
+			font-size: 12px;
+
+			.time {
+				&:first-child {
+					margin-right: 5px;
+				}
+
+				&:last-child {
+					margin-left: 5px;
+				}
+			}
+		}
+
+		&__descr {
+			margin-top: 12px;
+		}
+
+		&__company {
+			display: block;
+			margin-top: 12px;
+
+			font-size: 12px;
+		}
+	}
+}
