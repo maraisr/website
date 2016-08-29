@@ -5,9 +5,12 @@
 		@extend %container-sml;
 
 		position: relative;
-		padding: 155px 0;
 
 		text-align: left;
+
+		@media screen {
+			padding: 155px 0;
+		}
 
 		ul {
 			width: 100%;

@@ -36,7 +36,18 @@ html(lang="en")
 		meta(itemprop="dateCreated", content=moment.tz(LOC).format())
 		meta(itemprop="dateModified", content=moment.tz(LOC).format())
 
-		block body
+		header
+			nav.navigation(role="navigation")
+				ul
+					li
+						a(href="#about", scroll-to) About
+					li
+						a(href="#experience", scroll-to) Experience
+					li
+						a(href="#contact", scroll-to) Contact
+
+		main
+			block body
 
 		script(src="main.js")
 

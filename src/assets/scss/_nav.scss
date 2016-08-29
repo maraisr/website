@@ -1,0 +1,45 @@
+.navigation {
+	$offset: 50px;
+
+	position: fixed $offset $offset * 2 false false;
+	z-index: 10;
+
+	@media print {
+		display: none;
+	}
+
+	a {
+		position: relative;
+
+		color: #2C2D2E;
+		text-decoration: none;
+
+		&:hover {
+			&:after {
+				transform: translateX(0);
+			}
+		}
+
+		&:after {
+			position: absolute 50% (-1 * (5px)) false (-1 * (5px));
+			content: '';
+
+			height: 2px;
+			background-color: #B04A60;
+
+			transform: translateX(-100%);
+
+			transition: transform 0.3s;
+		}
+	}
+
+	li {
+		display: inline-block;
+
+		overflow: hidden;
+
+		&:not(:last-child) {
+			margin-right: 15px;
+		}
+	}
+}
