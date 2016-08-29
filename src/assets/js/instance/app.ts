@@ -9,7 +9,7 @@ export default class App {
 				let perTick = dif / duration * 10;
 
 				setTimeout(() => {
-					document.body.scrollTop = document.body.scrollTop + perTick;
+					document.body.scrollTop += perTick;
 					if (document.body.scrollTop == to) return;
 					scroll(to, duration - 10);
 				}, 10);
