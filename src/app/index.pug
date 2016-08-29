@@ -13,30 +13,27 @@ mixin timeDif(range)
 
 block body
 
-	.fold.fold--no-bg
-		.fold__intro
-			.fold__intro__wrapper
+	.fold.fold-intro
+		.fold__content
+			.fold-intro__body
 				h1 Marais
 					span .
 				p An experienced&nbsp;
 					span.pop caffeine consumer
 					| !
-				blockquote {Try printing me}
+				blockquote {Print me}
 
-	.fold
+	.fold.fold-about
 		.fold__content
-			.sway
-				ul
-					li.sway--right
-						figure
-							figcaption
-								h2.offset-heading About
-								p South African creative and application programmer, living in Australia whose highly influcenced by developers like Evan You, and Sébastien Doeraene.
+			.fold-about__body
+				figure
+					.handsome
+						img(src="img/handsome.jpg", alt="Marais Rossouw looking handsome!")
+					figcaption
+						h2.offset-heading About
+						p A Gold Coast, Australia based creative and application developer, with over 6+ years experience!
 
-							.handsome
-								img(src="img/handsome.jpg", alt="Marais Rossouw looking handsome!")
-
-	.fold
+	.fold.fold-experience
 		.fold__content
 			.experience
 				h2.offset-heading Experience

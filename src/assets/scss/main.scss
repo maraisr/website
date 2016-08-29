@@ -27,44 +27,6 @@
 		}
 	}
 
-	&__intro {
-		@extend %container;
-
-		@media screen {
-			lost-align: center;
-
-			text-align: left;
-			height: 95vh;
-		}
-
-		h1 {
-			text-transform: lowercase;
-
-			font-size: 80px;
-			line-height: 1;
-
-			span {
-				color: #B04A60;
-			}
-		}
-
-		blockquote {
-			margin: 0;
-			margin-top: 10px;
-
-			line-height: 1;
-			font-size: .7rem;
-
-			text-align: right;
-
-			color: darken(#D6DEE1, 20%);
-
-			@media print {
-				display: none;
-			}
-		}
-	}
-
 	&__content {
 		text-align: center;
 
@@ -74,8 +36,8 @@
 	}
 }
 
-@media screen {
-	.pop {
+.pop {
+	@media screen {
 		position: relative;
 
 		&:after, &:before {
@@ -95,41 +57,6 @@
 			background-color: #E6B6B1;
 		}
 	}
-
-}
-
-.sway {
-	@extend %container-sml;
-
-	figcaption, .handsome {
-		display: inline-block;
-		vertical-align: middle;
-
-		@media screen {
-			lost-column: 1/2;
-		}
-
-		@media print {
-			vertical-align: top;
-		}
-	}
-
-	figcaption {
-		font-size: 32px;
-
-		@media print {
-			font-size: 16px;
-		}
-	}
-
-	&--right {
-		position: relative;
-
-		figcaption {
-			line-height: 1.3;
-			text-align: left;
-		}
-	}
 }
 
 .offset-heading {
@@ -146,72 +73,14 @@
 	}
 }
 
-@media print {
-	.handsome {
-		position: fixed 20px 20px false false;
-
-		width: 80px;
-		height: 80px;
-
-		overflow: hidden;
-
-		border-radius: 50%;
-	}
+.calm-bg {
+	background-color: #76E3C5;
+	color: white;
 }
 
-.experience {
-	@extend %container-sml;
-
-	position: relative;
-
-	text-align: left;
-
-	@media screen {
-		lost-align: center;
-
-		height: 700px;
-	}
-
-	ul {
-		width: 100%;
-
-		li {
-			lost-column: 1/4;
-		}
-	}
-
-	&__item {
-		display: inline-block;
-		vertical-align: top;
-	}
-
-	&__time {
-		display: block;
-		margin-top: 2px;
-
-		font-size: 12px;
-
-		.time {
-			&:first-child {
-				margin-right: 5px;
-			}
-
-			&:last-child {
-				margin-left: 5px;
-			}
-		}
-	}
-
-	&__descr {
-		margin-top: 12px;
-	}
-
-	&__company {
-		display: block;
-		margin-top: 12px;
-
-		color: lighten(#2C2D2E, 25%);
-
-		font-size: 12px;
-	}
+// Block specific
+.fold {
+	@import 'folds/intro';
+	@import 'folds/experience';
+	@import 'folds/about';
 }
