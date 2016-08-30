@@ -23,6 +23,18 @@ $fonts: ('bold': 700, 'regular': 400);
 	}
 }
 
+/*
+COLOURS
+
+https://color.adobe.com/zephyr-train-color-theme-6333671/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copy%20of%20zephyr%20train&mode=rgb&rgbvalues=0.843137,0.796078,0.729412,0.0431373,0.690196,0.486275,0.705882,0.564706,0.356863,0.10000004636364163,0.10499995943181287,0.11,0.729412,0.12549,0.184314&swatchOrder=0,1,2,3,4
+
+#D7CBBA
+#0BB07C
+#B4905B
+#1A1B1C
+#BA202F
+*/
+
 :root {
 	font: 400 16px/1.2 Geomanist, Verdana, san-serif;
 
@@ -45,15 +57,20 @@ $fonts: ('bold': 700, 'regular': 400);
 
 ::selection {
 	background-color: #E6B6B1;
-	color: #fff;
+	color: white;
 }
 
 html {
-	background-color: #D6DEE1;
-	color: #2C2D2E;
+	background-color: #1A1B1C;
+	color: white;
+
+	border: 25px solid lighten(#1A1B1C, 5%);
 
 	@media print {
 		background-color: transparent;
+		border: none;
+
+		color: #1A1B1C;
 	}
 }
 
