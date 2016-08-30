@@ -1,7 +1,9 @@
 header.main {
+	@extend %container;
+
 	$offset: 50px;
 
-	position: fixed $offset $offset * 2 false $offset * 2;
+	position: fixed $offset 0 false 0;
 	z-index: 10;
 
 	font-family: geomanist, verdana, sans-serif;

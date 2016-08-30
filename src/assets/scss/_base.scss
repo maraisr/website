@@ -7,33 +7,7 @@
 
 @include normalize();
 
-$bodyBorder: 25px;
-
-$fonts: (
-	'geomanist': ('bold': 700, 'regular': 400),
-	'lora': ('bold': 700, 'regular': 400, 'italic': 400)
-);
-
-@each $name, $weights in $fonts {
-	@each $type, $weight in $weights {
-		@font-face {
-			font-family: $name;
-			src: url('fonts/#{$name}-#{$type}.eot');
-			src: url('fonts/#{$name}-#{$type}.eot?#iefix') format('embedded-opentype'),
-			url('fonts/#{$name}-#{$type}.woff2') format('woff2'),
-			url('fonts/#{$name}-#{$type}.woff') format('woff'),
-			url('fonts/#{$name}-#{$type}.ttf') format('truetype'),
-			url('fonts/#{$name}-#{$type}.svg') format('svg');
-			font-weight: $weight;
-
-			@if ($type == 'italic') {
-				font-style: italic;
-			} @else {
-				font-style: normal;
-			}
-		}
-	}
-}
+$bodyBorder: 30px;
 
 /*
 COLOURS
@@ -69,7 +43,7 @@ html {
 	background-color: #1A1B1C;
 	color: white;
 
-	border: $bodyBorder solid lighten(#1A1B1C, 5%);
+	border: $bodyBorder solid lighten(#1A1B1C, 3%);
 
 	@media print {
 		background-color: transparent;

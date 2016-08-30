@@ -7,11 +7,12 @@
 		@extend %container;
 
 		position: relative;
+		padding: 155px 0;
 
 		text-align: left;
 
-		@media screen {
-			padding: 155px 0;
+		@media print {
+			padding: 0;
 		}
 
 		ul {
