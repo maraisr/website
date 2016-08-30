@@ -32,29 +32,13 @@ header.main {
 			line-height: 1;
 
 			span {
-				color: #B04A60;
+				color: #0BB07C;
 			}
 		}
 
 		p {
 			font-size: 12px;
 		}
-
-		/*blockquote {
-			margin: 0;
-			margin-top: 10px;
-
-			line-height: 1;
-			font-size: 12px;
-
-			text-align: right;
-
-			color: darken(#D6DEE1, 20%);
-
-			@media print {
-				display: none;
-			}
-		}*/
 	}
 
 	@at-root .navigation {

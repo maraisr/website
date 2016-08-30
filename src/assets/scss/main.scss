@@ -5,18 +5,8 @@
 
 	width: 100%;
 
-	@include mscr(1700px) {
-		width: 1690px;
-	}
-}
-
-%container-sml {
-	margin: 0 auto;
-
-	width: calc(100% / 1.5);
-
-	@media print {
-		width: auto;
+	@include mscr(1024px) {
+		width: calc(100vw * 0.8);
 	}
 }
 
@@ -37,29 +27,6 @@
 		}
 	}
 }
-
-/*.pop {
-	@media screen {
-		position: relative;
-
-		&:after, &:before {
-			position: absolute 0 0 0 0;
-			z-index: -1;
-
-			content: '';
-		}
-
-		&:before {
-			transform: translate(10%, 10%);
-			background-color: #76E3C5;
-		}
-
-		&:after {
-			transform: translate(-2%, -10%);
-			background-color: #E6B6B1;
-		}
-	}
-}*/
 
 .offset-heading {
 	display: none;
