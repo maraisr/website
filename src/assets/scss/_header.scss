@@ -4,6 +4,8 @@ header.main {
 	position: fixed $offset $offset * 2 false $offset * 2;
 	z-index: 10;
 
+	font-family: geomanist, verdana, sans-serif;
+
 	@media print {
 		position: static;
 		margin-bottom: 15px;
