@@ -10,6 +10,42 @@
 	}
 }
 
+%fold-height {
+	height: calc(100vh - (#{$bodyBorder} * 2));
+	min-height: 900px;
+
+	@media print {
+		height: auto;
+		min-height: auto;
+	}
+}
+
+%fancy-hover {
+	position: relative;
+
+	font-family: geomanist, verdana, sans-serif;
+
+	&:hover {
+		&:after {
+			width: 100%;
+		}
+	}
+
+	&:after {
+		position: absolute 50% 0 false 0;
+		content: '';
+
+		height: 4px;
+		width: 0;
+
+		background-color: #0BB07C;
+
+		transform: translate(0, 0);
+
+		transition: width 0.3s;
+	}
+}
+
 @import 'header';
 
 .fold {
@@ -38,7 +74,7 @@
 
 		margin-bottom: 6px;
 
-		border-bottom: 5px solid #B04A60;
+		border-bottom: 5px solid #0BB07C;
 	}
 }
 

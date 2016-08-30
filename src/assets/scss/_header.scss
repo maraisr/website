@@ -52,29 +52,15 @@ header.main {
 		}
 
 		a {
-			position: relative;
+			@extend %fancy-hover;
 
 			color: white;
 			text-decoration: none;
 
 			text-transform: lowercase;
 
-			&:hover {
-				&:after {
-					transform: translateX(0);
-				}
-			}
-
 			&:after {
-				position: absolute 50% 0 false 0;
-				content: '';
-
-				height: 4px;
-				background-color: #0BB07C;
-
-				transform: translateX(-100%);
-
-				transition: transform 0.3s;
+				transform: translate(0, 0);
 			}
 		}
 

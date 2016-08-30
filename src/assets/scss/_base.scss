@@ -7,6 +7,8 @@
 
 @include normalize();
 
+$bodyBorder: 25px;
+
 $fonts: (
 	'geomanist': ('bold': 700, 'regular': 400),
 	'lora': ('bold': 700, 'regular': 400, 'italic': 400)
@@ -67,7 +69,7 @@ html {
 	background-color: #1A1B1C;
 	color: white;
 
-	border: 25px solid lighten(#1A1B1C, 5%);
+	border: $bodyBorder solid lighten(#1A1B1C, 5%);
 
 	@media print {
 		background-color: transparent;
@@ -116,6 +118,10 @@ figure {
 	figcaption {
 		font-size: 16px;
 	}
+}
+
+a {
+	color: inherit;
 }
 
 @mixin mscr($width) {
