@@ -1,21 +1,23 @@
 &-about {
+	@extend %container;
+
 	@media screen {
 		padding: 155px 0;
 	}
 
 	&__body {
-		@extend %container-sml;
-
 		figcaption, .handsome {
 			display: inline-block;
 			vertical-align: middle;
 
-			@media screen {
-				lost-column: 1/2;
-			}
-
 			@media print {
 				vertical-align: top;
+			}
+		}
+
+		.handsome {
+			@media screen {
+				lost-column: 4/12;
 			}
 		}
 
@@ -26,14 +28,30 @@
 
 			color: darken(white, 25%);
 
+			@media screen {
+				lost-column: 8/12;
+			}
+
 			@media print {
 				font-size: 16px;
 				width: 100%;
 			}
 
+			p {
+				&:not(:last-child) {
+					margin-bottom: 22px;
+				}
+			}
+
 			span {
 				color: white;
 				font-weight: 700;
+
+				padding: 0 10px;
+
+				&.no-right {
+					padding-right: 0;
+				}
 			}
 		}
 	}
