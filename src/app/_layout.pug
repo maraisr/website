@@ -36,7 +36,15 @@ html(lang="en")
 		meta(itemprop="dateCreated", content=moment.tz(LOC).format())
 		meta(itemprop="dateModified", content=moment.tz(LOC).format())
 
-		header
+		header.main
+			.logo
+				h1 Marais
+					span .
+				p An experienced&nbsp;
+					span.pop caffeine consumer
+					| !
+				//blockquote {Print me}
+
 			nav.navigation(role="navigation")
 				ul
 					li

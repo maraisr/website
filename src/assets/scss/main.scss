@@ -20,7 +20,7 @@
 	}
 }
 
-@import 'nav';
+@import 'header';
 
 .fold {
 	@media print {
@@ -38,7 +38,7 @@
 	}
 }
 
-.pop {
+/*.pop {
 	@media screen {
 		position: relative;
 
@@ -59,7 +59,7 @@
 			background-color: #E6B6B1;
 		}
 	}
-}
+}*/
 
 .offset-heading {
 	display: none;
@@ -76,7 +76,7 @@
 }
 
 .calm-bg {
-	background-color: #76E3C5;
+	background-color: #0BB07C;
 	color: white;
 
 	@media print {
@@ -85,9 +85,9 @@
 	}
 }
 
-// Block specific
 .fold {
-	@import 'folds/intro';
+	position: relative;
+
 	@import 'folds/experience';
 	@import 'folds/about';
 }
