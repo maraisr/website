@@ -1,7 +1,7 @@
 export default class App {
 	constructor() {
 		[...document.querySelectorAll('[scroll-to]')].map(v => ((document.getElementById(`content-${v.hash.replace(/^#/, '')}`)) ? v.addEventListener('click', (e: MouseEvent) => {
-			e.preventDefault() && e.cancelBubble;
+			e.preventDefault();
 
 			(function scroll(to: number, duration: number) {
 				if (duration <= 0) return;
