@@ -13,12 +13,9 @@ database:
 dependencies:
   pre:
     - npm i gulp-cli -g
-  cache_directories:
-    - /home/ubuntu/nvm/versions/node/6.2.0/bin
-    - /home/ubuntu/nvm/versions/node/6.2.0/lib/node_modules
 
 deployment:
   production:
     branch: master
     commands:
-      - npm run compile
+      - npm run build
