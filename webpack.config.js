@@ -1,5 +1,7 @@
-let webpack = require('webpack'),
-	path = require('path');
+const webpack = require('webpack'),
+	path = require('path'),
+	ClosureCompiler = require('google-closure-compiler-js').webpack,
+	Wrapper = require('wrapper-webpack-plugin');
 
 module.exports = {
 	entry: [
@@ -20,7 +22,7 @@ module.exports = {
 					path.resolve(__dirname, 'src/assets/js/')
 				],
 				exclude: /(node_modules|bower_components)/,
-				loader: 'babel!ts'
+				loader: 'ts'
 			});
 
 			return l;
@@ -34,16 +36,26 @@ module.exports = {
 		];
 
 		if (process.env.NODE_ENV == 'production') {
-			returns.push(new webpack.optimize.UglifyJsPlugin({
-				preserveComments: false,
-				mangle: true,
-				compress: {
-					dead_code: true,
-					drop_debugger: true,
-					drop_console: true
-				},
-				passes: 3
+			returns.push(new webpack.LoaderOptionsPlugin({
+				minimize: true,
+				debug: false
 			}));
+
+			returns.push(new ClosureCompiler({
+				options: {
+					languageIn: 'ECMASCRIPT6',
+					languageOut: 'ECMASCRIPT3',
+					rewritePolyfills: true,
+					processCommonJsModules: true,
+					compilationLevel: 'ADVANCED',
+					warningLevel: 'VERBOSE'
+				}
+			}));
+
+			returns.push(new Wrapper({
+				header: '(function (){"use strict";',
+				footer: '}).call(this)'
+			}))
 		}
 
 		return returns;
