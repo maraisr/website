@@ -47,6 +47,8 @@ module.exports = {
 					languageOut: 'ECMASCRIPT3',
 					rewritePolyfills: true,
 					processCommonJsModules: true,
+					assumeFunctionWrapper: true,
+					useTypesForOptimization: true,
 					compilationLevel: 'ADVANCED',
 					warningLevel: 'VERBOSE'
 				}
