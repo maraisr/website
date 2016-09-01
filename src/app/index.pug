@@ -1,8 +1,5 @@
 extends ./_layout
 
-mixin timeMix(format, time)
-	time.time(datetime=moment.tz(time, LOC).format()) #{moment.tz(time, LOC).format(format)}
-
 mixin timeDif(range)
 	+timeMix("MMMM YYYY", range[0])
 	| -
@@ -19,41 +16,24 @@ block body
 				h2.offset-heading About
 				p
 					| Hello! I'm
-					span.no-right Marais Rossouw
+					span.highlight.no-right Marais Rossouw
 					| , a
-					span creative
+					span.highlight creative
 					| and
-					span application developer
+					span.highlight application developer
 					| with over
-					span 6+ years
+					span.highlight 6+ years
 					| experience.
 
 				p I'm based on the
-					span.no-right Gold Coast
+					span.highlight.no-right Gold Coast
 					| , Australia currently working as an application developer in the
-					span.no-right airline industry
+					span.highlight.no-right airline industry
 					| , and am highly influenced by developers such as Evan You and Sébastien Doeraene.
 
 				.fold-about__social
 					h4 You can find me here:
-					ul
-						li
-							a(href='https://github.com/maraisr', target='_blank', title='Go follow me on GitHub!') GitHub
-								svg(viewbox='0 0 1024 1024', xmlns:xlink="http://www.w3.org/1999/xlink")
-									title GitHub
-									use(xlink:href="#icon__github")
-
-						li
-							a(href='https://twitter.com/codervandal', target='_blank', title='Follow me on Twitter!') Twitter
-								svg(viewbox='0 0 1024 1024', xmlns:xlink="http://www.w3.org/1999/xlink")
-									title Twitter
-									use(xlink:href="#icon__twitter")
-
-						li
-							a(href='https://www.linkedin.com/in/maraisr', target='_blank', title='Connect with me on LinkedIn!') LinkedIn
-								svg(viewbox='0 0 1024 1024', xmlns:xlink="http://www.w3.org/1999/xlink")
-									title LinkedIn
-									use(xlink:href="#icon__linkedin")
+					include meta/social
 
 
 	#content-experience.fold.fold-experience

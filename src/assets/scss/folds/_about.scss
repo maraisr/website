@@ -44,11 +44,12 @@
 			}
 		}
 
-		span {
+		.highlight {
 			color: white;
 			font-weight: 700;
 
 			padding: 0 10px;
+			font-size: inherit;
 
 			@media print {
 				color: inherit;
@@ -62,59 +63,11 @@
 	}
 
 	&__social {
-		$size: 13px;
-
 		margin-top: 155px;
-
-		color: white;
-
-		@media print {
-			display: none;
-		}
 
 		h4 {
 			font-size: 22px;
 			font-weight: 400;
-		}
-
-		li {
-			display: inline-block;
-			vertical-align: middle;
-
-			font-size: $size;
-
-			overflow: hidden;
-
-			&:not(:last-child) {
-				&:after {
-					font-size: inherit;
-					content: '/';
-
-					padding: 0 15px;
-				}
-			}
-
-			a, svg {
-				display: inline-block;
-				vertical-align: middle;
-			}
-
-			a {
-				@extend %fancy-hover;
-
-				text-decoration: none;
-			}
-
-			svg {
-				margin-left: 5px;
-
-				width: $size;
-				height: $size;
-
-				use {
-					fill: white;
-				}
-			}
 		}
 	}
 }
