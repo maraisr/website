@@ -5,3 +5,11 @@ mixin icon(label, which)
 
 mixin timeMix(format, time)
 	time.time(datetime=moment.tz(time, LOC).format()) #{moment.tz(time, LOC).format(format)}
+
+mixin timeDif(range)
+	+timeMix("MMMM YYYY", range[0])
+	| -
+	if range[1]
+		+timeMix("MMMM YYYY", range[1])
+	else
+		span.time present

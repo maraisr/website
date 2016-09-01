@@ -1,13 +1,5 @@
 extends ./_layout
 
-mixin timeDif(range)
-	+timeMix("MMMM YYYY", range[0])
-	| -
-	if range[1]
-		+timeMix("MMMM YYYY", range[1])
-	else
-		span.time present
-
 block body
 
 	#content-about.fold.fold-about
@@ -33,7 +25,7 @@ block body
 
 				.fold-about__social
 					h4 You can find me here:
-					include meta/social
+					include partials/_social
 
 
 	#content-experience.fold.fold-experience
