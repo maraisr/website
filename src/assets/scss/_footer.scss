@@ -1,0 +1,16 @@
+.footer {
+	@extend %container;
+
+	padding: 50px 0;
+
+	&__semi {
+		text-align: center;
+
+		svg {
+			display: inline-block;
+			width: 25px;
+
+			fill: white;
+		}
+	}
+}
