@@ -1,4 +1,4 @@
-include meta/mixins
+include partials/_mixins
 
 doctype html
 html(lang="en")
@@ -70,17 +70,18 @@ html(lang="en")
 				q By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are.
 
 			.footer__social
-				include meta/social
+				include partials/_social
 
 			.footer__imprint
 				p Copyright &copy;&nbsp;
 					time(datetime=moment.tz(LOC).startOf('year').format()) #{moment.tz(LOC).format('YYYY')}
 					span -
-					a(href="#imprint") Imprint
+					button.imprint-toggle Imprint
 
 			.footer__cross
 				+icon("Christian Cross", "cross")
 
+		//include partials/_imprint
 
 		include meta/icons.svg
 
