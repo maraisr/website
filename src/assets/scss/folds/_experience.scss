@@ -3,6 +3,8 @@
 
 	font-family: geomanist, verdana, sans-serif;
 
+	overflow: hidden;
+
 	.experience {
 		@extend %container;
 
@@ -17,15 +19,37 @@
 
 		ul {
 			width: 100%;
-
-			li {
-				lost-column: 1/4;
-			}
 		}
 
 		&__item {
 			display: inline-block;
 			vertical-align: top;
+
+			lost-column: 1/5;
+
+			&:last-child {
+				position: relative;
+
+				lost-column: 2/5;
+
+				padding-left: 35px;
+
+				article {
+					position: relative;
+					z-index: 2;
+				}
+
+				&:before {
+					position: absolute (-1 * (999px)) 0;
+					right: (-1 * (999px));
+					left: (-1 * (25px /2));
+
+					z-index: 1;
+
+					content: '';
+					background-color: rgba(black, 0.1);
+				}
+			}
 		}
 
 		&__time {
