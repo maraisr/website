@@ -6,7 +6,7 @@
 		"moduleResolution": "node",
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
-		"noImplicitAny": false,
+		"noImplicitAny": true,
 		"removeComments": true,
 		"sourceMap": false,
 		"outDir": "tmp/"

@@ -57,7 +57,7 @@ module.exports = {
 			returns.push(new Wrapper({
 				header: '(function (){"use strict";',
 				footer: '}).call(this)'
-			}))
+			}));
 		}
 
 		return returns;
