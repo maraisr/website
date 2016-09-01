@@ -105,4 +105,54 @@
 	}
 }
 
+.social {
+	$size: 13px;
+
+	color: white;
+
+	@media print {
+		display: none;
+	}
+
+	li {
+		display: inline-block;
+		vertical-align: middle;
+
+		font-size: $size;
+
+		overflow: hidden;
+
+		&:not(:last-child) {
+			&:after {
+				font-size: inherit;
+				content: '/';
+
+				padding: 0 15px;
+			}
+		}
+
+		a, svg {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		a {
+			@extend %fancy-hover;
+
+			text-decoration: none;
+		}
+
+		svg {
+			margin-left: 5px;
+
+			width: $size;
+			height: $size;
+
+			use {
+				fill: white;
+			}
+		}
+	}
+}
+
 @import 'fonts';

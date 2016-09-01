@@ -1,3 +1,5 @@
+include meta/mixins
+
 doctype html
 html(lang="en")
 	head
@@ -63,10 +65,22 @@ html(lang="en")
 			block body
 
 		footer.site__footer.footer
-			.footer__semi
-				svg(viewbox='0 0 1024 1024', xmlns:xlink="http://www.w3.org/1999/xlink")
-					title Christian Cross
-					use(xlink:href="#icon__cross")
+
+			.footer__quote
+				q By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are.
+
+			.footer__social
+				include meta/social
+
+			.footer__imprint
+				p Copyright &copy;&nbsp;
+					time(datetime=moment.tz(LOC).startOf('year').format()) #{moment.tz(LOC).format('YYYY')}
+					span -
+					a(href="#imprint") Imprint
+
+			.footer__cross
+				+icon("Christian Cross", "cross")
+
 
 		include meta/icons.svg
 
