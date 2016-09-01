@@ -1,6 +1,8 @@
 let gulp = require('gulp'),
 	gutil = require('gulp-util'),
-	connect = require('gulp-connect');
+	connect = require('gulp-connect'),
+	orderBy = require('lodash.orderby'),
+	moment = require('moment-timezone');
 
 function plumb() {
 	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
@@ -44,8 +46,21 @@ gulp.task('pug', () => {
 			doctype: 'html5',
 			pretty: false,
 			locals: {
-				moment: require('moment-timezone'),
-				LOC: 'Australia/Brisbane'
+				moment: moment,
+				LOC: 'Australia/Brisbane',
+				_SKILLS: ((skills, returns) => {
+					skills.forEach(zone => {
+						zone.skills.sort().forEach(skill => {
+							returns.push({
+								zone: zone.zone,
+								skill: skill.replace(/[|](.*)$/, '').trim(),
+								css: skill.replace(/^(.*)[|]/, '').trim()
+							})
+						});
+					});
+
+					return orderBy(returns, 'zone');
+				})(require('./src/app/jsons/skills.json'), [])
 			}
 		}))
 		.pipe(require('gulp-posthtml')([

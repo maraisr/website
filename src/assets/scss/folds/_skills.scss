@@ -1,0 +1,116 @@
+&-skills {
+
+	$types: (
+		'prefered': (#0BB07C, rgba(white, 0.9)),
+		'expert': (#0093A5),
+		'medium': (#4C4C4C),
+		'mini': (#BF4B46)
+	);
+
+	height: 45vh;
+	min-height: 400px;
+
+	.offset-heading {
+		// TODO: Display me
+		//	display: block;
+	}
+
+	.fold__content {
+		position: relative;
+		top: 50%;
+
+		transform: translate(0, (-1 * (100%) / 2));
+
+		text-align: left;
+	}
+
+	&__body {
+		@extend %container;
+	}
+
+	.legend {
+		display: block;
+		text-align: center;
+
+		margin-bottom: 50px;
+
+		li {
+			display: inline-block;
+			vertical-align: middle;
+
+			font-size: 12px;
+
+			&:not(:last-child) {
+				margin-right: 20px;
+			}
+
+			&:before {
+				display: inline-block;
+				vertical-align: middle;
+				content: '';
+
+				margin-right: 6px;
+
+				width: 7px;
+				height: 7px;
+			}
+
+			@each $type, $colours in $types {
+				&.#{$type} {
+					&:before {
+						background-color: nth($colours, 1);
+					}
+				}
+			}
+		}
+	}
+
+	@at-root .skills {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+
+		margin: (-1 * (4px));
+
+		&__item {
+			display: inline-block;
+			vertical-align: middle;
+
+			flex: 1 0 auto;
+			padding: 10px;
+			margin: 4px;
+
+			text-align: center;
+			text-transform: lowercase;
+
+			//background-color: rgba(black, 0.2);
+
+			@each $type, $colours in $types {
+				&--#{$type} {
+					background-color: nth($colours, 1);
+
+					@if (length($colours) >= 2) {
+						small {
+							color: nth($colours, 2);
+						}
+					}
+				}
+			}
+
+			small {
+				display: inline-block;
+				vertical-align: middle;
+
+				padding-right: 4px;
+
+				font-size: 75%;
+
+				color: rgba(white, 0.5);
+
+				&:after {
+					content: ':';
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,56 @@
+[
+	{
+		"zone": "Language",
+		"skills": [
+			"JavaScript|expert",
+			"TypeScript|prefered",
+			"HTML|expert",
+			"Sass|prefered",
+			"Scala|medium",
+			"PureScript|medium",
+			"Elm|mini",
+			"Java|medium",
+			"Canvas|mini",
+			"Pug|prefered",
+			"PHP|medium"
+		]
+	},
+	{
+		"zone": "Framework",
+		"skills": [
+			"Angular|expert",
+			"React|medium",
+			"Vue|prefered"
+		]
+	},
+	{
+		"zone": "Runetime",
+		"skills": [
+			"Node|prefered",
+			"nginx|mini",
+			"Laravel|medium"
+		]
+	},
+	{
+		"zone": "Philosophy",
+		"skills": [
+			"Responsive Web Development|expert",
+			"Search Engine Optimizations|medium",
+			"Test-Driven Development|expert",
+			"Agile Methodologies|medium"
+		]
+	},
+	{
+		"zone": "Database",
+		"skills": [
+			"MySQL|prefered"
+		]
+	},
+	{
+		"zone": "Software",
+		"skills": [
+			"Adobe Suite|medium",
+			"JetBrains IDEA|expert"
+		]
+	}
+]
