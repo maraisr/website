@@ -49,7 +49,7 @@ gulp.task('pug', () => {
 				moment: moment,
 				LOC: 'Australia/Brisbane',
 				_SKILLS: ((skills, returns) => {
-					skills.forEach(zone => {
+					skills.list.forEach(zone => {
 						zone.skills.sort().forEach(skill => {
 							returns.push({
 								zone: zone.zone,
@@ -59,7 +59,10 @@ gulp.task('pug', () => {
 						});
 					});
 
-					return orderBy(returns, 'zone');
+					return {
+						list: orderBy(returns, 'zone'),
+						legend: skills.legend
+					};
 				})(require('./src/app/jsons/skills.json'), [])
 			}
 		}))

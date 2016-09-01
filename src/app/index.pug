@@ -103,13 +103,11 @@ block body
 			.fold-skills__body
 				h2.offset-heading Here's what I'm good at:
 				ul.legend
-					li.prefered Prefered Stack
-					li.expert Expert
-					li.medium Well Understood
-					li.mini Room for Improvement
+					for item in _SKILLS.legend
+						li(class="legend__item legend__item--" + item.level, level=item.level) #{item.label}
 
 				ul.skills
-					for skill in _SKILLS
-						li(class="skills__item skills__item--" + skill.css)
+					for skill in _SKILLS.list
+						li(class="skills__item skills__item--" + skill.css, level=skill.css)
 							small #{skill.zone}
 							| #{skill.skill}
