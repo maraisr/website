@@ -63,7 +63,7 @@ gulp.task('pug', () => {
 						list: orderBy(returns, 'zone'),
 						legend: skills.legend
 					};
-				})(require('./src/app/jsons/skills.json'), [])
+				})(require('./src/app/meta/skills.json'), [])
 			}
 		}))
 		.pipe(require('gulp-posthtml')([
