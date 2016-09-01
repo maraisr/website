@@ -95,8 +95,7 @@
 .fold {
 	position: relative;
 
-	@import 'folds/experience';
-	@import 'folds/about';
+	@import 'folds/*';
 
 	@media print {
 		&__content {

@@ -1,3 +1,5 @@
+//https://color.adobe.com/zephyr-train-color-theme-6333671/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copy%20of%20zephyr%20train&mode=rgb&rgbvalues=0.843137,0.796078,0.729412,0.0431373,0.690196,0.486275,0.705882,0.564706,0.356863,0.10000004636364163,0.10499995943181287,0.11,0.729412,0.12549,0.184314&swatchOrder=0,1,2,3,4
+
 @lost gutter 25px;
 @lost flexbox flex;
 @lost cycle none;
@@ -9,13 +11,8 @@
 
 $bodyBorder: 30px;
 
-/*
-COLOURS
-https://color.adobe.com/zephyr-train-color-theme-6333671/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copy%20of%20zephyr%20train&mode=rgb&rgbvalues=0.843137,0.796078,0.729412,0.0431373,0.690196,0.486275,0.705882,0.564706,0.356863,0.10000004636364163,0.10499995943181287,0.11,0.729412,0.12549,0.184314&swatchOrder=0,1,2,3,4
-*/
-
 :root {
-	font: 400 16px/1.2 lora, gerogia, serif;
+	font: 400 16px/1.2 geomanist, verdana, sans-serif;
 
 	box-sizing: border-box;
 
@@ -54,10 +51,7 @@ html {
 }
 
 body {
-	direction: ltr;
 	unicode-bidi: embed;
-
-	background: transparent;
 
 	@media print {
 		padding: 20px;
