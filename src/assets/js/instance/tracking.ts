@@ -1,5 +1,3 @@
-declare var ga: any;
-
 export default class Tracking implements TrackingInterface {
 	constructor() {
 		if (!__DEV__) {
@@ -11,6 +9,7 @@ export default class Tracking implements TrackingInterface {
 				node.addEventListener('click', (e: MouseEvent) => this.track('Nav', 'click', 'mailto'));
 			});
 
+			// TODO: Re-write this
 			[... document.getElementsByClassName('social')].forEach((node: Element) => {
 				[...node.getElementsByTagName('a')].forEach((a: Element) => {
 					let title = a.getElementsByTagName('title')[0].textContent;
