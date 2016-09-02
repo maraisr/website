@@ -1,0 +1,5 @@
+/*
+ @const
+ */
+function ga() {
+}
