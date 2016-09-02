@@ -19,18 +19,26 @@
 
 		ul {
 			width: 100%;
+
+			@media print {
+				display: flex;
+				flex-flow: column-reverse wrap;
+			}
 		}
 
 		&__item {
 			display: inline-block;
 			vertical-align: top;
 
-			lost-column: 1/5;
+			@media screen {
+				lost-column: 1/5;
+			}
 
 			@media print {
-				lost-column: 1;
+				flex: 1 0 auto;
+				width: 100%;
 
-				&:not(:last-child) {
+				&:not(:first-child) {
 					margin-bottom: 20px;
 				}
 			}
