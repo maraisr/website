@@ -2,7 +2,8 @@ let gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	connect = require('gulp-connect'),
 	orderBy = require('lodash.orderby'),
-	moment = require('moment-timezone');
+	moment = require('moment-timezone'),
+	pkg = require('./package.json');
 
 function plumb() {
 	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
@@ -47,7 +48,8 @@ gulp.task('pug', () => {
 			pretty: false,
 			locals: {
 				moment: moment,
-				LOC: 'Australia/Brisbane',
+				LOC: pkg.config.loc,
+				DOMAIN: pkg.config.domain,
 				_SKILLS: ((skills, returns) => {
 					skills.list.forEach(zone => {
 						zone.skills.sort().forEach(skill => {

@@ -1,0 +1,13 @@
+{
+	"@context": "http://schema.org",
+	"@type": "Person",
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Gold Coast",
+		"addressRegion": "QLD"
+	},
+	"image": "http://marais.io/img/handsome.jpg",
+	"jobTitle": "Creative and Application Developer",
+	"name": "Marais Rossouw",
+	"url": "http://marais.io"
+}
