@@ -1,5 +1,4 @@
 &-skills {
-
 	$types: (
 		'prefered': (#0BB07C, rgba(white, 0.9)),
 		'expert': (#0093A5),
@@ -10,6 +9,11 @@
 	height: 45vh;
 	min-height: 400px;
 
+	@media print {
+		height: auto;
+		min-height: 100%;
+	}
+
 	.fold__content {
 		position: relative;
 		top: 50%;
@@ -17,6 +21,11 @@
 		transform: translate(0, (-1 * (100%) / 2));
 
 		text-align: left;
+
+		@media print {
+			position: static;
+			transform: none;
+		}
 	}
 
 	&__body {
@@ -30,6 +39,10 @@
 		margin-bottom: 50px;
 
 		width: 100%;
+
+		@media print {
+			margin-bottom: 5px;
+		}
 
 		&__item {
 			display: inline-block;
@@ -100,7 +113,13 @@
 			text-align: center;
 			text-transform: lowercase;
 
+			color: white;
+
 			transition: opacity .2s;
+
+			@media print {
+				padding: 4px;
+			}
 
 			@each $type, $colours in $types {
 				&--#{$type} {
@@ -126,6 +145,10 @@
 
 				&:after {
 					content: ':';
+				}
+
+				@media print {
+					display: none;
 				}
 			}
 		}

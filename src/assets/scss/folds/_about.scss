@@ -30,6 +30,7 @@
 			padding: 0;
 
 			font-size: 16px;
+			font-family: inherit;
 
 			color: #1A1B1C;
 		}
@@ -64,6 +65,10 @@
 
 	&__social {
 		margin-top: 155px;
+
+		@media print {
+			display: none;
+		}
 
 		h4 {
 			font-size: 22px;
