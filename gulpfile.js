@@ -158,3 +158,49 @@ gulp.task('js', (done) => {
 			done();
 		});
 });
+
+gulp.task('gzip', ['default'], () => {
+	return gulp.src('./dist/**/*')
+		.pipe(require('gulp-gzip')({
+			append: false,
+			gzipOptions: {
+				level: 9
+			}
+		}))
+		.pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('publish', ['gzip'], () => {
+	var awsPub = require('gulp-awspublish');
+
+	var s3config = (function () {
+		if (process.env.S3_BUCKET) {
+			return {
+				accessKeyId: process.env.S3_ACCESS_ID,
+				secretAccessKey: process.env.S3_ACCESS_KEY,
+				bucket: process.env.S3_BUCKET
+			}
+		} else {
+			return require('./s3config.json');
+		}
+	})();
+
+	var headers = {
+			'Content-Encoding': 'gzip'
+		},
+		s3base = {
+			accessKeyId: s3config['accessKeyId'],
+			secretAccessKey: s3config['secretAccessKey'],
+			region: 'ap-southeast-2',
+			params: {
+				Bucket: s3config['bucket']
+			}
+		},
+		rpt = {states: ['create', 'update', 'delete']},
+		s3 = awsPub.create(s3base);
+
+	return gulp.src('**/*', {cwd: 'dist/'})
+		.pipe(s3.publish(headers), 10)
+		.pipe(s3.sync())
+		.pipe(awsPub.reporter(rpt))
+});
