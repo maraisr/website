@@ -44,18 +44,19 @@ module.exports = {
 			returns.push(new ClosureCompiler({
 				options: {
 					languageIn: 'ECMASCRIPT6',
-					languageOut: 'ECMASCRIPT3',
+					languageOut: 'ECMASCRIPT5_STRICT',
 					rewritePolyfills: true,
 					processCommonJsModules: true,
 					assumeFunctionWrapper: true,
 					useTypesForOptimization: true,
 					compilationLevel: 'ADVANCED',
-					warningLevel: 'VERBOSE'
+					warningLevel: 'DEFAULT',
+					externs: ['./src/externs/ga.js']
 				}
 			}));
 
 			returns.push(new Wrapper({
-				header: '(function (){"use strict";',
+				header: '(function(){',
 				footer: '}).call(this)'
 			}));
 		}
