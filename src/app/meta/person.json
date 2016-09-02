@@ -6,8 +6,12 @@
 		"addressLocality": "Gold Coast",
 		"addressRegion": "QLD"
 	},
+	"name": "Marais Rossouw",
+	"givenName": "Marais",
+	"familyName": "Rossow",
+	"birthDate": "1996-01-11",
+	"gender": "Male",
 	"image": "http://marais.io/img/handsome.jpg",
 	"jobTitle": "Creative and Application Developer",
-	"name": "Marais Rossouw",
 	"url": "http://marais.io"
 }
