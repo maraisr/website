@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "build": "rimraf dist/ && cross-env NODE_ENV=production gulp"
+    "build": "rimraf dist/ && cross-env NODE_ENV=production gulp",
+    "deploy": "rimraf dist/ && cross-env NODE_ENV=production gulp publish"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,9 @@
     "cssortie": "0.0.1",
     "google-closure-compiler-js": "^20160828.0.0",
     "gulp": "^3.9.1",
+    "gulp-awspublish": "^3.3.0",
     "gulp-connect": "^5.0.0",
+    "gulp-gzip": "^1.4.0",
     "gulp-if": "^2.0.1",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
