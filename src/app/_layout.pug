@@ -9,37 +9,43 @@ html(lang="en")
 
 		title Marais Rossouw | Creative Enthusiast
 
-		// TODO: Fix up this
-		meta(name="description", content="Airline software engineer, front end extraordinaire and lover of music!")
-		meta(property="og:url", content="http://marais.io/")
-		meta(property="og:title", content="A mere software engineer, tackling life one byte at a time.")
-		meta(property="og:description", content="Airline software engineer, front end extraordinaire and lover of music!")
+		meta(name="description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(property="og:url", content=DOMAIN)
+		meta(property="og:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
+		meta(property="og:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
 		meta(property="og:site_name", content="Marais Rossouw")
-		meta(property="og:image", content="http://marais.io/imgs/generic.jpg")
+		meta(property="og:image", content=DOMAIN + "/img/generic.jpg")
 		meta(property="og:type", content="website")
 		meta(property="og:locale", content="en_US")
 		meta(name="referrer", content="always")
 
-		// TODO: Add Facebook open graph stuff
-		// TODO: Add Google stuff
-		// TODO: Add Twitter stuff
+		meta(name="twitter:card", content="summary_large_image")
+		meta(name="twitter:site", content="@codervandal")
+		meta(name="twitter:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
+		meta(name="twitter:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(name="twitter:creator", content="@codervandal")
+		meta(name="twitter:image", content=DOMAIN + "/img/generic.jpg")
 
-		link(rel="home", href="http://marais.io/")
-		link(rel="canonical", href="http://marais.io/")
-		link(rel="shortcut icon", href="imgs/favicon.ico", type="image/x-icon")
-		link(rel="icon", href="imgs/favicon.png", type="image/png")
+		// TODO: Add schema.org stuff
+		// TODO: Add Google Ananlystics and track stuffs
+
+		script(type="application/ld+json")
+			include meta/person.json
+
+		link(rel="home", href=DOMAIN)
+		link(rel="canonical", href=DOMAIN)
+		link(rel="shortcut icon", href="img/favicon.ico", type="image/x-icon")
+		link(rel="icon", href="img/favicon.png", type="image/png")
 
 		meta(name="apple-mobile-web-app-capable", content="yes")
 		meta(name="mobile-web-app-capable", content="yes")
 		meta(name="apple-mobile-web-app-status-bar-style", content="black")
 
 		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
-
 		link(href="main.css", rel="stylesheet")
 
 	body(dir="ltr", itemtype="WebPage")
-		meta(itemprop="name", content="Marais Rossouw's Personal Website + Resume")
-		meta(itemprop="description", content="A Gold Coast, Australia software engineer and creative developer!")
+		// TODO: Proper created date
 		meta(itemprop="dateCreated", content=moment.tz(LOC).format())
 		meta(itemprop="dateModified", content=moment.tz(LOC).format())
 
@@ -74,7 +80,7 @@ html(lang="en")
 
 			.footer__imprint
 				p Copyright &copy;&nbsp;
-					time(datetime=moment.tz(LOC).startOf('year').format()) #{moment.tz(LOC).format('YYYY')}
+					time(datetime=moment.tz(LOC).startOf("year").format()) #{moment.tz(LOC).format("YYYY")}
 					span -
 					button.imprint-toggle Imprint
 
@@ -85,5 +91,5 @@ html(lang="en")
 
 		include meta/icons.svg
 
-		script(src="main.js")
+		script(src="main.js", defer)
 
