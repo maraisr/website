@@ -12,6 +12,7 @@
 		"outDir": "tmp/"
 	},
 	"files": [
+		"./src/assets/js/defs/interfaces.d.ts",
 		"./src/assets/js/main.ts"
 	]
 }
