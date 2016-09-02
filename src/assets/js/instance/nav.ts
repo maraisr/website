@@ -3,9 +3,11 @@ interface AppElement extends Element {
 }
 
 export default class Nav {
-	constructor(selectors: NodeList) {
+	constructor(selectors: NodeList, track: TrackingInterface) {
 		[...selectors].map((v: AppElement) => ((document.getElementById(`content-${v.hash.replace(/^#/, '')}`)) ? v.addEventListener('click', (e: MouseEvent) => {
 			e.preventDefault();
+
+			let clickTo: string = (<AppElement>e.target).hash.replace(/^#/, '');
 
 			(function scroll(to: number, duration: number) {
 				if (duration <= 0) return;
@@ -17,7 +19,9 @@ export default class Nav {
 					if (document.body.scrollTop == to) return;
 					scroll(to, duration - 10);
 				}, 10);
-			})(document.getElementById(`content-${(<AppElement>e.target).hash.replace(/^#/, '')}`).offsetTop, 600);
+			})(document.getElementById(`content-${clickTo}`).offsetTop, 600);
+
+			track.track('Nav', 'click', clickTo);
 
 			return false;
 		}) : void 0));

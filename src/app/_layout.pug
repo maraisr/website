@@ -71,7 +71,6 @@ html(lang="en")
 			block body
 
 		footer.site__footer.footer
-
 			.footer__quote
 				q By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are.
 
@@ -81,8 +80,8 @@ html(lang="en")
 			.footer__imprint
 				p Copyright &copy;&nbsp;
 					time(datetime=moment.tz(LOC).startOf("year").format()) #{moment.tz(LOC).format("YYYY")}
-					span -
-					button.imprint-toggle Imprint
+					//span -
+					//button.imprint-toggle Imprint
 
 			.footer__cross
 				+icon("Christian Cross", "cross")
@@ -91,5 +90,11 @@ html(lang="en")
 
 		include meta/icons.svg
 
-		script(src="main.js", defer)
+		script(type="text/javascript", async) !function (e, t, n, a, c, s, o) {
+			e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
+					(e[c].q = e[c].q || []).push(arguments)
+				}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
+		}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+		script(type="text/javascript", src="main.js", defer)
 
