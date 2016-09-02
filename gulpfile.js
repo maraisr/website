@@ -77,7 +77,8 @@ gulp.task('pug', () => {
 				minifyJS: true,
 				minifyCSS: true
 			}),
-			require('posthtml-schemas')()
+			require('posthtml-schemas')(),
+			require('posthtml-json')()
 		]))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(connect.reload());
