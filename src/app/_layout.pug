@@ -26,9 +26,6 @@ html(lang="en")
 		meta(name="twitter:creator", content="@codervandal")
 		meta(name="twitter:image", content=DOMAIN + "/img/generic.jpg")
 
-		// TODO: Add schema.org stuff
-		// TODO: Add Google Ananlystics and track stuffs
-
 		script(type="application/ld+json")
 			include meta/person.json
 
@@ -44,10 +41,18 @@ html(lang="en")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
 		link(href="main.css", rel="stylesheet")
 
-	body(dir="ltr", itemtype="WebPage")
-		// TODO: Proper created date
-		meta(itemprop="dateCreated", content=moment.tz(LOC).format())
+		script(type="text/javascript", async).
+			!function (e, t, n, a, c, s, o) {
+				e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
+						(e[c].q = e[c].q || []).push(arguments)
+					}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
+			}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+	body(dir="ltr", itemtype="WebSite")
+		meta(itemprop="isFamilyFriendly", content="true")
+		meta(itemprop="dateCreated", content="2016-09-02T13:03:06+10:00")
 		meta(itemprop="dateModified", content=moment.tz(LOC).format())
+		meta(itemprop="copyrightYear", content=moment.tz(LOC).format('YYYY'))
 
 		header.site__header
 			.logo
@@ -55,7 +60,6 @@ html(lang="en")
 					span .
 				p An experienced caffeine consumer!
 
-			// TODO: Get correct ARIA support for nav
 			nav.navigation(role="navigation")
 				ul
 					li
@@ -79,7 +83,7 @@ html(lang="en")
 
 			.footer__imprint
 				p Copyright &copy;&nbsp;
-					time(datetime=moment.tz(LOC).startOf("year").format()) #{moment.tz(LOC).format("YYYY")}
+					time(datetime=moment.tz(LOC).startOf('year').format()) #{moment.tz(LOC).format('YYYY')}
 					//span -
 					//button.imprint-toggle Imprint
 
@@ -89,13 +93,6 @@ html(lang="en")
 		//include partials/_imprint
 
 		include meta/icons.svg
-
-		script(type="text/javascript", async).
-			!function (e, t, n, a, c, s, o) {
-				e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
-						(e[c].q = e[c].q || []).push(arguments)
-					}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
-			}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
 
 		script(type="text/javascript", src="main.js", defer)
 
