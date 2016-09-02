@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "build": "cross-env NODE_ENV=production gulp"
+    "build": "rimraf dist/ && cross-env NODE_ENV=production gulp"
   },
   "repository": {
     "type": "git",
@@ -53,6 +53,7 @@
     "posthtml-json": "^0.1.0",
     "posthtml-minifier": "^0.1.0",
     "posthtml-schemas": "^1.0.0",
+    "rimraf": "^2.5.4",
     "sass-module-importer": "^1.2.1",
     "ts-loader": "^0.8.2",
     "tslint": "^3.15.1",
