@@ -5,6 +5,10 @@
 
 	text-align: center;
 
+	@media print {
+		display: none;
+	}
+
 	&__quote {
 		margin-bottom: 48px;
 

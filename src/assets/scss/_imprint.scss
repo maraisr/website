@@ -16,27 +16,3 @@
 		@extend %container;
 	}
 }
-
-%visuallyhidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	z-index: -1;
-	overflow: hidden;
-	margin: -1px;
-	padding: 0;
-	width: 1px;
-	height: 1px;
-
-	pointer-events: none;
-}
-
-%visuallshown {
-	clip: rect(auto auto auto auto);
-	z-index: 99;
-	overflow: visible;
-	margin: 0;
-	width: auto;
-	height: auto;
-
-	pointer-events: all;
-}

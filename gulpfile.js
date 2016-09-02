@@ -186,7 +186,8 @@ gulp.task('publish', ['gzip'], () => {
 	})();
 
 	var headers = {
-			'Content-Encoding': 'gzip'
+			'Content-Encoding': 'gzip',
+			'Cache-Contro': 'max-age=172800'
 		},
 		s3base = {
 			accessKeyId: s3config['accessKeyId'],
