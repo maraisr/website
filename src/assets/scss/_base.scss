@@ -11,6 +11,12 @@
 
 $bodyBorder: 30px;
 
+@mixin mscr($width) {
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+}
+
 %visuallyhidden {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -64,7 +70,11 @@ html {
 	background-color: #1A1B1C;
 	color: white;
 
-	border: $bodyBorder solid lighten(#1A1B1C, 3%);
+	border: 10px solid lighten(#1A1B1C, 3%);
+
+	@include mscr(450px) {
+		border-width: $bodyBorder;
+	}
 
 	@media print {
 		background-color: transparent;
@@ -114,10 +124,4 @@ figure {
 
 a {
 	color: inherit;
-}
-
-@mixin mscr($width) {
-	@media only screen and (min-width: $width) {
-		@content;
-	}
 }
