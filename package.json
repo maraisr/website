@@ -27,12 +27,12 @@
     "normalize-scss": "^5.0.3"
   },
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
+    "autoprefixer": "^6.4.1",
     "cross-env": "^2.0.1",
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.7.4",
     "cssortie": "0.0.1",
-    "google-closure-compiler-js": "^20160828.0.0",
+    "google-closure-compiler-js": "^20160828.0.1",
     "gulp": "^3.9.1",
     "gulp-awspublish": "^3.3.0",
     "gulp-connect": "^5.0.0",
