@@ -1,0 +1,77 @@
+.site__header {
+	@extend %container;
+
+	$offset: 50px;
+
+	position: fixed $offset 0 false 0;
+	z-index: 10;
+
+	@media print {
+		position: static;
+		margin-bottom: 15px;
+	}
+
+	.logo, .navigation {
+		lost-column: 1/2;
+	}
+
+	@at-root .logo {
+		display: inline-block;
+		vertical-align: middle;
+
+		color: white;
+
+		@media print {
+			color: #1A1B1C;
+		}
+
+		h1 {
+			text-transform: lowercase;
+
+			font-size: 48px;
+			line-height: 1;
+
+			span {
+				color: #0BB07C;
+			}
+		}
+
+		p {
+			font-size: 12px;
+		}
+	}
+
+	@at-root .navigation {
+		display: inline-block;
+		vertical-align: middle;
+
+		text-align: right;
+
+		@media print {
+			display: none;
+		}
+
+		a {
+			@extend %fancy-hover;
+
+			color: white;
+			text-decoration: none;
+
+			text-transform: lowercase;
+
+			&:after {
+				transform: translate(0, 0);
+			}
+		}
+
+		li {
+			display: inline-block;
+
+			overflow: hidden;
+
+			&:not(:last-child) {
+				margin-right: 15px;
+			}
+		}
+	}
+}

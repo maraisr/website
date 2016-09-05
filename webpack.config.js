@@ -1,38 +1,66 @@
-var webpack = require('webpack');
+const webpack = require('webpack'),
+	path = require('path'),
+	ClosureCompiler = require('google-closure-compiler-js').webpack,
+	Wrapper = require('wrapper-webpack-plugin');
 
 module.exports = {
-    entry: [
-        './src/app/entry.ts'
-    ],
-    output: {
-        path: (process.env.NODE_ENV == 'production') ? './tmp/' : './dist/',
-        filename: '[name].js'
-    },
-    resolve: {
-        extensions: ['', '.ts', '.js', '.pug']
-    },
-    module: {
-        loaders: [
-            { test: /\.ts?$/, loader: 'ts' },
-            { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/ }
-        ]
-    },
-    plugins: (function () {
-        var returns = [];
+	entry: [
+		'./src/assets/js/main.ts'
+	],
+	output: {
+		path: './dist/',
+		filename: '[name].js'
+	},
+	resolve: {
+		extensions: ['', '.ts', '.js']
+	},
+	module: {
+		loaders: ((l) => {
+			l.push({
+				test: /\.ts$/,
+				include: [
+					path.resolve(__dirname, 'src/assets/js/')
+				],
+				exclude: /(node_modules|bower_components)/,
+				loader: 'ts'
+			});
 
-        if (process.env.NODE_ENV == 'production') {
-            returns.push(new webpack.optimize.UglifyJsPlugin({
-				preserveComments: false,
-				mangle: true,
-				compress: {
-					dead_code: true,
-					drop_debugger: true,
-					drop_console: true
-				},
-				passes: 3
+			return l;
+		})([])
+	},
+	plugins: (() => {
+		var returns = [
+			new webpack.DefinePlugin({
+				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production')))
+			})
+		];
+
+		if (process.env.NODE_ENV == 'production') {
+			returns.push(new webpack.LoaderOptionsPlugin({
+				minimize: true,
+				debug: false
 			}));
-        }
 
-        return returns;
-    })()
-}
+			returns.push(new ClosureCompiler({
+				options: {
+					languageIn: 'ECMASCRIPT6',
+					languageOut: 'ECMASCRIPT5_STRICT',
+					rewritePolyfills: true,
+					processCommonJsModules: true,
+					assumeFunctionWrapper: true,
+					useTypesForOptimization: true,
+					compilationLevel: 'ADVANCED',
+					warningLevel: 'DEFAULT',
+					externs: ['./src/externs/ga.js']
+				}
+			}));
+
+			returns.push(new Wrapper({
+				header: '(function(){',
+				footer: '}).call(this)'
+			}));
+		}
+
+		return returns;
+	})()
+};

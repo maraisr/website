@@ -1,12 +1,16 @@
-var gulp = require('gulp'),
-	$ = require('gulp-load-plugins')({
-		pattern: ['gulp-*', 'webpack']
-	}),
+let gulp = require('gulp'),
 	gutil = require('gulp-util'),
-	_ = require('lodash');
+	connect = require('gulp-connect'),
+	orderBy = require('lodash.orderby'),
+	moment = require('moment-timezone'),
+	pkg = require('./package.json');
+
+function plumb() {
+	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
+}
 
 function webpackCallback(err, stats) {
-	if (err) throw $.notify(err);
+	if (err) throw require('gulp-notify')()(err);
 
 	gutil.log("[webpack]", stats.toString({
 		colours: true,
@@ -14,149 +18,161 @@ function webpackCallback(err, stats) {
 	}));
 }
 
-function plumberError() {
-	return $.plumber({ errorHandler: $.notify.onError("Error: <%= error.message %>") })
-}
+gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
 
-// Main tasks
-gulp.task('pug', function () {
-	return gulp.src('./src/public/**/[^_]*.pug')
-		.pipe(plumberError())
-		.pipe($.pug())
-		.pipe(gulp.dest('./dist/'))
-		.pipe($.connect.reload());
+gulp.task('watch', ['default'], () => {
+	gulp.watch('./src/app/**/*.pug', ['pug']);
+	gulp.watch('./src/assets/**/*.scss', ['scss']);
+	gulp.watch('./src/assets/img/**/*', ['images']);
+
+	require('webpack')(require('./webpack.config'))
+		.watch({
+			aggregateTimeout: 300,
+			poll: true
+		}, webpackCallback);
 });
 
-gulp.task('webpack', function (done) {
-	$.webpack(require('./webpack.config.js'))
-		.run(function (err, stats) {
+gulp.task('serve', ['watch'], () => {
+	connect.server({
+		livereload: true,
+		root: ['./dist/'],
+		port: 3303
+	});
+});
+
+gulp.task('pug', () => {
+	return gulp.src('./src/app/index.pug')
+		.pipe(plumb())
+		.pipe(require('gulp-pug')({
+			doctype: 'html5',
+			pretty: false,
+			locals: {
+				moment: moment,
+				LOC: pkg.config.loc,
+				DOMAIN: pkg.config.domain,
+				_SKILLS: ((skills, returns) => {
+					skills.list.forEach(zone => {
+						zone.skills.sort().forEach(skill => {
+							returns.push({
+								zone: zone.zone,
+								skill: skill.replace(/[|](.*)$/, '').trim(),
+								css: skill.replace(/^(.*)[|]/, '').trim()
+							})
+						});
+					});
+
+					return {
+						list: orderBy(returns, 'zone'),
+						legend: skills.legend
+					};
+				})(require('./src/app/meta/skills.json'), [])
+			}
+		}))
+		.pipe(require('gulp-posthtml')([
+			require('posthtml-minifier')({
+				removeComments: true,
+				collapseWhitespace: true,
+				keepClosingSlash: true,
+				sortClassName: true,
+				minifyJS: true,
+				minifyCSS: true
+			}),
+			require('posthtml-schemas')(),
+			require('posthtml-json')()
+		]))
+		.pipe(gulp.dest('./dist/'))
+		.pipe(connect.reload());
+});
+
+gulp.task('scss', () => {
+	let srcMaps = require('gulp-sourcemaps');
+
+	return gulp.src('./src/assets/scss/main.scss')
+		.pipe(plumb())
+		.pipe(srcMaps.init())
+		.pipe(require('gulp-sass-bulk-import')())
+		.pipe(require('gulp-sass')({
+			importer: require('sass-module-importer')()
+		}))
+		.pipe(require('gulp-postcss')((() => {
+			let steps = [],
+				prfxOpts = {
+					//http://browserl.ist/?q=chrome+%3E%3D+51%2C+ie+%3E%3D+11%2C+edge+%3E%3D13%2C+safari+%3E%3D+9.1
+					browsers: [
+						'chrome >= 50',
+						'ie >= 11',
+						'edge >=13',
+						'safari >= 9.1'
+					],
+					cascade: false,
+					supports: true,
+					add: true,
+					remove: true
+				};
+
+			steps.push('postcss-position');
+			steps.push('lost');
+			steps.push(['postcss-pxtorem', {
+				selectorBlackList: [/:root/i]
+			}]);
+			steps.push(['autoprefixer', prfxOpts]);
+
+			if (process.env.NODE_ENV == 'production') {
+				steps.push('css-mqpacker');
+				steps.push(['cssnano', {
+					discardComments: {removeAll: true},
+					autoprefixer: prfxOpts,
+					safe: false
+				}]);
+				steps.push(['postcss-sorting', {'sort-order': require('cssortie')}]);
+			}
+
+			return steps.map(v => {
+				if (typeof v == 'object') {
+					return require(v[0])(v[1]);
+				}
+
+				return require(v);
+			});
+		})()))
+		.pipe(require('gulp-if')(!(process.env.NODE_ENV == 'production'), srcMaps.write()))
+		.pipe(gulp.dest('./dist/'))
+		.pipe(connect.reload());
+});
+
+gulp.task('fonts', () => {
+	return gulp.src('./src/assets/fonts/**/*')
+		.pipe(gulp.dest('./dist/fonts/'));
+});
+
+gulp.task('images', () => {
+	return gulp.src('./src/assets/img/**/*')
+		.pipe(gulp.dest('./dist/img/'));
+});
+
+gulp.task('js', (done) => {
+	require('webpack')(require('./webpack.config.js'))
+		.run((err, stats) => {
 			webpackCallback(err, stats);
 
 			done();
 		});
 });
 
-gulp.task('scss', function () {
-	var autoprefixerOpts = {
-		browsers: [
-			'chrome >= 50',
-			'ie >= 11',
-			'edge >=13',
-			'safari >= 9.1'
-		],
-		cascade: false,
-		supports: true,
-		add: true,
-		remove: true
-	};
-
-	return gulp.src('./src/public/assets/scss/entry.scss')
-		.pipe(plumberError())
-		.pipe($.sass({
-			importer: require('sass-module-importer')()
-		}))
-		.pipe($.postcss((function (res) {
-			res.push(require('css-mqpacker'));
-			res.push(require('autoprefixer')(autoprefixerOpts));
-			res.push(require('lost'));
-			res.push(require('postcss-position'));
-
-			if (process.env.NODE_ENV == 'production') {
-				res.push(require('postcss-grouper')({ group: [/^html/i, /^body/i, /^:root/i] }));
-				res.push(require('postcss-sorting')({ 'sort-order': require('cssortie') }));
-				res.push(require('cssnano')({
-					discardComments: {
-						removeAll: true
-					},
-					autoprefixer: autoprefixerOpts,
-					safe: false
-				}));
+gulp.task('gzip', ['default'], () => {
+	return gulp.src('./dist/**/*')
+		.pipe(require('gulp-gzip')({
+			append: false,
+			gzipOptions: {
+				level: 9
 			}
-
-			res.push(require('postcss-sorting')({ 'sort-order': require('cssortie') }))
-
-			return res;
-		})([])))
-		.pipe($.rename({ basename: 'main' }))
-		.pipe(gulp.dest((process.env.NODE_ENV == 'production') ? './tmp/' : './dist/'))
-		.pipe($.connect.reload());
-});
-
-gulp.task('images', function () {
-	return gulp.src('./src/public/assets/imgs/**/*')
-		.pipe($.imagemin())
-		.pipe(gulp.dest('./dist/imgs/'));
-});
-
-gulp.task('fonts', function () {
-	return gulp.src('./src/public/assets/fonts/**.*')
-		.pipe(gulp.dest('./dist/fonts/'))
-});
-
-// Build process
-gulp.task('watch', function () {
-	$.webpack(require('./webpack.config.js'))
-		.watch({
-			aggregateTimeout: 300,
-			poll: true
-		}, webpackCallback);
-
-	gulp.watch('./src/public/**/*.pug', ['pug']);
-	gulp.watch('./src/public/assets/scss/**/*.scss', ['scss']);
-	gulp.watch('./src/public/assets/imgs/**/*', ['images']);
-	gulp.watch('./src/public/assets/fonts/**.*', ['fonts']);
-});
-
-// Compile
-gulp.task('build', ['clean'], function (done) {
-	$.env.set({
-		NODE_ENV: 'production'
-	});
-
-	$.sequence(['webpack', 'pug', 'scss', 'images', 'fonts'], 'optim', done);
-});
-
-gulp.task('optim', function () {
-	return gulp.src('./dist/**/*.html')
-		.pipe($.inlineSource({
-			rootpath: './tmp/',
-			compress: true
-		}))
-		.pipe($.htmlmin({
-			removeComments: true,
-			collapseWhitespace: true,
-			sortClassName: true,
-			minifyJS: true,
-			minifyCSS: true
 		}))
 		.pipe(gulp.dest('./dist/'));
 });
 
-// Dev server
-gulp.task('serve', function () {
-	$.connect.server({
-		livereload: true,
-		port: process.env.PORT || 3303,
-		root: ['./dist/']
-	});
-});
+gulp.task('publish', ['gzip'], () => {
+	var awsPub = require('gulp-awspublish');
 
-gulp.task('default', ['watch', 'serve']);
-
-gulp.task('clean', function () {
-	return gulp.src('./dist')
-		.pipe($.clean());
-})
-
-gulp.task('gzip', ['build'], function () {
-	return gulp.src('./dist/**/*')
-		.pipe($.gzip({
-			append: false
-		}))
-		.pipe(gulp.dest('./dist/'))
-})
-
-gulp.task('publish', ['gzip'], function () {
 	var s3config = (function () {
 		if (process.env.S3_BUCKET) {
 			return {
@@ -170,21 +186,22 @@ gulp.task('publish', ['gzip'], function () {
 	})();
 
 	var headers = {
-		'Content-Encoding': 'gzip'
-	},
+			'Content-Encoding': 'gzip',
+			'Cache-Contro': 'max-age=172800'
+		},
 		s3base = {
-			accessKeyId: _.get(s3config, 'accessKeyId'),
-			secretAccessKey: _.get(s3config, 'secretAccessKey'),
+			accessKeyId: s3config['accessKeyId'],
+			secretAccessKey: s3config['secretAccessKey'],
 			region: 'ap-southeast-2',
 			params: {
-				Bucket: _.get(s3config, 'bucket')
+				Bucket: s3config['bucket']
 			}
 		},
-		rpt = { states: ['create', 'update', 'delete'] },
-		s3 = $.awspublish.create(s3base);
+		rpt = {states: ['create', 'update', 'delete']},
+		s3 = awsPub.create(s3base);
 
-	return gulp.src('**/*', { cwd: 'dist/' })
+	return gulp.src('**/*', {cwd: 'dist/'})
 		.pipe(s3.publish(headers), 10)
 		.pipe(s3.sync())
-		.pipe($.awspublish.reporter(rpt))
+		.pipe(awsPub.reporter(rpt))
 });

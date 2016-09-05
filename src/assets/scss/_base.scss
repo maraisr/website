@@ -1,0 +1,127 @@
+//https://color.adobe.com/zephyr-train-color-theme-6333671/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copy%20of%20zephyr%20train&mode=rgb&rgbvalues=0.843137,0.796078,0.729412,0.0431373,0.690196,0.486275,0.705882,0.564706,0.356863,0.10000004636364163,0.10499995943181287,0.11,0.729412,0.12549,0.184314&swatchOrder=0,1,2,3,4
+
+@lost gutter 25px;
+@lost flexbox flex;
+@lost cycle none;
+@lost clearing left;
+
+@import 'normalize-scss';
+
+@include normalize();
+
+$bodyBorder: 30px;
+
+@mixin mscr($width) {
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+}
+
+%visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	z-index: -1;
+	overflow: hidden;
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+
+	pointer-events: none;
+}
+
+%visuallshown {
+	clip: rect(auto auto auto auto);
+	z-index: 99;
+	overflow: visible;
+	margin: 0;
+	width: auto;
+	height: auto;
+
+	pointer-events: all;
+}
+
+:root {
+	font: 400 16px/1.2 geomanist, verdana, sans-serif;
+
+	box-sizing: border-box;
+
+	@media print {
+		font-size: 12px;
+	}
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+
+	-webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+	background-color: #E6B6B1;
+	color: white;
+}
+
+html {
+	background-color: #1A1B1C;
+	color: white;
+
+	border: 10px solid lighten(#1A1B1C, 3%);
+
+	@include mscr(450px) {
+		border-width: $bodyBorder;
+	}
+
+	@media print {
+		background-color: transparent;
+		border: none;
+
+		color: #1A1B1C;
+	}
+}
+
+body {
+	unicode-bidi: embed;
+
+	@media print {
+		padding: 20px;
+	}
+}
+
+h1, h2, h3, h4, p {
+	margin: 0;
+}
+
+h2 {
+	font-size: 34px;
+}
+
+ul, ol {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+figure {
+	margin: 0;
+
+	font-size: 0;
+	line-height: 1;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		font-size: 16px;
+	}
+}
+
+a {
+	color: inherit;
+}
