@@ -1,7 +1,11 @@
-/typings
-/dist
-/tmp
-/node_modules
 *.log
+node_modules/
+dist/
 s3config.json
-/.idea
+tmp/
+
+.idea/
+!.idea/website.iml
+!.idea/.name
+!.idea/modules.xml
+!.idea/webResources.xml

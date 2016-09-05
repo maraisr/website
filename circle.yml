@@ -17,15 +17,10 @@ database:
 
 dependencies:
   pre:
-    - npm i typings typescript gulp-cli -g
-    - typings i
-  cache_directories:
-    - ./typings/
-    - /home/ubuntu/nvm/versions/node/6.2.0/bin
-    - /home/ubuntu/nvm/versions/node/6.2.0/lib/node_modules
+    - npm i gulp-cli -g
 
 deployment:
   production:
     branch: master
     commands:
-      - gulp publish
+      - npm run deploy

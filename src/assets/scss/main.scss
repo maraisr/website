@@ -1,0 +1,181 @@
+@import 'base';
+
+%container {
+	padding-left: 15px;
+	padding-right: 15px;
+
+	width: 100%;
+
+	@include mscr(450px) {
+		margin: 0 auto;
+		width: calc(100vw * 0.8);
+	}
+}
+
+%fold-height {
+	height: calc(100vh - (#{$bodyBorder} * 2));
+	min-height: 900px;
+
+	@media print {
+		height: auto;
+		min-height: auto;
+	}
+}
+
+%fancy-hover {
+	position: relative;
+
+	font-family: geomanist, verdana, sans-serif;
+
+	&:hover {
+		&:after {
+			width: 100%;
+		}
+	}
+
+	&:after {
+		position: absolute 50% 0 false 0;
+		content: '';
+
+		height: 4px;
+		width: 0;
+
+		background-color: #0BB07C;
+
+		transform: translate(0, 0);
+
+		transition: width 0.3s;
+	}
+}
+
+@import 'header';
+@import 'footer';
+
+.wip {
+	position: fixed 0 0 false false;
+	z-index: 99;
+
+	background-color: #0093A5;
+
+	text-decoration: none;
+
+	padding: 2px 45px;
+
+	transform: translate(20%, 200%) rotate(45deg);
+}
+
+.fold {
+	@media print {
+		&:not(:first-child) {
+			margin-top: 20px;
+		}
+	}
+
+	&__content {
+		text-align: center;
+
+		@media print {
+			text-align: left;
+		}
+	}
+}
+
+.offset-heading {
+	display: none;
+
+	@media print {
+		display: block;
+
+		text-align: left;
+
+		margin: 0;
+		margin-bottom: 6px;
+		padding: 0;
+
+		line-height: 1;
+		font-size: 28px;
+
+		border-bottom: 3px solid #0BB07C;
+	}
+}
+
+.calm-bg {
+	background-color: #0BB07C;
+	color: white;
+
+	@media print {
+		background-color: transparent;
+		color: inherit;
+	}
+}
+
+.fold {
+	position: relative;
+
+	@import 'folds/*';
+
+	@media print {
+		&__content {
+			font-family: geomanist, verdana, sans-serif;
+		}
+	}
+}
+
+//@import 'imprint';
+
+.social {
+	$size: 13px;
+
+	color: white;
+
+	@media print {
+		display: none;
+	}
+
+	.handle {
+		position: absolute;
+		@extend %visuallyhidden;
+	}
+
+	li {
+		display: inline-block;
+		vertical-align: middle;
+
+		font-size: $size;
+
+		overflow: hidden;
+
+		&:not(:last-child) {
+			&:after {
+				font-size: inherit;
+				content: '/';
+
+				padding: 0 15px;
+			}
+		}
+
+		a, svg, span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		a {
+			@extend %fancy-hover;
+
+			text-decoration: none;
+		}
+
+		svg {
+			margin-left: 5px;
+
+			width: $size;
+			height: $size;
+
+			use {
+				fill: white;
+			}
+		}
+	}
+}
+
+@import 'fonts';

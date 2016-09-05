@@ -1,15 +1,18 @@
 {
+	"compileOnSave": true,
 	"compilerOptions": {
 		"module": "commonjs",
-		"target": "es5",
+		"target": "es2015",
+		"moduleResolution": "node",
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
-		"noImplicitAny": false,
-		"removeComments": false,
-		"sourceMap": true
+		"noImplicitAny": true,
+		"removeComments": true,
+		"sourceMap": false,
+		"outDir": "tmp/"
 	},
 	"files": [
-		"./typings/index.d.ts",
-		"./src/app/entry.ts"
+		"./src/assets/js/defs/interfaces.d.ts",
+		"./src/assets/js/main.ts"
 	]
 }

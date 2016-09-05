@@ -1,0 +1,105 @@
+&-experience {
+	//@extend .calm-bg;
+
+	font-family: geomanist, verdana, sans-serif;
+
+	overflow: hidden;
+
+	.experience {
+		@extend %container;
+
+		position: relative;
+		padding: 155px 0;
+
+		text-align: left;
+
+		@media print {
+			padding: 0;
+		}
+
+		ul {
+			width: 100%;
+
+			@media print {
+				display: flex;
+				flex-flow: column-reverse wrap;
+			}
+		}
+
+		&__item {
+			display: inline-block;
+			vertical-align: top;
+
+			@media screen {
+				lost-column: 1/5;
+			}
+
+			@media print {
+				flex: 1 0 auto;
+				width: 100%;
+
+				&:not(:first-child) {
+					margin-bottom: 20px;
+				}
+			}
+
+			@media screen {
+				&:last-child {
+					position: relative;
+
+					lost-column: 2/5;
+
+					padding-left: 35px;
+
+					/*article {
+						position: relative;
+						z-index: 2;
+					}
+
+					&:before {
+						position: absolute (-1 * (999px)) 0;
+						right: (-1 * (999px));
+						left: (-1 * (25px /2));
+
+						z-index: 1;
+
+						content: '';
+						background-color: rgba(black, 0.1);
+					}*/
+				}
+			}
+		}
+
+		&__time {
+			display: block;
+			margin-top: 42px;
+
+			font-size: 12px;
+
+			.time {
+				&:first-child {
+					margin-right: 5px;
+				}
+
+				&:last-child {
+					margin-left: 5px;
+				}
+			}
+		}
+
+		&__descr {
+			line-height: 1.5;
+		}
+
+		&__company {
+			display: block;
+			margin: 12px 0;
+
+			font-size: 12px;
+
+			@media print {
+				margin: 6px 0;
+			}
+		}
+	}
+}

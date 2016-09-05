@@ -1,0 +1,101 @@
+include partials/_mixins
+
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=9;IE=10;IE=Edge,chrome=1")
+
+		title Marais Rossouw | Creative Enthusiast
+
+		meta(name="description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(property="og:url", content=DOMAIN)
+		meta(property="og:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
+		meta(property="og:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(property="og:site_name", content="Marais Rossouw")
+		meta(property="og:image", content=DOMAIN + "/img/generic.jpg")
+		meta(property="og:type", content="website")
+		meta(property="og:locale", content="en_US")
+		meta(name="referrer", content="always")
+
+		meta(name="twitter:card", content="summary_large_image")
+		meta(name="twitter:site", content="@codervandal")
+		meta(name="twitter:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
+		meta(name="twitter:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(name="twitter:creator", content="@codervandal")
+		meta(name="twitter:image", content=DOMAIN + "/img/generic.jpg")
+
+		script(type="application/ld+json")
+			include meta/person.json
+
+		link(rel="home", href=DOMAIN)
+		link(rel="canonical", href=DOMAIN)
+		link(rel="shortcut icon", href="img/favicon.ico", type="image/x-icon")
+		link(rel="icon", href="img/favicon.png", type="image/png")
+		//TODO: Make the icon modso
+
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		meta(name="mobile-web-app-capable", content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style", content="black")
+
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+		link(href="main.css", rel="stylesheet")
+
+		script(type="text/javascript", async).
+			!function (e, t, n, a, c, s, o) {
+				e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
+						(e[c].q = e[c].q || []).push(arguments)
+					}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
+			}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+	body(dir="ltr", itemtype="WebSite")
+		meta(itemprop="isFamilyFriendly", content="true")
+		meta(itemprop="dateCreated", content="2016-09-02T13:03:06+10:00")
+		meta(itemprop="dateModified", content=moment.tz(LOC).format())
+		meta(itemprop="copyrightYear", content=moment.tz(LOC).format('YYYY'))
+
+		a.wip(href="https://github.com/maraisr/website", target="_blank") Work In Progress
+
+		header.site__header
+			.logo
+				h1 Marais
+					span .
+				p An experienced caffeine consumer!
+
+			nav.navigation(role="navigation")
+				ul
+					li
+						a(href="#about", scroll-to) About
+					li
+						a(href="#experience", scroll-to) Experience
+					li
+						a(href="#skills", scroll-to) Skills
+					li
+						a(href="mailto:hi@marais.io", rel="nofollow") hi@marais.io
+
+		main.site__main
+			block body
+
+		footer.site__footer.footer
+			.footer__quote
+				q By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are.
+
+			.footer__social
+				include partials/_social
+
+			.footer__imprint
+				p Copyright &copy;&nbsp;
+					time(datetime=moment.tz(LOC).startOf('year').format()) #{moment.tz(LOC).format('YYYY')}
+					//span -
+					//button.imprint-toggle Imprint
+
+			.footer__cross
+				+icon("Christian Cross", "cross")
+
+		//include partials/_imprint
+
+		include meta/icons.svg
+
+		script(type="text/javascript", src="main.js", defer)
+

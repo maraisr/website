@@ -1,0 +1,18 @@
+.imprint {
+	@extend %visuallyhidden;
+
+	position: absolute;
+
+	background-color: white;
+
+	color: #1A1B1C;
+
+	.imprint-open & {
+		@extend %visuallshown;
+		position: fixed 0;
+	}
+
+	&__body {
+		@extend %container;
+	}
+}

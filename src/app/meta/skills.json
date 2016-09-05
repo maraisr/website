@@ -1,0 +1,76 @@
+{
+	"list": [
+		{
+			"zone": "Language",
+			"skills": [
+				"JavaScript|expert",
+				"TypeScript|prefered",
+				"HTML|expert",
+				"Sass|prefered",
+				"Scala|medium",
+				"PureScript|medium",
+				"Elm|mini",
+				"Java|medium",
+				"Pug|prefered",
+				"PHP|medium"
+			]
+		},
+		{
+			"zone": "Framework",
+			"skills": [
+				"Angular|expert",
+				"React|medium",
+				"Vue|prefered",
+				"Laravel|medium"
+			]
+		},
+		{
+			"zone": "Runetime",
+			"skills": [
+				"Node|prefered",
+				"nginx|mini",
+				"Canvas|medium"
+			]
+		},
+		{
+			"zone": "Philosophy",
+			"skills": [
+				"Responsive Web Development|expert",
+				"Search Engine Optimizations|medium",
+				"Test-Driven Development|expert",
+				"Agile Methodologies|medium"
+			]
+		},
+		{
+			"zone": "Database",
+			"skills": [
+				"MySQL|prefered"
+			]
+		},
+		{
+			"zone": "Software",
+			"skills": [
+				"Adobe Suite|medium",
+				"JetBrains IDEA|expert"
+			]
+		}
+	],
+	"legend": [
+		{
+			"level": "prefered",
+			"label": "Prefered Stack + Expert"
+		},
+		{
+			"level": "expert",
+			"label": "Expert"
+		},
+		{
+			"level": "medium",
+			"label": " Well Understood"
+		},
+		{
+			"level": "mini",
+			"label": "Room for Improvement"
+		}
+	]
+}
