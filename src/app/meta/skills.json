@@ -5,6 +5,7 @@
 			"skills": [
 				"JavaScript|expert",
 				"TypeScript|prefered",
+				"ES6|expert",
 				"HTML|expert",
 				"Sass|prefered",
 				"Scala|medium",
@@ -21,7 +22,9 @@
 				"Angular|expert",
 				"React|medium",
 				"Vue|prefered",
-				"Laravel|medium"
+				"Laravel|medium",
+				"Symfony|medium",
+				"Monix|medium"
 			]
 		},
 		{
@@ -29,7 +32,8 @@
 			"skills": [
 				"Node|prefered",
 				"nginx|mini",
-				"Canvas|medium"
+				"Canvas|medium",
+				"Babel|medium"
 			]
 		},
 		{
@@ -38,20 +42,31 @@
 				"Responsive Web Development|expert",
 				"Search Engine Optimizations|medium",
 				"Test-Driven Development|expert",
+				"Behaviour-Driven Development|medium",
 				"Agile Methodologies|expert"
 			]
 		},
 		{
 			"zone": "Database",
 			"skills": [
-				"MySQL|prefered"
+				"MySQL|prefered",
+				"MS SQL|medium",
+				"MongoDB|medium"
 			]
 		},
 		{
 			"zone": "Software",
 			"skills": [
 				"Adobe Suite|medium",
-				"JetBrains IDEA|expert"
+				"JetBrains IDEA|expert",
+				"Atlassian Suite|medium"
+			]
+		},
+		{
+			"zone": "Version Control",
+			"skills": [
+				"GIT|expert",
+				"SVN|medium"
 			]
 		}
 	],

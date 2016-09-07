@@ -11,8 +11,8 @@ export default class App {
 
 		// Imprint Toggle
 		/*[...document.getElementsByClassName('imprint-toggle')].forEach(btn => btn.addEventListener('click', () => {
-				document.body.classList.toggle('imprint-open');
-			})
+		 document.body.classList.toggle('imprint-open');
+		 })
 		 );*/
 	}
 }
