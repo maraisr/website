@@ -2,6 +2,7 @@ let gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	connect = require('gulp-connect'),
 	orderBy = require('lodash.orderby'),
+	merge = require('lodash.merge'),
 	moment = require('moment-timezone'),
 	pkg = require('./package.json');
 
@@ -17,6 +18,11 @@ function webpackCallback(err, stats) {
 		progress: true
 	}));
 }
+
+var PUG_LOCALS = {
+	LASTMOD: moment.tz(pkg.config.loc).format(),
+	DOMAIN: pkg.config.domain
+};
 
 gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
 
@@ -46,10 +52,11 @@ gulp.task('pug', () => {
 		.pipe(require('gulp-pug')({
 			doctype: 'html5',
 			pretty: false,
-			locals: {
+			locals: (function (def) {
+				return merge(def, PUG_LOCALS);
+			})({
 				moment: moment,
 				LOC: pkg.config.loc,
-				DOMAIN: pkg.config.domain,
 				_SKILLS: ((skills, returns) => {
 					skills.list.forEach(zone => {
 						zone.skills.forEach(skill => {
@@ -66,7 +73,7 @@ gulp.task('pug', () => {
 						legend: skills.legend
 					};
 				})(require('./src/app/meta/skills.json'), [])
-			}
+			})
 		}))
 		.pipe(require('gulp-posthtml')([
 			require('posthtml-minifier')({
@@ -159,7 +166,14 @@ gulp.task('js', (done) => {
 		});
 });
 
-gulp.task('gzip', ['default'], () => {
+gulp.task('misc', () => {
+	return gulp.src('./src/misc/**/*')
+		.pipe(require('gulp-mustache')(PUG_LOCALS))
+		.pipe(require('gulp-pretty-data')({type: 'minify'}))
+		.pipe(gulp.dest('./dist'))
+});
+
+gulp.task('gzip', ['default', 'misc'], () => {
 	return gulp.src('./dist/**/*')
 		.pipe(require('gulp-gzip')({
 			append: false,
