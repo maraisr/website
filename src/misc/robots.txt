@@ -1,0 +1,5 @@
+{{{DOMAIN}}}robots.txt
+
+User-agent: *
+
+Sitemap: {{{DOMAIN}}}sitemap.en_AU.xml
