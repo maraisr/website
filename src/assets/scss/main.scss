@@ -51,19 +51,6 @@
 @import 'header';
 @import 'footer';
 
-.wip {
-	position: fixed 0 0 false false;
-	z-index: 99;
-
-	background-color: #0093A5;
-
-	text-decoration: none;
-
-	padding: 2px 45px;
-
-	transform: translate(20%, 200%) rotate(45deg);
-}
-
 .fold {
 	@media print {
 		&:not(:first-child) {

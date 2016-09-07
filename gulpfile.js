@@ -52,7 +52,7 @@ gulp.task('pug', () => {
 				DOMAIN: pkg.config.domain,
 				_SKILLS: ((skills, returns) => {
 					skills.list.forEach(zone => {
-						zone.skills.sort().forEach(skill => {
+						zone.skills.forEach(skill => {
 							returns.push({
 								zone: zone.zone,
 								skill: skill.replace(/[|](.*)$/, '').trim(),
@@ -62,7 +62,7 @@ gulp.task('pug', () => {
 					});
 
 					return {
-						list: orderBy(returns, 'zone'),
+						list: orderBy(orderBy(returns, 'skill'), 'zone'),
 						legend: skills.legend
 					};
 				})(require('./src/app/meta/skills.json'), [])
