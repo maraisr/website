@@ -10,6 +10,7 @@ html(lang="en")
 		title Marais Rossouw | Creative Enthusiast
 
 		meta(name="description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+
 		meta(property="og:url", content=DOMAIN)
 		meta(property="og:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
 		meta(property="og:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
@@ -17,7 +18,6 @@ html(lang="en")
 		meta(property="og:image", content=DOMAIN + "/img/generic.jpg")
 		meta(property="og:type", content="website")
 		meta(property="og:locale", content="en_US")
-		meta(name="referrer", content="always")
 
 		meta(name="twitter:card", content="summary_large_image")
 		meta(name="twitter:site", content="@codervandal")
@@ -26,14 +26,17 @@ html(lang="en")
 		meta(name="twitter:creator", content="@codervandal")
 		meta(name="twitter:image", content=DOMAIN + "/img/generic.jpg")
 
+		meta(property="fb:app_id", content="637229486452272")
+
 		script(type="application/ld+json")
 			include meta/person.json
 
 		link(rel="home", href=DOMAIN)
 		link(rel="canonical", href=DOMAIN)
+		meta(name="referrer", content="always")
+
 		link(rel="shortcut icon", href="img/favicon.ico", type="image/x-icon")
 		link(rel="icon", href="img/favicon.png", type="image/png")
-		//TODO: Make the icon modso
 
 		meta(name="apple-mobile-web-app-capable", content="yes")
 		meta(name="mobile-web-app-capable", content="yes")
