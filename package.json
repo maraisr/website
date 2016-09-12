@@ -5,7 +5,7 @@
   "private": true,
   "config": {
     "loc": "Australia/Brisbane",
-    "domain": "http://marais.io/"
+    "domain": "https://marais.io/"
   },
   "scripts": {
     "lint": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
