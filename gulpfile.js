@@ -57,6 +57,7 @@ gulp.task('pug', () => {
 			})({
 				moment: moment,
 				LOC: pkg.config.loc,
+				SITE: require('./src/app/meta/site.json'),
 				_SKILLS: ((skills, returns) => {
 					skills.list.forEach(zone => {
 						zone.skills.forEach(skill => {
