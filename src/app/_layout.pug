@@ -9,11 +9,13 @@ html(lang="en")
 
 		title Marais Rossouw | Creative Enthusiast
 
-		meta(name="description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(name="description", content=SITE.description)
+
+		meta(property="fb:app_id", content="637229486452272")
 
 		meta(property="og:url", content=DOMAIN)
-		meta(property="og:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
-		meta(property="og:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(property="og:title", content=SITE.title)
+		meta(property="og:description", content=SITE.description)
 		meta(property="og:site_name", content="Marais Rossouw")
 		meta(property="og:image", content=DOMAIN + "img/generic.jpg")
 		meta(property="og:type", content="website")
@@ -21,12 +23,10 @@ html(lang="en")
 
 		meta(name="twitter:card", content="summary_large_image")
 		meta(name="twitter:site", content="@codervandal")
-		meta(name="twitter:title", content="Marais Rossouw is a creative and application developer on the Gold Coast.")
-		meta(name="twitter:description", content="Creative and application developer with over 6 years experience on the Gold Coast. Who's skilled in everything JavaScript, Scala, PureScript, HTML5 and SCSS.")
+		meta(name="twitter:title", content=SITE.title)
+		meta(name="twitter:description", content=SITE.description)
 		meta(name="twitter:creator", content="@codervandal")
 		meta(name="twitter:image", content=DOMAIN + "img/generic.jpg")
-
-		meta(property="fb:app_id", content="637229486452272")
 
 		script(type="application/ld+json")
 			include meta/person.json
@@ -45,7 +45,7 @@ html(lang="en")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
 		link(href="main.css", rel="stylesheet")
 
-		script(type="text/javascript", async).
+		script(type="text/javascript", defer).
 			!function (e, t, n, a, c, s, o) {
 				e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
 						(e[c].q = e[c].q || []).push(arguments)
@@ -62,7 +62,7 @@ html(lang="en")
 			.logo
 				h1 Marais
 					span .
-				p An experienced caffeine consumer!
+				p I code beautiful things.
 
 			nav.navigation(role="navigation")
 				ul
