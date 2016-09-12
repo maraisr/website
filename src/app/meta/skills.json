@@ -28,7 +28,7 @@
 			]
 		},
 		{
-			"zone": "Runetime",
+			"zone": "Runtime",
 			"skills": [
 				"Node|prefered",
 				"nginx|mini",
