@@ -9,14 +9,16 @@ html(lang="en")
 
 		title Marais Rossouw | Gold Coast Creative and Application Developer
 
+		meta(name="author", content="Marais Rossouw")
 		meta(name="description", content=SITE.description)
+		meta(name="keywords", content=SITE.keywords)
 
 		meta(property="fb:app_id", content="637229486452272")
 
 		meta(property="og:url", content=DOMAIN)
 		meta(property="og:title", content=SITE.title)
-		meta(property="og:description", content=SITE.description)
 		meta(property="og:site_name", content="Marais Rossouw")
+		meta(property="og:description", content=SITE.description)
 		meta(property="og:image", content=DOMAIN + "img/generic.jpg")
 		meta(property="og:type", content="website")
 		meta(property="og:locale", content="en_US")
@@ -28,9 +30,6 @@ html(lang="en")
 		meta(name="twitter:creator", content="@codervandal")
 		meta(name="twitter:image", content=DOMAIN + "img/generic.jpg")
 
-		script(type="application/ld+json")
-			include meta/person.json
-
 		link(rel="home", href=DOMAIN)
 		link(rel="canonical", href=DOMAIN)
 		meta(name="referrer", content="always")
@@ -41,6 +40,9 @@ html(lang="en")
 		meta(name="apple-mobile-web-app-capable", content="yes")
 		meta(name="mobile-web-app-capable", content="yes")
 		meta(name="apple-mobile-web-app-status-bar-style", content="black")
+
+		script(type="application/ld+json")
+			include meta/person.json
 
 		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
 		link(href="main.css", rel="stylesheet")
