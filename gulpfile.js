@@ -185,7 +185,7 @@ gulp.task('gzip', ['default', 'misc'], () => {
 		.pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('publish', ['gzip'], () => {
+gulp.task('publish', ['default', 'misc'], () => {
 	var awsPub = require('gulp-awspublish');
 
 	var s3config = (function () {
@@ -201,7 +201,6 @@ gulp.task('publish', ['gzip'], () => {
 	})();
 
 	var headers = {
-			'Content-Encoding': 'gzip',
 			'Cache-Control': 'max-age=1209600'
 		},
 		s3base = {
