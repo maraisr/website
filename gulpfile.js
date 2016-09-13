@@ -76,18 +76,24 @@ gulp.task('pug', () => {
 				})(require('./src/app/meta/skills.json'), [])
 			})
 		}))
-		.pipe(require('gulp-posthtml')([
-			require('posthtml-minifier')({
+		.pipe(require('gulp-posthtml')(((returns) => {
+			returns.push(require('posthtml-minifier')({
 				removeComments: true,
 				collapseWhitespace: true,
 				keepClosingSlash: true,
 				sortClassName: true,
 				minifyJS: true,
 				minifyCSS: true
-			}),
-			require('posthtml-schemas')(),
-			require('posthtml-json')()
-		]))
+			}));
+
+			if (process.env.NODE_ENV == 'production') {
+				returns.push(require('posthtml-schemas')());
+				returns.push(require('posthtml-json')());
+				returns.push(require('posthtml-obfuscate')());
+			}
+
+			return returns;
+		})([])))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(connect.reload());
 });
