@@ -21,7 +21,7 @@ function webpackCallback(err, stats) {
 
 var PUG_LOCALS = {
 	LASTMOD: moment.tz(pkg.config.loc).format(),
-	DOMAIN: pkg.config.domain
+	DOMAIN: (process.env.NODE_ENV == 'production') ? pkg.config.domain : 'http://localhost:3303/'
 };
 
 gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
