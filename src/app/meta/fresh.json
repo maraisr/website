@@ -1,0 +1,93 @@
+{
+	"name": "Marais Rossouw",
+	"meta": {
+		"format": "FRESH@0.6.0",
+		"version": "0.4.0",
+		"lastMod": "{{LASTMOD}}"
+	},
+	"info": {
+		"label": "Creative and Application Developer",
+		"characterClass": "Programmer",
+		"brief": "A creative and application developer with over 6 years expereince, who loves JavaScript!",
+		"image": "{{{DOMAIN}}}img/handsome.jpg",
+		"quote": "By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are."
+	},
+	"contact": {
+		"website": "{{{DOMAIN}}}",
+		"email": "hi@marais.io",
+		"other": []
+	},
+	"location": {
+		"city": "Gold Coast",
+		"region": "Queensland",
+		"code": "4210",
+		"country": "AU"
+	},
+	"social": [
+		{
+			"label": "GitHub",
+			"network": "GitHub",
+			"user": "maraisr",
+			"url": "https://github.com/maraisr"
+		},
+		{
+			"label": "LinkedIn",
+			"network": "LinkedIn",
+			"user": "maraisr",
+			"url": "https://au.linkedin.com/in/maraisr"
+		},
+		{
+			"label": "Twitter",
+			"network": "Twitter",
+			"user": "codervandal",
+			"url": "https://twitter.com/codervandal"
+		}
+	],
+	"employment": {
+		"summary": "6+ years software development experience.",
+		"history": [
+			{
+				"employer": "Smart-SEO",
+				"position": "Wordpress Developer",
+				"summary": "Began my career as a Photoshop to Wordpress theme developer.",
+				"start": "2012-01-01",
+				"end": "2012-09-01",
+				"keywords": [
+				]
+			},
+			{
+				"employer": "Vuly Trampolines",
+				"position": "Software Engineer",
+				"summary": "Later moved onto be a creative developer for Australias leading trampoline company.",
+				"start": "2013-03-01",
+				"end": "2014-10-01",
+				"keywords": [
+				]
+			},
+			{
+				"employer": "40/40 Creative",
+				"position": "Lead Software Engineer",
+				"summary": "Led the company in all technical areas, establishing solid standards and technical direction.",
+				"start": "2014-02-01",
+				"end": "2015-06-01",
+				"keywords": [
+				]
+			},
+			{
+				"employer": "Touchpoint",
+				"position": "Senior Lead Software Engineer",
+				"summary": "Lead frontend developer driving and leading technical initiatives for the airline industry.",
+				"start": "2015-06-01",
+				"end": "2016-10-01",
+				"keywords": [
+				]
+			}
+		]
+	},
+	"skills": {
+		"sets": [
+		],
+		"list": [
+		]
+	}
+}

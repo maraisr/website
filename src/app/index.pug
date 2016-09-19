@@ -32,41 +32,15 @@ block body
 			.experience
 				h2.offset-heading Experience
 				ul
-					li.experience__item
-						article
-							header
-								h4 Wordpress Developer
-								.experience__time
-									+timeDif(['2012-01-01', '2012-09-01'])
-							i.experience__company Smart-SEO
-							p.experience__descr Began my career as a PSD to Wordpress theme developer.
-
-					li.experience__item
-						article
-							header
-								h4 Software Engineer
-								.experience__time
-									+timeDif(['2013-03-01', '2014-01-01'])
-							i.experience__company Vuly Trampolines
-							p.experience__descr Later moved onto be a creative developer for Australias leading trampoline company.
-
-					li.experience__item
-						article
-							header
-								h4 Technical Director
-								.experience__time
-									+timeDif(['2014-02-01', '2015-05-01'])
-							i.experience__company 40/40 Creative
-							p.experience__descr Led the company in all technical areas, establishing solid standards and technical direction.
-
-					li.experience__item
-						article
-							header
-								h4 Senior Software Engineer
-								.experience__time
-									+timeDif(['2015-06-01'])
-							i.experience__company Touchpoint
-							p.experience__descr Lead frontend developer driving and leading technical initiatives within the airline industry.
+					for job in FRESH.employment.history
+						li.experience__item
+							article
+								header
+									h4=job.position
+									.experience__time
+										+timeDif([job.start, job.end || 0])
+								i.experience__company=job.employer
+								p.experience__descr=job.summary
 
 
 	#content-skills.fold.fold-skills
@@ -75,10 +49,10 @@ block body
 				h2.offset-heading Skills
 				ul.legend
 					for item in _SKILLS.legend
-						li(class="legend__item legend__item--" + item.level, level=item.level) #{item.label}
+						li(class="legend__item legend__item--" + item.level, level=item.level)=item.label
 
 				ul.skills
 					for skill in _SKILLS.list
 						li(class="skills__item skills__item--" + skill.css, level=skill.css)
-							small #{skill.zone}
+							small=skill.zone
 							| #{skill.skill}
