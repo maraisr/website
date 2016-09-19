@@ -79,21 +79,21 @@ html(lang="en")
 					li
 						a(href="#skills", scroll-to) Skills
 					li
-						a(href="mailto:hi@marais.io", rel="nofollow") hi@marais.io
+						a(href="mailto:" + FRESH.contact.email, rel="nofollow")=FRESH.contact.email
 
 		main.site__main
 			block body
 
 		footer.site__footer.footer
 			.footer__quote
-				q By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are.
+				q=FRESH.info.quote
 
 			.footer__social
 				include partials/_social
 
 			.footer__imprint
 				p Copyright &copy;&nbsp;
-					time(datetime=moment.tz(LOC).startOf('year').format()) #{moment.tz(LOC).format('YYYY')}
+					time(datetime=moment.tz(LOC).startOf('year').format())=moment.tz(LOC).format('YYYY')
 					//span -
 					//button.imprint-toggle Imprint
 

@@ -47,6 +47,8 @@ gulp.task('serve', ['watch'], () => {
 });
 
 gulp.task('pug', () => {
+	let mustache = require('mustache');
+
 	return gulp.src('./src/app/index.pug')
 		.pipe(plumb())
 		.pipe(require('gulp-pug')({
@@ -58,6 +60,9 @@ gulp.task('pug', () => {
 				moment: moment,
 				LOC: pkg.config.loc,
 				SITE: require('./src/app/meta/site.json'),
+				FRESH: ((returns) => {
+					return JSON.parse(mustache.render(returns, PUG_LOCALS));
+				})(JSON.stringify(require('./src/app/meta/fresh.json'))),
 				_SKILLS: ((skills, returns) => {
 					skills.list.forEach(zone => {
 						zone.skills.forEach(skill => {
@@ -174,9 +179,14 @@ gulp.task('js', (done) => {
 });
 
 gulp.task('misc', () => {
-	return gulp.src('./src/misc/**/*')
+	return gulp.src(['./src/misc/**/*', './src/app/meta/fresh.json'])
 		.pipe(require('gulp-mustache')(PUG_LOCALS))
 		.pipe(require('gulp-pretty-data')({type: 'minify'}))
+		.pipe(require('gulp-rename')(function (returns) {
+			if (returns.basename == 'fresh') {
+				returns.basename = 'resume'
+			}
+		}))
 		.pipe(gulp.dest('./dist'))
 });
 
@@ -191,6 +201,7 @@ gulp.task('gzip', ['default', 'misc'], () => {
 		.pipe(gulp.dest('./dist/'));
 });
 
+// If you want GZIP, using ['gzip'] here.
 gulp.task('publish', ['default', 'misc'], () => {
 	var awsPub = require('gulp-awspublish');
 
