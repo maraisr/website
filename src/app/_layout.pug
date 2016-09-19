@@ -1,107 +1,85 @@
-include partials/_mixins
+extends _base
 
-doctype html
-html(lang="en")
-	head
-		meta(charset="utf-8")
-		meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=9;IE=10;IE=Edge,chrome=1")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+block _head
+	meta(name="author", content="Marais Rossouw")
+	meta(name="description", content=SITE.description)
+	meta(name="keywords", content=SITE.keywords)
 
-		title Marais Rossouw | Gold Coast Creative and Application Developer
+	meta(property="fb:app_id", content="637229486452272")
 
-		meta(name="author", content="Marais Rossouw")
-		meta(name="description", content=SITE.description)
-		meta(name="keywords", content=SITE.keywords)
+	meta(property="og:url", content=DOMAIN)
+	meta(property="og:title", content=SITE.title)
+	meta(property="og:site_name", content="Marais Rossouw")
+	meta(property="og:description", content=SITE.description)
+	meta(property="og:image", content=DOMAIN + "img/generic.jpg")
+	meta(property="og:type", content="website")
+	meta(property="og:locale", content="en_US")
 
-		meta(property="fb:app_id", content="637229486452272")
+	meta(name="twitter:card", content="summary_large_image")
+	meta(name="twitter:site", content="@codervandal")
+	meta(name="twitter:title", content=SITE.title)
+	meta(name="twitter:description", content=SITE.description)
+	meta(name="twitter:creator", content="@codervandal")
+	meta(name="twitter:image", content=DOMAIN + "img/generic.jpg")
 
-		meta(property="og:url", content=DOMAIN)
-		meta(property="og:title", content=SITE.title)
-		meta(property="og:site_name", content="Marais Rossouw")
-		meta(property="og:description", content=SITE.description)
-		meta(property="og:image", content=DOMAIN + "img/generic.jpg")
-		meta(property="og:type", content="website")
-		meta(property="og:locale", content="en_US")
+	meta(name="apple-mobile-web-app-capable", content="yes")
+	meta(name="mobile-web-app-capable", content="yes")
+	meta(name="apple-mobile-web-app-status-bar-style", content="black")
 
-		meta(name="twitter:card", content="summary_large_image")
-		meta(name="twitter:site", content="@codervandal")
-		meta(name="twitter:title", content=SITE.title)
-		meta(name="twitter:description", content=SITE.description)
-		meta(name="twitter:creator", content="@codervandal")
-		meta(name="twitter:image", content=DOMAIN + "img/generic.jpg")
+	link(href=DOMAIN, rel="canonical")
 
-		meta(name="apple-mobile-web-app-capable", content="yes")
-		meta(name="mobile-web-app-capable", content="yes")
-		meta(name="apple-mobile-web-app-status-bar-style", content="black")
+block _head_end
+	link(href="main.js", rel="preconnect")
 
-		meta(name="referrer", content="always")
+	script(type="application/ld+json")
+		include meta/person.json
 
-		link(href=DOMAIN, rel="home")
-		link(href=DOMAIN, rel="canonical")
+	script(type="text/javascript", defer="defer", asynx="async").
+		!function (e, t, n, a, c, s, o) {
+			e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
+					(e[c].q = e[c].q || []).push(arguments)
+				}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
+		}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
 
-		base(href=DOMAIN)
+block _body
+	header.site__header
+		.logo
+			h1 Marais
+				span .
+			p Is a coder of beautiful things.
 
-		link(rel="icon", href="img/favicon.png", type="image/png")
+		nav.navigation(role="navigation")
+			ul
+				li
+					a(href="#about", scroll-to) About
+				li
+					a(href="#experience", scroll-to) Experience
+				li
+					a(href="#skills", scroll-to) Skills
+				li
+					a(href="mailto:" + FRESH.contact.email, rel="nofollow")=FRESH.contact.email
 
-		script(type="application/ld+json")
-			include meta/person.json
+	main.site__main
+		block body
 
-		link(href="main.css", rel="stylesheet")
+	footer.site__footer.footer
+		.footer__quote
+			q=FRESH.info.quote
 
-		link(href="main.js", rel="preconnect")
+		.footer__social
+			include partials/_social
 
-		script(type="text/javascript", defer).
-			!function (e, t, n, a, c, s, o) {
-				e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
-						(e[c].q = e[c].q || []).push(arguments)
-					}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
-			}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+		.footer__imprint
+			p Copyright &copy;&nbsp;
+				time(datetime=moment.tz(LOC).startOf('year').format())=moment.tz(LOC).format('YYYY')
+				//span -
+				//button.imprint-toggle Imprint
 
-	body(dir="ltr", itemtype="WebSite")
-		meta(itemprop="isFamilyFriendly", content="true")
-		meta(itemprop="dateCreated", content="2016-09-09T13:03:06+10:00")
-		meta(itemprop="dateModified", content=LASTMOD)
-		meta(itemprop="copyrightYear", content=moment.tz(LOC).format('YYYY'))
+		.footer__cross
+			+icon("Christian Cross", "cross")
 
-		header.site__header
-			.logo
-				h1 Marais
-					span .
-				p Is a coder of beautiful things.
+	//include partials/_imprint
 
-			nav.navigation(role="navigation")
-				ul
-					li
-						a(href="#about", scroll-to) About
-					li
-						a(href="#experience", scroll-to) Experience
-					li
-						a(href="#skills", scroll-to) Skills
-					li
-						a(href="mailto:" + FRESH.contact.email, rel="nofollow")=FRESH.contact.email
+	include meta/icons.svg
 
-		main.site__main
-			block body
-
-		footer.site__footer.footer
-			.footer__quote
-				q=FRESH.info.quote
-
-			.footer__social
-				include partials/_social
-
-			.footer__imprint
-				p Copyright &copy;&nbsp;
-					time(datetime=moment.tz(LOC).startOf('year').format())=moment.tz(LOC).format('YYYY')
-					//span -
-					//button.imprint-toggle Imprint
-
-			.footer__cross
-				+icon("Christian Cross", "cross")
-
-		//include partials/_imprint
-
-		include meta/icons.svg
-
-		script(type="text/javascript", src="main.js", defer)
+	script(type="text/javascript", src="main.js", defer="defer")
