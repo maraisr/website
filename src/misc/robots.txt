@@ -1,4 +1,8 @@
 User-agent: *
+Disallow: /img/favicon.png
+Disallow: /img/generic.jpg
+Disallow: /fonts/*
+Disallow: /resume.json
 Disallow: /error.html
 
 Sitemap: {{{DOMAIN}}}sitemap.en_AU.xml
