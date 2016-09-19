@@ -49,7 +49,7 @@ gulp.task('serve', ['watch'], () => {
 gulp.task('pug', () => {
 	let mustache = require('mustache');
 
-	return gulp.src('./src/app/index.pug')
+	return gulp.src('./src/app/[!_]*.pug')
 		.pipe(plumb())
 		.pipe(require('gulp-pug')({
 			doctype: 'html5',
