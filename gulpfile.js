@@ -1,10 +1,11 @@
-let gulp = require('gulp'),
+const gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	connect = require('gulp-connect'),
 	orderBy = require('lodash.orderby'),
 	merge = require('lodash.merge'),
 	moment = require('moment-timezone'),
-	pkg = require('./package.json');
+	pkg = require('./package.json'),
+	rimraf = require('rimraf');
 
 function plumb() {
 	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
@@ -37,6 +38,10 @@ gulp.task('watch', ['default'], () => {
 			poll: true
 		}, webpackCallback);
 });
+
+gulp.task('clean', (done) => {
+	return rimraf('./dist/**/*', done);
+})
 
 gulp.task('serve', ['watch'], () => {
 	connect.server({
@@ -191,38 +196,16 @@ gulp.task('misc', () => {
 });
 
 // If you want GZIP, using ['gzip'] here.
-gulp.task('fingerprint', ['default', 'misc'], () => {
-	// TODO: This function needs to be cleaned up more, need promises etc..
-	const fs = require('graceful-fs');
-	const replace = require('gulp-replace');
+gulp.task('fingerprint', ['default', 'misc'], (done) => {
+	const revAll = require('gulp-rev-all');
+	let myRev = new revAll({dontRenameFile: ['.html']});
 
-	gulp.src('*.{css,js}', {cwd: './dist/'})
-		.pipe(require('gulp-buster')())
-		.on('data', (r) => {
-			let hashes = JSON.parse(r.contents.toString());
-
-			hashes = Object.keys(hashes).map(v => {
-				return {orig: v, new: `${v.replace(/^(.*)\.(css|js)$/, `$1-${hashes[v].substr(0, 5)}.$2`)}`};
-			});
-
-			// Replace in html files
-			((pip) => {
-				hashes.forEach(hash => {
-					pip.pipe(replace(hash.orig, hash.new));
-				});
-				return pip;
-			})(gulp.src('./dist/*.html'))
-				.pipe(gulp.dest('./dist'));
-
-			// Rename files
-			hashes.forEach(hash => {
-				fs.rename(`./dist/${hash.orig}`, `./dist/${hash.new}`, (err) => {
-					if (err != null) {
-						throw err;
-					}
-				});
-			});
-		})
+	gulp.src('./dist/**/*.{css,js,html}')
+		.pipe(myRev.revision())
+		.pipe(gulp.dest('./dist/'))
+		.on('end', () => {
+			rimraf('./dist/main.{css,js}', done);
+		});
 });
 
 gulp.task('gzip', ['default', 'misc'], () => {
