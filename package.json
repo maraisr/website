@@ -10,8 +10,8 @@
   "scripts": {
     "lint": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "build": "rimraf dist/ && cross-env NODE_ENV=production gulp",
-    "deploy": "rimraf dist/ && cross-env NODE_ENV=production gulp publish"
+    "build": "gulp clean && cross-env NODE_ENV=production gulp",
+    "deploy": "gulp clean && cross-env NODE_ENV=production gulp publish"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,6 @@
     "graceful-fs": "^4.1.6",
     "gulp": "^3.9.1",
     "gulp-awspublish": "^3.3.0",
-    "gulp-buster": "^1.1.0",
     "gulp-connect": "^5.0.0",
     "gulp-gzip": "^1.4.0",
     "gulp-if": "^2.0.1",
@@ -48,7 +47,7 @@
     "gulp-pretty-data": "^0.1.1",
     "gulp-pug": "^3.0.4",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
+    "gulp-rev-all": "^0.8.24",
     "gulp-sass": "^2.3.2",
     "gulp-sass-bulk-import": "^1.0.1",
     "gulp-sourcemaps": "^1.6.0",
