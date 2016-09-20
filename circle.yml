@@ -18,6 +18,8 @@ database:
 dependencies:
   pre:
     - npm i gulp-cli -g
+  post:
+    - npm prune
 
 deployment:
   production:
