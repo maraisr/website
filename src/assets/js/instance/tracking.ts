@@ -17,7 +17,7 @@ export default class Tracking implements TrackingInterface {
 					a.addEventListener('click', (e: MouseEvent) => {
 						this.track('Social', 'click', title);
 					});
-				})
+				});
 			});
 		}
 	}
