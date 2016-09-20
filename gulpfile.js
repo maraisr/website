@@ -190,6 +190,41 @@ gulp.task('misc', () => {
 		.pipe(gulp.dest('./dist'))
 });
 
+// If you want GZIP, using ['gzip'] here.
+gulp.task('fingerprint', ['default', 'misc'], () => {
+	// TODO: This function needs to be cleaned up more, need promises etc..
+	const fs = require('fs');
+	const replace = require('gulp-replace');
+
+	gulp.src('*.{css,js}', {cwd: './dist/'})
+		.pipe(require('gulp-buster')())
+		.on('data', (r) => {
+			let hashes = JSON.parse(r.contents.toString());
+
+			hashes = Object.keys(hashes).map(v => {
+				return {orig: v, new: `${v.replace(/^(.*)\.(css|js)$/, `$1-${hashes[v].substr(0, 5)}.$2`)}`};
+			});
+
+			// Replace in html files
+			((pip) => {
+				hashes.forEach(hash => {
+					pip.pipe(replace(hash.orig, hash.new));
+				});
+				return pip;
+			})(gulp.src('./dist/*.html'))
+				.pipe(gulp.dest('./dist'));
+
+			// Rename files
+			hashes.forEach(hash => {
+				fs.rename(`./dist/${hash.orig}`, `./dist/${hash.new}`, (err) => {
+					if (err != null) {
+						throw err;
+					}
+				});
+			});
+		})
+});
+
 gulp.task('gzip', ['default', 'misc'], () => {
 	return gulp.src('./dist/**/*')
 		.pipe(require('gulp-gzip')({
@@ -201,8 +236,7 @@ gulp.task('gzip', ['default', 'misc'], () => {
 		.pipe(gulp.dest('./dist/'));
 });
 
-// If you want GZIP, using ['gzip'] here.
-gulp.task('publish', ['default', 'misc'], () => {
+gulp.task('publish', ['fingerprint'], () => {
 	var awsPub = require('gulp-awspublish');
 
 	var s3config = (function () {
