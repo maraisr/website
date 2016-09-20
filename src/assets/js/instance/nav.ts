@@ -16,7 +16,7 @@ export default class Nav {
 
 				setTimeout(() => {
 					document.body.scrollTop += perTick;
-					if (document.body.scrollTop == to) return;
+					if (document.body.scrollTop === to) return;
 					scroll(to, duration - 10);
 				}, 10);
 			})(document.getElementById(`content-${clickTo}`).offsetTop, 600);
