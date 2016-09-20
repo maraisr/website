@@ -33,6 +33,7 @@
     "cssnano": "^3.7.5",
     "cssortie": "0.0.1",
     "google-closure-compiler-js": "^20160916.0.0",
+    "graceful-fs": "^4.1.6",
     "gulp": "^3.9.1",
     "gulp-awspublish": "^3.3.0",
     "gulp-buster": "^1.1.0",

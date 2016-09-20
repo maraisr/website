@@ -193,7 +193,7 @@ gulp.task('misc', () => {
 // If you want GZIP, using ['gzip'] here.
 gulp.task('fingerprint', ['default', 'misc'], () => {
 	// TODO: This function needs to be cleaned up more, need promises etc..
-	const fs = require('fs');
+	const fs = require('graceful-fs');
 	const replace = require('gulp-replace');
 
 	gulp.src('*.{css,js}', {cwd: './dist/'})
