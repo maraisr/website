@@ -6,15 +6,19 @@
 
 	width: 100%;
 
-	@include mscr(450px) {
+	@include mscr($stage-c) {
+		padding: 0;
+
 		margin: 0 auto;
 		width: calc(100vw * 0.8);
 	}
 }
 
 %fold-height {
-	height: calc(100vh - (#{$bodyBorder} * 2));
-	min-height: 900px;
+	@include mscr($stage-d) {
+		height: calc(100vh - (#{$bodyBorder} * 2));
+		min-height: 900px;
+	}
 
 	@media print {
 		height: auto;

@@ -3,7 +3,8 @@
 
 	$offset: 50px;
 
-	position: fixed $offset 0 false 0;
+	padding: 20px;
+
 	z-index: 10;
 
 	@media print {
@@ -11,18 +12,40 @@
 		margin-bottom: 15px;
 	}
 
-	.logo, .navigation {
-		lost-column: 1/2;
+	@include mscr($stage-b) {
+		position: fixed $offset 0 false 0;
+
+		padding: 0 $bodyBorder;
+
+		.logo {
+			lost-column: 1/3;
+		}
+
+		.navigation {
+			lost-column: 2/3;
+		}
+	}
+
+	@include mscr($stage-c) {
+		padding: 0;
 	}
 
 	@at-root .logo {
 		display: inline-block;
 		vertical-align: middle;
 
+		width: 100%;
+		text-align: center;
+
 		color: white;
 
 		@media print {
 			color: #1A1B1C;
+		}
+
+		@include mscr($stage-b) {
+			width: auto;
+			text-align: left;
 		}
 
 		h1 {
@@ -42,13 +65,13 @@
 	}
 
 	@at-root .navigation {
-		display: inline-block;
-		vertical-align: middle;
+		display: none;
 
 		text-align: right;
 
-		@media print {
-			display: none;
+		@include mscr($stage-b) {
+			display: inline-block;
+			vertical-align: middle;
 		}
 
 		a {

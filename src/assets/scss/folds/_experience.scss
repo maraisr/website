@@ -5,14 +5,33 @@
 
 	overflow: hidden;
 
+	.offset-heading {
+		display: block;
+
+		margin-bottom: 20px;
+		padding-bottom: 12px;
+
+		font-size: 28px;
+		border-bottom: 1px solid white;
+
+		@include mscr($stage-c) {
+			display: none;
+		}
+	}
+
 	.experience {
 		@extend %container;
 
 		position: relative;
-		padding-top: 155px;
-		padding-bottom: 155px;
+
+		padding-top: 70px;
 
 		text-align: left;
+
+		@include mscr($stage-d) {
+			padding-top: 155px;
+			padding-bottom: 155px;
+		}
 
 		@media print {
 			padding: 0;
@@ -21,9 +40,11 @@
 		ul {
 			width: 100%;
 
-			@media print {
-				display: flex;
-				flex-flow: column-reverse wrap;
+			display: flex;
+			flex-flow: column-reverse wrap;
+
+			@include mscr($stage-c) {
+				display: block;
 			}
 		}
 
@@ -31,51 +52,46 @@
 			display: inline-block;
 			vertical-align: top;
 
-			@media screen {
-				lost-column: 1/5;
+			flex: 1 0 auto;
+			width: 100%;
+
+			&:not(:first-child) {
+				margin-bottom: 50px;
 			}
 
-			@media print {
-				flex: 1 0 auto;
-				width: 100%;
+			@include mscr($stage-d) {
+				lost-column: 1/5;
 
 				&:not(:first-child) {
-					margin-bottom: 20px;
+					margin-bottom: 0;
 				}
-			}
 
-			@media screen {
 				&:last-child {
 					position: relative;
 
 					lost-column: 2/5;
 
 					padding-left: 35px;
+				}
+			}
 
-					/*article {
-						position: relative;
-						z-index: 2;
-					}
-
-					&:before {
-						position: absolute (-1 * (999px)) 0;
-						right: (-1 * (999px));
-						left: (-1 * (25px /2));
-
-						z-index: 1;
-
-						content: '';
-						background-color: rgba(black, 0.1);
-					}*/
+			@media print {
+				&:not(:first-child) {
+					margin-bottom: 20px;
 				}
 			}
 		}
 
 		&__time {
 			display: block;
-			margin-top: 42px;
+
+			margin-top: 12px;
 
 			font-size: 12px;
+
+			@include mscr($stage-c) {
+				margin-top: 42px;
+			}
 
 			.time {
 				&:first-child {
