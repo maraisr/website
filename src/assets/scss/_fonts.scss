@@ -8,11 +8,7 @@ $fonts: (
 		@font-face {
 			font-family: $name;
 			src: url('fonts/#{$name}-#{$type}.eot');
-			src: url('fonts/#{$name}-#{$type}.eot?#iefix') format('embedded-opentype'),
-			url('fonts/#{$name}-#{$type}.woff2') format('woff2'),
-			url('fonts/#{$name}-#{$type}.woff') format('woff'),
-			url('fonts/#{$name}-#{$type}.ttf') format('truetype'),
-			url('fonts/#{$name}-#{$type}.svg') format('svg');
+			src: url('fonts/#{$name}-#{$type}.eot?#iefix') format('embedded-opentype'), url('fonts/#{$name}-#{$type}.woff2') format('woff2'), url('fonts/#{$name}-#{$type}.woff') format('woff'), url('fonts/#{$name}-#{$type}.ttf') format('truetype'), url('fonts/#{$name}-#{$type}.svg') format('svg');
 			font-weight: $weight;
 
 			@if ($type == 'italic') {
