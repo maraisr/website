@@ -6,8 +6,12 @@
 		'mini': (#BF4B46)
 	);
 
-	height: 45vh;
-	min-height: 400px;
+	margin-top: 50px;
+
+	@include mscr($stage-c) {
+		height: 45vh;
+		min-height: 400px;
+	}
 
 	@media print {
 		height: auto;
@@ -16,11 +20,14 @@
 
 	.fold__content {
 		position: relative;
-		//top: 50%;
-
-		//transform: translate(0, (-1 * (100%) / 2));
 
 		text-align: left;
+
+		@include mscr($stage-c) {
+			top: 50%;
+
+			transform: translate(0, (-1 * (100%) / 2));
+		}
 
 		@media print {
 			position: static;
@@ -108,8 +115,9 @@
 			vertical-align: middle;
 
 			flex: 1 0 auto;
-			padding: 10px;
+			padding: 6px;
 			margin: 4px;
+			font-size: 15px;
 
 			text-align: center;
 			text-transform: lowercase;
@@ -118,8 +126,9 @@
 
 			transition: opacity .2s;
 
-			@media print {
-				padding: 4px;
+			@include mscr($stage-c) {
+				padding: 10px;
+				font-soze: 16px;
 			}
 
 			@each $type, $colours in $types {

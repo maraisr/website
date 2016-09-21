@@ -41,7 +41,7 @@ gulp.task('watch', ['default'], () => {
 
 gulp.task('clean', (done) => {
 	return rimraf('./dist/**/*', done);
-})
+});
 
 gulp.task('serve', ['watch'], () => {
 	connect.server({
@@ -143,12 +143,12 @@ gulp.task('scss', () => {
 
 			if (process.env.NODE_ENV == 'production') {
 				steps.push('css-mqpacker');
+				steps.push(['postcss-sorting', {'sort-order': require('cssortie')}]);
 				steps.push(['cssnano', {
 					discardComments: {removeAll: true},
 					autoprefixer: prfxOpts,
 					safe: false
 				}]);
-				steps.push(['postcss-sorting', {'sort-order': require('cssortie')}]);
 			}
 
 			return steps.map(v => {
