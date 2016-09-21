@@ -11,6 +11,11 @@
 
 $bodyBorder: 30px;
 
+$stage-a: 320px;
+$stage-b: 570px;
+$stage-c: 768px;
+$stage-d: 1024px;
+
 @mixin mscr($width) {
 	@media only screen and (min-width: $width) {
 		@content;
@@ -72,7 +77,7 @@ html {
 
 	border: 10px solid lighten(#1A1B1C, 3%);
 
-	@include mscr(450px) {
+	@include mscr($stage-c) {
 		border-width: $bodyBorder;
 	}
 
