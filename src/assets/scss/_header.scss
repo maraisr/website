@@ -7,11 +7,6 @@
 
 	z-index: 10;
 
-	@media print {
-		position: static;
-		margin-bottom: 15px;
-	}
-
 	@include mscr($stage-b) {
 		position: fixed $offset 0 false 0;
 
@@ -28,6 +23,11 @@
 
 	@include mscr($stage-c) {
 		padding: 0;
+	}
+
+	@media print {
+		position: static;
+		margin-bottom: 15px;
 	}
 
 	@at-root .logo {
