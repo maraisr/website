@@ -17,7 +17,7 @@ $stage-c: 768px;
 $stage-d: 1024px;
 
 @mixin mscr($width) {
-	@media only screen and (min-width: $width) {
+	@media screen and (min-width: $width) {
 		@content;
 	}
 }
