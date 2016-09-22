@@ -6,7 +6,7 @@ block body
 		.fold__content
 			.fold-about__body
 				p
-					| Hello! I'm
+					| I'm
 					span.highlight.no-right Marais Rossouw
 					| , a
 					span.highlight creative
@@ -37,9 +37,11 @@ block body
 							article
 								header
 									h4=job.position
-									.experience__time
-										+timeDif([job.start, job.end || 0])
-								i.experience__company=job.employer
+
+								p.experience__company=job.employer
+								.experience__time
+									+timeDif([job.start, job.end || 0])
+
 								p.experience__descr=job.summary
 
 

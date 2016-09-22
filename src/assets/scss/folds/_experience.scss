@@ -85,13 +85,11 @@
 		&__time {
 			display: block;
 
-			margin-top: 12px;
+			margin-top: 8px;
 
 			font-size: 12px;
 
-			@include mscr($stage-c) {
-				margin-top: 42px;
-			}
+			color: #838b91;
 
 			.time {
 				&:first-child {
@@ -106,6 +104,10 @@
 
 		&__descr {
 			line-height: 1.5;
+
+			@include mscr($stage-c) {
+				margin-top: 22px;
+			}
 		}
 
 		&__company {
@@ -113,6 +115,10 @@
 			margin: 12px 0;
 
 			font-size: 12px;
+
+			@include mscr($stage-c) {
+				margin-top: 50px;
+			}
 
 			@media print {
 				margin: 6px 0;
