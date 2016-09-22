@@ -2,9 +2,9 @@ machine:
   timezone:
     Australia/Brisbane
   node:
-    version: 6.2.0
+    version: 6.6.0
   environment:
-    NODE_ENV: 'development'
+    NODE_ENV: 'production'
 
 general:
   branches:
