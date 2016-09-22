@@ -112,7 +112,7 @@ gulp.task('pug', () => {
 gulp.task('scss', () => {
 	let srcMaps = require('gulp-sourcemaps');
 
-	return gulp.src('./src/assets/scss/main.scss')
+	let returns = gulp.src('./src/assets/scss/main.scss')
 		.pipe(plumb())
 		.pipe(srcMaps.init())
 		.pipe(require('gulp-sass-bulk-import')())
@@ -187,9 +187,13 @@ gulp.task('scss', () => {
 
 				return require(v);
 			});
-		})()))
-		.pipe(require('gulp-if')(!(process.env.NODE_ENV == 'production'), srcMaps.write()))
-		.pipe(gulp.dest('./dist/'))
+		})()));
+
+	if (process.env.NODE_ENV != 'production') {
+		returns.pipe(srcMaps.write());
+	}
+
+	return returns.pipe(gulp.dest('./dist/'))
 		.pipe(connect.reload());
 });
 
