@@ -4,7 +4,7 @@ machine:
   node:
     version: 6.6.0
   environment:
-    NODE_ENV: 'production'
+    NODE_ENV: 'development'
 
 general:
   branches:
