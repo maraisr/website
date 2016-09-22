@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
+    "concurrent-transform": "^1.0.0",
     "cross-env": "^2.0.1",
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.7.5",
