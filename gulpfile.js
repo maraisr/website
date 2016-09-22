@@ -122,12 +122,14 @@ gulp.task('scss', () => {
 		.pipe(require('gulp-postcss')((() => {
 			let steps = [],
 				prfxOpts = {
-					//http://browserl.ist/?q=chrome+%3E%3D+51%2C+ie+%3E%3D+11%2C+edge+%3E%3D13%2C+safari+%3E%3D+9.1
+					//http://browserl.ist/?q=chrome+%3E%3D+51%2C+ie+%3E%3D+11%2C+edge+%3E%3D13%2C+safari+%3E%3D+9.1%2C+and_chr+%3E%3D+51%2C+ios+%3E+9.2
 					browsers: [
 						'chrome >= 50',
 						'ie >= 11',
 						'edge >=13',
-						'safari >= 9.1'
+						'safari >= 9.1',
+						'and_chr >= 51',
+						'ios > 9.2'
 					],
 					cascade: false,
 					supports: true,
