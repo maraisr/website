@@ -5,7 +5,8 @@ const gulp = require('gulp'),
 	merge = require('lodash.merge'),
 	moment = require('moment-timezone'),
 	pkg = require('./package.json'),
-	rimraf = require('rimraf');
+	rimraf = require('rimraf'),
+	parallelize = require("concurrent-transform");
 
 function plumb() {
 	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
@@ -277,7 +278,7 @@ gulp.task('publish', ['fingerprint'], () => {
 		s3 = awsPub.create(s3base);
 
 	return gulp.src('**/*', {cwd: 'dist/'})
-		.pipe(s3.publish(headers), 10)
+		.pipe(parallelize(s3.publish(headers), 10))
 		.pipe(s3.sync())
 		.pipe(awsPub.reporter(rpt))
 });
