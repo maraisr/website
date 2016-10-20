@@ -5,7 +5,7 @@ export default class Tracking implements TrackingInterface {
 			ga('send', 'pageview');
 
 			// Mailto links
-			[...document.querySelectorAll('[href^="mailto"]')].forEach((node: Element) => {
+			/*[...document.querySelectorAll('[href^="mailto"]')].forEach((node: Element) => {
 				node.addEventListener('click', (e: MouseEvent) => this.track('Nav', 'click', 'mailto'));
 			});
 
@@ -18,7 +18,7 @@ export default class Tracking implements TrackingInterface {
 						this.track('Social', 'click', title);
 					});
 				});
-			});
+			});*/
 		}
 	}
 

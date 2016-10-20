@@ -17,6 +17,14 @@
 			]
 		},
 		{
+			"zone": "Package Manager",
+			"skills": [
+				"Bower|expert",
+				"NPM|expert",
+				"Yarn|prefered"
+			]
+		},
+		{
 			"zone": "Framework",
 			"skills": [
 				"Angular|expert",
