@@ -67,7 +67,16 @@ gulp.task('pug', () => {
 				LOC: pkg.config.loc,
 				SITE: require('./src/app/meta/site.json'),
 				FRESH: ((returns) => {
-					return JSON.parse(mustache.render(returns, PUG_LOCALS));
+					returns = JSON.parse(mustache.render(returns, PUG_LOCALS));
+
+					// Limit to last 4
+					let limit = 4;
+
+					if (returns.employment.history.length > limit) {
+						returns.employment.history = returns.employment.history.splice(returns.employment.history.length - limit, limit);
+					}
+
+					return returns;
 				})(JSON.stringify(require('./src/app/meta/fresh.json'))),
 				_SKILLS: ((skills, returns) => {
 					skills.list.forEach(zone => {
