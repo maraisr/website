@@ -17,12 +17,12 @@ database:
 
 dependencies:
   pre:
-    - npm i gulp-cli -g
-  post:
-    - npm prune
+    - npm i yarn gulp-cli -g
+  override:
+    - yarn
 
 deployment:
   production:
     branch: master
     commands:
-      - npm run deploy
+      - yarn deploy
