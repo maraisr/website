@@ -6,20 +6,27 @@ export default class Skills {
 		[... selectors.getElementsByClassName('legend__item')].forEach(level => {
 			let levelAttr = level.getAttribute('level');
 
-			level.addEventListener('mouseover', () => {
+			((evt) => {
+				level.addEventListener('mouseover', evt);
+				level.addEventListener('touchstart', evt);
+			})(() => {
 				overZone = true;
 				skillsZone[0].className = `skills ${levelAttr}`;
 			});
 
 			level.addEventListener('mouseleave', () => overZone = false);
+			level.addEventListener('touchend', () => overZone = false);
 		});
 
-		selectors.getElementsByClassName('legend')[0].addEventListener('mouseout', () => {
+		((evt, ref) => {
+			ref.addEventListener('mouseout', evt);
+			ref.addEventListener('touchend', evt);
+		})(() => {
 			setTimeout(() => {
 				if (!overZone) {
 					skillsZone[0].className = 'skills';
 				}
 			}, 100);
-		});
+		}, selectors.getElementsByClassName('legend')[0]);
 	}
 }
