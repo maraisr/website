@@ -2,7 +2,7 @@ machine:
   timezone:
     Australia/Brisbane
   node:
-    version: 6.6.0
+    version: 6.8.1
   environment:
     NODE_ENV: 'development'
 
@@ -19,7 +19,7 @@ dependencies:
   pre:
     - npm i yarn gulp-cli -g
   override:
-    - yarn
+    - yarn install --pure-lockfile
 
 deployment:
   production:
