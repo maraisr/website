@@ -23,6 +23,6 @@ dependencies:
 
 deployment:
   production:
-    branch: master
+    branch: release
     commands:
       - yarn deploy

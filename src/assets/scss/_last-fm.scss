@@ -1,0 +1,11 @@
+.last-fm {
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__track {
+		border: 1px solid red;
+	}
+}
