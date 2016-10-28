@@ -7,7 +7,7 @@ const tracking = new Tracking();
 
 new Nav(document.querySelectorAll('[scroll-to]'), tracking);
 new Skills(document.getElementById('content-skills'));
-new FM(document.getElementById('last-fm'));
+new FM();
 
 // Imprint Toggle
 /*[...document.getElementsByClassName('imprint-toggle')].forEach(btn => btn.addEventListener('click', () => {
