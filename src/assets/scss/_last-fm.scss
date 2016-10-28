@@ -1,11 +1,36 @@
 .last-fm {
-	img {
-		display: block;
-		width: 100%;
-		height: 100%;
+	position: fixed false $bodyBorder + 10px $bodyBorder + 10px false;
+	z-index: 8;
+
+	width: 290px;
+
+	text-align: right;
+
+	h3 {
+		font-size: 16px;
+		font-weight: 400;
+
+		margin-bottom: 10px;
 	}
 
-	&__track {
-		border: 1px solid red;
+	figure {
+		img {
+			display: inline-block;
+			vertical-align: middle;
+
+			lost-column: 1/4;
+		}
+
+		figcaption {
+			display: inline-block;
+			vertical-align: middle;
+
+			overflow: hidden;
+
+			lost-column: 3/4;
+
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
 	}
 }
