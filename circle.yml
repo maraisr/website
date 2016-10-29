@@ -10,6 +10,7 @@ general:
   branches:
     only:
       - master
+      - release
 
 database:
   override:
@@ -20,6 +21,9 @@ dependencies:
     - npm i yarn gulp-cli -g
   override:
     - yarn install --pure-lockfile
+
+test:
+  - yarn lint
 
 deployment:
   production:
