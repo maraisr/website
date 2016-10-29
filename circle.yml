@@ -32,6 +32,11 @@ test:
     - yarn test
 
 deployment:
+  development:
+    branch: master
+    commands:
+      - yarn build
+
   production:
     branch: release
     commands:
