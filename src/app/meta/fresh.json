@@ -2,7 +2,7 @@
 	"name": "Marais Rossouw",
 	"meta": {
 		"format": "FRESH@0.6.0",
-		"version": "0.4.0",
+		"version": "{{VERSION}}",
 		"lastMod": "{{LASTMOD}}"
 	},
 	"info": {
