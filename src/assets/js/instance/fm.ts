@@ -28,7 +28,7 @@ export default class FM {
 		return new Promise((resolve, reject) => {
 			let caller = new XMLHttpRequest();
 
-			caller.open('GET', `http://ws.audioscrobbler.com/2.0/?method=${func}&user=${user}&limit=1&api_key=${apiKey}&format=json`, true);
+			caller.open('GET', `https://ws.audioscrobbler.com/2.0/?method=${func}&user=${user}&limit=1&api_key=${apiKey}&format=json`, true);
 
 			caller.onload = ev => {
 				resolve(JSON.parse(caller.responseText));
