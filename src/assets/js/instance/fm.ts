@@ -13,8 +13,8 @@ export default class FM {
 
 	private async [setup](): void {
 		this.elm.innerHTML = (track => {
-			return `<a href="${track.url}" rel="nofollow" target="_blank"><h4>${track['@attr']['nowplaying'] ? 'Now Playing:' : 'Recently Played:'}</h4><div class="last-fm__name">${track.name}</div><div class="last-fm__sub">${track.album['#text']} / ${track.artist['#text']}</div></a>`;
-		})((await this[call]('user.getrecenttracks')).recenttracks.track[0]);
+			return `<a href="${track.url}" rel="nofollow" target="_blank"><h4>${(track['@attr']['nowplaying'] || false) ? 'Now Playing:' : 'Recently Played:'}</h4><div class="last-fm__name">${track.name}</div><div class="last-fm__sub">${track['album']['#text']} / ${track['artist']['#text']}</div></a>`;
+		})((await this[call]('user.getrecenttracks'))['recenttracks']['track'][0]);
 	}
 
 	/**
