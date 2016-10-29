@@ -1,16 +1,12 @@
+import Tracking from './instance/tracking';
+
 import Nav from './instance/nav';
 import Skills from './instance/skills';
-import Tracking from './instance/tracking';
 import FM from './instance/fm';
 
-const tracking = new Tracking();
+Tracking.tracKPage();
 
-new Nav(document.querySelectorAll('[scroll-to]'), tracking);
-new Skills(document.getElementById('content-skills'));
-new FM();
+Nav(document.querySelectorAll('[scroll-to]'));
+Skills(document.getElementById('content-skills'));
 
-// Imprint Toggle
-/*[...document.getElementsByClassName('imprint-toggle')].forEach(btn => btn.addEventListener('click', () => {
- document.body.classList.toggle('imprint-open');
- })
- );*/
+new FM(document.getElementById('last-fm'));

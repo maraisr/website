@@ -5,7 +5,7 @@ const call = Symbol();
 const setup = Symbol();
 
 export default class FM {
-	constructor() {
+	constructor(private elm: HTMLElement) {
 		document.addEventListener('DOMContentLoaded', ev => {
 			this[setup]();
 		});
@@ -26,8 +26,7 @@ export default class FM {
 	}
 
 	private renderNowPlaying(track: any): void {
-		const elm = document.getElementById('last-fm');
-		elm.innerHTML = `<h3>What I'm listening to right now...</h3><figure><figcaption><div class="last-fm__now-playing__name">${track.name}</div><div class="last-fm__sub">${track.album} / ${track.artist}</div></figcaption><img src="${track.image}" /></figure>`;
+		this.elm.innerHTML = `<h3>What I'm listening to right now...</h3><figure><figcaption><div class="last-fm__now-playing__name">${track.name}</div><div class="last-fm__sub">${track.album} / ${track.artist}</div></figcaption><img src="${track.image}" /></figure>`;
 	}
 
 	/**
