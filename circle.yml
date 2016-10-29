@@ -2,7 +2,7 @@ machine:
   timezone:
     Australia/Brisbane
   node:
-    version: 6.8.1
+    version: 7
   environment:
     NODE_ENV: 'development'
 
@@ -23,7 +23,11 @@ dependencies:
     - yarn install --pure-lockfile
 
 test:
-  - yarn lint
+  pre:
+    - yarn lint:ts
+    - yarn lint:scss
+  override:
+    - yarn test
 
 deployment:
   production:
