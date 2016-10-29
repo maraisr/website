@@ -12,21 +12,9 @@ export default class FM {
 	}
 
 	private async [setup](): void {
-		const recentTracks = (await this[call]('user.getrecenttracks')).recenttracks.track
-			.map(track => {
-				return {
-					name: track.name,
-					image: track.image[track.image.length - 2]['#text'] || null,
-					album: track.album['#text'],
-					artist: track.artist['#text']
-				};
-			});
-
-		this.renderNowPlaying(recentTracks[0]);
-	}
-
-	private renderNowPlaying(track: any): void {
-		this.elm.innerHTML = `<h3>What I'm listening to right now...</h3><figure><figcaption><div class="last-fm__now-playing__name">${track.name}</div><div class="last-fm__sub">${track.album} / ${track.artist}</div></figcaption><img src="${track.image}" /></figure>`;
+		this.elm.innerHTML = (track => {
+			return `<a href="${track.url}" rel="nofollow" target="_blank"><h4>${track['@attr']['nowplaying'] ? 'Now Playing:' : 'Recently Played:'}</h4><div class="last-fm__name">${track.name}</div><div class="last-fm__sub">${track.album['#text']} / ${track.artist['#text']}</div></a>`;
+		})((await this[call]('user.getrecenttracks')).recenttracks.track[0]);
 	}
 
 	/**

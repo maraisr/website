@@ -10,7 +10,6 @@ general:
   branches:
     only:
       - master
-      - release
   artifacts:
     - "dist/"
 
@@ -34,10 +33,5 @@ test:
 deployment:
   development:
     branch: master
-    commands:
-      - yarn build
-
-  production:
-    branch: release
     commands:
       - yarn deploy

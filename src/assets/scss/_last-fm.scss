@@ -1,36 +1,17 @@
 .last-fm {
-	position: fixed false $bodyBorder + 10px $bodyBorder + 10px false;
-	z-index: 8;
-
-	width: 290px;
-
-	text-align: right;
-
-	h3 {
-		font-size: 16px;
-		font-weight: 400;
-
-		margin-bottom: 10px;
+	> a {
+		text-decoration: none;
 	}
 
-	figure {
-		img {
-			display: inline-block;
-			vertical-align: middle;
+	&__name, &__sub {
+		color: white;
+	}
 
-			lost-column: 1/4;
-		}
+	&__name {
+		font-size: 20px;
+	}
 
-		figcaption {
-			display: inline-block;
-			vertical-align: middle;
-
-			overflow: hidden;
-
-			lost-column: 3/4;
-
-			white-space: nowrap;
-			text-overflow: ellipsis;
-		}
+	&__sub {
+		font-size: 16px;
 	}
 }

@@ -78,17 +78,19 @@
 		}
 	}
 
-	&__social {
+	&__social, &__last-fm {
+		display: inline-block;
+		vertical-align: top;
+
 		margin-top: 70px;
-
-		text-align: center;
-
-		@include mscr($stage-b) {
-			text-align: left;
-		}
+		width: 100%;
 
 		@include mscr($stage-c) {
 			margin-top: 155px;
+		}
+
+		@include mscr($stage-d) {
+			lost-column: 1/2;
 		}
 
 		@media print {
@@ -98,6 +100,24 @@
 		h4 {
 			font-size: 22px;
 			font-weight: 400;
+		}
+	}
+
+	&__social {
+		text-align: center;
+
+		@include mscr($stage-b) {
+			text-align: left;
+		}
+	}
+
+	&__last-fm {
+		display: none;
+		text-align: center;
+
+		@include mscr($stage-d) {
+			display: inline-block;
+			text-align: right;
 		}
 	}
 }
