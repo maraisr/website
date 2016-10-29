@@ -8,10 +8,10 @@
     "domain": "https://marais.io/"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
     "lint:ts": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
     "lint:scss": "stylelint $(find ./src/assets/scss -name *.scss) --colour -s scss",
     "lint": "npm run lint:ts && npm run lint:scss",
-    "test": "echo \"Error: no test specified\" && exit 0",
     "build": "gulp clean && cross-env NODE_ENV=production gulp",
     "deploy": "gulp clean && cross-env NODE_ENV=production gulp publish"
   },
