@@ -1,0 +1,18 @@
+[
+	{
+		"level": "prefered",
+		"label": "Prefered Stack + Expert"
+	},
+	{
+		"level": "expert",
+		"label": "Expert"
+	},
+	{
+		"level": "medium",
+		"label": "Well Understood"
+	},
+	{
+		"level": "low",
+		"label": "Room for Improvement"
+	}
+]
