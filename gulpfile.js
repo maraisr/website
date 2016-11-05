@@ -79,22 +79,18 @@ gulp.task('pug', () => {
 
 					return returns;
 				})(JSON.stringify(require('./src/app/meta/fresh.json'))),
-				_SKILLS: ((skills, returns) => {
-					skills.list.forEach(zone => {
-						zone.skills.forEach(skill => {
-							returns.push({
-								zone: zone.zone,
-								skill: skill.replace(/[|](.*)$/, '').trim(),
-								css: skill.replace(/^(.*)[|]/, '').trim()
-							})
-						});
-					});
+				_SKILLS: (([legend, fresh], returns) => {
+					fresh.skills.sets.forEach(item => item.skills.forEach(skillItem => returns.push({
+						zone: item.name,
+						skill: skillItem,
+						css: item.level
+					})));
 
 					return {
 						list: orderBy(orderBy(returns, 'skill'), 'zone'),
-						legend: skills.legend
+						legend: legend
 					};
-				})(require('./src/app/meta/skills.json'), [])
+				})([require('./src/app/meta/skills-legend.json'), require('./src/app/meta/fresh.json')], [])
 			})
 		}))
 		.pipe(require('gulp-posthtml')(((returns) => {

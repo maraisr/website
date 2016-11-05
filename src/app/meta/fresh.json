@@ -94,8 +94,163 @@
 	},
 	"skills": {
 		"sets": [
-		],
-		"list": [
+			{
+				"name": "Language",
+				"level": "expert",
+				"skills": [
+					"JavaScript",
+					"ES6",
+					"HTML"
+				]
+			},
+			{
+				"name": "Language",
+				"level": "prefered",
+				"skills": [
+					"TypeScript",
+					"Sass",
+					"Pug"
+				]
+			},
+			{
+				"name": "Language",
+				"level": "medium",
+				"skills": [
+					"Scala",
+					"PureScript",
+					"Java",
+					"PHP"
+				]
+			},
+			{
+				"name": "Language",
+				"level": "low",
+				"skills": [
+					"Elm"
+				]
+			},
+			{
+				"name": "Package Manager",
+				"level": "expert",
+				"skills": [
+					"Bower",
+					"NPM"
+				]
+			},
+			{
+				"name": "Package Manager",
+				"level": "prefered",
+				"skills": [
+					"Yarn"
+				]
+			},
+			{
+				"name": "Framework",
+				"level": "expert",
+				"skills": [
+					"Angular"
+				]
+			},
+			{
+				"name": "Framework",
+				"level": "medium",
+				"skills": [
+					"React",
+					"Laravel",
+					"Symfony",
+					"Monix"
+				]
+			},
+			{
+				"name": "Framework",
+				"level": "prefered",
+				"skills": [
+					"Vue"
+				]
+			},
+			{
+				"name": "Runtime",
+				"level": "prefered",
+				"skills": [
+					"Node"
+				]
+			},
+			{
+				"name": "Runtime",
+				"level": "low",
+				"skills": [
+					"nginx"
+				]
+			},
+			{
+				"name": "Runtime",
+				"level": "medium",
+				"skills": [
+					"Canvas",
+					"Babel"
+				]
+			},
+			{
+				"name": "Philosophy",
+				"level": "expert",
+				"skills": [
+					"Responsive Web Development",
+					"Test-Driven Development",
+					"Agile Methodologies"
+				]
+			},
+			{
+				"name": "Philosophy",
+				"level": "medium",
+				"skills": [
+					"Search Engine Optimizations",
+					"Behaviour-Driven Development"
+				]
+			},
+			{
+				"name": "Database",
+				"level": "prefered",
+				"skills": [
+					"MySQL"
+				]
+			},
+			{
+				"name": "Database",
+				"level": "medium",
+				"skills": [
+					"MSSQL",
+					"MongoDB"
+				]
+			},
+			{
+				"name": "Software",
+				"level": "medium",
+				"skills": [
+					"Adobe Suite",
+					"Atlassian Suite"
+				]
+			},
+			{
+				"name": "Software",
+				"level": "expert",
+				"skills": [
+					"JetBrains IDEA"
+				]
+			},
+			{
+				"name": "Version Control",
+				"level": "expert",
+				"skills": [
+					"GIT"
+				]
+			},
+			{
+				"name": "Version Control",
+				"level": "medium",
+				"skills": [
+					"SVN"
+				]
+			}
 		]
 	}
 }
