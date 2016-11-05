@@ -31,12 +31,8 @@
 			font-size: 28px;
 		}
 
-		@include mscr($stage-b) {
-			padding-top: 62px + 100px;
-		}
-
 		@include mscr($stage-d) {
-			padding-top: 62px + 50px;
+			padding-top: 0;
 			font-size: 46px;
 		}
 
