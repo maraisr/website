@@ -240,14 +240,18 @@ gulp.task('js', (done) => {
 		});
 });
 
-gulp.task('resume', () => {
+gulp.task('resume', (done) => {
 	let fs = require('fs');
+	let mkdirp = require('mkdirp');
 
-	let fileOutput = fs.writeFileSync('./dist/resume.json', JSON.stringify(pkg.fresh));
+	mkdirp('./dist/', err => {
+		if (err != null) gutil.log(err);
 
-	if (fileOutput != void 0) {
-		throw require('gulp-notify')()(fileOutput);
-	}
+		let fileOutput = fs.writeFileSync('./dist/resume.json', JSON.stringify(pkg.fresh));
+		if (fileOutput != void 0) gutil.log(fileOutput);
+
+		done();
+	});
 })
 
 gulp.task('misc', ['resume'], () => {
