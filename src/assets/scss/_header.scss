@@ -10,7 +10,7 @@
 	@include mscr($stage-b) {
 		padding: 0 $bodyBorder;
 
-		margin-top: $offset;
+		margin-top: $offset !important;
 
 		.logo {
 			lost-column: 1/3;

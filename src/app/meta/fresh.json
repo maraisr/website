@@ -14,8 +14,7 @@
 	},
 	"contact": {
 		"website": "{{{DOMAIN}}}",
-		"email": "hi@marais.io",
-		"other": []
+		"email": "hi@marais.io"
 	},
 	"location": {
 		"city": "Gold Coast",
@@ -53,6 +52,9 @@
 				"start": "2012-01-01",
 				"end": "2012-09-01",
 				"keywords": [
+					"PHP",
+					"Wordpress",
+					"Photoshop"
 				]
 			},
 			{
@@ -62,6 +64,11 @@
 				"start": "2013-03-24",
 				"end": "2014-01-17",
 				"keywords": [
+					"Zend",
+					"PHP",
+					"JavaScript",
+					"Wordpress",
+					"Linux Server"
 				]
 			},
 			{
@@ -71,6 +78,11 @@
 				"start": "2014-02-02",
 				"end": "2015-05-04",
 				"keywords": [
+					"SVN",
+					"PHP",
+					"Laravel",
+					"Wordpress",
+					"JavaScript"
 				]
 			},
 			{
@@ -80,6 +92,11 @@
 				"start": "2015-06-22",
 				"end": "2016-10-03",
 				"keywords": [
+					"GIT",
+					"Angular",
+					"React",
+					"JavaScript ES5",
+					"AWS"
 				]
 			},
 			{
@@ -88,6 +105,11 @@
 				"summary": "Working in a team of highly skilled developers optimize and develop an online platform in the insurance industry.",
 				"start": "2016-10-24",
 				"keywords": [
+					"JavaScript ES6",
+					"SCSS",
+					"Angular",
+					"GIT",
+					"Jira"
 				]
 			}
 		]

@@ -47,7 +47,6 @@
     "gulp-posthtml": "^1.5.2",
     "gulp-pretty-data": "^0.1.1",
     "gulp-pug": "^3.0.4",
-    "gulp-rename": "^1.2.2",
     "gulp-rev-all": "^0.8.24",
     "gulp-sass": "^2.3.2",
     "gulp-sass-bulk-import": "^1.0.1",

@@ -47,6 +47,10 @@ block body
 
 								p.experience__descr=job.summary
 
+								ul.experience__tags
+									for tag in job.keywords
+										li.experience__tags__tag=tag
+
 
 	#content-skills.fold.fold-skills
 		.fold__content
