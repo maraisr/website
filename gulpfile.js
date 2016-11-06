@@ -6,7 +6,34 @@ const gulp = require('gulp'),
 	moment = require('moment-timezone'),
 	pkg = require('./package.json'),
 	rimraf = require('rimraf'),
+	mustache = require('mustache'),
 	parallelize = require("concurrent-transform");
+
+let PUG_LOCALS = {
+	LASTMOD: moment.tz(pkg.config.loc).format(),
+	DOMAIN: (process.env.NODE_ENV == 'production') ? pkg.config.domain : 'http://localhost:3303/',
+	VERSION: pkg.version
+};
+
+Object.defineProperty(pkg, 'fresh', {
+	get: () => ((fresh) => {
+		fresh.employment = (emp => {
+			emp.history = orderBy(emp.history, v => {
+				return new Date(v.start).getUTCMilliseconds();
+			});
+
+			emp.history.forEach(item => {
+				item.keywords.sort();
+			});
+
+			return emp;
+		})(fresh.employment);
+
+		return fresh;
+	})(((fresh) => {
+		return JSON.parse(mustache.render(fresh, PUG_LOCALS));
+	})(JSON.stringify(require('./src/app/meta/fresh.json'))))
+});
 
 function plumb() {
 	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
@@ -20,12 +47,6 @@ function webpackCallback(err, stats) {
 		progress: true
 	}));
 }
-
-var PUG_LOCALS = {
-	LASTMOD: moment.tz(pkg.config.loc).format(),
-	DOMAIN: (process.env.NODE_ENV == 'production') ? pkg.config.domain : 'http://localhost:3303/',
-	VERSION: pkg.version
-};
 
 gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
 
@@ -54,8 +75,6 @@ gulp.task('serve', ['watch'], () => {
 });
 
 gulp.task('pug', () => {
-	let mustache = require('mustache');
-
 	return gulp.src('./src/app/[!_]*.pug')
 		.pipe(plumb())
 		.pipe(require('gulp-pug')({
@@ -68,9 +87,6 @@ gulp.task('pug', () => {
 				LOC: pkg.config.loc,
 				SITE: require('./src/app/meta/site.json'),
 				FRESH: ((returns) => {
-					returns = JSON.parse(mustache.render(returns, PUG_LOCALS));
-
-					// Limit to last 4
 					let limit = 4;
 
 					if (returns.employment.history.length > limit) {
@@ -78,7 +94,7 @@ gulp.task('pug', () => {
 					}
 
 					return returns;
-				})(JSON.stringify(require('./src/app/meta/fresh.json'))),
+				})(pkg.fresh),
 				_SKILLS: (([legend, fresh], returns) => {
 					fresh.skills.sets.forEach(item => item.skills.forEach(skillItem => returns.push({
 						zone: item.name,
@@ -90,7 +106,7 @@ gulp.task('pug', () => {
 						list: orderBy(orderBy(returns, 'skill'), 'zone'),
 						legend: legend
 					};
-				})([require('./src/app/meta/skills-legend.json'), require('./src/app/meta/fresh.json')], [])
+				})([require('./src/app/meta/skills-legend.json'), pkg.fresh], [])
 			})
 		}))
 		.pipe(require('gulp-posthtml')(((returns) => {
@@ -224,15 +240,20 @@ gulp.task('js', (done) => {
 		});
 });
 
-gulp.task('misc', () => {
-	return gulp.src(['./src/misc/**/*', './src/app/meta/fresh.json'])
+gulp.task('resume', () => {
+	let fs = require('fs');
+
+	let fileOutput = fs.writeFileSync('./dist/resume.json', JSON.stringify(pkg.fresh));
+
+	if (fileOutput != void 0) {
+		throw require('gulp-notify')()(fileOutput);
+	}
+})
+
+gulp.task('misc', ['resume'], () => {
+	return gulp.src(['./src/misc/**/*'])
 		.pipe(require('gulp-mustache')(PUG_LOCALS))
 		.pipe(require('gulp-pretty-data')({type: 'minify'}))
-		.pipe(require('gulp-rename')(function (returns) {
-			if (returns.basename == 'fresh') {
-				returns.basename = 'resume'
-			}
-		}))
 		.pipe(gulp.dest('./dist'))
 });
 

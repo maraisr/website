@@ -28,12 +28,12 @@ module.exports = {
 			return l;
 		})([])
 	},
-	plugins: (() => {
-		var returns = [
+	plugins: ((returns) => {
+		returns.push(
 			new webpack.DefinePlugin({
 				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production')))
 			})
-		];
+		);
 
 		if (process.env.NODE_ENV == 'production') {
 			returns.push(new webpack.LoaderOptionsPlugin({
@@ -62,5 +62,5 @@ module.exports = {
 		}
 
 		return returns;
-	})()
+	})([])
 };

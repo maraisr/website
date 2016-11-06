@@ -29,6 +29,8 @@
 		text-align: left;
 
 		@include mscr($stage-d) {
+			display: flex;
+
 			padding-top: 155px;
 			padding-bottom: 155px;
 		}
@@ -37,29 +39,37 @@
 			padding: 0;
 		}
 
-		ul {
+		> ul {
+			display: flex;
+
 			width: 100%;
 
-			display: flex;
 			flex-flow: column-reverse wrap;
 
-			@include mscr($stage-c) {
+			@include mscr($stage-d) {
 				display: block;
 			}
 		}
 
 		&__item {
-			display: inline-block;
+			position: relative;
+
+			display: block;
+			width: 100%;
+
 			vertical-align: top;
 
 			flex: 1 0 auto;
-			width: 100%;
 
 			&:not(:first-child) {
 				margin-bottom: 50px;
 			}
 
 			@include mscr($stage-d) {
+				display: inline-block;
+
+				height: 100%;
+
 				lost-column: 1/5;
 
 				&:not(:first-child) {
@@ -67,8 +77,6 @@
 				}
 
 				&:last-child {
-					position: relative;
-
 					lost-column: 2/5;
 
 					padding-left: 35px;
@@ -122,6 +130,36 @@
 
 			@media print {
 				margin: 6px 0;
+			}
+		}
+
+		&__tags {
+			$gap: 5px;
+
+			display: block;
+			margin: (-1 * ($gap));
+			margin-top: 20px;
+
+			width: 100%;
+
+			@include mscr($stage-d) {
+				position: absolute calc(100% + 60px) false false false;
+
+				margin-top: 0;
+			}
+
+			li {
+				display: inline-block;
+				vertical-align: middle;
+
+				margin: $gap;
+				padding: 5px;
+
+				text-align: center;
+				text-transform: lowercase;
+				font-size: 10px;
+
+				background-color: #4C4C4C;
 			}
 		}
 	}
