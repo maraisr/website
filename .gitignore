@@ -1,9 +1,11 @@
-*.log
-*.log.*
+*.log*
+.npmrc
+
 node_modules/
 dist/
-s3config.json
 tmp/
+
+s3config.json
 
 .idea/
 !.idea/website.iml
