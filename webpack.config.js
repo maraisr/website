@@ -41,6 +41,10 @@ module.exports = {
 				debug: false
 			}));
 
+			returns.push(new webpack.optimize.DedupePlugin());
+			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
+			returns.push(new webpack.optimize.AggressiveMergingPlugin());
+
 			returns.push(new ClosureCompiler({
 				options: {
 					languageIn: 'ECMASCRIPT6',
