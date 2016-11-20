@@ -12,21 +12,16 @@ module.exports = {
 		filename: '[name].js'
 	},
 	resolve: {
-		extensions: ['', '.ts', '.js']
+		extensions: ['.ts', '.js']
 	},
 	module: {
-		loaders: ((l) => {
-			l.push({
+		loaders: [
+			{
 				test: /\.ts$/,
-				include: [
-					path.resolve(__dirname, 'src/assets/js/')
-				],
 				exclude: /(node_modules|bower_components)/,
-				loader: 'ts'
-			});
-
-			return l;
-		})([])
+				loader: 'ts-loader'
+			}
+		]
 	},
 	plugins: ((returns) => {
 		returns.push(
@@ -40,8 +35,7 @@ module.exports = {
 				minimize: true,
 				debug: false
 			}));
-
-			returns.push(new webpack.optimize.DedupePlugin());
+			
 			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
 			returns.push(new webpack.optimize.AggressiveMergingPlugin());
 
