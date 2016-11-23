@@ -119,7 +119,7 @@
 
 		@each $type, $colours in $types {
 			&.#{$type} {
-				:not(.skills__item--#{$type}) {
+				.skills__item:not(.skills__item--#{$type}) {
 					opacity: 0.2;
 				}
 			}
