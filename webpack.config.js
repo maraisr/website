@@ -15,13 +15,18 @@ module.exports = {
 		extensions: ['.ts', '.js']
 	},
 	module: {
-		loaders: [
-			{
+		loaders: ((l) => {
+			l.push({
 				test: /\.ts$/,
+				include: [
+					path.resolve(__dirname, 'src/assets/js/')
+				],
 				exclude: /(node_modules|bower_components)/,
 				loader: 'ts-loader'
-			}
-		]
+			});
+
+			return l;
+		})([])
 	},
 	plugins: ((returns) => {
 		returns.push(
@@ -35,7 +40,7 @@ module.exports = {
 				minimize: true,
 				debug: false
 			}));
-			
+
 			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
 			returns.push(new webpack.optimize.AggressiveMergingPlugin());
 
