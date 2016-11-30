@@ -32,6 +32,6 @@ test:
 
 deployment:
   development:
-    branch: master
+    branch: release
     commands:
       - yarn deploy
