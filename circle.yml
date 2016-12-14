@@ -32,7 +32,7 @@ test:
     - yarn test
 
 deployment:
-  development:
+  production:
     branch: release
     commands:
       - yarn deploy
