@@ -1,3 +1,5 @@
+import template from './template.pug';
+
 const apiKey = '54df6a0bb1a7eea281e3d8443f13e33d';
 
 /* Privates */
@@ -11,25 +13,34 @@ export default class FM {
 		});
 	}
 
-	private async [setup](): void {
-		this.elm.innerHTML = (track => {
-			return `<a href="${track.url}" rel="nofollow" target="_blank"><h4>${(() => {
-				try {
-					return track['@attr']['nowplaying'];
-				} catch (e) {
-					return false;
-				}
-			})() ? 'Now Playing:' : 'Recently Played:'}</h4><div class="last-fm__name">${track.name}</div><div class="last-fm__sub">${track['album']['#text']} / ${track['artist']['#text']}</div></a>`;
-		})((await this[call]('user.getrecenttracks'))['recenttracks']['track'][0]);
+	private [setup](): void {
+		const vm = new template({
+			target: this.elm
+		});
+
+		this[call]('user.getrecenttracks').then(track => {
+			track = track['recenttracks']['track'][0];
+
+			if (track) {
+				vm.set({
+					track: {
+						name: track.name,
+						url: track.url,
+						album: track['album']['#text'],
+						artist: track['artist']['#text'],
+						isPlaying() {
+							try {
+								return track['@attr']['nowplaying'];
+							} catch (e) {
+								return false;
+							}
+						}
+					}
+				});
+			}
+		});
 	}
 
-	/**
-	 * Returns a Promise with a call made to the Last.fm API
-	 *
-	 * @param func
-	 * @param user
-	 * @returns {Promise<T>}
-	 */
 	private [call](func: String, user = 'maraisr'): Promise<any> {
 		return new Promise((resolve, reject) => {
 			let caller = new XMLHttpRequest();

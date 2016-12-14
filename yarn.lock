@@ -2744,7 +2744,7 @@ loader-runner@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.2.0.tgz#824c1b699c4e7a2b6501b85902d5b862bf45b3fa"
 
-loader-utils@^0.2.16, loader-utils@^0.2.6:
+loader-utils@^0.2.14, loader-utils@^0.2.16, loader-utils@^0.2.6:
   version "0.2.16"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-0.2.16.tgz#f08632066ed8282835dff88dfb52704765adee6d"
   dependencies:
@@ -3082,6 +3082,12 @@ lru-cache@2:
 macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
+
+magic-string@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.19.0.tgz#198948217254e3e0b93080e01146b7c73b2a06b2"
+  dependencies:
+    vlq "^0.2.1"
 
 map-cache@^0.2.0:
   version "0.2.2"
@@ -4185,6 +4191,13 @@ pug-filters@^1.2.4:
     resolve "^1.1.6"
     uglify-js "^2.6.1"
 
+pug-html-loader:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/pug-html-loader/-/pug-html-loader-1.0.9.tgz#571d91f54445b62246b4028a8a930d6a434ef1ee"
+  dependencies:
+    loader-utils "^0.2.14"
+    pug "^2.0.0-beta6"
+
 pug-lexer@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pug-lexer/-/pug-lexer-2.3.0.tgz#b841ac4cd8d27501281e0f9c88fb4243297aff3a"
@@ -4228,7 +4241,7 @@ pug-walk@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pug-walk/-/pug-walk-1.0.0.tgz#7f4ae1456a4f18feee40a0d708b75c1c51d2e4e4"
 
-"pug@>=2.0.0-alpha <3":
+pug@^2.0.0-beta6, "pug@>=2.0.0-alpha <3":
   version "2.0.0-beta6"
   resolved "https://registry.yarnpkg.com/pug/-/pug-2.0.0-beta6.tgz#9ead2e59e540a467efc3787ccb03e4574ba5fae9"
   dependencies:
@@ -5040,6 +5053,16 @@ supports-color@^3.1.0, supports-color@^3.1.2:
   dependencies:
     has-flag "^1.0.0"
 
+svelte:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-1.2.3.tgz#540bf8c29a23e98d1dfb44496782e51ddfc32939"
+  dependencies:
+    magic-string "^0.19.0"
+
+svelte-loader:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-1.1.0.tgz#11ba04fd5a657c2560e48ca3498d8a39878a5886"
+
 svg-tags@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
@@ -5491,6 +5514,10 @@ vinyl@^1.1.1, vinyl@1.X:
     clone "^1.0.0"
     clone-stats "^0.0.1"
     replace-ext "0.0.1"
+
+vlq@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/vlq/-/vlq-0.2.1.tgz#14439d711891e682535467f8587c5630e4222a6c"
 
 vm-browserify@0.0.4:
   version "0.0.4"

@@ -14,19 +14,33 @@ module.exports = {
 	resolve: {
 		extensions: ['.ts', '.js']
 	},
+	cache: true,
+	devtool: false,
 	module: {
-		loaders: ((l) => {
-			l.push({
+		rules: [
+			{
 				test: /\.ts$/,
 				include: [
 					path.resolve(__dirname, 'src/assets/js/')
 				],
-				exclude: /(node_modules|bower_components)/,
+				exclude: /node_modules/,
 				loader: 'ts-loader'
-			});
-
-			return l;
-		})([])
+			},
+			{
+				test: /\.pug$/,
+				loaders: [
+					{
+						loader: 'svelte-loader'
+					},
+					{
+						loader: 'pug-html-loader',
+						query: {
+							exports: false
+						}
+					}
+				]
+			}
+		]
 	},
 	plugins: ((returns) => {
 		returns.push(
