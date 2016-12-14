@@ -264,10 +264,9 @@ gulp.task('misc', ['resume'], () => {
 // If you want GZIP, using ['gzip'] here.
 gulp.task('fingerprint', ['default', 'misc'], (done) => {
 	const revAll = require('gulp-rev-all');
-	let myRev = new revAll({dontRenameFile: ['.html']});
 
 	gulp.src('./dist/**/*.{css,js,html}')
-		.pipe(myRev.revision())
+		.pipe(revAll.revision({dontRenameFile: ['.html']}))
 		.pipe(gulp.dest('./dist/'))
 		.on('end', () => {
 			rimraf('./dist/main.{css,js}', done);
