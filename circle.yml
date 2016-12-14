@@ -1,8 +1,10 @@
 machine:
-  timezone:
-    Australia/Brisbane
+  pre:
+    - mkdir ~/.yarn-cache 
   node:
-    version: 7
+    version: stable
+  timezone:
+    Australia/Brisbane  
   environment:
     NODE_ENV: 'development'
 
@@ -20,7 +22,10 @@ database:
 
 dependencies:
   pre:
-    - npm i yarn gulp-cli -g
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn global add gulp-cli
+  cache_directories:
+    -  ~/.yarn-cache
   override:
     - yarn install --pure-lockfile
 
