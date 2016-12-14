@@ -1,0 +1,14 @@
+#last-fm.last-fm(role='banner')
+
+	|{{#if track}}
+
+	a(href='{{track.url}}', rel='nofollow', target='_blank')
+		h4 {{track.isPlaying() ? 'Now Playing' : 'Last Played'}}:
+		.last-fm__name {{track.name}}
+		.last-fm__sub {{track.album}} / {{track.artist}}
+
+	|{{else}}
+
+	small Loading...
+
+	|{{/if}}

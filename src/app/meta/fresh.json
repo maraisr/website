@@ -139,7 +139,7 @@
 				"level": "medium",
 				"skills": [
 					"Scala",
-					"PureScript",
+					"Elm",
 					"Java",
 					"PHP"
 				]
@@ -148,7 +148,7 @@
 				"name": "Language",
 				"level": "low",
 				"skills": [
-					"Elm"
+					"PureScript"
 				]
 			},
 			{
