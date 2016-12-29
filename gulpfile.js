@@ -42,7 +42,6 @@ function plumb() {
 }
 
 function webpackCallback(err, stats) {
-	console.log(err, stats);
 	if (err) throw require('gulp-notify')()(err);
 
 	gutil.log("[webpack]", stats.toString({
