@@ -15,6 +15,8 @@ let PUG_LOCALS = {
 	VERSION: pkg.version
 };
 
+let watching = false;
+
 Object.defineProperty(pkg, 'fresh', {
 	get: () => ((fresh) => {
 		fresh.employment = (emp => {
@@ -40,6 +42,7 @@ function plumb() {
 }
 
 function webpackCallback(err, stats) {
+	console.log(err, stats);
 	if (err) throw require('gulp-notify')()(err);
 
 	gutil.log("[webpack]", stats.toString({
@@ -50,16 +53,18 @@ function webpackCallback(err, stats) {
 
 gulp.task('default', ['images', 'js', 'scss', 'pug', 'fonts', 'images']);
 
-gulp.task('watch', ['default'], () => {
+gulp.task('prewatch', () => {
+	watching = true;
+});
+
+gulp.task('watch', ['prewatch', 'default'], () => {
 	gulp.watch('./src/app/**/*.pug', ['pug']);
 	gulp.watch('./src/assets/**/*.scss', ['scss']);
 	gulp.watch('./src/assets/img/**/*', ['images']);
 
-	require('webpack')(require('./webpack.config'))
-		.watch({
-			aggregateTimeout: 300,
-			poll: true
-		}, webpackCallback);
+	require('webpack')(Object.assign({watch: true}, require('./webpack.config.js')), (err, stats) => {
+		webpackCallback(err, stats);
+	});
 });
 
 gulp.task('clean', (done) => {
@@ -166,32 +171,9 @@ gulp.task('scss', () => {
 			}]);
 			steps.push(['autoprefixer', prfxOpts]);
 
+			steps.push(['css-mqpacker', {sort: true}]);
+
 			if (process.env.NODE_ENV == 'production') {
-				steps.push('css-mqpacker');
-
-				// Sorts media queries
-				steps.push(['EXTRA', function () {
-					return function (tree) {
-						let nodes = [];
-
-						tree.walkAtRules('media', (v) => {
-							if (/([0-9]+)px/.test(v.params)) {
-								nodes.push(v);
-								v.remove();
-							}
-						});
-
-						function getPx(params) {
-							let num = /([0-9]+)px/.exec(params);
-							return parseInt(num[1]);
-						}
-
-						tree.append(nodes.sort((a, b) => {
-							return getPx(a.params) > getPx(b.params);
-						}));
-					}
-				}()]);
-
 				steps.push(['postcss-sorting', {'sort-order': require('cssortie')}]);
 				steps.push(['cssnano', {
 					discardComments: {removeAll: true},
@@ -202,10 +184,6 @@ gulp.task('scss', () => {
 
 			return steps.map(v => {
 				if (typeof v == 'object') {
-					if (v[0] == 'EXTRA') {
-						return v[1];
-					}
-
 					return require(v[0])(v[1]);
 				}
 
@@ -232,12 +210,13 @@ gulp.task('images', () => {
 });
 
 gulp.task('js', (done) => {
-	require('webpack')(require('./webpack.config.js'))
-		.run((err, stats) => {
-			webpackCallback(err, stats);
+	if (watching) return done();
 
-			done();
-		});
+	require('webpack')(require('./webpack.config.js'), (err, stats) => {
+		webpackCallback(err, stats);
+
+		done();
+	});
 });
 
 gulp.task('resume', (done) => {
