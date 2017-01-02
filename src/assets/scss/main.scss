@@ -73,7 +73,13 @@
 }
 
 .offset-heading {
-	display: none;
+	display: block;
+
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+
+	font-size: 28px;
+	border-bottom: 1px solid #1A1B1C;
 
 	@media print {
 		display: block;
@@ -88,6 +94,10 @@
 		font-size: 28px;
 
 		border-bottom: 3px solid #0BB07C;
+	}
+
+	@include mscr($stage-c) {
+		display: none;
 	}
 }
 

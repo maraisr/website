@@ -15,10 +15,18 @@ $stage-a: 320px;
 $stage-b: 570px;
 $stage-c: 768px;
 $stage-d: 1024px;
+$stage-e: 1620px;
 
-@mixin mscr($width) {
-	@media screen and (min-width: $width) {
-		@content;
+@mixin mscr($width, $extra: false) {
+
+	@if $extra {
+		@media screen and (min-width: $width) and (max-width: #{$extra - 1}) {
+			@content;
+		}
+	} @else {
+		@media screen and (min-width: $width) {
+			@content;
+		}
 	}
 }
 

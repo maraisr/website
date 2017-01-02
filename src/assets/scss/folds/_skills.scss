@@ -18,21 +18,6 @@
 		min-height: 100%;
 	}
 
-	// TODO: Fix me, this is a repeated class
-	.offset-heading {
-		display: block;
-
-		margin-bottom: 20px;
-		padding-bottom: 12px;
-
-		font-size: 28px;
-		border-bottom: 1px solid white;
-
-		@include mscr($stage-c) {
-			display: none;
-		}
-	}
-
 	.fold__content {
 		position: relative;
 
@@ -52,6 +37,10 @@
 
 	&__body {
 		@extend %container;
+
+		@media print {
+			padding: 0;
+		}
 	}
 
 	.legend {

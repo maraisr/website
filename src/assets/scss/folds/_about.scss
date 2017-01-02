@@ -19,6 +19,7 @@
 		@extend %container;
 
 		padding-top: 50px;
+		padding-bottom: 50px;
 
 		font-family: lora, gerogia, serif;
 		text-align: left;
@@ -33,6 +34,7 @@
 
 		@include mscr($stage-d) {
 			padding-top: 0;
+			padding-bottom: 0;
 			font-size: 46px;
 		}
 
