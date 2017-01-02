@@ -3077,12 +3077,12 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-lost@7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/lost/-/lost-7.1.1.tgz#6f757f3778badd193feff25c6bfb15f6e8fd10e0"
+lost@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/lost/-/lost-8.0.0.tgz#7ab03254f1106b6940abb2045c0e38f821a73475"
   dependencies:
     object-assign "^4.1.0"
-    postcss "^5.1.2"
+    postcss "^5.2.8"
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -3208,7 +3208,7 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-micromatch@^2.1.5, micromatch@^2.3.7:
+micromatch@^2.1.5, micromatch@^2.3.11, micromatch@^2.3.7:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"
   dependencies:
@@ -4071,7 +4071,7 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.18, postcss@^5.0.2, postcss@^5.0.20, postcss@^5.0.21, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.8, postcss@^5.1.2, postcss@^5.2.0, postcss@^5.2.4, postcss@^5.2.5, postcss@^5.2.6, postcss@5.2.8:
+postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.18, postcss@^5.0.2, postcss@^5.0.20, postcss@^5.0.21, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.8, postcss@^5.1.2, postcss@^5.2.0, postcss@^5.2.4, postcss@^5.2.5, postcss@^5.2.6, postcss@^5.2.8, postcss@5.2.8:
   version "5.2.8"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-5.2.8.tgz#05720c49df23c79bda51fd01daeb1e9222e94390"
   dependencies:
@@ -4234,9 +4234,9 @@ pug-filters@^1.2.4:
     resolve "^1.1.6"
     uglify-js "^2.6.1"
 
-pug-html-loader@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/pug-html-loader/-/pug-html-loader-1.0.9.tgz#571d91f54445b62246b4028a8a930d6a434ef1ee"
+pug-html-loader@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/pug-html-loader/-/pug-html-loader-1.0.10.tgz#2613dfb3f06d8fb0d3f5fc2c18110c29825e2e63"
   dependencies:
     loader-utils "^0.2.14"
     pug "^2.0.0-beta6"
@@ -5051,7 +5051,7 @@ stylelint-scss@1.4.1:
     postcss-value-parser "^3.3.0"
     stylelint "^7.0.3"
 
-stylelint@^7.0.3, stylelint@7.7.0:
+stylelint@^7.0.3:
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.7.0.tgz#bf222c2a202c0b02d7834ad321fe0883d33cfde0"
   dependencies:
@@ -5072,6 +5072,45 @@ stylelint@^7.0.3, stylelint@7.7.0:
     log-symbols "^1.0.2"
     meow "^3.3.0"
     multimatch "^2.1.0"
+    normalize-selector "^0.2.0"
+    postcss "^5.0.20"
+    postcss-less "^0.14.0"
+    postcss-media-query-parser "^0.2.0"
+    postcss-reporter "^3.0.0"
+    postcss-resolve-nested-selector "^0.1.1"
+    postcss-scss "^0.4.0"
+    postcss-selector-parser "^2.1.1"
+    postcss-value-parser "^3.1.1"
+    resolve-from "^2.0.0"
+    specificity "^0.3.0"
+    string-width "^2.0.0"
+    style-search "^0.1.0"
+    stylehacks "^2.3.0"
+    sugarss "^0.2.0"
+    svg-tags "^1.0.0"
+    table "^4.0.1"
+
+stylelint@7.7.1:
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.7.1.tgz#af30b6677e307d38b0ad64b70e719c1752973c67"
+  dependencies:
+    autoprefixer "^6.0.0"
+    balanced-match "^0.4.0"
+    chalk "^1.1.1"
+    colorguard "^1.2.0"
+    cosmiconfig "^2.1.1"
+    doiuse "^2.4.1"
+    execall "^1.0.0"
+    get-stdin "^5.0.0"
+    globby "^6.0.0"
+    globjoin "^0.1.4"
+    html-tags "^1.1.1"
+    ignore "^3.2.0"
+    known-css-properties "^0.0.6"
+    lodash "^4.0.0"
+    log-symbols "^1.0.2"
+    meow "^3.3.0"
+    micromatch "^2.3.11"
     normalize-selector "^0.2.0"
     postcss "^5.0.20"
     postcss-less "^0.14.0"
@@ -5114,7 +5153,7 @@ svelte-loader@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-1.1.0.tgz#11ba04fd5a657c2560e48ca3498d8a39878a5886"
 
-svelte@^1.6.1:
+svelte@1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-1.6.1.tgz#ab0eea00102aab2e21d7f5713d51b7a6dc4022d2"
   dependencies:
@@ -5332,7 +5371,7 @@ typescript@2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.4.tgz#b53b69fb841126acb1dd4b397d21daba87572251"
 
-uglify-js@^2.6.1, uglify-js@~2.7.3:
+uglify-js@^2.6.1, uglify-js@^2.7.5:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
   dependencies:
@@ -5604,9 +5643,9 @@ webpack-sources@^0.1.0:
     source-list-map "~0.1.0"
     source-map "~0.5.3"
 
-webpack@2.2.0-rc.1:
-  version "2.2.0-rc.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.2.0-rc.1.tgz#5a85e73942b6ecc23ce6bc9e6d0883883e692e29"
+webpack@2.2.0-rc.2:
+  version "2.2.0-rc.2"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.2.0-rc.2.tgz#2665115b503ed68a7ec77d17c4e0389a5e386418"
   dependencies:
     acorn "^4.0.3"
     acorn-dynamic-import "^2.0.0"
@@ -5625,7 +5664,7 @@ webpack@2.2.0-rc.1:
     source-map "^0.5.3"
     supports-color "^3.1.0"
     tapable "~0.2.5"
-    uglify-js "~2.7.3"
+    uglify-js "^2.7.5"
     watchpack "^1.0.0"
     webpack-sources "^0.1.0"
     yargs "^6.0.0"
