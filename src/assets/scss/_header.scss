@@ -36,7 +36,7 @@
 		width: 100%;
 		text-align: center;
 
-		color: white;
+		color: #1A1B1C;
 
 		@media print {
 			color: #1A1B1C;
@@ -76,7 +76,7 @@
 		a {
 			@extend %fancy-hover;
 
-			color: white;
+			color: #1A1B1C;
 			text-decoration: none;
 
 			text-transform: lowercase;
