@@ -118,7 +118,7 @@
 .social {
 	$size: 13px;
 
-	color: white;
+	color: #1A1B1C;
 
 	@media print {
 		display: none;
@@ -164,7 +164,7 @@
 			height: $size;
 
 			use {
-				fill: white;
+				fill: #1A1B1C;
 			}
 		}
 	}

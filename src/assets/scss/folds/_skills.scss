@@ -2,7 +2,7 @@
 	$types: (
 		'prefered': (#0BB07C, rgba(white, 0.9)),
 		'expert': (#0093A5),
-		'medium': (#4C4C4C),
+		'medium': (#7A7A7A),
 		'low': (#BF4B46)
 	);
 
@@ -146,18 +146,6 @@
 				font-soze: 16px;
 			}
 
-			@each $type, $colours in $types {
-				&--#{$type} {
-					background-color: nth($colours, 1);
-
-					@if (length($colours) >= 2) {
-						small {
-							color: nth($colours, 2);
-						}
-					}
-				}
-			}
-
 			small {
 				display: inline-block;
 				vertical-align: middle;
@@ -174,6 +162,18 @@
 
 				@media print {
 					display: none;
+				}
+			}
+
+			@each $type, $colours in $types {
+				&--#{$type} {
+					background-color: nth($colours, 1);
+
+					@if (length($colours) >= 2) {
+						small {
+							color: nth($colours, 2);
+						}
+					}
 				}
 			}
 		}

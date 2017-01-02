@@ -72,14 +72,8 @@ $stage-d: 1024px;
 }
 
 html {
-	background-color: #1A1B1C;
-	color: white;
-
-	border: 10px solid lighten(#1A1B1C, 3%);
-
-	@include mscr($stage-c) {
-		border-width: $bodyBorder;
-	}
+	background-color: white;
+	color: #1A1B1C;
 
 	@media print {
 		background-color: transparent;
