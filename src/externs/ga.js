@@ -3,3 +3,9 @@
  */
 function ga() {
 }
+
+/*
+ @const
+ */
+function fbq() {
+}

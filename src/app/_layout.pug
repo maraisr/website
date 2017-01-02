@@ -35,11 +35,18 @@ block _head_end
 		include meta/person.json
 
 	script(type="text/javascript", defer="defer", async="async").
-		!function (e, t, n, a, c, s, o) {
-			e.GoogleAnalyticsObject = c, e[c] = e[c] || function () {
-					(e[c].q = e[c].q || []).push(arguments)
-				}, e[c].l = 1 * new Date, s = t.createElement(n), o = t.getElementsByTagName(n)[0], s.async = 1, s.src = a, o.parentNode.insertBefore(s, o)
+		'use strict';
+		!function (b, d, f, g, h, i, j) {
+			b.GoogleAnalyticsObject = h, b[h] = b[h] || function () {
+					(b[h].q = b[h].q || []).push(arguments)
+				}, b[h].l = 1 * new Date, i = d.createElement(f), j = d.getElementsByTagName(f)[0], i.async = 1, i.src = g, j.parentNode.insertBefore(i, j)
 		}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+		!function (a, c, d, g, h, i, j) {
+			a.fbq || (h = a.fbq = function () {
+				h.callMethod ? h.callMethod.apply(h, arguments) : h.queue.push(arguments)
+			}, !a._fbq && (a._fbq = h), h.push = h, h.loaded = !0, h.version = '2.0', h.queue = [], i = c.createElement(d), i.async = !0, i.src = g, j = c.getElementsByTagName(d)[0], j.parentNode.insertBefore(i, j))
+		}(window, document, 'script', '//connect.facebook.net/en_US/fbevents.js');
 
 block _body
 	header.site__header
