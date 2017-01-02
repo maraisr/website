@@ -7,18 +7,8 @@
 
 	background-color: #eee;
 
-	.offset-heading {
-		display: block;
-
-		margin-bottom: 20px;
-		padding-bottom: 12px;
-
-		font-size: 28px;
-		border-bottom: 1px solid #1A1B1C;
-
-		@include mscr($stage-c) {
-			display: none;
-		}
+	@media print {
+		background-color: transparent;
 	}
 
 	.experience {
@@ -27,6 +17,7 @@
 		position: relative;
 
 		padding-top: 70px;
+		padding-bottom: 70px;
 
 		text-align: left;
 
@@ -50,7 +41,6 @@
 
 			@include mscr($stage-d) {
 				display: block;
-				height: 340px;
 			}
 
 			& > li {
@@ -64,6 +54,8 @@
 			display: block;
 			width: 100%;
 
+			padding: 25px;
+
 			vertical-align: top;
 
 			flex: 1 0 auto;
@@ -73,30 +65,27 @@
 			text-align: center;
 
 			&:not(:first-child) {
-				margin-bottom: 50px;
+				margin-bottom: 25px;
+
+				@include mscr($stage-b) {
+					margin-bottom: 50px;
+				}
 			}
 
-			@include mscr($stage-d) {
+			@include mscr($stage-b) {
 				display: inline-block;
 
 				height: 100%;
+			}
 
-				lost-column: 1/5;
-
-				padding: 25px;
-
-				&:not(:first-child) {
-					margin-bottom: 0;
-				}
-
-				&:last-child {
-					lost-column: 2/5;
-
-					//padding-left: 35px;
-				}
+			@include mscr($stage-d) {
+				lost-column: 1/4;
 			}
 
 			@media print {
+				text-align: left;
+				padding: 0;
+
 				&:not(:first-child) {
 					margin-bottom: 20px;
 				}
@@ -130,6 +119,7 @@
 
 			@include mscr($stage-c) {
 				margin-top: 22px;
+				margin-bottom: 25px;
 			}
 		}
 
@@ -155,10 +145,10 @@
 			margin: (-1 * ($gap));
 			margin-top: 20px;
 
-			width: 100%;
+			//width: 100%;
 
 			@include mscr($stage-d) {
-				position: absolute calc(100% - 60px) 0 false 0;
+				position: absolute false 25px 25px 25px;
 
 				margin-top: 0;
 			}
