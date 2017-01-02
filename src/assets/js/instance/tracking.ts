@@ -19,13 +19,21 @@ export default new class Tracking implements TrackingInterface {
 	tracKPage(): void {
 		if (!__DEV__) {
 			ga('create', 'UA-47550066-2', 'auto');
+			fbq('init', '1370245299676379');
+
 			ga('send', 'pageview');
+			fbq('track', 'PageView');
 		}
 	}
 
 	track(label: string, event: string, data: string): void {
 		if (!__DEV__) {
 			ga('send', 'event', label, event, data);
+
+			fbq('trackCustom', event, {
+				label,
+				data
+			});
 		}
 	}
 };
