@@ -9,8 +9,7 @@
 		"label": "Creative and Application Developer",
 		"characterClass": "Programmer",
 		"brief": "A creative and application developer with over 6 years expereince, who loves JavaScript!",
-		"image": "{{{DOMAIN}}}img/handsome.jpg",
-		"quote": "By design we are all individually imperfect, but it's these very imperfections that shape us, and tell the story of who we are."
+		"image": "{{{DOMAIN}}}img/handsome.jpg"
 	},
 	"contact": {
 		"website": "{{{DOMAIN}}}",
