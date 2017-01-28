@@ -58,7 +58,7 @@
 			},
 			{
 				"employer": "Vuly Trampolines",
-				"position": "Software Engineer",
+				"position": "Web Application Developer",
 				"summary": "Worked as a creative developer for Australia's leading trampoline company.",
 				"start": "2013-03-24",
 				"end": "2014-01-17",
@@ -86,7 +86,7 @@
 			},
 			{
 				"employer": "Touchpoint",
-				"position": "Lead Software Engineer",
+				"position": "Lead Frontend Developer",
 				"summary": "Led the frontend space, driving and leading technical initiatives in the airline industry.",
 				"start": "2015-06-22",
 				"end": "2016-10-03",
@@ -170,17 +170,18 @@
 				"name": "Framework",
 				"level": "expert",
 				"skills": [
-					"Angular"
+					"Angular",
+					"React"
 				]
 			},
 			{
 				"name": "Framework",
 				"level": "medium",
 				"skills": [
-					"React",
 					"Laravel",
 					"Symfony",
-					"Monix"
+					"Monix",
+					"Svelte"
 				]
 			},
 			{
