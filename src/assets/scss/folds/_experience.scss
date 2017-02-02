@@ -115,11 +115,17 @@
 		&__descr {
 			line-height: 1.5;
 
-			text-align: left;
+			margin-top: 10px;
+
+			text-align: center;
 
 			@include mscr($stage-c) {
 				margin-top: 22px;
 				margin-bottom: 25px;
+			}
+
+			@include mscr($stage-d) {
+				text-align: left;
 			}
 		}
 
