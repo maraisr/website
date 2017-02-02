@@ -102,11 +102,7 @@
 	}
 
 	&__social {
-		text-align: center;
-
-		@include mscr($stage-b) {
-			text-align: left;
-		}
+		text-align: left;
 	}
 
 	&__last-fm {
