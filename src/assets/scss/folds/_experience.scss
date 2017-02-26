@@ -127,6 +127,10 @@
 			@include mscr($stage-d) {
 				text-align: left;
 			}
+
+			@media print {
+				text-align: left;
+			}
 		}
 
 		&__company {
