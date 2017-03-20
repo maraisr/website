@@ -121,7 +121,7 @@
 				"level": "expert",
 				"skills": [
 					"JavaScript",
-					"ES6",
+					"Rust",
 					"HTML"
 				]
 			},
@@ -130,7 +130,7 @@
 				"level": "prefered",
 				"skills": [
 					"TypeScript",
-					"Sass",
+					"SCSS",
 					"Pug"
 				]
 			},
@@ -171,7 +171,8 @@
 				"level": "expert",
 				"skills": [
 					"Angular",
-					"React"
+					"React",
+					"HyperApp"
 				]
 			},
 			{
@@ -272,6 +273,13 @@
 				"level": "medium",
 				"skills": [
 					"SVN"
+				]
+			},
+			{
+				"name": "Platform",
+				"level": "medium",
+				"skills": [
+					"amazon web services"
 				]
 			}
 		]
