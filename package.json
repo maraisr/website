@@ -43,7 +43,7 @@
     "gulp-mustache": "2.3.0",
     "gulp-notify": "3.0.0",
     "gulp-plumber": "1.1.0",
-    "gulp-postcss": "6.3.0",
+    "gulp-postcss": "6.4.0",
     "gulp-posthtml": "3.0.0",
     "gulp-pretty-data": "0.2.0",
     "gulp-pug": "3.3.0",
@@ -73,10 +73,10 @@
     "stylelint-scss": "1.4.3",
     "svelte": "1.12.1",
     "svelte-loader": "^2.0.0",
-    "ts-loader": "2.0.2",
+    "ts-loader": "2.0.3",
     "tslint": "4.5.1",
     "typescript": "2.2.1",
-    "webpack": "2.2.1",
+    "webpack": "2.3.2",
     "wrapper-webpack-plugin": "0.1.11"
   }
 }
