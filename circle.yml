@@ -26,6 +26,8 @@ dependencies:
     - yarn global add gulp-cli
   override:
     - yarn install --pure-lockfile
+  post:
+    - yarn add node-sass --dev --force # Force a re-install of node-sass becuase of the binary fails
 
 test:
   pre:
