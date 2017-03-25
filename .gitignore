@@ -8,7 +8,4 @@ tmp/
 s3config.json
 
 .idea/
-!.idea/website.iml
-!.idea/.name
-!.idea/modules.xml
-!.idea/webResources.xml
+.vscode/
