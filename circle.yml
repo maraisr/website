@@ -1,10 +1,13 @@
 machine:
   pre:
-    - mkdir ~/.yarn-cache 
+    - mkdir ~/.yarn-cache
+  post:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn config set cache-folder ~/.yarn-cache
   node:
     version: stable
   timezone:
-    Australia/Brisbane  
+    Australia/Brisbane
   environment:
     NODE_ENV: 'development'
 
@@ -17,11 +20,10 @@ database:
     - echo "No database"
 
 dependencies:
-  pre:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn global add gulp-cli
   cache_directories:
-    -  ~/.yarn-cache
+    - ~/.yarn-cache
+  pre:
+    - yarn global add gulp-cli
   override:
     - yarn install --pure-lockfile
 
@@ -31,6 +33,10 @@ test:
     - yarn lint:scss
   override:
     - yarn test
+
+compile:
+  override:
+    - yarn build
 
 deployment:
   production:
