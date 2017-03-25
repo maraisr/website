@@ -262,7 +262,7 @@ gulp.task('gzip', ['default', 'misc'], () => {
 		.pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('publish', ['fingerprint'], () => {
+gulp.task('publish', [], () => {
 	var awsPub = require('gulp-awspublish');
 
 	var s3config = (function () {

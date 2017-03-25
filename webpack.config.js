@@ -8,7 +8,7 @@ module.exports = {
 		'./src/assets/js/main.ts'
 	],
 	output: {
-		path: './dist/',
+		path: `${__dirname}/dist/`,
 		filename: '[name].js'
 	},
 	resolve: {

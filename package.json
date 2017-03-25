@@ -12,8 +12,8 @@
     "lint:ts": "tslint -t verbose -c tslint.json $(find ./src/assets/js -name *.ts)",
     "lint:scss": "stylelint $(find ./src/assets/scss -name *.scss) --colour -s scss",
     "lint": "npm run lint:ts && npm run lint:scss",
-    "build": "gulp clean && cross-env NODE_ENV=production gulp",
-    "deploy": "gulp clean && cross-env NODE_ENV=production gulp publish"
+    "build": "gulp clean && cross-env NODE_ENV=production gulp fingerprint",
+    "deploy": "cross-env NODE_ENV=production gulp publish"
   },
   "repository": {
     "type": "git",
