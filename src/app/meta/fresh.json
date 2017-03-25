@@ -141,7 +141,8 @@
 					"Scala",
 					"Elm",
 					"Java",
-					"PHP"
+					"PHP",
+					"Haskell"
 				]
 			},
 			{
@@ -156,7 +157,8 @@
 				"level": "expert",
 				"skills": [
 					"Bower",
-					"NPM"
+					"NPM",
+					"Cargo"
 				]
 			},
 			{
@@ -182,7 +184,8 @@
 					"Laravel",
 					"Symfony",
 					"Monix",
-					"Svelte"
+					"Svelte",
+					"Ember"
 				]
 			},
 			{
@@ -279,7 +282,7 @@
 				"name": "Platform",
 				"level": "medium",
 				"skills": [
-					"amazon web services"
+					"Amazon Web Services"
 				]
 			}
 		]
