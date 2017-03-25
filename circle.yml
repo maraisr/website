@@ -9,10 +9,6 @@ machine:
     NODE_ENV: 'development'
 
 general:
-  branches:
-    only:
-      - master
-      - release
   artifacts:
     - "dist/"
 
