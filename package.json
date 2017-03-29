@@ -58,7 +58,7 @@
     "mkdirp": "0.5.1",
     "moment-timezone": "0.5.11",
     "mustache": "2.3.0",
-    "node-sass": "4.5.1",
+    "node-sass": "4.5.2",
     "postcss": "5.2.16",
     "postcss-position": "0.5.0",
     "postcss-pxtorem": "4.0.0",
