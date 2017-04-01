@@ -70,7 +70,7 @@
     "pug-html-loader": "^1.1.4",
     "rimraf": "2.6.1",
     "sass-module-importer": "1.4.0",
-    "stylelint": "7.9.0",
+    "stylelint": "7.10.0",
     "stylelint-scss": "1.4.3",
     "svelte": "1.13.2",
     "svelte-loader": "^2.0.1",
