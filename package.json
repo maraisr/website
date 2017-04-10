@@ -50,7 +50,7 @@
     "gulp-rev-all": "0.9.7",
     "gulp-sass": "3.1.0",
     "gulp-sass-bulk-import": "1.0.1",
-    "gulp-sourcemaps": "2.5.1",
+    "gulp-sourcemaps": "2.5.2",
     "gulp-util": "3.0.8",
     "lodash.merge": "4.6.0",
     "lodash.orderby": "4.6.0",
