@@ -71,7 +71,7 @@
     "rimraf": "2.6.1",
     "sass-module-importer": "1.4.0",
     "stylelint": "7.10.0",
-    "stylelint-scss": "1.4.3",
+    "stylelint-scss": "1.4.4",
     "svelte": "1.13.6",
     "svelte-loader": "^2.0.1",
     "ts-loader": "2.0.3",
