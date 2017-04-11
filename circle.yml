@@ -45,8 +45,8 @@ deployment:
   production:
     branch: release
     commands:
-      - sentry-cli releases set-commits "$CIRCLE_SHA1" --auto
       - sentry-cli releases new "$CIRCLE_SHA1"
+      - sentry-cli releases set-commits "$CIRCLE_SHA1" --auto
       - yarn deploy
       - sentry-cli releases finalize "$CIRCLE_SHA1"
       - sentry-cli releases deploys "$CIRCLE_SHA1" new -e prod
