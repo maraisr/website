@@ -14,11 +14,11 @@ machine:
 
 general:
   artifacts:
-    - "dist/"
+    - dist/
 
 database:
   override:
-    - echo "No database"
+    - echo 'No database'
 
 dependencies:
   cache_directories:
@@ -45,8 +45,8 @@ deployment:
   production:
     branch: release
     commands:
-      - sentry-cli releases new "$CIRCLE_SHA1"
-      - sentry-cli releases set-commits "$CIRCLE_SHA1" --auto
+      - sentry-cli releases new "$CIRCLE_BUILD_NUM"
+      - sentry-cli releases set-commits "$CIRCLE_BUILD_NUM" --auto
       - yarn deploy
-      - sentry-cli releases finalize "$CIRCLE_SHA1"
-      - sentry-cli releases deploys "$CIRCLE_SHA1" new -e prod
+      - sentry-cli releases finalize "$CIRCLE_BUILD_NUM"
+      - sentry-cli releases deploys "$CIRCLE_BUILD_NUM" new -e prod
