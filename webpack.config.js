@@ -53,7 +53,7 @@ module.exports = {
 		returns.push(
 			new webpack.DefinePlugin({
 				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production'))),
-				__BUILD__: JSON.stringify(process.env.CIRCLE_BUILD_NUM || 'dev')
+				__BUILD__: JSON.stringify(parseInt(process.env.CIRCLE_BUILD_NUM || 0))
 			})
 		);
 

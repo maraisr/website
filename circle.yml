@@ -11,6 +11,7 @@ machine:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn config set cache-folder ~/.yarn-cache
     - curl -sL https://sentry.io/get-cli/ | bash
+    - aws configure set preview.cloudfront true
 
 general:
   artifacts:
@@ -46,6 +47,7 @@ deployment:
       - sentry-cli releases new "$CIRCLE_BUILD_NUM"
       - sentry-cli releases set-commits "$CIRCLE_BUILD_NUM" --auto
       - yarn deploy
-      - sentry-cli releases finalize "$CIRCLE_BUILD_NUM"
       - sentry-cli releases files "$CIRCLE_BUILD_NUM" upload-sourcemaps dist/ --ext map
+      - sentry-cli releases finalize "$CIRCLE_BUILD_NUM"
       - sentry-cli releases deploys "$CIRCLE_BUILD_NUM" new -e prod
+      - aws cloudfront create-invalidation --distribution-id $AWS_DISTRO --paths /*.js /*.css /*.html /sitemap.en_AU.xml /resume.json
