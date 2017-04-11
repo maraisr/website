@@ -1,3 +1,8 @@
+import {config as ravenConfig} from 'raven-js';
+
+ravenConfig('https://9a3bf03a46804a7681931f2aa3f98e65@sentry.io/157117')
+	.install();
+
 import Tracking from './instance/tracking';
 
 import Nav from './instance/nav';

@@ -69,8 +69,8 @@ module.exports = {
 				options: {
 					languageIn: 'ECMASCRIPT6',
 					languageOut: 'ECMASCRIPT5_STRICT',
-					rewritePolyfills: true,
-					processCommonJsModules: true,
+					rewritePolyfills: false,
+					processCommonJsModules: false,
 					assumeFunctionWrapper: true,
 					useTypesForOptimization: true,
 					compilationLevel: 'ADVANCED',
