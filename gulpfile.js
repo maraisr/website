@@ -286,8 +286,6 @@ gulp.task('publish', [], () => {
 	var s3config = (function () {
 		if (process.env.S3_BUCKET) {
 			return {
-				accessKeyId: process.env.S3_ACCESS_ID,
-				secretAccessKey: process.env.S3_ACCESS_KEY,
 				bucket: process.env.S3_BUCKET
 			}
 		} else {
