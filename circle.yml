@@ -1,15 +1,16 @@
 machine:
-  pre:
-    - mkdir ~/.yarn-cache
-  post:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn config set cache-folder ~/.yarn-cache
   node:
     version: stable
   timezone:
     Australia/Brisbane
   environment:
     NODE_ENV: 'development'
+  pre:
+    - mkdir ~/.yarn-cache
+  post:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn config set cache-folder ~/.yarn-cache
+    - curl -sL https://sentry.io/get-cli/ | bash
 
 general:
   artifacts:
@@ -44,4 +45,7 @@ deployment:
   production:
     branch: release
     commands:
+      - sentry-cli releases new "$CIRCLE_SHA1"
       - yarn deploy
+      - sentry-cli releases finalize "$CIRCLE_SHA1"
+      - sentry-cli releases deploys "$CIRCLE_SHA1" new -e prod
