@@ -29,7 +29,7 @@ module.exports = {
 				loader: 'ts-loader'
 			},
 			{
-				test: /\.[jt]s$/,
+				test: /\.(j|t)s$/,
 				enforce: 'pre',
 				loader: "source-map-loader"
 			},
@@ -52,7 +52,8 @@ module.exports = {
 	plugins: ((returns) => {
 		returns.push(
 			new webpack.DefinePlugin({
-				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production')))
+				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production'))),
+				__BUILD__: JSON.stringify(process.env.CIRCLE_BUILD_NUM || 'dev')
 			})
 		);
 
@@ -65,6 +66,26 @@ module.exports = {
 			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
 			returns.push(new webpack.optimize.AggressiveMergingPlugin());
 
+			returns.push(new webpack.optimize.UglifyJsPlugin({
+				minimize: true,
+				mangle: true,
+				output: {comments: false},
+				sourceMap: true,
+				compress: {
+					warnings: false,
+					sequences: true,
+					dead_code: true,
+					conditionals: true,
+					booleans: true,
+					unused: true,
+					if_return: true,
+					join_vars: true,
+					unsafe: true,
+					loops: true,
+					passes: 3
+				}
+			}));
+
 			returns.push(new ClosureCompiler({
 				options: {
 					languageIn: 'ECMASCRIPT6',
@@ -73,7 +94,7 @@ module.exports = {
 					processCommonJsModules: false,
 					assumeFunctionWrapper: true,
 					useTypesForOptimization: true,
-					compilationLevel: 'ADVANCED',
+					compilationLevel: 'SIMPLE',
 					warningLevel: 'DEFAULT',
 					createSourceMap: true,
 					applyInputSourceMaps: true,

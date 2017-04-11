@@ -5,7 +5,7 @@ interface AppElement extends Element {
 }
 
 export default function (selectors: NodeList) {
-	[...selectors].map((v: AppElement) => ((document.getElementById(`content-${v.hash.replace(/^#/, '')}`)) ? v.addEventListener('click', (e: MouseEvent) => {
+	Array.from(selectors).map((v: AppElement) => ((document.getElementById(`content-${v.hash.replace(/^#/, '')}`)) ? v.addEventListener('click', (e: MouseEvent) => {
 		e.preventDefault();
 
 		let clickTo: string = (<AppElement>e.target).hash.replace(/^#/, '');

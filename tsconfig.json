@@ -1,14 +1,19 @@
 {
 	"compileOnSave": true,
 	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es2015",
+		"module": "es2015",
+		"target": "es5",
 		"moduleResolution": "node",
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
+		"experimentalDecorators": false,
+		"emitDecoratorMetadata": false,
 		"noImplicitAny": true,
 		"removeComments": true,
 		"sourceMap": true,
+		"lib": [
+			"dom",
+			"es2015",
+			"es2016"
+		],
 		"outDir": "tmp/"
 	},
 	"files": [

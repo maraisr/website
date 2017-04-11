@@ -1,7 +1,11 @@
-import {config as ravenConfig} from 'raven-js';
+import Raven from 'raven-js';
 
-ravenConfig('https://9a3bf03a46804a7681931f2aa3f98e65@sentry.io/157117')
-	.install();
+if (!__DEV__) {
+	Raven.config('https://9a3bf03a46804a7681931f2aa3f98e65@sentry.io/157117')
+		.install()
+		.setEnvironment(__DEV__ ? 'dev' : 'prod')
+		.setRelease(__BUILD__);
+}
 
 import Tracking from './instance/tracking';
 

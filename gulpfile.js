@@ -119,7 +119,25 @@ gulp.task('pug', () => {
 				collapseWhitespace: true,
 				keepClosingSlash: true,
 				sortClassName: true,
-				minifyJS: true,
+				minifyJS: {
+					minimize: true,
+					mangle: true,
+					output: {comments: false},
+					sourceMap: false,
+					compress: {
+						warnings: false,
+						sequences: true,
+						dead_code: true,
+						conditionals: true,
+						booleans: true,
+						unused: true,
+						if_return: true,
+						join_vars: true,
+						unsafe: true,
+						loops: true,
+						passes: 3
+					}
+				},
 				minifyCSS: true
 			}));
 

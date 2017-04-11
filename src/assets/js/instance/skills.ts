@@ -2,7 +2,7 @@ export default function (selectors: Element) {
 	let skillsZone = selectors.getElementsByClassName('skills'),
 		overZone = false;
 
-	[... selectors.getElementsByClassName('legend__item')].forEach(level => {
+	Array.from(selectors.getElementsByClassName('legend__item')).forEach(level => {
 		let levelAttr = level.getAttribute('level');
 
 		((evt) => {

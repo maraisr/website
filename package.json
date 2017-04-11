@@ -27,9 +27,10 @@
   "homepage": "https://github.com/maraisr/website#readme",
   "dependencies": {
     "normalize-scss": "6.0.0",
-    "raven-js": "^3.14.0"
+    "raven-js": "3.14.0"
   },
   "devDependencies": {
+    "@types/node": "7.0.12",
     "autoprefixer": "6.7.7",
     "concurrent-transform": "1.0.0",
     "cross-env": "4.0.0",
@@ -52,7 +53,7 @@
     "gulp-rev-all": "0.9.7",
     "gulp-sass": "3.1.0",
     "gulp-sass-bulk-import": "1.0.1",
-    "gulp-sourcemaps": "2.4.1",
+    "gulp-sourcemaps": "2.6.0",
     "gulp-util": "3.0.8",
     "lodash.merge": "4.6.0",
     "lodash.orderby": "4.6.0",
@@ -69,7 +70,7 @@
     "posthtml-minifier": "0.1.0",
     "posthtml-obfuscate": "0.1.5",
     "posthtml-schemas": "1.0.0",
-    "pug-html-loader": "^1.1.4",
+    "pug-html-loader": "1.1.4",
     "rimraf": "2.6.1",
     "sass-module-importer": "1.4.0",
     "source-map-loader": "0.2.1",

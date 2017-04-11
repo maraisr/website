@@ -1,24 +1,20 @@
-import template from './template.pug';
+const template = require('./template.pug').default;
 
 const apiKey = '54df6a0bb1a7eea281e3d8443f13e33d';
-
-/* Privates */
-const call = Symbol();
-const setup = Symbol();
 
 export default class FM {
 	constructor(private elm: HTMLElement) {
 		document.addEventListener('DOMContentLoaded', ev => {
-			this[setup]();
+			this.setup();
 		});
 	}
 
-	private [setup](): void {
+	private setup(): void {
 		const vm = new template({
 			target: this.elm
 		});
 
-		this[call]('user.getrecenttracks').then(track => {
+		this.call('user.getrecenttracks').then((track: any) => {
 			track = track['recenttracks']['track'][0];
 
 			if (track) {
@@ -41,7 +37,7 @@ export default class FM {
 		});
 	}
 
-	private [call](func: String, user = 'maraisr'): Promise<any> {
+	private call(func: String, user = 'maraisr'): Promise<any> {
 		return new Promise((resolve, reject) => {
 			let caller = new XMLHttpRequest();
 
