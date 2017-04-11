@@ -29,18 +29,23 @@ block _head
 	link(href=DOMAIN, rel="canonical")
 
 block _head_end
-	link(href="main.js", rel="preconnect")
+	link(href="main.js", rel="dns-prefetch", crossorigin)
+	link(href="//cdn.ravenjs.com", rel="dns-prefetch", crossorigin)
+	link(href="//sentry.io", rel="dns-prefetch", crossorigin)
+	link(href="//ws.audioscrobbler.com", rel="dns-prefetch", crossorigin)
+	link(href="//www.google-analytics.com", rel="dns-prefetch", crossorigin)
+	link(href="//connect.facebook.net", rel="dns-prefetch", crossorigin)
 
 	script(type="application/ld+json")
 		include meta/person.json
 
-	script(type="text/javascript", defer="defer", async="async").
+	script(async, defer).
 		'use strict';
 		!function (b, d, f, g, h, i, j) {
 			b.GoogleAnalyticsObject = h, b[h] = b[h] || function () {
 					(b[h].q = b[h].q || []).push(arguments)
 				}, b[h].l = 1 * new Date, i = d.createElement(f), j = d.getElementsByTagName(f)[0], i.async = 1, i.src = g, j.parentNode.insertBefore(i, j)
-		}(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+		}(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
 
 		!function (a, c, d, g, h, i, j) {
 			a.fbq || (h = a.fbq = function () {
@@ -90,4 +95,9 @@ block _body
 
 	include meta/icons.svg
 
-	script(type="text/javascript", src="main.js", defer="defer")
+	script(src="//cdn.ravenjs.com/3.14.0/raven.min.js")
+
+	script.
+		Raven.config('//9a3bf03a46804a7681931f2aa3f98e65@sentry.io/157117').install()
+
+	script(src="main.js", defer)

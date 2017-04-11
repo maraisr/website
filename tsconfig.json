@@ -8,7 +8,7 @@
 		"emitDecoratorMetadata": true,
 		"noImplicitAny": true,
 		"removeComments": true,
-		"sourceMap": false,
+		"sourceMap": true,
 		"outDir": "tmp/"
 	},
 	"files": [

@@ -38,7 +38,7 @@ Object.defineProperty(pkg, 'fresh', {
 });
 
 function plumb() {
-	return require('gulp-plumber')({errorHandler: require('gulp-notify').onError("Error: <%= error.message %>")})
+	return require('gulp-plumber')({ errorHandler: require('gulp-notify').onError("Error: <%= error.message %>") })
 }
 
 function webpackCallback(err, stats) {
@@ -61,7 +61,7 @@ gulp.task('watch', ['prewatch', 'default'], () => {
 	gulp.watch('./src/assets/**/*.scss', ['scss']);
 	gulp.watch('./src/assets/img/**/*', ['images']);
 
-	require('webpack')(Object.assign({watch: true}, require('./webpack.config.js')), (err, stats) => {
+	require('webpack')(Object.assign({ watch: true }, require('./webpack.config.js')), (err, stats) => {
 		webpackCallback(err, stats);
 	});
 });
@@ -170,12 +170,12 @@ gulp.task('scss', () => {
 			}]);
 			steps.push(['autoprefixer', prfxOpts]);
 
-			steps.push(['css-mqpacker', {sort: true}]);
+			steps.push(['css-mqpacker', { sort: true }]);
 
 			if (process.env.NODE_ENV == 'production') {
-				steps.push(['postcss-sorting', {'sort-order': require('cssortie')}]);
+				steps.push(['postcss-sorting', { 'sort-order': require('cssortie') }]);
 				steps.push(['cssnano', {
-					discardComments: {removeAll: true},
+					discardComments: { removeAll: true },
 					autoprefixer: prfxOpts,
 					safe: false
 				}]);
@@ -235,7 +235,7 @@ gulp.task('resume', (done) => {
 gulp.task('misc', ['resume'], () => {
 	return gulp.src(['./src/misc/**/*'])
 		.pipe(require('gulp-mustache')(PUG_LOCALS))
-		.pipe(require('gulp-pretty-data')({type: 'minify'}))
+		.pipe(require('gulp-pretty-data')({ type: 'minify' }))
 		.pipe(gulp.dest('./dist'))
 });
 
@@ -243,16 +243,16 @@ gulp.task('misc', ['resume'], () => {
 gulp.task('fingerprint', ['default', 'misc'], (done) => {
 	const revAll = require('gulp-rev-all');
 
-	gulp.src('./dist/**/*.{css,js,html}')
-		.pipe(revAll.revision({dontRenameFile: ['.html']}))
+	gulp.src('./dist/**/*.{css,js,html,map}')
+		.pipe(revAll.revision({ dontRenameFile: ['.html'] }))
 		.pipe(gulp.dest('./dist/'))
 		.on('end', () => {
-			rimraf('./dist/main.{css,js}', done);
+			rimraf('./dist/main.{css,js,map}', done);
 		});
 });
 
 gulp.task('gzip', ['default', 'misc'], () => {
-	return gulp.src('./dist/**/*')
+	return gulp.src('./dist/**/!(*.map)')
 		.pipe(require('gulp-gzip')({
 			append: false,
 			gzipOptions: {
@@ -278,8 +278,8 @@ gulp.task('publish', [], () => {
 	})();
 
 	var headers = {
-			'Cache-Control': 'max-age=1209600'
-		},
+		'Cache-Control': 'max-age=1209600'
+	},
 		s3base = {
 			accessKeyId: s3config['accessKeyId'],
 			secretAccessKey: s3config['secretAccessKey'],
@@ -288,10 +288,10 @@ gulp.task('publish', [], () => {
 				Bucket: s3config['bucket']
 			}
 		},
-		rpt = {states: ['create', 'update', 'delete']},
+		rpt = { states: ['create', 'update', 'delete'] },
 		s3 = awsPub.create(s3base);
 
-	return gulp.src('**/*', {cwd: 'dist/'})
+	return gulp.src('**/!(*.map)', { cwd: 'dist/' })
 		.pipe(parallelize(s3.publish(headers), 10))
 		.pipe(s3.sync())
 		.pipe(awsPub.reporter(rpt))

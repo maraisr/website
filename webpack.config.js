@@ -9,13 +9,15 @@ module.exports = {
 	],
 	output: {
 		path: `${__dirname}/dist/`,
-		filename: '[name].js'
+		filename: '[name].js',
+		devtoolModuleFilenameTemplate: 'mr:///[resource-path]',
+		sourceMapFilename: '[name].map'
 	},
 	resolve: {
 		extensions: ['.ts', '.js']
 	},
 	cache: true,
-	devtool: false,
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{
@@ -25,6 +27,11 @@ module.exports = {
 				],
 				exclude: /node_modules/,
 				loader: 'ts-loader'
+			},
+			{
+				test: /\.[jt]s$/,
+				enforce: 'pre',
+				loader: "source-map-loader"
 			},
 			{
 				test: /\.pug$/,
@@ -68,6 +75,8 @@ module.exports = {
 					useTypesForOptimization: true,
 					compilationLevel: 'ADVANCED',
 					warningLevel: 'DEFAULT',
+					createSourceMap: true,
+					applyInputSourceMaps: true,
 					externs: ['./src/externs/ga.js']
 				}
 			}));
