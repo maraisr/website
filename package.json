@@ -27,7 +27,7 @@
   "homepage": "https://github.com/maraisr/website#readme",
   "dependencies": {
     "normalize-scss": "6.0.0",
-    "raven-js": "3.14.0"
+    "raven-js": "3.14.1"
   },
   "devDependencies": {
     "@types/node": "7.0.12",
@@ -37,7 +37,7 @@
     "css-mqpacker": "5.0.1",
     "cssnano": "3.10.0",
     "cssortie": "0.0.1",
-    "google-closure-compiler-js": "20170218.0.0",
+    "google-closure-compiler-js": "20170409.0.0",
     "gulp": "3.9.1",
     "gulp-awspublish": "3.3.0",
     "gulp-cli": "1.2.2",
@@ -76,7 +76,7 @@
     "source-map-loader": "0.2.1",
     "stylelint": "7.10.1",
     "stylelint-scss": "1.4.4",
-    "svelte": "1.13.7",
+    "svelte": "1.15.0",
     "svelte-loader": "2.0.1",
     "ts-loader": "2.0.3",
     "tslint": "5.1.0",

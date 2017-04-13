@@ -50,4 +50,4 @@ deployment:
       - sentry-cli releases files "$CIRCLE_BUILD_NUM" upload-sourcemaps dist/ --ext map
       - sentry-cli releases finalize "$CIRCLE_BUILD_NUM"
       - sentry-cli releases deploys "$CIRCLE_BUILD_NUM" new -e prod
-      - aws cloudfront create-invalidation --distribution-id $AWS_DISTRO --paths /*.js /*.css /*.html /sitemap.en_AU.xml /resume.json
+      - aws cloudfront create-invalidation --distribution-id $AWS_DISTRO --paths /index.html /sitemap.en_AU.xml /resume.json
