@@ -1,11 +1,9 @@
 /*
  @const
  */
-function ga() {
-}
+function ga() {}
 
 /*
  @const
  */
-function fbq() {
-}
+function fbq() {}

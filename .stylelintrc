@@ -19,7 +19,6 @@
 		"declaration-colon-space-after": "always",
 		"declaration-colon-space-before": "never",
 		"declaration-block-no-duplicate-properties": true,
-		"declaration-block-no-ignored-properties": true,
 		"declaration-block-semicolon-newline-after": "always",
 		"indentation": "tab",
 		"no-missing-end-of-source-newline": true,

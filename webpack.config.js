@@ -4,9 +4,7 @@ const webpack = require('webpack'),
 	Wrapper = require('wrapper-webpack-plugin');
 
 module.exports = {
-	entry: [
-		'./src/assets/js/main.ts'
-	],
+	entry: ['./src/assets/js/main.ts'],
 	output: {
 		path: `${__dirname}/dist/`,
 		filename: '[name].js',
@@ -22,16 +20,14 @@ module.exports = {
 		rules: [
 			{
 				test: /\.ts$/,
-				include: [
-					path.resolve(__dirname, 'src/assets/js/')
-				],
+				include: [path.resolve(__dirname, 'src/assets/js/')],
 				exclude: /node_modules/,
 				loader: 'ts-loader'
 			},
 			{
 				test: /\.(j|t)s$/,
 				enforce: 'pre',
-				loader: "source-map-loader"
+				loader: 'source-map-loader'
 			},
 			{
 				test: /\.pug$/,
@@ -49,63 +45,59 @@ module.exports = {
 			}
 		]
 	},
-	plugins: ((returns) => {
+	plugins: (returns => {
 		returns.push(
 			new webpack.DefinePlugin({
-				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production'))),
-				__BUILD__: JSON.stringify(parseInt(process.env.CIRCLE_BUILD_NUM || 0))
+				__DEV__: JSON.stringify(
+					JSON.parse(process.env.NODE_ENV != 'production')
+				),
+				__BUILD__: JSON.stringify(
+					parseInt(process.env.CIRCLE_BUILD_NUM || 0)
+				)
 			})
 		);
 
 		if (process.env.NODE_ENV == 'production') {
-			returns.push(new webpack.LoaderOptionsPlugin({
-				minimize: true,
-				debug: false
-			}));
+			returns.push(
+				new webpack.LoaderOptionsPlugin({
+					minimize: true,
+					debug: false
+				})
+			);
 
 			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
 			returns.push(new webpack.optimize.AggressiveMergingPlugin());
 
-			returns.push(new webpack.optimize.UglifyJsPlugin({
-				minimize: true,
-				mangle: true,
-				output: {comments: false},
-				sourceMap: true,
-				compress: {
-					warnings: false,
-					sequences: true,
-					dead_code: true,
-					conditionals: true,
-					booleans: true,
-					unused: true,
-					if_return: true,
-					join_vars: true,
-					unsafe: true,
-					loops: true,
-					passes: 3
-				}
-			}));
+			returns.push(
+				new webpack.optimize.UglifyJsPlugin(
+					require('./config/uglifyjs')
+				)
+			);
 
-			returns.push(new ClosureCompiler({
-				options: {
-					languageIn: 'ECMASCRIPT6',
-					languageOut: 'ECMASCRIPT5_STRICT',
-					rewritePolyfills: false,
-					processCommonJsModules: false,
-					assumeFunctionWrapper: true,
-					useTypesForOptimization: true,
-					compilationLevel: 'SIMPLE',
-					warningLevel: 'DEFAULT',
-					createSourceMap: true,
-					applyInputSourceMaps: true,
-					externs: ['./src/externs/ga.js']
-				}
-			}));
+			returns.push(
+				new ClosureCompiler({
+					options: {
+						languageIn: 'ECMASCRIPT6',
+						languageOut: 'ECMASCRIPT5_STRICT',
+						rewritePolyfills: false,
+						processCommonJsModules: false,
+						assumeFunctionWrapper: true,
+						useTypesForOptimization: true,
+						compilationLevel: 'SIMPLE',
+						warningLevel: 'DEFAULT',
+						createSourceMap: true,
+						applyInputSourceMaps: true,
+						externs: ['./src/externs/ga.js']
+					}
+				})
+			);
 
-			returns.push(new Wrapper({
-				header: '(function(){',
-				footer: '}).call(this)'
-			}));
+			returns.push(
+				new Wrapper({
+					header: '(function(){',
+					footer: '}).call(this)'
+				})
+			);
 		}
 
 		return returns;

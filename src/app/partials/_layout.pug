@@ -37,7 +37,7 @@ block _head_end
 	link(href="//connect.facebook.net", rel="dns-prefetch", crossorigin)
 
 	script(type="application/ld+json")
-		include meta/person.json
+		include ../meta/person.json
 
 	script(async, defer).
 		'use strict';
@@ -80,7 +80,7 @@ block _body
 			small=SITE.quote.by
 
 		.footer__social
-			include partials/_social
+			include _social
 
 		.footer__imprint
 			p Copyright &copy;&nbsp;
@@ -93,6 +93,6 @@ block _body
 
 	//include partials/_imprint
 
-	include meta/icons.svg
+	include ../meta/icons.svg
 
 	script(src="main.js", defer)
