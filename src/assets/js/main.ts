@@ -20,4 +20,6 @@ Skills(document.getElementById('content-skills'));
 
 new FM(document.getElementById('last-fm'));
 
-console.info('Nice to see you here, check out my GitHub for the full source: https://github.com/maraisr/website');
+console.info(
+	'Nice to see you here, check out my GitHub for the full source: https://github.com/maraisr/website'
+);

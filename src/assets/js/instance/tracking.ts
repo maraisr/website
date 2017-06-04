@@ -2,11 +2,17 @@ export default new class Tracking implements TrackingInterface {
 	constructor() {
 		if (!__DEV__) {
 			// Mailto links
-			Array.from(document.querySelectorAll('[href^="mailto"]')).forEach((node: Element) => {
-				node.addEventListener('click', (e: MouseEvent) => this.track('Nav', 'click', 'mailto'));
+			Array.from(
+				document.querySelectorAll('[href^="mailto"]')
+			).forEach((node: Element) => {
+				node.addEventListener('click', (e: MouseEvent) =>
+					this.track('Nav', 'click', 'mailto')
+				);
 			});
 
-			Array.from(document.querySelectorAll('.social a')).forEach((node: Element) => {
+			Array.from(
+				document.querySelectorAll('.social a')
+			).forEach((node: Element) => {
 				let title = node.getElementsByTagName('title')[0].textContent;
 
 				node.addEventListener('click', (e: MouseEvent) => {
@@ -36,4 +42,4 @@ export default new class Tracking implements TrackingInterface {
 			});
 		}
 	}
-};
+}();

@@ -1,11 +1,13 @@
-export default function (selectors: Element) {
+export default function(selectors: Element) {
 	let skillsZone = selectors.getElementsByClassName('skills'),
 		overZone = false;
 
-	Array.from(selectors.getElementsByClassName('legend__item')).forEach(level => {
+	Array.from(
+		selectors.getElementsByClassName('legend__item')
+	).forEach(level => {
 		let levelAttr = level.getAttribute('level');
 
-		((evt) => {
+		(evt => {
 			level.addEventListener('mouseover', evt);
 			level.addEventListener('touchstart', evt);
 		})(() => {
@@ -13,8 +15,8 @@ export default function (selectors: Element) {
 			skillsZone[0].className = `skills ${levelAttr}`;
 		});
 
-		level.addEventListener('mouseleave', () => overZone = false);
-		level.addEventListener('touchend', () => overZone = false);
+		level.addEventListener('mouseleave', () => (overZone = false));
+		level.addEventListener('touchend', () => (overZone = false));
 	});
 
 	((evt, ref) => {
