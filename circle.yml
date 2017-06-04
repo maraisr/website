@@ -31,8 +31,7 @@ dependencies:
 
 test:
   pre:
-    - yarn lint:ts
-    - yarn lint:scss
+    - yarn lint
   override:
     - yarn test
 
