@@ -1,52 +1,54 @@
-machine:
-  node:
-    version: stable
-  timezone:
-    Australia/Brisbane
-  environment:
-    NODE_ENV: 'development'
-  pre:
-    - mkdir ~/.yarn-cache
-  post:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn config set cache-folder ~/.yarn-cache
-    - curl -sL https://sentry.io/get-cli/ | bash
-    - aws configure set preview.cloudfront true
+version: 2
+jobs:
+  build:
+    working_directory: ~/build
+    docker:
+      - image: circleci/node:7
 
-general:
-  artifacts:
-    - dist/
+    steps:
+      - checkout
 
-database:
-  override:
-    - echo 'No database'
+      - run:
+          name: Install Globals
+          command: |
+            curl -o- -L https://yarnpkg.com/install.sh | bash;
+            curl -sL https://sentry.io/get-cli/ | bash;
 
-dependencies:
-  cache_directories:
-    - ~/.yarn-cache
-  override:
-    - yarn install --pure-lockfile
-  post:
-    - yarn add node-sass --dev --force # Force a re-install of node-sass becuase of the binary fails
+      - run:
+          name: Global Config
+          command: |
+            mkdir ~/.yarn-cache;
+            yarn config set cache-folder ~/.yarn-cache;
 
-test:
-  pre:
-    - yarn lint
-  override:
-    - yarn test
+      - restore_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
 
-compile:
-  override:
-    - yarn build
+      - run:
+          name: iInstall Dependencies
+          command: yarn install --pure-lockfile
 
-deployment:
-  production:
-    branch: release
-    commands:
-      - sentry-cli releases new "$CIRCLE_BUILD_NUM"
-      - sentry-cli releases set-commits "$CIRCLE_BUILD_NUM" --auto
-      - yarn deploy
-      - sentry-cli releases files "$CIRCLE_BUILD_NUM" upload-sourcemaps dist/ --ext map
-      - sentry-cli releases finalize "$CIRCLE_BUILD_NUM"
-      - sentry-cli releases deploys "$CIRCLE_BUILD_NUM" new -e prod
-      - aws cloudfront create-invalidation --distribution-id $AWS_DISTRO --paths /index.html /sitemap.en_AU.xml /resume.json
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - .yarn-cache
+            - node_modules
+
+      - run:
+          name: Building
+          command: yarn build
+
+      - store_artifacts:
+          path: dist/
+          destination: build
+
+      - deploy:
+          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "release" ]; then
+              sentry-cli releases new "${CIRCLE_BUILD_NUM}";
+              sentry-cli releases set-commits "${CIRCLE_BUILD_NUM}" --auto;
+              yarn deploy;
+              sentry-cli releases files "${CIRCLE_BUILD_NUM}" upload-sourcemaps dist/ --ext map;
+              sentry-cli releases finalize "${CIRCLE_BUILD_NUM}";
+              sentry-cli releases deploys "${CIRCLE_BUILD_NUM}" new -e prod;
+            fi
