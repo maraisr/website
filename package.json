@@ -75,7 +75,7 @@
     "svelte": "1.22.2",
     "svelte-loader": "2.0.1",
     "ts-loader": "2.1.0",
-    "typescript": "2.3.4",
+    "typescript": "next",
     "webpack": "2.6.1",
     "wrapper-webpack-plugin": "0.1.11"
   }
