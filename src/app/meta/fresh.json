@@ -29,16 +29,16 @@
 			"url": "https://github.com/maraisr"
 		},
 		{
-			"label": "LinkedIn",
-			"network": "LinkedIn",
-			"user": "maraisr",
-			"url": "https://www.linkedin.com/in/maraisr"
-		},
-		{
 			"label": "Twitter",
 			"network": "Twitter",
 			"user": "codervandal",
 			"url": "https://twitter.com/codervandal"
+		},
+		{
+			"label": "LinkedIn",
+			"network": "LinkedIn",
+			"user": "maraisr",
+			"url": "https://www.linkedin.com/in/maraisr"
 		}
 	],
 	"employment": {
@@ -104,7 +104,7 @@
 				"summary": "Currently working with highly skilled developers to optimize and develop an online platform in the insurance industry.",
 				"start": "2016-10-24",
 				"keywords": [
-					"JavaScript ES6",
+					"TypeScript",
 					"SCSS",
 					"Angular",
 					"GIT",

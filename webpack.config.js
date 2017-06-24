@@ -67,6 +67,7 @@ module.exports = {
 
 			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
 			returns.push(new webpack.optimize.AggressiveMergingPlugin());
+			returns.push(new webpack.optimize.ModuleConcatenationPlugin());
 
 			returns.push(
 				new webpack.optimize.UglifyJsPlugin(
