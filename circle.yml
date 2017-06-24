@@ -24,7 +24,7 @@ jobs:
           key: yarn-cache-{{ checksum "yarn.lock" }}
 
       - run:
-          name: iInstall Dependencies
+          name: Install Dependencies
           command: yarn install --pure-lockfile
 
       - save_cache:
