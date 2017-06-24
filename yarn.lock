@@ -549,12 +549,12 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000693"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000693.tgz#8510e7a9ab04adcca23a5dcefa34df9d28c1ce20"
+  version "1.0.30000694"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000694.tgz#02009f4f82d2f0126e4c691b7cd5adb351935c01"
 
 caniuse-lite@^1.0.30000670, caniuse-lite@^1.0.30000684:
-  version "1.0.30000693"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000693.tgz#c9c6298697c71fdf6cb13eefe8aa93926f2f8613"
+  version "1.0.30000694"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000694.tgz#1492dab7c10c608c9d37a723e6e3e7873e0ce94f"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -4953,8 +4953,8 @@ typedarray@~0.0.5:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 typescript@next:
-  version "2.5.0-dev.20170623"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.0-dev.20170623.tgz#b52cb8bc008e3e23801f32599eee608c9b3e7e15"
+  version "2.5.0-dev.20170624"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.0-dev.20170624.tgz#21fe9e20cb239bea79f2a945330009b646bf6112"
 
 uglify-js@2.6.x:
   version "2.6.4"
