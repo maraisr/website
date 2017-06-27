@@ -45,7 +45,7 @@
 		height: 4px;
 		width: 0;
 
-		background-color: #0BB07C;
+		background-color: #EA2E49;
 
 		transform: translate(0, 0);
 
@@ -93,7 +93,7 @@
 		line-height: 1;
 		font-size: 28px;
 
-		border-bottom: 3px solid #0BB07C;
+		border-bottom: 3px solid #EA2E49;
 	}
 
 	@include mscr($stage-c) {
@@ -102,7 +102,7 @@
 }
 
 .calm-bg {
-	background-color: #0BB07C;
+	background-color: #EA2E49;
 	color: white;
 
 	@media print {

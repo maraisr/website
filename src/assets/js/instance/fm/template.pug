@@ -5,7 +5,9 @@
 	a(href='{{track.url}}', rel='nofollow', target='_blank')
 		h4 {{track.isPlaying() ? 'Now Playing' : 'Last Played'}}:
 		.last-fm__name {{track.name}}
-		.last-fm__sub {{track.album}} / {{track.artist}}
+		.last-fm__sub
+			span.last-fm__soft {{track.album}}
+			| / {{track.artist}}
 
 	|{{else}}
 
