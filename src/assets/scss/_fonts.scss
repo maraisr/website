@@ -18,8 +18,7 @@ $fonts: (
 
 			@if ($type == 'italic') {
 				font-style: italic;
-			}
-			@else {
+			} @else {
 				font-style: normal;
 			}
 		}

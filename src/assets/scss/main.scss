@@ -45,7 +45,7 @@
 		height: 4px;
 		width: 0;
 
-		background-color: #EA2E49;
+		background-color: #ea2e49;
 
 		transform: translate(0, 0);
 
@@ -79,7 +79,7 @@
 	padding-bottom: 12px;
 
 	font-size: 28px;
-	border-bottom: 1px solid #1A1B1C;
+	border-bottom: 1px solid #1a1b1c;
 
 	@media print {
 		display: block;
@@ -93,7 +93,7 @@
 		line-height: 1;
 		font-size: 28px;
 
-		border-bottom: 3px solid #EA2E49;
+		border-bottom: 3px solid #ea2e49;
 	}
 
 	@include mscr($stage-c) {
@@ -102,7 +102,7 @@
 }
 
 .calm-bg {
-	background-color: #EA2E49;
+	background-color: #ea2e49;
 	color: white;
 
 	@media print {
@@ -128,7 +128,7 @@
 .social {
 	$size: 13px;
 
-	color: #1A1B1C;
+	color: #1a1b1c;
 
 	@media print {
 		display: none;
@@ -156,7 +156,9 @@
 			}
 		}
 
-		a, svg, span {
+		a,
+		svg,
+		span {
 			display: inline-block;
 			vertical-align: middle;
 		}
@@ -174,7 +176,7 @@
 			height: $size;
 
 			use {
-				fill: #1A1B1C;
+				fill: #1a1b1c;
 			}
 		}
 	}

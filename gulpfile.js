@@ -314,8 +314,8 @@ gulp.task('publish', [], () => {
 	})();
 
 	const headers = {
-		'Cache-Control': 'max-age=1209600'
-	},
+			'Cache-Control': 'max-age=1209600'
+		},
 		s3base = {
 			accessKeyId: s3config['accessKeyId'],
 			secretAccessKey: s3config['secretAccessKey'],

@@ -50,11 +50,7 @@
 				"summary": "Began my career as a Photoshop to Wordpress theme developer.",
 				"start": "2012-01-01",
 				"end": "2012-09-01",
-				"keywords": [
-					"PHP",
-					"Wordpress",
-					"Photoshop"
-				]
+				"keywords": ["PHP", "Wordpress", "Photoshop"]
 			},
 			{
 				"employer": "Vuly Trampolines",
@@ -76,13 +72,7 @@
 				"summary": "Led the company in all technical areas and established solid standards and technical direction.",
 				"start": "2014-02-02",
 				"end": "2015-05-04",
-				"keywords": [
-					"SVN",
-					"PHP",
-					"Laravel",
-					"Wordpress",
-					"JavaScript"
-				]
+				"keywords": ["SVN", "PHP", "Laravel", "Wordpress", "JavaScript"]
 			},
 			{
 				"employer": "Touchpoint",
@@ -90,13 +80,7 @@
 				"summary": "Led the frontend space, driving and leading technical initiatives in the airline industry.",
 				"start": "2015-06-22",
 				"end": "2016-10-03",
-				"keywords": [
-					"GIT",
-					"Angular",
-					"React",
-					"JavaScript ES5",
-					"AWS"
-				]
+				"keywords": ["GIT", "Angular", "React", "JavaScript ES5", "AWS"]
 			},
 			{
 				"employer": "Auto & General",
@@ -119,103 +103,62 @@
 			{
 				"name": "Language",
 				"level": "expert",
-				"skills": [
-					"JavaScript",
-					"Rust",
-					"HTML"
-				]
+				"skills": ["JavaScript", "Rust", "HTML"]
 			},
 			{
 				"name": "Language",
 				"level": "prefered",
-				"skills": [
-					"TypeScript",
-					"SCSS",
-					"Pug"
-				]
+				"skills": ["TypeScript", "SCSS", "Pug"]
 			},
 			{
 				"name": "Language",
 				"level": "medium",
-				"skills": [
-					"Scala",
-					"Elm",
-					"Java",
-					"PHP",
-					"Haskell"
-				]
+				"skills": ["Scala", "Elm", "Java", "PHP", "Haskell"]
 			},
 			{
 				"name": "Language",
 				"level": "low",
-				"skills": [
-					"PureScript"
-				]
+				"skills": ["PureScript"]
 			},
 			{
 				"name": "Package Manager",
 				"level": "expert",
-				"skills": [
-					"Bower",
-					"NPM",
-					"Cargo"
-				]
+				"skills": ["Bower", "NPM", "Cargo"]
 			},
 			{
 				"name": "Package Manager",
 				"level": "prefered",
-				"skills": [
-					"Yarn"
-				]
+				"skills": ["Yarn"]
 			},
 			{
 				"name": "Framework",
 				"level": "expert",
-				"skills": [
-					"Angular",
-					"React",
-					"HyperApp"
-				]
+				"skills": ["Angular", "React", "HyperApp"]
 			},
 			{
 				"name": "Framework",
 				"level": "medium",
-				"skills": [
-					"Laravel",
-					"Symfony",
-					"Monix",
-					"Svelte",
-					"Ember"
-				]
+				"skills": ["Laravel", "Symfony", "Monix", "Svelte", "Ember"]
 			},
 			{
 				"name": "Framework",
 				"level": "prefered",
-				"skills": [
-					"Vue"
-				]
+				"skills": ["Vue"]
 			},
 			{
 				"name": "Runtime",
 				"level": "prefered",
-				"skills": [
-					"Node"
-				]
+				"skills": ["Node"]
 			},
 			{
 				"name": "Runtime",
 				"level": "low",
-				"skills": [
-					"nginx"
-				]
+				"skills": ["nginx"]
 			},
 			{
 				"name": "Runtime",
 				"level": "medium",
-				"skills": [
-					"Canvas",
-					"Babel"
-				]
+				"skills": ["Canvas", "Babel"]
 			},
 			{
 				"name": "Philosophy",
@@ -237,53 +180,37 @@
 			{
 				"name": "Database",
 				"level": "prefered",
-				"skills": [
-					"MySQL"
-				]
+				"skills": ["MySQL"]
 			},
 			{
 				"name": "Database",
 				"level": "medium",
-				"skills": [
-					"MSSQL",
-					"MongoDB"
-				]
+				"skills": ["MSSQL", "MongoDB"]
 			},
 			{
 				"name": "Software",
 				"level": "medium",
-				"skills": [
-					"Adobe Suite",
-					"Atlassian Suite"
-				]
+				"skills": ["Adobe Suite", "Atlassian Suite"]
 			},
 			{
 				"name": "Software",
 				"level": "expert",
-				"skills": [
-					"JetBrains IDEA"
-				]
+				"skills": ["JetBrains IDEA"]
 			},
 			{
 				"name": "Version Control",
 				"level": "expert",
-				"skills": [
-					"GIT"
-				]
+				"skills": ["GIT"]
 			},
 			{
 				"name": "Version Control",
 				"level": "medium",
-				"skills": [
-					"SVN"
-				]
+				"skills": ["SVN"]
 			},
 			{
 				"name": "Platform",
 				"level": "medium",
-				"skills": [
-					"Amazon Web Services"
-				]
+				"skills": ["Amazon Web Services"]
 			}
 		]
 	}

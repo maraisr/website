@@ -36,10 +36,10 @@
 		width: 100%;
 		text-align: center;
 
-		color: #1A1B1C;
+		color: #1a1b1c;
 
 		@media print {
-			color: #1A1B1C;
+			color: #1a1b1c;
 		}
 
 		@include mscr($stage-b) {
@@ -54,7 +54,7 @@
 			line-height: 1;
 
 			span {
-				color: #EA2E49;
+				color: #ea2e49;
 			}
 		}
 
@@ -76,7 +76,7 @@
 		a {
 			@extend %fancy-hover;
 
-			color: #1A1B1C;
+			color: #1a1b1c;
 			text-decoration: none;
 
 			text-transform: lowercase;

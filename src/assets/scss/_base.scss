@@ -22,8 +22,7 @@ $stage-e: 1620px;
 		@media screen and (min-width: $width) and (max-width: #{$extra - 1}) {
 			@content;
 		}
-	}
-	@else {
+	} @else {
 		@media screen and (min-width: $width) {
 			@content;
 		}
@@ -64,7 +63,9 @@ $stage-e: 1620px;
 	}
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
 	box-sizing: inherit;
 
 	-webkit-font-smoothing: antialiased;
@@ -75,19 +76,19 @@ $stage-e: 1620px;
 }
 
 ::selection {
-	background-color: #E6B6B1;
+	background-color: #e6b6b1;
 	color: white;
 }
 
 html {
 	background-color: white;
-	color: #1A1B1C;
+	color: #1a1b1c;
 
 	@media print {
 		background-color: transparent;
 		border: none;
 
-		color: #1A1B1C;
+		color: #1a1b1c;
 	}
 }
 
@@ -99,7 +100,11 @@ body {
 	}
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
 	margin: 0;
 }
 
@@ -107,7 +112,8 @@ h2 {
 	font-size: 34px;
 }
 
-ul, ol {
+ul,
+ol {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;

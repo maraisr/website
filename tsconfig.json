@@ -8,16 +8,8 @@
 		"noImplicitAny": true,
 		"removeComments": true,
 		"sourceMap": true,
-		"lib": [
-			"dom",
-			"es2015",
-			"es2016",
-			"es2017"
-		],
+		"lib": ["dom", "es2015", "es2016", "es2017"],
 		"outDir": "tmp/"
 	},
-	"files": [
-		"./src/assets/js/defs/interfaces.d.ts",
-		"./src/assets/js/main.ts"
-	]
+	"files": ["./src/assets/js/defs/interfaces.d.ts", "./src/assets/js/main.ts"]
 }
