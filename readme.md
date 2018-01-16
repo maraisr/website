@@ -1,6 +1,6 @@
 # Personal Website
 
-[![Circle CI](https://img.shields.io/circleci/project/maraisr/website.svg?style=flat-square)](https://circleci.com/gh/maraisr/website)
+[![Circle CI](https://img.shields.io/circleci/project/maraisr/website/master.svg?style=flat-square)](https://circleci.com/gh/maraisr/website)
 
 HTML:
 - `Pug`
