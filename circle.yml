@@ -31,7 +31,6 @@ jobs:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - .yarn-cache
-            - node_modules
 
       - run:
           name: Building
