@@ -1,6 +1,13 @@
 $fonts: (
-	'geomanist': ('bold': 700, 'regular': 400),
-	'lora': ('bold': 700, 'regular': 400, 'italic': 400)
+	'geomanist': (
+		'bold': 700,
+		'regular': 400
+	),
+	'lora': (
+		'bold': 700,
+		'regular': 400,
+		'italic': 400
+	)
 );
 
 @each $name, $weights in $fonts {

@@ -11,15 +11,14 @@ export default function(selectors: NodeList) {
 				? v.addEventListener('click', (e: MouseEvent) => {
 						e.preventDefault();
 
-						let clickTo: string = (<AppElement>e.target).hash.replace(
-							/^#/,
-							''
-						);
+						let clickTo: string = (<AppElement>(
+							e.target
+						)).hash.replace(/^#/, '');
 
 						(function scroll(to: number, duration: number) {
 							if (duration <= 0) return;
 							let dif = to - document.body.scrollTop;
-							let perTick = dif / duration * 10;
+							let perTick = (dif / duration) * 10;
 
 							setTimeout(() => {
 								document.body.scrollTop += perTick;

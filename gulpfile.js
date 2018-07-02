@@ -291,8 +291,7 @@ gulp.task('misc', ['resume'], () => {
 gulp.task('fingerprint', ['default', 'misc'], done => {
 	const revAll = require('gulp-rev-all');
 
-	gulp
-		.src('./dist/**/*.{css,js,html,map}')
+	gulp.src('./dist/**/*.{css,js,html,map}')
 		.pipe(revAll.revision({ dontRenameFile: ['.html'] }))
 		.pipe(gulp.dest('./dist/'))
 		.on('end', () => {
