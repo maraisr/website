@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "lint": "prettier --write '{*,{src,config}/**/*}.+(ts|js|scss|css|json)'",
+    "lint": "prettier --write '{*,{src,config}/**/*}.+(ts|js|scss|css|json|md)'",
     "build": "gulp clean && cross-env NODE_ENV=production gulp fingerprint",
     "deploy": "cross-env NODE_ENV=production gulp publish",
     "start": "gulp serve"
