@@ -11,7 +11,7 @@ import Tracking from './instance/tracking';
 
 import Nav from './instance/nav';
 import Skills from './instance/skills';
-import FM from './instance/fm';
+import FM from './instance/fm/index';
 
 Tracking.tracKPage();
 

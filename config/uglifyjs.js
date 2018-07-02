@@ -7,7 +7,6 @@ module.exports = {
 	compress: {
 		sequences: true,
 		dead_code: true,
-		cascade: true,
 		conditionals: true,
 		booleans: true,
 		unused: true,

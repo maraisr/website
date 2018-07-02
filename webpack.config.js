@@ -1,28 +1,43 @@
-const webpack = require('webpack'),
-	path = require('path'),
-	ClosureCompiler = require('google-closure-compiler-js').webpack,
-	Wrapper = require('wrapper-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const ClosureCompiler = require('google-closure-compiler-js').webpack;
+const Wrapper = require('wrapper-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-	entry: ['./src/assets/js/main.ts'],
+	context: path.join(__dirname, 'src/assets/js'),
+
+	entry: './main.ts',
+
 	output: {
 		path: `${__dirname}/dist/`,
 		filename: '[name].js',
 		devtoolModuleFilenameTemplate: 'mr:///[resource-path]',
 		sourceMapFilename: '[name].map'
 	},
+
 	resolve: {
 		extensions: ['.ts', '.js']
 	},
+
 	cache: true,
 	devtool: 'source-map',
+
+	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+
+	optimization: {
+		minimizer: [
+			new webpack.optimize.OccurrenceOrderPlugin(),
+			new UglifyJsPlugin({ uglifyOptions: require('./config/uglifyjs') })
+		]
+	},
+
 	module: {
 		rules: [
 			{
 				test: /\.ts$/,
-				include: [path.resolve(__dirname, 'src/assets/js/')],
-				exclude: /node_modules/,
-				loader: 'ts-loader'
+				loader: 'awesome-typescript-loader'
 			},
 			{
 				test: /\.(j|t)s$/,
@@ -54,7 +69,8 @@ module.exports = {
 				__BUILD__: JSON.stringify(
 					parseInt(process.env.CIRCLE_BUILD_NUM || 0)
 				)
-			})
+			}),
+			new CheckerPlugin()
 		);
 
 		if (process.env.NODE_ENV == 'production') {
@@ -63,16 +79,6 @@ module.exports = {
 					minimize: true,
 					debug: false
 				})
-			);
-
-			returns.push(new webpack.optimize.OccurrenceOrderPlugin());
-			returns.push(new webpack.optimize.AggressiveMergingPlugin());
-			returns.push(new webpack.optimize.ModuleConcatenationPlugin());
-
-			returns.push(
-				new webpack.optimize.UglifyJsPlugin(
-					require('./config/uglifyjs')
-				)
 			);
 
 			returns.push(
