@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "prettier --write '{*,{src,config}/**/*}.+(ts|js|scss|css|json|md)'",
-    "build": "gulp clean && cross-env NODE_ENV=production gulp fingerprint",
+    "build": "gulp clean; cross-env NODE_ENV=production gulp fingerprint",
     "deploy": "cross-env NODE_ENV=production gulp publish",
     "start": "gulp serve"
   },
@@ -26,11 +26,10 @@
   "homepage": "https://github.com/maraisr/website#readme",
   "dependencies": {
     "normalize-scss": "7.0.1",
-    "raven": "2.6.3"
+    "raven-js": "3.26.4"
   },
   "devDependencies": {
     "@types/node": "10.5.5",
-    "@types/raven": "2.5.1",
     "autoprefixer": "9.0.2",
     "awesome-typescript-loader": "5.2.0",
     "concurrent-transform": "1.0.0",

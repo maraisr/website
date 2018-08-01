@@ -1,4 +1,4 @@
-import Raven from 'raven';
+import Raven from 'raven-js';
 
 if (!__DEV__) {
 	Raven.config('https://9a3bf03a46804a7681931f2aa3f98e65@sentry.io/157117', {
