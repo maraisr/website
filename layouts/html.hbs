@@ -1,0 +1,42 @@
+<html lang={{ $site.lang }}>
+
+<head>
+	{{#var descr = $utils.truncate($page.summary || $site.description, 165) }}
+	{{#var title = $page.title ? ($site.title + ' | ' + $page.title) : $site.title }}
+
+	<meta charset="utf-8">
+	<title>{{ title }}</title>
+	<meta http-equiv="cleartype" content="on" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="mobile-web-app-capable" content="yes" />
+
+	<meta name="application-name" content="{{ title }}" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-title" content="{{ title }}" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta name="description" content="{{ descr }}" />
+
+	{{#style src="style.css" output="s.css" }}
+	{{ $page.styles }}
+
+	{{ $page.scripts }}
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul></ul>
+		</nav>
+	</header>
+	<main>
+		{{{ $page.content }}}
+	</main>
+	<footer>
+
+	</footer>
+</body>
+
+</html>

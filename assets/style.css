@@ -1,0 +1,39 @@
+/* @font-face {
+	font-family: 'novela';
+	src: url('./assets/novela.woff2') format('woff2'),
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'inter';
+	font-weight: 100 900;
+	font-display: swap;
+	font-style: oblique 0deg 10deg;
+	src: url("./assets/inter.woff2?v=3.19") format("woff2");
+} */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	line-height: 1.4;
+	font-family: inter,system-ui,-apple-system,BlinkMacSystemFont,Inter,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+	font-display: swap;
+}
+
+body {
+	width: 100vw;
+	overflow-x: hidden;
+	line-height: 1.4;
+	color: #333;
+}

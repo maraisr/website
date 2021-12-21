@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "bongo build --minify",
+    "dev": "bongo dev"
+  },
+  "devDependencies": {
+    "@bongo/markdown": "0.0.5",
+    "@marais/tsconfig": "0.0.2",
+    "bongo": "npm:@lukeed/bongo"
+  }
+}
