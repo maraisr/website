@@ -1,14 +1,20 @@
-printWidth: 80
-bracketSpacing: true
-semi: true
-singleQuote: true
-tabWidth: 4
-trailingComma: none
-useTabs: true
-
-overrides:
-  - files: "package.json"
-    options:
-       printWidth: 999
-       tabWidth: 2
-       useTabs: false
+{
+	"proseWrap": "always",
+	"singleQuote": true,
+	"tabWidth": 4,
+	"trailingComma": "all",
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": [
+				"*.md",
+				"*.yml"
+			],
+			"options": {
+				"printWidth": 120,
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		}
+	]
+}

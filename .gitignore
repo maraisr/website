@@ -1,10 +1,10 @@
-*.log*
+node_modules
+.DS_Store
+*-lock.json
+*.lock
+*.log
 
-node_modules/
-dist/
-tmp/
-
-s3config.json
-
-.idea/
-.vscode/
+# Editors
+*.iml
+/.idea
+/.vscode
