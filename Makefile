@@ -1,6 +1,7 @@
 .PHONY: build
 build: install
 	pnpm run build
+	cp -r public_include/* public/
 	./minify -r public -o .
 
 .PHONY: install
