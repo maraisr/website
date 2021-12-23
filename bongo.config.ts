@@ -1,5 +1,5 @@
+import { markdown } from '@bongo/markdown';
 import { define } from 'bongo';
-import * as markdown from '@bongo/markdown';
 
 export default define({
 	$site: {
@@ -8,6 +8,6 @@ export default define({
 		url: 'https://marais.io',
 	},
 	plugins: [
-		markdown
-	]
+		markdown(),
+	],
 });

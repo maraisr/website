@@ -1,6 +1,9 @@
 :root {
 	box-sizing: border-box;
 	--bg-colour: #040506;
+
+	--mono: "JetBrains Mono", system-ui, -apple-system, monospace;
+	--sans-serif: Inter, system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -14,7 +17,7 @@
 }
 
 html {
-	font: 400 16px/1.4 inter, system-ui, -apple-system, sans-serif;
+	font: 400 16px/1.4 var(--mono);
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizelegibility;
 }
@@ -28,4 +31,8 @@ body {
 
 a {
 	text-decoration: none;
+}
+
+small {
+	font-size: 80%;
 }

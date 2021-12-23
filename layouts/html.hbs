@@ -19,7 +19,7 @@
 
 	<meta name="description" content="{{ descr }}" />
 
-	{{#style src="style.css" output="s.css" }}
+	{{#style src="style.css" output="s.css" inline=true }}
 
 	{{ $page.styles }}
 
@@ -28,10 +28,14 @@
 
 <body class='container'>
 	<header>
-		<a href='/' class='logo'>
-			<span>*</span>marais<span class='cursor-blink'></span>
-		</a>
-		<a href='mailto:me@marais.dev'>me@marais.dev</a>
+		<div>
+			<a href='/' class='logo'>
+				<span>*</span>marais<span class='cursor-blink'></span>
+			</a>
+		</div>
+		<div>
+			<a href='mailto:me@marais.dev'>me@marais.dev</a>
+		</div>
 	</header>
 	<main>
 		{{{ $page.content }}}

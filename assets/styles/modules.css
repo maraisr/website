@@ -1,7 +1,12 @@
 .container {
 	margin: 0 auto;
-	max-width: 75vw;
 	width: 100%;
+}
+
+@media screen and (min-width: 764px) {
+	.container {
+		max-width: 75vw;
+	}
 }
 
 .cursor-blink {
@@ -33,3 +38,34 @@
 	}
 }
 
+.home-hero {
+	font-size: 4vw;
+	text-align: justify;
+	word-break: break-word;
+}
+
+.home-hero {
+	font-family: var(--sans-serif);
+}
+
+.home-hero span {
+	font-family: var(--mono);
+	color: aquamarine;
+}
+
+.memoji {
+	display: flex;
+	justify-content: center;
+}
+
+.memoji span {
+	display: block;
+	margin: 5rem 0;
+
+	width: 200px;
+	height: 200px;
+
+	background-color: white;
+
+	transform: skewX(7deg);
+}

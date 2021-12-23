@@ -1,20 +1,25 @@
-/*@font-face {
-	font-family: 'basier-mono';
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-	src: url('./basier.woff2') format('woff2'),
-}
-
-@font-face {
-	font-family: 'inter';
-	font-weight: 100 900;
-	font-display: swap;
-	font-style: oblique 0deg 10deg;
-	src: url("./inter.woff2") format("woff2");
-}*/
-
 @import 'styles/reset.css';
+@import 'styles/layout.css';
+
 @import 'styles/modules.css';
 
 @import 'styles/header.css';
+
+/* TODO: Host these fonts myself, and preload them */
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: local("JetBrains Mono"),
+	url(https://fonts.gstatic.com/s/jetbrainsmono/v6/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTOlOTk6OThhvA.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: oblique 0deg 10deg;
+	font-weight: 100 900;
+	font-display: swap;
+	src: local("Inter"),
+	url('https://rsms.me/inter/font-files/Inter.var.woff2?v=3.19') format('woff2');
+}
