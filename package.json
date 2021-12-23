@@ -2,7 +2,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "bongo build --minify",
+    "build": "bongo build",
     "dev": "bongo dev"
   },
   "devDependencies": {
