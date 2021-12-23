@@ -1,0 +1,31 @@
+:root {
+	box-sizing: border-box;
+	--bg-colour: #040506;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*, *::before, *::after {
+	color: inherit;
+	box-sizing: inherit;
+}
+
+html {
+	font: 400 16px/1.4 inter, system-ui, -apple-system, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+
+body {
+	width: 100vw;
+	overflow-x: hidden;
+	color: white;
+	background-color: var(--bg-colour);
+}
+
+a {
+	text-decoration: none;
+}

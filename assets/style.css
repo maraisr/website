@@ -1,8 +1,9 @@
-/* @font-face {
-	font-family: 'novela';
-	src: url('./assets/novela.woff2') format('woff2'),
+/*@font-face {
+	font-family: 'basier-mono';
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
+	src: url('./basier.woff2') format('woff2'),
 }
 
 @font-face {
@@ -10,29 +11,10 @@
 	font-weight: 100 900;
 	font-display: swap;
 	font-style: oblique 0deg 10deg;
-	src: url("./assets/inter.woff2?v=3.19") format("woff2");
-} */
+	src: url("./inter.woff2") format("woff2");
+}*/
 
-* {
-	margin: 0;
-	padding: 0;
-}
+@import 'styles/reset.css';
+@import 'styles/modules.css';
 
-*, *::before, *::after {
-	box-sizing: border-box;
-}
-
-html {
-	font-size: 16px;
-	line-height: 1.4;
-	font-family: inter,system-ui,-apple-system,BlinkMacSystemFont,Inter,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizelegibility;
-	font-display: swap;
-}
-
-body {
-	width: 100vw;
-	overflow-x: hidden;
-	color: #333;
-}
+@import 'styles/header.css';

@@ -20,48 +20,24 @@
 	<meta name="description" content="{{ descr }}" />
 
 	{{#style src="style.css" output="s.css" }}
+
 	{{ $page.styles }}
 
 	{{ $page.scripts }}
 </head>
 
-<body>
+<body class='container'>
 	<header>
-		<nav>
-			<ul></ul>
-		</nav>
+		<a href='/' class='logo'>
+			<span>*</span>marais<span class='cursor-blink'></span>
+		</a>
+		<a href='mailto:me@marais.dev'>me@marais.dev</a>
 	</header>
 	<main>
 		{{{ $page.content }}}
 	</main>
-	<footer>
 
-	</footer>
-
-	<script type="application/ld+json">
-		{
-			"@context": "http://schema.org",
-			"@type": "Person",
-			"address": {
-				"@type": "PostalAddress",
-				"addressLocality": "Gold Coast",
-				"addressRegion": "QLD"
-			},
-			"name": "Marais Rossouw",
-			"givenName": "Marais",
-			"familyName": "Rossow",
-			"birthDate": "1996-01-11",
-			"gender": "Male",
-			"image": "TODO",
-			"jobTitle": "Creative and Application Developer",
-			"url": "https://marais.io",
-			"sameAs": [
-				"https://github.com/maraisr",
-				"https://www.linkedin.com/in/maraisr",
-				"https://twitter.com/slightlycode"
-			]
-		}
-	</script>
+	{{#schema.org}}
 </body>
 
 </html>
