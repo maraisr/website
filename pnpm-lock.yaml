@@ -1,26 +1,26 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@bongo/markdown': 0.0.5
+  '@bongo/markdown': 0.0.6
   '@marais/tsconfig': 0.0.2
-  bongo: npm:@lukeed/bongo
+  bongo: npm:@lukeed/bongo@0.0.6
 
 devDependencies:
-  '@bongo/markdown': 0.0.5
+  '@bongo/markdown': 0.0.6
   '@marais/tsconfig': 0.0.2
-  bongo: /@lukeed/bongo/0.0.5
+  bongo: /@lukeed/bongo/0.0.6
 
 packages:
 
-  /@bongo/markdown/0.0.5:
-    resolution: {integrity: sha512-oAWs6J0VBPfCVBiF7jsrdtdNzkH/KmHCD0VpbcOhECFLDikkOmjSWhiGsEmKNny7OaGChJYeTgqQUUlUq2f6qA==}
+  /@bongo/markdown/0.0.6:
+    resolution: {integrity: sha512-C+n1Y9lfUWqJqHqEnJxNnHQj1D4D+FwpT3KRB5y27OtztZ3O34a2ixFDSq72M0tUSrdwiU2tvvJNZrrAhMmi3w==}
     engines: {node: '>=12.10'}
     dependencies:
       markdown-it: 12.3.0
     dev: true
 
-  /@lukeed/bongo/0.0.5:
-    resolution: {integrity: sha512-zS1OXjL+DDfxUrFobiKoChcjYIC7wwAHgmbF/bpAffhWFdg3AcRvXH88YMjYkNpCFNusu2eym9lGdaDAvUH9Hw==}
+  /@lukeed/bongo/0.0.6:
+    resolution: {integrity: sha512-0OZPeo+VIRMYfBfrlRE9v6EMBZpASO8XR/nM635aGcaTTUMPufvgZ6cRQ/wq05zsGt3cz1Vzpjx5X9zOjTgJ9w==}
     engines: {node: '>=12.10'}
     hasBin: true
     dependencies:

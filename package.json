@@ -6,8 +6,8 @@
     "dev": "bongo dev"
   },
   "devDependencies": {
-    "@bongo/markdown": "0.0.5",
+    "@bongo/markdown": "0.0.6",
     "@marais/tsconfig": "0.0.2",
-    "bongo": "npm:@lukeed/bongo"
+    "bongo": "npm:@lukeed/bongo@0.0.6"
   }
 }
