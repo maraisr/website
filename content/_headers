@@ -1,0 +1,9 @@
+https://marais.pages.dev/*
+  X-Robots-Tag: noindex
+
+/*
+  cdn-cache-control: public, max-age=300
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: document-domain=()
