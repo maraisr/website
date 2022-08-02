@@ -16,6 +16,10 @@
 	content: '';
 
 	animation: 1s blink step-end infinite;
+
+	@media (prefers-reduced-motion) {
+		animation: none;
+	}
 }
 
 @keyframes blink {

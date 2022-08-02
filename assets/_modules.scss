@@ -11,20 +11,20 @@ body {
     }
 }
 
-.v-stack > * {
-	margin-top: 1.25rem;
-}
+.v-stack {
+	& > * {
+		&:not(:first-child) {
+			margin-top: 1.25rem;
+		}
+	}
 
-.v-stack:first-child {
-	margin-top: 0;
-}
+	svg {
+		display: inline-flex;
+		vertical-align: middle;
 
-.v-stack svg {
-	display: inline-flex;
-	vertical-align: middle;
-
-	width: 0.9rem;
-	height: 0.9rem;
+		width: 0.9rem;
+		height: 0.9rem;
+	}
 }
 
 footer {
@@ -40,13 +40,39 @@ footer {
 @import '_header';
 
 .til-list {
+	padding-top: 3rem;
+
+	ul {
+		padding-top: 1.75rem;
+	}
+
 	li {
+		position: relative;
 		width: 100%;
 		display: flex;
 		flex: 1 0 auto;
 		gap: 1rem;
 		list-style: none;
 		justify-content: space-between;
+
+		&:not(:last-child) {
+			padding-bottom: 0.75rem;
+		}
+
+		&:not(:first-child) {
+			padding-top: 0.75rem;
+
+			&::before {
+				position: absolute;
+				top: 0;
+				content: '';
+				display: block;
+				width: 100%;
+				height: 1px;
+				background-color: #cad2c5;
+			}
+
+		}
 	}
 
 	a {
@@ -58,4 +84,8 @@ footer {
 		white-space: nowrap;
 		align-self: flex-end;
 	}
+}
+
+.page-title {
+	padding-bottom: 2rem;	
 }

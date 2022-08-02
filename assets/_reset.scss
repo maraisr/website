@@ -1,5 +1,7 @@
 :root {
 	box-sizing: border-box;
+	scroll-behavior: smooth;
+	
 	--bg-colour: #edf2f4;
 	--front-colour: #4a5759;
 	--front-colour-2: #588157;
@@ -29,6 +31,11 @@ body {
 	overflow-x: hidden;
 	color: var(--front-colour);
 	background-color: var(--bg-colour);
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
 }
 
 a {
