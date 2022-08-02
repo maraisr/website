@@ -1,9 +1,11 @@
 :root {
 	box-sizing: border-box;
-	--bg-colour: #040506;
-
-	--mono: "JetBrains Mono", system-ui, -apple-system, monospace;
-	--sans-serif: Inter, system-ui, -apple-system, sans-serif;
+	--bg-colour: #edf2f4;
+	--front-colour: #4a5759;
+	--front-colour-2: #ff99c8;
+	
+	--mono: monospace, system-ui, -apple-system;
+	--sans-serif: Outfit, system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -17,7 +19,7 @@
 }
 
 html {
-	font: 400 16px/1.4 var(--mono);
+	font: 400 16px/1.4 var(--sans-serif);
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizelegibility;
 }
@@ -25,14 +27,26 @@ html {
 body {
 	width: 100vw;
 	overflow-x: hidden;
-	color: white;
+	color: var(--front-colour);
 	background-color: var(--bg-colour);
 }
 
 a {
 	text-decoration: none;
+	font-weight: 700;
 }
 
 small {
+	display: block;
 	font-size: 80%;
+}
+
+li {
+	list-style-position: inside;
+}
+
+hr {
+	margin: 3rem auto !important;
+	border-top: 1px solid var(--front-colour-2);
+	max-width: 20%;
 }
