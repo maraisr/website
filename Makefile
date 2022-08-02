@@ -1,7 +1,8 @@
 .PHONY: build
 build: install
 	pnpm run build
-	./minify -r public -o .
+	mv public/404/index.html public/404.html
+	./minify -vrs public -o .
 
 .PHONY: install
 install: download

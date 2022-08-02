@@ -1,26 +1,26 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@bongo/markdown': 0.0.6
-  '@marais/tsconfig': 0.0.2
-  bongo: npm:@lukeed/bongo@0.0.6
+  '@bongo/markdown': 0.0.8
+  '@marais/tsconfig': 0.0.3
+  bongo: npm:@lukeed/bongo@0.0.8
 
 devDependencies:
-  '@bongo/markdown': 0.0.6
-  '@marais/tsconfig': 0.0.2
-  bongo: /@lukeed/bongo/0.0.6
+  '@bongo/markdown': 0.0.8
+  '@marais/tsconfig': 0.0.3
+  bongo: /@lukeed/bongo/0.0.8
 
 packages:
 
-  /@bongo/markdown/0.0.6:
-    resolution: {integrity: sha512-C+n1Y9lfUWqJqHqEnJxNnHQj1D4D+FwpT3KRB5y27OtztZ3O34a2ixFDSq72M0tUSrdwiU2tvvJNZrrAhMmi3w==}
+  /@bongo/markdown/0.0.8:
+    resolution: {integrity: sha512-2uJ2vkioawjlj/0/qHzobeMOAqxe5kYhFal3J7YA45osXb6z+/1Z0/RsWPsL91AQmM7VgJmgYMpiZC8z+AY2Zg==}
     engines: {node: '>=12.10'}
     dependencies:
       markdown-it: 12.3.0
     dev: true
 
-  /@lukeed/bongo/0.0.6:
-    resolution: {integrity: sha512-0OZPeo+VIRMYfBfrlRE9v6EMBZpASO8XR/nM635aGcaTTUMPufvgZ6cRQ/wq05zsGt3cz1Vzpjx5X9zOjTgJ9w==}
+  /@lukeed/bongo/0.0.8:
+    resolution: {integrity: sha512-uy3eNYs8/qbNN/JuivN19aR1zuXeU19skYsEiQWuNrED6QaYU7O6ewGqVPcRi2uv9/S3/krzJshPHudJYkObPA==}
     engines: {node: '>=12.10'}
     hasBin: true
     dependencies:
@@ -31,8 +31,8 @@ packages:
       tempura: 0.3.2
     dev: true
 
-  /@marais/tsconfig/0.0.2:
-    resolution: {integrity: sha512-xBWOcIbhm8t1ar63BluoL+DiKMHEIZ7Cc3pZ3FiKImUDmbNkqLmokQOIlAS/sB2SKc0yuAvmF5nKrkqOZsljZw==}
+  /@marais/tsconfig/0.0.3:
+    resolution: {integrity: sha512-KRJiOww98fD1ODCGxTiA8EIiXDtm7VaIEVfkeQ8yHA4SUcuBib85qgM1bQ6wD8H72YR8MMmXAxTfBusLBPnqjw==}
     dev: true
 
   /@polka/url/1.0.0-next.21:
@@ -230,7 +230,7 @@ packages:
     dev: true
 
   /mdurl/1.0.1:
-    resolution: {integrity: sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=}
+    resolution: {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==}
     dev: true
 
   /mri/1.2.0:
