@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<title>{{ $.Site.Title }} — {{ $.Title }}</title>
+<meta http-equiv="cleartype" content="on" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="mobile-web-app-capable" content="yes" />
+
+<meta name="application-name" content="{{ .Title }}" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="{{ .Title }}" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content="{{ .Summary }}" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@slightlycode" />
+
+{{ $style := resources.Get "main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<style>{{ $style.Content | safeCSS }}</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">

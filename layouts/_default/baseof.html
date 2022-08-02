@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>{{ partial "head.meta" . }}</head>
+
+<body>
+    {{ partial "header" . }}
+
+    {{ block "main" . }}{{ end }}
+
+    {{ partial "footer" . }}
+
+    {{ partial "icons" . }}
+    {{ partial "tracking" . }}
+</body>
+
+</html>

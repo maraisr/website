@@ -1,0 +1,14 @@
+{{ $pages := (where .Site.Pages "Section" "til") }}
+
+<div class="til-list">
+{{ range $pages.ByLastmod }}
+    {{ if ne .Kind "section" }}
+    <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        <time datetime={{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}>
+            {{ .Lastmod.Format "Mon, Jan 2, 2006" }}
+        </time>
+    </li>
+    {{ end }}
+{{ end }}
+</div>

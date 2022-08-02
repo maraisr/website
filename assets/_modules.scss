@@ -1,0 +1,61 @@
+// bad thingy
+
+body {
+	margin: 0 auto;
+	width: 100%;
+
+    @media screen and (min-width: 764px) {
+        max-width: 600px;
+		margin: 0;
+		transform: translateX(15vw);
+    }
+}
+
+.v-stack > * {
+	margin-top: 1.25rem;
+}
+
+.v-stack:first-child {
+	margin-top: 0;
+}
+
+.v-stack svg {
+	display: inline-flex;
+	vertical-align: middle;
+
+	width: 0.9rem;
+	height: 0.9rem;
+}
+
+footer {
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+
+    a {
+		color: inherit;
+        font-weight: 400;
+    }
+}
+
+@import '_header';
+
+.til-list {
+	li {
+		width: 100%;
+		display: flex;
+		flex: 1 0 auto;
+		gap: 1rem;
+		list-style: none;
+		justify-content: space-between;
+	}
+
+	a {
+		display: block;
+		width: 100%;;
+	}
+
+	time {
+		white-space: nowrap;
+		align-self: flex-end;
+	}
+}

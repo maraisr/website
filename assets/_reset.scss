@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	--bg-colour: #edf2f4;
 	--front-colour: #4a5759;
-	--front-colour-2: #ff99c8;
+	--front-colour-2: #588157;
 	
 	--mono: monospace, system-ui, -apple-system;
 	--sans-serif: Outfit, system-ui, -apple-system, sans-serif;
@@ -34,6 +34,7 @@ body {
 a {
 	text-decoration: none;
 	font-weight: 700;
+	color: var(--front-colour-2);
 }
 
 small {

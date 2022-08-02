@@ -1,0 +1,11 @@
+{{ define "main" }}
+<main>
+    <h1>
+        <a href="/til">til</a>/{{ $.Page.Title }}
+    </h1>
+
+    <div>
+        {{- .Content -}}
+    </div>
+</main>
+{{ end }}
