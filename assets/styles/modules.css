@@ -58,3 +58,7 @@ footer {
 	margin-top: 2rem;
 	margin-bottom: 3rem;
 }
+
+footer a {
+	font-weight: 400;
+}
