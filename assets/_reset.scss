@@ -2,12 +2,12 @@
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	
-	--bg-colour: #edf2f4;
+	--bg-colour: #f8f9fa;
 	--front-colour: #4a5759;
 	--front-colour-2: #588157;
 	
-	--mono: monospace, system-ui, -apple-system;
-	--sans-serif: Outfit, system-ui, -apple-system, sans-serif;
+	--mono: "Fira Code", monospace, system-ui, -apple-system;
+	--sans-serif: Quicksand, system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -24,6 +24,10 @@ html {
 	font: 400 16px/1.4 var(--sans-serif);
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizelegibility;
+
+	@media screen and (min-width: 764px) {
+		font-size: 18px;
+	}
 }
 
 body {

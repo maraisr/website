@@ -31,12 +31,6 @@
 	}
 }
 
-header {
-	display: grid;
-	grid-template-columns: 1fr auto;
-	padding: 3rem 0 2rem;
-}
-
 .logo {
 	display: inline-flex;
 	font-weight: 400;
@@ -46,18 +40,34 @@ header {
 	color: var(--front-colour-2);
 }
 
-header nav ul {
-	display: flex;
-	flex: 1 0 auto;
-	gap: 0.75rem;
-}
+header {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	padding: 3rem 0 2rem;
 
-header nav li {
-	display: inline-block;
-	list-style: none;
-}
+	nav {
+		ul {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
 
-header svg {
-	width: 1rem;
-	height: 1rem;
+		a {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+		}
+
+		svg {
+			display: inline-block;
+			width: 1rem;
+			height: 1rem;
+		}
+	}
+
+	li {
+		list-style: none;
+		display: flex;
+		align-items: center;
+	}
 }
