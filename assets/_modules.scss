@@ -89,3 +89,17 @@ footer {
 .page-title {
 	padding-bottom: 2rem;	
 }
+
+.md-content {
+	ul, li {
+		margin: 0;
+		padding: 0;
+		padding-left: 1rem;
+	}
+
+	p, div {
+		&:not(:last-child) {
+			padding-bottom: 1rem;
+		}
+	}
+}
