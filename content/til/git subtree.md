@@ -13,4 +13,5 @@ git subtree -P <target dir> git@github.com/... <branch>
 
 ... and you can just keep running that for every directory/repo combo you want.
 
-There was a gotcha where because it is a new repo, it had no commits. And there needs to be at least 1 commit; `git cm -m "init" --allow-empty`
+There was a gotcha where because it is a new repo, it had no commits. And there needs to be at least 1 commit;
+`git cm -m "init" --allow-empty`
