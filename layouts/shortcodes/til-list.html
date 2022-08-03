@@ -6,7 +6,7 @@
     <ul>
         {{ range $pages.ByLastmod }}
         <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             <time datetime={{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}>
                 {{ .Lastmod.Format "Mon, Jan 2, 2006" }}
             </time>
