@@ -15,9 +15,5 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@slightlycode" />
 
-{{ $style := resources.Get "main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{- $style := resources.Get "styles/main.scss" | resources.ToCSS (dict "includePaths" (slice "node_modules")) | resources.Fingerprint -}}
 <style>{{ $style.Content | safeCSS }}</style>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">

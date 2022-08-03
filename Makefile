@@ -1,3 +1,7 @@
+serve:
+	hugo serve -D
+.PHONY: serve
+
 build: download
 	hugo --minify
 	mv public/404/index.html public/404.html
