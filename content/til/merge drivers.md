@@ -1,5 +1,6 @@
 ---
 title: merge drivers
+date: 2022-08-10
 ---
 
 > tl;dr when you encounter a merge conflict, use merge drivers to resolve them for you
