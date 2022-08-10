@@ -1,19 +1,16 @@
 ---
 title: merge drivers
-date: 2022-08-10
+date: 2022-07-12
 ---
 
-> tl;dr when you encounter a merge conflict, use merge drivers to resolve them for you
+> tl;dr have a consistent merge conflict, use merge drivers to resolve them for you
 
-Gee would'nt it be nice if one can
-[define custom merge behaviors](https://git-scm.com/docs/gitattributes#_defining_a_custom_merge_driver) when dealing
-with conflicts.
+I often faced resolving the same file, the same way. And wondered, can't git just solve this for me?
 
-Well you can 🥳 with a thingy called _merge drivers_ and are defined per workspace, or in your `~/.gitconfig` global
-config. In conjunction with `.gitattributes` files.
+Well you can 🥳 with a thingy called [_merge drivers_](https://git-scm.com/docs/gitattributes#_defining_a_custom_merge_driver) which are defined either per workspace, or in your `~/.gitconfig` global
+config — and joined with `.gitattributes` files.
 
-Most tools already support this out of the box, and all you need is a terminal executable runtime. eg `node x` or
-`./my-app` etc.
+All you need is an executable—`node fix-my-file.js`, `./file-resolver` etc.
 
 ### How?
 
