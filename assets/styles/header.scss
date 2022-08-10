@@ -10,7 +10,7 @@
 
 	width: 0.65rem;
 	height: 100%;
-	background-color: var(--front-colour-2);
+	background-color: #{'hsla(var(--front-colour-2), 100%)'};
 
 	display: block;
 	content: '';
@@ -28,7 +28,7 @@
 		background-color: transparent;
 	}
 	50% {
-		background-color: var(--front-colour-2);
+		background-color: #{'hsla(var(--front-colour-2), 100%)'};
 	}
 }
 
@@ -38,7 +38,7 @@
 }
 
 .logo span {
-	color: var(--front-colour-2);
+	color: #{'hsla(var(--front-colour-2), 100%)'};
 }
 
 header {

@@ -98,9 +98,30 @@ footer {
 	}
 
 	p,
-	div {
+	div,
+	h2,
+	h3,
+	h4 {
 		&:not(:last-child) {
 			padding-bottom: 1rem;
 		}
 	}
+
+	blockquote {
+		padding: 0.75rem 0;
+		padding-left: 0.5rem;
+
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+
+		border-left: 0.3rem solid #{'hsla(var(--front-colour-2), 100%)'};
+		background-color: #{'hsla(var(--front-colour-2), 5%)'};
+	}
+}
+
+:not(pre) > code {
+	background-color: white;
+	padding: 0.1rem 0.3rem;
+	border-radius: 0.25rem;
 }
