@@ -4,7 +4,7 @@
     <h3>ledger</h3>
 
     <ul>
-        {{ range $pages.ByDate }}
+        {{ range $pages.ByDate.Reverse }}
         <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             <time datetime={{ .Date.Format "2006-01-02" }}>
