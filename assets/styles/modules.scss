@@ -119,7 +119,9 @@ footer {
 }
 
 :not(pre) > code {
+	vertical-align: middle;
 	background-color: white;
 	padding: 0.1rem 0.3rem;
 	border-radius: 0.25rem;
+	font-size: 87%;
 }
