@@ -8,7 +8,7 @@ format:
 
 build_only:
 	rm -rf dist/ || exit 0
-	hugo --minify
+	hugo --minify -v --log --debug
 .PHONY: build_only
 
 build: download build_only
