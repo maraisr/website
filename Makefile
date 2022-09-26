@@ -1,13 +1,16 @@
 serve:
-	hugo serve -D
+	hugo serve -D --port 8080
 .PHONY: serve
 
 format:
 	npx prettier "**/*.{scss,js,md}" --write
 .PHONY: format
 
-build: download
+build_only:
 	hugo --minify
+.PHONY: build_only
+
+build: download build_only
 	mv public/404/index.html public/404.html
 	./minify -vrs public -o .
 .PHONY: build
