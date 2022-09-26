@@ -7,6 +7,7 @@ format:
 .PHONY: format
 
 build_only:
+	rm -rf dist/ || exit 0
 	hugo --minify
 .PHONY: build_only
 

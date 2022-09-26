@@ -2,13 +2,19 @@ baseURL = "https://marais.io"
 
 title = "Marais Rossouw"
 languageCode = "en"
-DefaultContentLanguage = "en"
+defaultContentLanguage = "en"
 disableHugoGeneratorInject = true
-enableRobotsTXT = false
+relativeURLs = true
+
+publishDir = "dist"
 
 disableAliases = true
-disableKinds = ["taxonomy", "taxonomyTerm", "tags", "categories"]
+disableKinds = ["RSS", "term", "taxonomy", "categories"]
 
+[taxonomies]
+  tag = "tags"
+
+enableRobotsTXT = false
 enableEmoji = true
 enableGitInfo = true
 
