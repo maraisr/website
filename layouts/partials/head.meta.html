@@ -13,5 +13,8 @@
 <link rel="preload" href="/fonts/fira-code.woff2" as="font" type="font/woff2" />
 <link rel="preload" href="/fonts/quicksand.woff2" as="font" type="font/woff2" />
 
+<link rel="preload" href="https://plausible.io/js/plausible.js" as="script" />
+<link rel="preconnect" href="https://plausible.io/" />
+
 {{- $style := resources.Get "styles/main.scss" | resources.ToCSS (dict "includePaths" (slice "node_modules")) | resources.Fingerprint -}}
 <style>{{ $style.Content | safeCSS }}</style>
