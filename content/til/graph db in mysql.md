@@ -37,7 +37,7 @@ CREATE TABLE assoc
     id2  char(16) NOT NULL,
     data JSON,
     time timestamp default current_timestamp,
-    PRIMARY KEY (id1, type, id2)
+    PRIMARY KEY (id1, atype, id2)
 ) ENGINE = InnoDB;
 ```
 
