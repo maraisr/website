@@ -54,7 +54,7 @@ footer {
 		width: 100%;
 
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr auto;
 		gap: 0.5rem 1rem;
 		justify-content: space-between;
 
