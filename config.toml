@@ -4,7 +4,7 @@ title = "Marais Rossouw"
 languageCode = "en"
 defaultContentLanguage = "en"
 disableHugoGeneratorInject = true
-relativeURLs = true
+relativeURLs = false
 
 publishDir = "dist"
 
