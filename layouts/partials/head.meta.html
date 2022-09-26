@@ -1,4 +1,4 @@
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <title>{{ $.Site.Title }} — {{ $.Title }}</title>
 <meta http-equiv="cleartype" content="on" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="description" content="{{ .Summary }}" />
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@slightlycode" />
 
 {{- $style := resources.Get "styles/main.scss" | resources.ToCSS (dict "includePaths" (slice "node_modules")) | resources.Fingerprint -}}

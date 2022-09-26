@@ -4,6 +4,7 @@
 	"tabWidth": 4,
 	"trailingComma": "all",
 	"useTabs": true,
+	"htmlWhitespaceSensitivity": "ignore",
 	"overrides": [
 		{
 			"files": [

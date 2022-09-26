@@ -1,13 +1,11 @@
 {{ define "main" }}
 <main>
-    <div class="page-title">
-        <h1>
-            <a href="/til">til</a>/{{ $.Page.Title }}
-        </h1>
-    </div>
-    
-    <div class="md-content">
-        {{- .Content -}}
-    </div>
+	<div class="page-title">
+		<h1>
+			<a href="/til">til</a>/{{ $.Page.Title }}
+		</h1>
+	</div>
+
+	<div class="md-content">{{- .Content -}}</div>
 </main>
 {{ end }}

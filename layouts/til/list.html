@@ -1,32 +1,30 @@
 {{ define "main" }}
 <main>
-    <div class="page-title">
-        <h1>{{ .Title }}</h1>
-    </div>
+	<div class="page-title">
+		<h1>{{ .Title }}</h1>
+	</div>
 
-    <div class="md-content">
-        {{- .Content -}}
-    </div>
+	<div class="md-content">{{- .Content -}}</div>
 
-    <div class="til-list">
-        <h3>log</h3>
-    
-        <ul>
-            {{ range .Pages.ByDate.Reverse }}
-            <li class="item">
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                <ul class="tag-list">
-                    {{ range (.Params.Tags) }}
-                        <li>#{{ . }}</li>
-                    {{ end }}
-                </ul>
-    
-                <time datetime={{ .Date.Format "2006-01-02" }}>
-                    {{ .Date.Format "Mon, Jan 2, 2006" }}
-                </time>
-            </li>
-            {{ end }}
-        </ul>
-    </div>
+	<div class="til-list">
+		<h3>log</h3>
+
+		<ul>
+			{{ range .Pages.ByDate.Reverse }}
+			<li class="item">
+				<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+				<ul class="tag-list">
+					{{ range (.Params.Tags) }}
+					<li>#{{ . }}</li>
+					{{ end }}
+				</ul>
+
+				<time datetime="{{ .Date.Format "2006-01-02" }}">
+					{{ .Date.Format "Mon, Jan 2, 2006" }}
+				</time>
+			</li>
+			{{ end }}
+		</ul>
+	</div>
 </main>
 {{ end }}
