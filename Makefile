@@ -17,6 +17,6 @@ build: download build_only
 .PHONY: build
 
 download:
-	curl -L https://github.com/tdewolff/minify/releases/download/v2.12.0/minify_linux_amd64.tar.gz > minify.tar.gz
+	curl -L https://github.com/tdewolff/minify/releases/download/v2.12.2/minify_linux_amd64.tar.gz > minify.tar.gz
 	tar -xf minify.tar.gz
 .PHONY: download
