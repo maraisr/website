@@ -1,6 +1,7 @@
 ---
 title: graph database in mysql
 date: 2022-09-20
+tags: [mysql, design]
 ---
 
 I was recently playing around with a database for a hobby project, and wanted to design a database schema for it.

@@ -1,6 +1,7 @@
 ---
 title: merge drivers
 date: 2022-07-12
+tags: [git]
 ---
 
 > tl;dr have a consistent merge conflict, use merge drivers to resolve them for you

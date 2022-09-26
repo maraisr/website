@@ -1,6 +1,7 @@
 ---
 title: git subtree
 date: 2022-08-03
+tags: [git]
 ---
 
 I was trying to consolidate my university repos [into one](https://github.com/maraisr/uni-days) and retain history.
