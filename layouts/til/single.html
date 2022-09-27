@@ -2,10 +2,73 @@
 <main>
 	<div class="page-title">
 		<h1>
-			<a href="/til">til</a>/{{ $.Page.Title }}
+			<a href="/til">til</a>/{{ .Page.Title }}
 		</h1>
 	</div>
 
 	<div class="md-content">{{- .Content -}}</div>
 </main>
+{{ end }}
+
+{{ define "tail" }}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Article",
+			"@id": "{{ .Page.Permalink }}#article",
+			"isPartOf": {
+				"@id": {{ .Page.Permalink }}
+			},
+			"author": {
+				"name": "Marais Rossouw"
+			},
+			"headline": {{ .Page.Title }},
+			"datePublished": {{ time .Page.Date }},
+			"mainEntityOfPage": {
+				"@id": {{ .Page.Permalink }}
+			},
+			"wordCount": {{ .WordCount }},
+			"keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}],
+			"inLanguage": "en-AU"
+		},
+		{
+			"@type": "WebPage",
+			"@id": {{ .Page.Permalink }},
+			"url": {{ .Page.Permalink }},
+			"name": "{{ $.Site.Title }} — {{ $.Title }}",
+			"datePublished": {{ time .Page.Date }},
+			"description": {{ .Summary | plainify | safeHTML }},
+			"breadcrumb": {
+				"@id": "{{ .Page.Permalink }}#breadcrumb"
+			},
+			"inLanguage": "en-AU"
+		},
+		{
+			"@type": "BreadcrumbList",
+			"@id": "{{ .Page.Permalink }}#breadcrumb",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Home",
+					"item": {{ .Site.Home.Permalink }}
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "til",
+					"item": "https://marais.io/til/"
+				},
+				{
+					"@type": "ListItem",
+					"position": 3,
+					"name": {{ .Page.Title }}
+				}
+			]
+		}
+	]
+}
+</script>
 {{ end }}

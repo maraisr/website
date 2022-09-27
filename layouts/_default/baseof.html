@@ -6,10 +6,12 @@
     {{ partial "header" . }}
 
     {{ block "main" . }}{{ end }}
-
+    
     {{ partial "footer" . }}
-
+    
     {{ partial "icons" . }}
     {{ partial "tracking" . }}
+
+    {{ block "tail" . }}{{ end }}
 </body>
 </html>
