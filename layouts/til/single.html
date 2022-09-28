@@ -16,22 +16,24 @@
 	"@context": "https://schema.org",
 	"@graph": [
 		{
-			"@type": "Article",
-			"@id": "{{ .Page.Permalink }}#article",
+			"@type": "LearningResource",
+			"@id": {{ print .Page.Permalink "#til" }},
 			"isPartOf": {
 				"@id": {{ .Page.Permalink }}
 			},
-			"author": {
-				"name": "Marais Rossouw"
-			},
-			"headline": {{ .Page.Title }},
-			"datePublished": {{ time .Page.Date }},
 			"mainEntityOfPage": {
 				"@id": {{ .Page.Permalink }}
 			},
-			"wordCount": {{ .WordCount }},
+			"author": {
+				"@type": "Person",
+				"name": "Marais Rossouw",
+				"url": {{ .Site.Home.Permalink }}
+			},
+			"name": {{ .Page.Title }},
+			"datePublished": {{ time .Page.Date }},
 			"keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}],
-			"inLanguage": "en-AU"
+			"inLanguage": "en-AU",
+			"license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 		},
 		{
 			"@type": "WebPage",
@@ -41,13 +43,13 @@
 			"datePublished": {{ time .Page.Date }},
 			"description": {{ .Summary | plainify | safeHTML }},
 			"breadcrumb": {
-				"@id": "{{ .Page.Permalink }}#breadcrumb"
+				"@id": {{ print .Page.Permalink "#breadcrumb" }}
 			},
 			"inLanguage": "en-AU"
 		},
 		{
 			"@type": "BreadcrumbList",
-			"@id": "{{ .Page.Permalink }}#breadcrumb",
+			"@id": {{ print .Page.Permalink "#breadcrumb" }},
 			"itemListElement": [
 				{
 					"@type": "ListItem",
