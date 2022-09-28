@@ -1,5 +1,11 @@
 <footer>
-    <small>
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 2022-present &copy; Marais Rossouw
+    <small xmlns:cc="http://creativecommons.org/ns" xmlns:dct="http://purl.org/dc/terms/">
+        {{ if (and .IsPage (eq .Type "til")) }}
+            <div>
+                This <a property="dct:title" rel="cc:attributionURL" href="{{ .Page.Permalink }}">til</a> was created <span property="dct:created" content="{{ time .Page.Date }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
+            </div>
+        {{ end }}
+
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="cc:license license noopener noreferrer">CC BY-NC-SA 4.0</a> <span rel="dct:dateCopyrighted">2022</span>-present &copy; <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="{{ .Site.Home.Permalink }}">Marais Rossouw</a>
     </small>
 </footer>
