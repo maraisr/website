@@ -164,3 +164,26 @@ code {
 	border-radius: 0.25rem;
 	font-size: 80%;
 }
+
+.next-prev {
+	margin-top: 5rem;
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap-reverse;
+	justify-content: space-between;
+
+	.prev {
+		&::before {
+			content: '⬅️ ';
+		}
+	}
+
+	.next {
+		margin-left: auto;
+		text-align: right;
+
+		&::after {
+			content: ' ➡️';
+		}
+	}
+}

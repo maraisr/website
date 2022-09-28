@@ -12,9 +12,9 @@
 		<ul>
 			{{ range .Pages.ByDate.Reverse }}
 			<li class="item">
-				<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+				<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
 				<ul class="tag-list">
-					{{ range (.Params.Tags) }}
+					{{ range .Params.Tags }}
 					<li>#{{ . }}</li>
 					{{ end }}
 				</ul>
