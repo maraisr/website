@@ -153,6 +153,11 @@ footer {
 	}
 }
 
+pre,
+code {
+	font-family: var(--mono);
+}
+
 code {
 	font-size: 90%;
 }
