@@ -1,0 +1,13 @@
+language: en-us
+dictionaries: [html, node, typescript, bash, softwareTerms, misc]
+ignoreRegExpList:
+  - /[a-z]{2,}'s/
+words:
+  - marais
+  - maraisr
+  - rossouw
+  - lockfiles
+  - otype
+  - atype
+  - inno
+  - sourcer

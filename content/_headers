@@ -4,7 +4,6 @@ https://:project.pages.dev/*
 /fonts/*
     cache-control: public,max-age=31536000
     cloudflare-cdn-cache-control: max-age=31536000
-    x-robots-tag: nosnippet
 
 /robots.txt
     cache-control: public,max-age=30

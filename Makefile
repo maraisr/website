@@ -2,6 +2,10 @@ serve:
 	hugo serve -D --port 8080
 .PHONY: serve
 
+spell:
+	npx cspell "content/**"
+.PHONY: spell
+
 format:
 	npx prettier "**/*.{scss,js,md}" --write
 .PHONY: format

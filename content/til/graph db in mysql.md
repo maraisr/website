@@ -7,7 +7,7 @@ tags: [mysql]
 I was recently playing around with a database for a hobby project, and wanted to design a database schema for it.
 
 Lots of looking about, and stumbled upon
-[(TAO) — **T**he **O**bject **A**ssociation](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf).
+[(TAO) — The Object Association](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf).
 There is actually a lot in there, but the main moment was the `object` and `association` tables.
 
 Lets go from a relational model to a graph model!
