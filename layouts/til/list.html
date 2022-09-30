@@ -13,15 +13,12 @@
 			{{ range .Pages.ByDate.Reverse }}
 			<li class="item">
 				<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+				<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
 				<ul class="tag-list">
 					{{ range .Params.Tags }}
 					<li>#{{ . }}</li>
 					{{ end }}
 				</ul>
-
-				<time datetime="{{ .Date.Format "2006-01-02" }}">
-					{{ .Date.Format "Mon, Jan 2, 2006" }}
-				</time>
 			</li>
 			{{ end }}
 		</ul>
