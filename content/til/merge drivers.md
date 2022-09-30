@@ -18,9 +18,7 @@ All you need is an executable—`node fix-my-file.js`, `./file-resolver` etc.
 
 You need to define the driver in a gitconfig file, either globally (`~/.gitconfig`) or in the project.
 
-```ini
-# file: ~/.gitconfig
-
+```toml {title="~/.gitconfig"}
 [merge "relay"]
     name = relay compiler merge driver
     driver = relay-compiler
@@ -33,11 +31,9 @@ You need to define the driver in a gitconfig file, either globally (`~/.gitconfi
 ... then in your project (or with
 [`[core.gitattributes]`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreattributesFile)).
 
-```ini
-# file: .gitattributes
-
-__geneated__/* merge=relay
-yarn.lock merge=yarn
+```ini {title=".gitattributes"}
+__generated__/*  merge = relay
+yarn.lock        merge = yarn
 ```
 
 And done! ✨ Every time a merge conflict arises touching those files, the merge driver will run first trying to resolve

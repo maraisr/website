@@ -8,7 +8,7 @@ I was trying to consolidate my university repos [into one](https://github.com/ma
 
 Was actually quite easy:
 
-```sh
+```shell
 git subtree -P <target dir> git@github.com/... <branch>
 # eg git subtree add -P cab230/ git@github.com:maraisr/cab230 main
 ```

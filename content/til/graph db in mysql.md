@@ -33,10 +33,10 @@ CREATE TABLE object
 # and the relationship between them
 CREATE TABLE assoc
 (
-    id1  char(16) NOT NULL,
-    atype int     NOT NULL,
-    id2  char(16) NOT NULL,
-    data JSON,
+    id1   char(16) NOT NULL,
+    atype int      NOT NULL,
+    id2   char(16) NOT NULL,
+    data  JSON,
     time timestamp default current_timestamp,
     PRIMARY KEY (id1, atype, id2)
 ) ENGINE = InnoDB;
