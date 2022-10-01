@@ -12,23 +12,6 @@ body {
 	}
 }
 
-ul ul {
-	padding-block: 0.75rem;
-	padding-left: 1rem;
-}
-
-.v-stack {
-	display:flex;
-	flex-direction: column;
-	gap: 1.25rem;
-
-	svg {
-		vertical-align: middle;
-		width: 0.9rem;
-		height: 0.9rem;
-	}
-}
-
 footer {
 	margin-top: 2rem;
 	margin-bottom: 3rem;
@@ -105,12 +88,6 @@ footer {
 	flex-direction: column;
 	gap: 1rem;
 
-	ul,
-	li {
-		margin: 0;
-		padding: 0 0 0 1rem;
-	}
-
 	blockquote {
 		padding: 0.75rem 0 0.75rem 0.5rem;
 
@@ -119,6 +96,21 @@ footer {
 
 		&:not(:last-child) {
 			margin-bottom: 1rem;
+		}
+	}
+
+	svg {
+		vertical-align: middle;
+		width: 0.9rem;
+		height: 0.9rem;
+	}
+
+	ul {
+		list-style-position: outside;
+		margin-left: 1.25rem;
+
+		ul {
+			padding-block: 0.75rem;
 		}
 	}
 }
