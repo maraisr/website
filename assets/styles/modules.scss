@@ -12,10 +12,14 @@ body {
 	}
 }
 
+ul ul {
+	padding-left: 1rem;
+}
+
 .v-stack {
-	& > :not(:first-child) {
-		margin-top: 1.25rem;
-	}
+	display:flex;
+	flex-direction: column;
+	gap: 1.25rem;
 
 	svg {
 		vertical-align: middle;
