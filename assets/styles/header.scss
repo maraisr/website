@@ -1,7 +1,7 @@
 @keyframes blink {
-	from,
+	0%,
 	to {
-		background-color: transparent;
+		background-color: #0000;
 	}
 	50% {
 		background-color: #{'hsla(var(--front-colour-2), 100%)'};
@@ -14,7 +14,7 @@
 	gap: 0.5rem;
 	font-weight: 400;
 
-	&::after {
+	&:after {
 		width: 0.65rem;
 		background-color: #{'hsla(var(--front-colour-2), 100%)'};
 
@@ -30,33 +30,30 @@
 }
 
 header {
-	display: grid;
-	grid-template-columns: 1fr auto;
+	display: flex;
+	justify-content: space-between;
 	padding: 3rem 0 2rem;
 
-	nav {
-		ul {
-			display: flex;
-			align-items: center;
-			gap: 0.75rem;
-		}
-
-		a {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.35rem;
-		}
-
-		svg {
-			display: inline-block;
-			width: 1rem;
-			height: 1rem;
-		}
+	ul {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
 	}
 
 	li {
 		list-style: none;
 		display: flex;
 		align-items: center;
+	}
+
+	a:not(.logo) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	svg {
+		width: 1rem;
+		height: 1rem;
 	}
 }

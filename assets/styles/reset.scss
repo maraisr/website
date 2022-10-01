@@ -16,8 +16,8 @@
 }
 
 *,
-*::before,
-*::after {
+:before,
+:after {
 	color: inherit;
 	box-sizing: inherit;
 }
@@ -34,9 +34,9 @@ html {
 
 body {
 	width: 100vw;
-	overflow-x: hidden;
 	color: var(--front-colour);
 	background-color: var(--bg-colour);
+	overflow-x: hidden;
 }
 
 h1,
