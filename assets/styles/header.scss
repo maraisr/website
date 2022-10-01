@@ -1,27 +1,3 @@
-.cursor-blink {
-	position: relative;
-	pointer-events: none;
-}
-
-.cursor-blink::before {
-	position: absolute;
-	inset: 0;
-	left: 0.5rem;
-
-	width: 0.65rem;
-	height: 100%;
-	background-color: #{'hsla(var(--front-colour-2), 100%)'};
-
-	display: block;
-	content: '';
-
-	animation: 1s blink step-end infinite;
-
-	@media (prefers-reduced-motion) {
-		animation: none;
-	}
-}
-
 @keyframes blink {
 	from,
 	to {
@@ -34,11 +10,23 @@
 
 .logo {
 	display: inline-flex;
+	justify-content: stretch;
+	gap: 0.5rem;
 	font-weight: 400;
-}
 
-.logo span {
-	color: #{'hsla(var(--front-colour-2), 100%)'};
+	&::after {
+		width: 0.65rem;
+		background-color: #{'hsla(var(--front-colour-2), 100%)'};
+
+		display: block;
+		content: '';
+
+		animation: 1s blink step-end infinite;
+
+		@media (prefers-reduced-motion) {
+			animation: none;
+		}
+	}
 }
 
 header {
