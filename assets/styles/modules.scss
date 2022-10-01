@@ -129,9 +129,10 @@ code {
 
 .highlight {
 	--curtains: 1.5rem;
+	--bg: #fff;
 	position: relative;
 	border-radius: 0.75rem;
-	background-color: #ffffff;
+	background-color: var(--bg);
 
 	font-family: var(--mono);
 	font-size: 0.85rem;
@@ -139,13 +140,16 @@ code {
 	&:where([title]) {
 		&::before {
 			content: attr(title);
+
+			border-radius: 0.75rem 0.75rem 0 0;
 			display: block;
 			position: sticky;
 			top: 0;
 			padding: 1rem var(--curtains);
 			border-bottom: 1px solid var(--bg-colour);
 			user-select: text;
-			font-size: inherit;
+			font-size: 90%;
+			background-color: var(--bg);
 		}
 	}
 }
