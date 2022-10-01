@@ -1,35 +1,13 @@
 <script defer async>
-	function ship(url, body) {
-		const send =
-			navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
-
-		const blob = new Blob([JSON.stringify(body)], { type: 'text/plain' });
-
-		function fallback() {
-			fetch(url, {
-				body: blob,
-				method: 'POST',
-				credentials: 'omit',
-				keepalive: true,
-			}).catch(console.error);
-		}
-
-		try {
-			send(url, blob) || fallback();
-		} catch (e) {
-			fallback();
-		}
-	}
-
 	(window.requestIdleCallback || ((c) => c()))(() => {
-		let h = ship.bind(0, 'https://plausible.io/api/event', {
-			n: 'pageview',
+		let h = () => navigator.sendBeacon("https://plausible.io/api/event", JSON.stringify({
+			n: "pageview",
 			u: location.href,
-			d: 'marais.io',
+			d: "marais.io",
 			r: document.referrer || null,
 			w: window.innerWidth,
-		});
-		if (document.readyState == 'complete') h();
-		else window.addEventListener('load', h);
+		}));
+		if (document.readyState === "complete") h();
+		else window.addEventListener("load", h);
 	});
 </script>
