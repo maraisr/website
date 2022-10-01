@@ -3,40 +3,40 @@
 <head>{{ partial "head.meta" . }}</head>
 
 <body>
-   {{ partial "header" . }}
+{{ partial "header" . }}
 
-   <main>
-      {{- .Content -}}
-   </main>
+<main>
+	{{- .Content -}}
+</main>
 
-   {{ partial "footer" . }}
+{{ partial "footer" . }}
 
-   {{ partial "icons" . }}
-   {{ partial "tracking" . }}
+{{ partial "icons" . }}
+{{ partial "tracking" . }}
 
-   <script type="application/ld+json">
-      {
-         "@context": "http://schema.org",
-         "@type": "Person",
-         "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Gold Coast",
-            "addressRegion": "QLD"
-         },
-         "name": "Marais Rossouw",
-         "givenName": "Marais",
-         "familyName": "Rossouw",
-         "birthDate": "1996-01-11",
-         "gender": "Male",
-         "jobTitle": "Creative and Application Developer",
-         "url": "https://marais.io",
-         "sameAs": [
-            "https://github.com/maraisr",
-            "https://www.linkedin.com/in/maraisr",
-            "https://twitter.com/slightlycode"
-         ]
-      }
-   </script>
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Person",
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Gold Coast",
+			"addressRegion": "QLD"
+		},
+		"name": "Marais Rossouw",
+		"givenName": "Marais",
+		"familyName": "Rossouw",
+		"birthDate": "1996-01-11",
+		"gender": "Male",
+		"jobTitle": "Creative and Application Developer",
+		"url": "https://marais.io",
+		"sameAs": [
+			"https://github.com/maraisr",
+			"https://www.linkedin.com/in/maraisr",
+			"https://twitter.com/slightlycode"
+		]
+	}
+</script>
 </body>
 
 </html>

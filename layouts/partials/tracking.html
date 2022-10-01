@@ -1,4 +1,4 @@
-<script defer async>
+<script async defer>
 	(window.requestIdleCallback || ((c) => c()))(() => {
 		let h = () => navigator.sendBeacon("https://plausible.io/api/event", JSON.stringify({
 			n: "pageview",

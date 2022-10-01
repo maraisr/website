@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode }}">
-    <head>{{ partial "head.meta" . }}</head>
+<head>{{ partial "head.meta" . }}</head>
 
 <body>
-    {{ partial "header" . }}
+{{ partial "header" . }}
 
-    {{ block "main" . }}{{ end }}
+{{ block "main" . }}{{ end }}
 
-    {{ partial "footer" . }}
+{{ partial "footer" . }}
 
-    {{ partial "icons" . }}
-    {{ partial "tracking" . }}
+{{ partial "icons" . }}
+{{ partial "tracking" . }}
 
-    {{ block "tail" . }}{{ end }}
+{{ block "tail" . }}{{ end }}
 </body>
 </html>
