@@ -7,7 +7,7 @@ spell:
 .PHONY: spell
 
 format:
-	npx prettier "**/*.{scss,js,md}" --write
+	npx prettier "**/*.{scss,js,ts,md}" --write
 .PHONY: format
 
 build_only:
@@ -23,4 +23,6 @@ build: download build_only
 download:
 	curl -L https://github.com/tdewolff/minify/releases/download/v2.12.2/minify_linux_amd64.tar.gz > minify.tar.gz
 	tar -xf minify.tar.gz
+	npm install -g pnpm
+	pnpm install
 .PHONY: download
