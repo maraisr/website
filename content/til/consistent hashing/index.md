@@ -35,7 +35,7 @@ network, balancing content evenly amongst it's edges, as edges go offline and on
 - The green circles are our targets or origins
 - The purple circles are our phantoms nodes that point to real targets
 
-![consistent hashing diagram](./image1.svg)
+<img src="image1.svg" width="1247.9982082005768" height="1241.1038977205753">
 
 ### Nodes
 
