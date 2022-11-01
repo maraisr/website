@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  crowne: ^0.0.2
+  crowne: ^0.2.0
 
 dependencies:
-  crowne: 0.0.2
+  crowne: 0.2.0
 
 packages:
 
-  /crowne/0.0.2:
-    resolution: {integrity: sha512-Trk+M7dzfSDC2qvF/gFhVBn5RTRb46+W8SdUuGn8c4rEEy1zCg4aeCmfXY7YYPQD2QEkysA9Yi5FkEkhMiqeNw==}
+  /crowne/0.2.0:
+    resolution: {integrity: sha512-Gt44yGP+o5goBQjWDU+qftHHxdSfJ1JLGvDZQCg/0vFpo7nvdFLZCZq/wCY84W8IfyzI6w35X0hbuJzdu4+XRg==}
     dev: false
