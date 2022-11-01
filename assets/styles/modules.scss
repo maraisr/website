@@ -100,9 +100,8 @@ footer {
 	}
 
 	svg {
-		vertical-align: middle;
-		width: 0.9rem;
-		height: 0.9rem;
+		width: 0.8rem;
+		height: 0.8rem;
 	}
 
 	ul {
@@ -201,4 +200,11 @@ code {
 			content: ' ➡️';
 		}
 	}
+}
+
+.single-line {
+	display: inline-flex;
+	gap: 0 0.3rem;
+	align-items: center;
+	vertical-align: middle;
 }
