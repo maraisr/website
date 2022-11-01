@@ -3,7 +3,7 @@ serve:
 .PHONY: serve
 
 spell:
-	npx cspell "content/**"
+	npx cspell "content/**" -e "*.svg"
 .PHONY: spell
 
 format:
