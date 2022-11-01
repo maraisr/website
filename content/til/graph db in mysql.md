@@ -1,5 +1,6 @@
 ---
 title: graph database in mysql
+summary: How to create a graph database in pure MySQL with the help of JSON columns.
 date: 2022-09-20
 tags: [mysql]
 ---

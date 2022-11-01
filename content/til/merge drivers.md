@@ -1,5 +1,6 @@
 ---
 title: merge drivers
+summary: Merge Drivers allows git to resolve merge conflicts for you.
 date: 2022-07-12
 tags: [git]
 ---

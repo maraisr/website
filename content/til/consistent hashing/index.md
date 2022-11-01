@@ -1,5 +1,8 @@
 ---
 title: consistent hashing
+summary:
+  Consistent Hashing is a distributed hashing algorithm that works independently from the number of servers or objects
+  that are stored in the table.
 date: 2022-11-01
 tags: [systems design]
 ---
