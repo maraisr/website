@@ -5,9 +5,10 @@ date: 2022-08-03
 tags: [git]
 ---
 
-I was trying to consolidate my university repos [into one](https://github.com/maraisr/uni-days) and retain history.
+I was trying to consolidate my university repositories [into one](https://github.com/maraisr/uni-days) and retain
+history.
 
-Was actually quite easy:
+Was really quite easy:
 
 ```shell
 git subtree -P <target dir> git@github.com/... <branch>
