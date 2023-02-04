@@ -23,28 +23,25 @@ _This is it here, just 2 tables for everything 🎉_
 # The nodes or entities in the system
 CREATE TABLE object
 (
-    id      char(16) NOT NULL default (lower(hex(random_bytes(8)))),
-    otype   int      NOT NULL,
+    id      char(16)    NOT NULL DEFAULT (lower(hex(random_bytes(8)))),
+    otype   varchar(10) NOT NULL,
     data    JSON,
-    created timestamp         default current_timestamp,
-    updated timestamp         default current_timestamp on update current_timestamp,
+    created timestamp            DEFAULT current_timestamp,
+    updated timestamp            DEFAULT current_timestamp ON UPDATE current_timestamp,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
 # and the relationship between them
 CREATE TABLE assoc
 (
-    id1   char(16) NOT NULL,
-    atype int      NOT NULL,
-    id2   char(16) NOT NULL,
+    id1   char(16)    NOT NULL,
+    atype varchar(10) NOT NULL,
+    id2   char(16)    NOT NULL,
     data  JSON,
-    time timestamp default current_timestamp,
+    time  timestamp DEFAULT current_timestamp,
     PRIMARY KEY (id1, atype, id2)
 ) ENGINE = InnoDB;
 ```
-
-I picked an `int` here to store the type, as it _could_ be an index into an application tier enum. Cheap to store, and
-query.
 
 **But what about joins?**
 
@@ -63,7 +60,7 @@ selection of fields.
 
 Some patterns of working with this data model, because does take some getting used to.
 
-> Typically a query is something like; `JOIN <table> ON <condition>`, the graph model this is now written as
+> Typically, a query is something like; `JOIN <table> ON <condition>`, the graph model this is now written as
 > `JOIN <table> WHERE <condition>`.
 
 #### Get an object by its id
@@ -83,7 +80,7 @@ SELECT true FROM assoc WHERE type = ? AND id1 = ? AND id2 = ?
 
 #### Get a connection of nodes
 
-Something like getting all blog posts by a user, `id2`` here being the object ID (remember join at the application
+Something like getting all blog posts by a user, `id2` here being the object ID (remember join at the application
 level).
 
 ```mysql
