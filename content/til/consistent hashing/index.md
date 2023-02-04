@@ -8,8 +8,8 @@ tags: [systems design]
 ---
 
 I stumbled upon a pretty interesting concept for "balancing" nodes, called
-["Consistent Hashing"](https://en.wikipedia.org/wiki/Consistent_hashing). The rough premise is a way to distribute
-things across a field (like servers, threads, continents, or you name it) — without rebalancing[^1] the members when
+"[Consistent Hashing](https://en.wikipedia.org/wiki/Consistent_hashing)". The rough premise is a way to distribute
+things across a field (like servers, threads, continents, or you name it) — without rebalancing[^1] the members when
 targets disappear.
 
 [^1]:

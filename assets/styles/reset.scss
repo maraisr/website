@@ -4,7 +4,8 @@
 
 	--bg-colour: #f8f9fa;
 	--front-colour: #4a5759;
-	--front-colour-2: 120, 19%, 34%;
+	--accent: 336, 82%, 57%;
+	--thing: 35, 76%, 95%;
 
 	--mono: monospace, system-ui, -apple-system;
 	--sans-serif: quicksand, system-ui, -apple-system, sans-serif;
@@ -49,7 +50,7 @@ h3 {
 a {
 	text-decoration: none;
 	font-weight: 700;
-	color: #{'hsla(var(--front-colour-2), 100%)'};
+	color: #{'hsla(var(--accent), 100%)'};
 }
 
 small,
@@ -60,9 +61,17 @@ footer {
 
 hr {
 	margin: 3rem auto !important;
-	border-top: 1px solid #{'hsla(var(--front-colour-2), 100%)'};
+	border: none;
+	//border-top: 3px double #{'hsla(var(--accent), 100%)'};
 	max-width: 150px;
 	width: 100%;
+
+	&::before {
+		content: '•  •  •';
+		display: block;
+		color: #{'hsl(var(--accent))'};
+		text-align: center;
+	}
 }
 
 code {

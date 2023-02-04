@@ -4,7 +4,7 @@
 		background-color: #0000;
 	}
 	50% {
-		background-color: #{'hsla(var(--front-colour-2), 100%)'};
+		background-color: #{'hsla(var(--accent), 100%)'};
 	}
 }
 
@@ -16,7 +16,7 @@
 
 	&:after {
 		width: 0.65rem;
-		background-color: #{'hsla(var(--front-colour-2), 100%)'};
+		background-color: #{'hsla(var(--accent), 100%)'};
 
 		display: block;
 		content: '';
