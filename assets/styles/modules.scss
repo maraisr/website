@@ -104,11 +104,13 @@ footer {
 		height: 0.8rem;
 	}
 
-	ul {
+	ul,
+	ol {
 		list-style-position: outside;
 		margin-left: 1.25rem;
 
-		ul {
+		ul,
+		ol {
 			padding-block: 0.75rem;
 		}
 	}
