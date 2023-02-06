@@ -12,8 +12,9 @@ Was really quite easy:
 
 ```shell
 git subtree -P <target dir> git@github.com/... <branch>
-# eg git subtree add -P cab230/ git@github.com:maraisr/cab230 main
 ```
+
+eg `git subtree add -P cab230/ git@github.com:maraisr/cab230 main`
 
 ... and you can just keep running that for every directory/repo combo you want.
 

@@ -68,9 +68,8 @@ footer {
 			font-family: var(--mono);
 			font-size: 70%;
 
-			transition: background-color 0.2s;
-
 			/* &:hover,
+			transition: background-color 0.2s;
 			&:focus-visible {
 				background-color: #{'hsla(var(--accent), 75%)'};
 			} */
@@ -172,6 +171,16 @@ code {
 			font-size: 0.65rem;
 			padding-inline: var(--curtains);
 			transform: translate(0.5rem, 0.5rem);
+		}
+	}
+
+	[data-lang^='sh'] {
+		.line {
+			&::before {
+				content: '❯ ';
+				font-weight: 700;
+				user-select: none;
+			}
 		}
 	}
 

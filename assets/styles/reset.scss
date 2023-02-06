@@ -2,13 +2,17 @@
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 
-	--bg-colour: #f8f9fa;
-	--front-colour: #4a5759;
-	--accent: 336, 82%, 57%;
+	--bg-colour: #fbfaf7;
+	--front-colour: #363c41;
+	--accent: 240, 68%, 37%;
 	--thing: 35, 76%, 95%;
 
 	--mono: monospace, system-ui, -apple-system;
 	--sans-serif: quicksand, system-ui, -apple-system, sans-serif;
+
+	--font-ratio: 0.32; // 🤷‍
+	--ideal-font-size: calc(66vw / (60 * var(--font-ratio)));
+	--font-size: clamp(14px, var(--ideal-font-size), 18px);
 }
 
 * {
@@ -24,19 +28,17 @@
 }
 
 html {
-	font: 400 16px/1.4 var(--sans-serif);
+	font: 400 var(--font-size) / 1.4 var(--sans-serif);
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizelegibility;
+	scroll-behavior: smooth;
 
-	@media screen and (min-width: 764px) {
-		font-size: 18px;
-	}
+	color: var(--front-colour);
+	background-color: var(--bg-colour);
 }
 
 body {
 	width: 100vw;
-	color: var(--front-colour);
-	background-color: var(--bg-colour);
 	overflow-x: hidden;
 }
 
