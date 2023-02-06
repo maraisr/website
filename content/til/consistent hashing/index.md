@@ -40,7 +40,7 @@ minimizes data movement.
 
 ### Nodes
 
-Nodes are the elements or things we want to store, something hashable — ideally something you can deterministically
+Nodes are the elements or things we want to store, something hashable — ideally something you can deterministically
 assign an angle or degrees to. The easiest way to achieve this is to generate a hash number
 ([Murmur3](https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp) can be good for this), and map that
 between 0..360 (or some consistent search space, `h(t) % M` — hash of the target mod search space) as in zero would
