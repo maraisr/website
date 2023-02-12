@@ -3,14 +3,16 @@
 
 <title>{{ .Page.Title }} — {{ .Site.Title }}</title>
 
+<link rel="canonical" href="{{ .RelPermalink }}"/>
+
 <meta content="{{ .Summary }}" name="description"/>
 <meta content="summary" name="twitter:card"/>
 <meta content="@slightlycode" name="twitter:creator"/>
 
+<link crossorigin="anonymous" href="https://plausible.io" rel="dns-preconnect"/>
+
 <link href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>" rel="shortcut icon">
 <link as="font" crossorigin="anonymous" href="/fonts/quicksand.woff2" rel="preload" type="font/woff2"/>
-
-<link crossorigin="anonymous" href="https://plausible.io" rel="dns-preconnect"/>
 
 {{- $style := resources.Get "styles/main.scss" | resources.ToCSS (dict "includePaths" (slice "node_modules")) | resources.Fingerprint -}}
 <style>{{ $style.Content | safeCSS }}</style>
