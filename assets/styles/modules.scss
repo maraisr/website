@@ -79,6 +79,12 @@ footer {
 
 .page-title {
 	padding-bottom: 2rem;
+	font-size: 2rem;
+	font-weight: 700;
+
+	h1 {
+		display: inline;
+	}
 }
 
 blockquote {
@@ -221,10 +227,4 @@ code {
 			content: ' ➡️';
 		}
 	}
-}
-
-.single-line {
-	display: inline-flex;
-	gap: 0 0.3rem;
-	align-items: center;
 }
