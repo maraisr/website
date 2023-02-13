@@ -10,11 +10,11 @@
 
 	<div class="next-prev">
 		{{ with .PrevInSection }}
-		<a class="prev" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
+		<a class="prev" rel="prev" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
 		{{ end }}
 
 		{{ with .NextInSection }}
-		<a class="next" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
+		<a class="next" rel="next" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
 		{{ end }}
 	</div>
 </main>
