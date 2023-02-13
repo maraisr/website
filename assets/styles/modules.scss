@@ -99,6 +99,8 @@ blockquote {
 	gap: 1rem;
 
 	svg {
+		display: inline-block;
+		vertical-align: middle;
 		width: 0.8rem;
 		height: 0.8rem;
 	}
@@ -225,5 +227,4 @@ code {
 	display: inline-flex;
 	gap: 0 0.3rem;
 	align-items: center;
-	vertical-align: middle;
 }
