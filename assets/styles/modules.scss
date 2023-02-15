@@ -91,10 +91,8 @@ footer {
 
 blockquote {
 	padding: 0.75rem;
-
-	background-color: #{'hsla(var(--thing), 100%)'};
-
 	border-radius: 0.75rem;
+	background-color: #{'hsla(var(--thing), 100%)'};
 }
 
 .md-content {
@@ -198,10 +196,11 @@ code {
 
 // Inline code blocks
 :not(pre) > code {
-	vertical-align: middle;
-	background-color: white;
-	padding: 0.1rem 0.3rem;
-	border-radius: 0.25rem;
+	background-color: #00a8c815;
+	color: #00a8c8;
+	padding: 0 0.1em;
+    border-radius: 0.4em;
+	font-size: inherit;
 }
 
 .next-prev {
