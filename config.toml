@@ -41,3 +41,8 @@ enableGitInfo = true
 		lineNos = false
 		anchorLineNos = true
 		hl_Lines = ""
+
+[imaging]
+	hint = "drawing"
+	quality = 80
+	resampleFilter = "Lanczos"
