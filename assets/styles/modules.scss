@@ -95,10 +95,6 @@ blockquote {
 	background-color: #{'hsla(var(--thing), 100%)'};
 
 	border-radius: 0.75rem;
-
-	&:not(:last-child) {
-		margin-bottom: 1rem;
-	}
 }
 
 .md-content {
