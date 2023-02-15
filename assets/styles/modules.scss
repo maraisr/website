@@ -225,3 +225,8 @@ code {
 		}
 	}
 }
+
+.footnotes {
+	font-variant: tabular-nums;
+	font-feature-settings: 'tnum';
+}

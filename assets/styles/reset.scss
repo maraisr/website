@@ -30,12 +30,14 @@
 
 html {
 	font: 400 var(--font-size) / 1.4 var(--sans-serif);
+	font-kerning: normal;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizelegibility;
-	scroll-behavior: smooth;
 
 	color: var(--front-colour);
 	background-color: var(--bg-colour);
+
+	scroll-behavior: smooth;
 }
 
 body {
@@ -69,7 +71,6 @@ footer {
 hr {
 	margin: 3rem auto !important;
 	border: none;
-	//border-top: 3px double #{'hsla(var(--accent), 100%)'};
 	max-width: 150px;
 	width: 100%;
 
