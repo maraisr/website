@@ -17,7 +17,7 @@ build_only:
 
 build: download build_only
 	mv dist/404/index.html dist/404.html
-	./minify -vrs --html-keep-whitespace dist -o .
+	./minify -vrs dist -o .
 .PHONY: build
 
 download:
