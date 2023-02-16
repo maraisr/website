@@ -16,7 +16,6 @@ build_only:
 .PHONY: build_only
 
 build: download build_only
-	mv dist/404/index.html dist/404.html
 	./minify -vrs dist -o .
 .PHONY: build
 
