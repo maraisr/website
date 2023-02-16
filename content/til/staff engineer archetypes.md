@@ -26,7 +26,7 @@ Lead**, the **Architect**, the **Solver**, and the **Right Hand**.
 The [staffeng.com](https://staffeng.com/guides/staff-archetypes) article describes these four archetypes in detail, but
 here is my understanding:
 
-- #### Tech Lead
+- **Tech Lead**
 
   Technical Excellence
 
@@ -37,7 +37,7 @@ here is my understanding:
   The _Tech Lead_ is commonly used as a title, and others use it as a role. It is entirely possible to be a Tech Lead
   without operating as a staff engineer.
 
-- #### Architect
+- **Architect**
 
   Vision Excellence
 
@@ -45,7 +45,7 @@ here is my understanding:
   specific domain must be crucial to the company's prerogative—as in its what the company money. The architect is also
   held accountable for this vision or understanding.
 
-- #### Solver
+- **Solver**
 
   Tactical Excellence
 
@@ -53,7 +53,7 @@ here is my understanding:
   problems when there is not a clear approach or there is a high degree of risk. They'll tend to move on to the next
   thing once the problem is solved.
 
-- #### Right Hand
+- **Right Hand**
 
   Organized Excellence
 

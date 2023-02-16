@@ -80,14 +80,19 @@ strong {
 	font-weight: 700;
 }
 
+ol,
+ul {
+	padding-inline-start: 2em;
+	margin: 2em 0;
+}
+
 li > ol,
 li > ul {
 	margin: 0;
 }
 
-li > :is(h1, h2, h3, h4, h5) {
-	margin: 0;
-	padding: 0;
+li {
+	margin: 0.5em 0;
 }
 
 body > * {
