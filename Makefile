@@ -1,5 +1,5 @@
 serve:
-	hugo serve -D --port 8080
+	hugo serve -D --bind 0.0.0.0 --port 8080
 .PHONY: serve
 
 spell:

@@ -43,18 +43,18 @@ CREATE TABLE assoc
 ) ENGINE = InnoDB;
 ```
 
-**But what about joins?**
-
-Joins happen at the application level, not the database level. Typically you ask the database to join say the _users_
-and the _comments_ tables and return a subset of data, this is not what is happening here. Far easier to apply access or
-privacy policies in the application tier (as that is where that context lives), than in the queries.
-
-**Delight**
+### Delight
 
 It just makes caching so much easier as you can just cache a whole row. No need to juggle cache keys on a coarse
 selection of fields.
 
 > 💡 It's easier to cache a whole row, than to cache a selection of fields.
+
+### But what about joins?
+
+Joins happen at the application level, not the database level. Typically you ask the database to join say the _users_
+and the _comments_ tables and return a subset of data, this is not what is happening here. Far easier to apply access or
+privacy policies in the application tier (as that is where that context lives), than in the queries.
 
 ### Patterns
 

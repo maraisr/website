@@ -1,10 +1,10 @@
 @keyframes blink {
 	0%,
 	to {
-		background-color: #0000;
+		background: #0000;
 	}
 	50% {
-		background-color: #{'hsla(var(--accent), 100%)'};
+		background: var(--accent);
 	}
 }
 
@@ -12,14 +12,19 @@
 	display: inline-flex;
 	justify-content: stretch;
 	gap: 0.5rem;
-	font-weight: 400;
+
+	&:before {
+		content: '❯ ';
+		user-select: none;
+	}
 
 	&:after {
-		width: 0.65rem;
-		background-color: #{'hsla(var(--accent), 100%)'};
+		width: 0.5rem;
+		background: var(--accent);
 
 		display: block;
 		content: '';
+		user-select: none;
 
 		animation: 1s blink step-end infinite;
 
@@ -29,22 +34,17 @@
 	}
 }
 
+nav {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
 	padding: 3rem 0 2rem;
-
-	ul {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	li {
-		list-style: none;
-		display: flex;
-		align-items: center;
-	}
+	font-weight: 700;
 
 	a:not(.logo) {
 		display: inline-flex;

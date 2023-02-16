@@ -1,0 +1,51 @@
+.til-list {
+	ul {
+		padding: 0;
+	}
+
+	ul:where(:not(.tag-list)) {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	li {
+		list-style: none;
+	}
+
+	.item {
+		position: relative;
+		width: 100%;
+
+		display: grid;
+		grid-template-columns: auto auto;
+		gap: 0.5rem 1rem;
+		justify-content: space-between;
+	}
+
+	time {
+		white-space: nowrap;
+		place-self: center flex-end;
+		font-size: 90%;
+	}
+
+	.tag-list {
+		grid-column: 1 / span 2;
+
+		display: flex;
+		flex: 1 0 auto;
+		gap: 0.5rem;
+
+		li {
+			padding: 0.1rem 0.3rem;
+			border-radius: 0.35rem;
+			background: var(--subtle-colour);
+			font-family: var(--mono);
+			font-size: 70%;
+
+			&:before {
+				content: '#';
+			}
+		}
+	}
+}

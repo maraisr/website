@@ -1,13 +1,11 @@
 {{ define "main" }}
-<main>
-	<div class="page-title">
-		<h1>
-			<a href="/til/">til</a>
-			<span>{{ .Page.Title }}</span>
-		</h1>
-	</div>
+<article>
+	<h1>
+		<a href="/til/">til</a>
+		<span>{{ .Page.Title }}</span>
+	</h1>
 
-	<div class="md-content">{{- .Content -}}</div>
+	{{- .Content -}}
 
 	<div class="next-prev">
 		{{ with .PrevInSection }}
@@ -18,7 +16,7 @@
 		<a class="next" rel="next" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
 		{{ end }}
 	</div>
-</main>
+</article>
 {{ end }}
 
 {{ define "tail" }}

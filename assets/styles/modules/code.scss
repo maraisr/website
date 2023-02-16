@@ -1,0 +1,68 @@
+@import 'code-style';
+
+.highlight {
+	--curtains: 1.5rem;
+	--bg: #fff;
+	position: relative;
+	border-radius: 0.75rem;
+	background: var(--bg);
+
+	font-family: var(--mono);
+	font-size: 0.85rem;
+
+	&:where([title]):before {
+		content: attr(title);
+
+		border-radius: 0.75rem 0.75rem 0 0;
+		display: block;
+		position: sticky;
+		top: 0;
+		padding: 1rem var(--curtains);
+		border-bottom: 1px solid var(--bg-colour);
+		user-select: text;
+		font-size: 90%;
+		background: var(--bg);
+	}
+}
+
+.chroma {
+	display: block;
+	padding-block: 2rem;
+	overflow-x: auto;
+
+	code:after {
+		content: attr(data-lang);
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		text-align: right;
+		width: 100%;
+		font-size: 0.65rem;
+		padding-inline: var(--curtains);
+		transform: translate(0.5rem, 0.5rem);
+	}
+
+	[data-lang^='sh'] {
+		.line {
+			&:before {
+				content: '❯ ';
+				font-weight: 700;
+				user-select: none;
+			}
+		}
+	}
+
+	.line {
+		min-width: max-content;
+		padding-inline: var(--curtains);
+	}
+}
+
+// Inline code blocks
+:not(pre) > code {
+	background: #75af0015;
+	color: #75af00;
+	padding: 0 0.1em;
+	border-radius: 0.4em;
+	font-size: 90%;
+}

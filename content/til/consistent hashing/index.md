@@ -54,7 +54,7 @@ So what do we do here? We compute a hash of the node and find where it lies arou
 Targets are where our stuff is stored, or likely to be stored, and phantoms are pointers to those targets. Much like our
 nodes, these targets and phantoms are also assigned an angle and placed around the ring.
 
-**But why phantoms?**
+#### But why phantoms?
 
 Phantoms reduce the gap between targets around the ring. From the example above, you see that `A` and `B` are quite far
 apart, meaning that `A` would receive an overwhelming amount of nodes than `B` would.
