@@ -3,4 +3,5 @@ Sitemap: https://marais.io/sitemap.xml
 
 Disallow: /404/
 Disallow: /cdn-cgi/
+Disallow: /e
 
