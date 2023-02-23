@@ -16,12 +16,16 @@ I don't understand it.
 Once you reach that 10+ year experience mark, progression can stay technical and thus staff engineer—as opposed to a
 manager. At this point, most engineers traveled their journey, have their mode of impact, and have their way of working.
 
-We are all different people, who bring our own impact to the table, so rather than one set of expectations for the role,
+We are all different people, who bring our impact to the table, so rather than one set of expectations for the role,
 [Staff Engineer Archetypes](https://staffeng.com/guides/staff-archetypes) describes four archetypes—or personas—that
 break the role down into smaller groups that provide a framework for how to think about the role. They are the **Tech
 Lead**, the **Architect**, the **Solver**, and the **Right Hand**.
 
 ... worth noting here, it is most definitely okay to stay a senior engineer and not progress.
+
+Quite importantly, a staff engineer is there to help further the business objectives, in whatever form that takes. It
+doesn't mean you call the shots now. It means you should be even more aligned with business objectives and not
+necessarily your own.
 
 The [staffeng.com](https://staffeng.com/guides/staff-archetypes) article describes these four archetypes in detail, but
 here is my understanding:
