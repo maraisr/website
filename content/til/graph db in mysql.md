@@ -66,15 +66,15 @@ Some patterns of working with this data model, because does take some getting us
 #### Get an object by its id
 
 ```mysql
-SELECT id, type, data FROM object WHERE id = ?
+SELECT id, otype, data FROM object WHERE id = ?
 ```
 
 #### Validate that a relationship exists
 
 ```mysql
-SELECT true FROM assoc WHERE type = ? AND id1 = ? AND id2 = ?
+SELECT true FROM assoc WHERE atype = ? AND id1 = ? AND id2 = ?
 
-# eg: SELECT true FROM assoc WHERE type = 'AUTHORED' AND ...
+# eg: SELECT true FROM assoc WHERE atype = 'AUTHORED' AND ...
 # see if a user has a authored a post
 ```
 
@@ -84,7 +84,7 @@ Something like getting all blog posts by a user, `id2` here being the object ID 
 level).
 
 ```mysql
-SELECT id2 FROM assoc WHERE type = ? AND id1 = ?
+SELECT id2 FROM assoc WHERE atype = ? AND id1 = ?
 ```
 
 ...and that's it. You only really need to _get a node_, _check for the existence of nodes_, and _get a collection of

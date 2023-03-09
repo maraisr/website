@@ -21,11 +21,11 @@ You need to define the driver in a gitconfig file, either globally (`~/.gitconfi
 
 ```toml {title="~/.gitconfig"}
 [merge "relay"]
-    name = relay compiler merge driver
+    name = "relay compiler merge driver"
     driver = relay-compiler
 
 [merge "yarn"]
-    name = yarn install
+    name = "yarn install"
     driver = yarn install
 ```
 
