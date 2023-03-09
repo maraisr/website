@@ -30,8 +30,9 @@ body {
 html {
 	font: 400 var(--font-size) / 1.4 var(--sans-serif);
 	font-kerning: normal;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizelegibility;
+	scrollbar-gutter: stable;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
 
 	color: var(--front-colour);
 	background: var(--bg-colour);
