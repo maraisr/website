@@ -1,10 +1,10 @@
 @keyframes blink {
 	0%,
 	to {
-		background: #0000;
+		background-color: #0000;
 	}
 	50% {
-		background: var(--accent);
+		background-color: currentColor;
 	}
 }
 
@@ -20,7 +20,7 @@
 
 	&:after {
 		width: 0.5rem;
-		background: var(--accent);
+		background-color: currentColor;
 
 		display: block;
 		content: '';

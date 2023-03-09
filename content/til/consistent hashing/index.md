@@ -28,7 +28,7 @@ naturally balances back out, whereas ordinarily, we'd have to remember which nod
 about a content delivery network, balancing content evenly amongst its edges, as edges go offline and online, it
 minimizes data movement.
 
-> 💡 It's not only about balancing, but also about minimizing data movement when a rebalancing occurs.
+> It's not only about balancing, but also about minimizing data movement when a rebalancing occurs.
 
 **What does it look like?**
 

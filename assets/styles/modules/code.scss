@@ -4,7 +4,9 @@
 	--curtains: 1.5rem;
 	--bg: #fff;
 	position: relative;
-	border-radius: 0.75rem;
+	border-radius: 0.2rem;
+	box-shadow: 4px 4px 0px #{'rgb(var(--accent) / 40%)'};
+	border: 1px solid #{'rgb(var(--accent))'};
 	background: var(--bg);
 
 	font-family: var(--mono);
@@ -13,12 +15,12 @@
 	&:where([title]):before {
 		content: attr(title);
 
-		border-radius: 0.75rem 0.75rem 0 0;
+		border-radius: 0.2rem 0.2rem 0 0;
 		display: block;
 		position: sticky;
 		top: 0;
-		padding: 1rem var(--curtains);
-		border-bottom: 1px solid #eeeeee;
+		padding: 0.6rem var(--curtains);
+		border-bottom: 1px solid #{'rgb(var(--accent))'};
 		user-select: text;
 		color: #363c41;
 		font-size: 90%;
@@ -62,9 +64,15 @@
 
 // Inline code blocks
 :not(pre) > code {
-	background: #75af0015;
-	color: #75af00;
-	padding: 0 0.1em;
-	border-radius: 0.4em;
+	color: #4f00d8;
+	background-color: #f0e5ff;
+	padding: 0.1rem 0.17rem;
+	border-radius: 0.2rem;
 	font-size: 90%;
+}
+
+blockquote code {
+	background-color: unset;
+	color: unset;
+	font-weight: bold;
 }

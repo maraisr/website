@@ -48,7 +48,7 @@ CREATE TABLE assoc
 It just makes caching so much easier as you can just cache a whole row. No need to juggle cache keys on a coarse
 selection of fields.
 
-> 💡 It's easier to cache a whole row, than to cache a selection of fields.
+> It's easier to cache a whole row, than to cache a selection of fields.
 
 ### But what about joins?
 
