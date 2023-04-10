@@ -20,26 +20,31 @@ easier.
 _This is it here, just 2 tables for everything 🎉_
 
 ```mysql
-# The nodes or entities in the system
+-- The nodes or entities in the system
 CREATE TABLE object
 (
-    id      char(16)    NOT NULL DEFAULT (lower(hex(random_bytes(8)))),
+    id      char(16)    NOT NULL default (lower(hex(random_bytes(8)))),
     otype   varchar(10) NOT NULL,
     data    JSON,
-    created timestamp            DEFAULT current_timestamp,
-    updated timestamp            DEFAULT current_timestamp ON UPDATE current_timestamp,
-    PRIMARY KEY (id)
+    created timestamp            default current_timestamp,
+    updated timestamp            default current_timestamp on update current_timestamp,
+    PRIMARY KEY (id),
+    UNIQUE KEY object_id_otype (id, otype),
+    INDEX object_created (created DESC),
+    INDEX object_updated (updated DESC)
 ) ENGINE = InnoDB;
 
-# and the relationship between them
+-- and the relationship between them
 CREATE TABLE assoc
 (
     id1   char(16)    NOT NULL,
     atype varchar(10) NOT NULL,
     id2   char(16)    NOT NULL,
     data  JSON,
-    time  timestamp DEFAULT current_timestamp,
-    PRIMARY KEY (id1, atype, id2)
+    time  timestamp default current_timestamp,
+    PRIMARY KEY (id1, atype, id2),
+    INDEX assoc_to (atype, id1),
+    INDEX assoc_from (atype, id2)
 ) ENGINE = InnoDB;
 ```
 
