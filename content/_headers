@@ -2,7 +2,7 @@ https://:project.pages.dev/*
     x-robots-tag: noindex
 
 /*
-    link: </fonts/quicksand.woff2>;rel=preload;as=font;
+    link: </fonts/quicksand.woff2>;rel=preload;as=font;crossorigin=anonymous;
 
 /404
     x-robots-tag: noindex
