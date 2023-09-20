@@ -1,25 +1,27 @@
+default: serve
+
+.PHONY: serve
 serve:
 	hugo serve -D --bind 0.0.0.0 --port 8080
-.PHONY: serve
 
+.PHONY: spell
 spell:
 	npx cspell "content/**" -e "*.svg"
-.PHONY: spell
 
+.PHONY: format
 format:
 	npx prettier "**/*.{scss,js,md}" --write
-.PHONY: format
 
-build_only:
+build: minify dist
+
+dist: layouts/*/* content/*/* assets/*/*
 	rm -rf dist/ || exit 0
-	hugo --minify -v --log --debug
-.PHONY: build_only
+	hugo --minify --logLevel debug
+	./minify/minify -vrs dist -o .
+	touch dist
 
-build: download build_only
-	./minify -vrs dist -o .
-.PHONY: build
-
-download:
-	curl -L https://github.com/tdewolff/minify/releases/download/v2.12.5/minify_linux_amd64.tar.gz > minify.tar.gz
-	tar -xf minify.tar.gz
-.PHONY: download
+minify:
+	curl -L https://github.com/tdewolff/minify/releases/download/v2.12.8/minify_linux_amd64.tar.gz > minify.tar.gz
+	mkdir -p minify
+	tar -xf minify.tar.gz -C minify
+	touch minify
