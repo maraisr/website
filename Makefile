@@ -6,11 +6,11 @@ serve:
 
 .PHONY: spell
 spell:
-	npx cspell "content/**" -e "*.svg"
+	bunx cspell "content/**" -e "*.svg"
 
 .PHONY: format
 format:
-	npx prettier "**/*.{scss,js,md}" --write
+	bunx --bun prettier "**/*.{scss,js,md}" --write
 
 build: minify dist
 
