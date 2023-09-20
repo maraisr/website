@@ -182,3 +182,9 @@ img {
 	margin: 1em auto;
 	padding: 0 1em;
 }
+
+p {
+	svg {
+		transform: translateY(-2px);
+	}
+}
