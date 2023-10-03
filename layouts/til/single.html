@@ -40,7 +40,7 @@
 			},
 			"name": {{ .Page.Title }},
 			"datePublished": {{ time .Page.Date }},
-			"keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}],
+			"keywords": {{ .Params.tags }},
 			"inLanguage": "en-AU",
 			"license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 		},
