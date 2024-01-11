@@ -1,13 +1,7 @@
 <script async defer>
 	(window.requestIdleCallback || ((c) => c()))(() => {
-		let h = () => navigator.sendBeacon("/e", JSON.stringify({
-			n: "pageview",
-			u: location.href,
-			d: "marais.io",
-			r: document.referrer || null,
-			w: window.innerWidth,
-		}));
-		if (document.readyState === "complete") h();
-		else window.addEventListener("load", h);
+		let h = () => navigator.sendBeacon('/e', JSON.stringify([location.href, document.referrer || null, window.innerWidth]));
+		if (document.readyState === 'complete') h();
+		else window.addEventListener('load', h);
 	});
 </script>
