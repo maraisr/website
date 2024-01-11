@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article>
-	<h1>{{ .Title }}</h1>
+	<h1 aria-label="{{ .Title }}">{{ lower .Title }}</h1>
 	{{- .Content -}}
 </article>
 
