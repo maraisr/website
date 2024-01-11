@@ -1,5 +1,6 @@
-export function onRequestPost({ request: req }) {
-	const request = new Request(req);
+export function onRequestPost(ctx) {
+	const request = new Request(ctx.request);
 	request.headers.delete('cookie');
-	return fetch('https://plausible.io/api/event', request);
+	ctx.waitUntil(fetch('https://plausible.io/api/event', request));
+	return new Response(null, { status: 200 });
 }
