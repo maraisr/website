@@ -21,7 +21,7 @@ dist: layouts/*/* content/*/* assets/*/*
 	touch dist
 
 minify:
-	curl -L https://github.com/tdewolff/minify/releases/download/v2.12.8/minify_linux_amd64.tar.gz > minify.tar.gz
+	curl -L https://github.com/tdewolff/minify/releases/download/v2.20.12/minify_linux_amd64.tar.gz > minify.tar.gz
 	mkdir -p minify
 	tar -xf minify.tar.gz -C minify
 	touch minify
