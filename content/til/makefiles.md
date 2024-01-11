@@ -1,5 +1,5 @@
 ---
-title: makefiles
+title: Makefiles
 summary: How I use Makefiles
 date: 2023-09-13
 tags: [build]

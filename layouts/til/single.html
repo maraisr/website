@@ -1,19 +1,19 @@
 {{ define "main" }}
 <article>
 	<h1>
-		<a href="/til/">til</a>
-		<span>{{ .Page.Title }}</span>
+		<a href="/til/" aria-label="Today I learned">til</a>
+		<span aria-label="{{ .Page.Title }}">{{ lower .Page.Title }}</span>
 	</h1>
 
 	{{- .Content -}}
 
 	<div class="next-prev">
 		{{ with .PrevInSection }}
-		<a class="prev" rel="prev" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
+		<a class="prev" rel="prev" href="{{.RelPermalink}}">{{ lower .LinkTitle }}</a>
 		{{ end }}
 
 		{{ with .NextInSection }}
-		<a class="next" rel="next" href="{{.RelPermalink}}">{{ .LinkTitle }}</a>
+		<a class="next" rel="next" href="{{.RelPermalink}}">{{ lower .LinkTitle }}</a>
 		{{ end }}
 	</div>
 </article>

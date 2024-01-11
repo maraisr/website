@@ -1,5 +1,5 @@
 ---
-title: git subtree
+title: Git Subtree
 summary: How to merge multiple git repositories with git subtree.
 date: 2022-08-03
 tags: [git]

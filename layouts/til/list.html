@@ -1,7 +1,6 @@
 {{ define "main" }}
 <article>
 	<h1>{{ .Title }}</h1>
-	
 	{{- .Content -}}
 </article>
 
@@ -11,7 +10,7 @@
 	<ul>
 		{{ range .Pages.ByDate.Reverse }}
 		<li class="item">
-			<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+			<a href="{{ .RelPermalink }}" aria-label="{{ .LinkTitle }}">{{ lower .LinkTitle }}</a>
 			<time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
 			<ul class="tag-list">
 				{{ range .Params.Tags }}

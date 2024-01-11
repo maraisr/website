@@ -1,5 +1,5 @@
 ---
-title: staff engineer archetypes
+title: Staff Engineer Archetypes
 summary: What are the staff engineer archetypes?
 date: 2023-02-15
 tags: [soft skills]
