@@ -1,3 +1,9 @@
+{{ define "preload" }}
+	{{ range first 3 .Pages.ByDate.Reverse }}
+		<link rel="prefetch" href="{{ .RelPermalink }}">
+	{{ end }}
+{{ end }}
+
 {{ define "main" }}
 <article>
 	<h1 aria-label="{{ .Title }}">{{ lower .Title }}</h1>
