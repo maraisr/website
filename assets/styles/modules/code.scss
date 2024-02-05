@@ -5,8 +5,8 @@
 	--bg: #fff;
 	position: relative;
 	border-radius: 0.2rem;
-	box-shadow: 4px 4px 0px #{'rgb(var(--accent) / 40%)'};
-	border: 1px solid #{'rgb(var(--accent))'};
+	box-shadow: 4px 4px 0px color-mix(in oklab, var(--accent) 40%, var(--bg-colour));
+	border: 1px solid var(--accent);
 	background: var(--bg);
 
 	font-family: var(--mono);
@@ -20,7 +20,7 @@
 		position: sticky;
 		top: 0;
 		padding: 0.6rem var(--curtains);
-		border-bottom: 1px solid #{'rgb(var(--accent))'};
+		border-bottom: 1px solid var(--accent);
 		user-select: text;
 		color: #363c41;
 		font-size: 90%;
