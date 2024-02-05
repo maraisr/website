@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode }}">
-<head>{{ partial "head.meta" . }}</head>
+<head>
+	{{ partial "head.meta" . }}
+	{{ block "preload" . }}{{ end }}
+</head>
 
 <body>
 {{ partial "header" . }}
