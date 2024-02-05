@@ -1,11 +1,11 @@
 :root {
-	--bg-colour: #fbfaf7;
-	--front-colour: #363c41;
-	--front-colour-light: #6c737b;
+	--bg-colour: color(display-p3 0.984 0.980 0.968);
+	--front-colour: color(display-p3 0.211 0.235 0.254);
+	--front-colour-light: color(display-p3 0.423 0.450 0.482);
 
-	--link-colour: color(display-p3 0 0.45 0.61);
-	--accent: 218 242 252;
-	--subtle-colour: #fcf4e9;
+	--link-colour: color(display-p3 0 0.454 0.619);
+	--accent: color(display-p3 0.854 0.949 0.988);
+	--subtle-colour: color(display-p3 0.988 0.956 0.913);
 
 	--mono: monospace, system-ui, -apple-system;
 	--sans-serif: quicksand, system-ui, -apple-system, sans-serif;
