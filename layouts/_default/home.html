@@ -2,7 +2,9 @@
 <html lang="{{ .Site.LanguageCode }}">
 <head>
 	{{ partial "head.meta" . }}
-	{{ block "preload" . }}{{ end }}
+	{{ block "preload" . }}
+		<link rel="prefetch" href="{{ (.Site.GetPage "/til").RelPermalink }}">
+	{{ end }}
 </head>
 
 <body>
