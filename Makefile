@@ -14,7 +14,7 @@ format:
 
 build: minify dist
 
-dist: layouts/*/* content/*/* assets/*/*
+dist: minify layouts/*/* content/*/* assets/*/*
 	rm -rf dist/ || exit 0
 	hugo --minify --logLevel debug
 	./minify/minify -vrs dist -o .
