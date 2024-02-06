@@ -1,40 +1,40 @@
 https://:project.pages.dev/*
     x-robots-tag: noindex
 
+/404
+    x-robots-tag: noindex
+
 /*
     cache-control: public,max-age=180
     cloudflare-cdn-cache-control: max-age=31536000
     link: </fonts/quicksand.woff2>;rel=preload;as=font;crossorigin=anonymous;
 
-/404
-    x-robots-tag: noindex
-
 /*.png
     cache-control: public,max-age=31536000
-    cloudflare-cdn-cache-control: max-age=31536000
+    ! link
+	! cache-control
+
+/favicon.png
+    cache-control: public,max-age=180
     ! link
 	! cache-control
 
 /*.svg
     cache-control: public,max-age=31536000
-    cloudflare-cdn-cache-control: max-age=31536000
     ! link
 	! cache-control
 
 /fonts/*
     cache-control: public,max-age=31536000
-    cloudflare-cdn-cache-control: max-age=31536000
     ! link
-	! cache-control
+    ! cache-control
 
 /robots.txt
     cache-control: public,max-age=30
-    cloudflare-cdn-cache-control: max-age=31536000
     ! link
 	! cache-control
 
 /key.asc
     cache-control: public,max-age=30
-    cloudflare-cdn-cache-control: max-age=31536000
     ! link
 	! cache-control
