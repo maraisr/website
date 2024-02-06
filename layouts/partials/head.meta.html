@@ -11,8 +11,7 @@
 <meta content="@slightlycode" name="twitter:creator"/>
 
 {{ with resources.Get "favicon.png" }}
-	{{- $asset := . | resources.Fingerprint -}}
-	<link rel="shortcut icon" href="{{ $asset.RelPermalink }}"/>
+	<link rel="shortcut icon" href="{{ .RelPermalink }}"/>
 {{ end }}
 
 <link rel="preload" href="/fonts/quicksand.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
