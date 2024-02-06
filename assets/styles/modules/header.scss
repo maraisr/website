@@ -41,6 +41,7 @@ nav {
 }
 
 header {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	padding: 3rem 0 2rem;
@@ -50,5 +51,40 @@ header {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35rem;
+	}
+}
+
+#goo {
+	--w: 1000px;
+	--bw: 70px;
+
+	position: absolute;
+	top: #{'calc(-1 * var(--w) / 2 + var(--bw) - 2px)'};
+	left: #{'calc(-1 * var(--w) / 2 + 7px)'};
+	z-index: -1;
+
+	width: var(--w);
+	aspect-ratio: 1;
+
+	filter: blur(20px) contrast(60);
+	mix-blend-mode: multiply;
+
+	background: white;
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate3d(-50%, -50%, 0);
+
+		background: black;
+		width: var(--bw);
+		aspect-ratio: 1;
+		border-radius:100%;
+
+		&:nth-of-type(1) {
+			--bw: 87px;
+		}
 	}
 }

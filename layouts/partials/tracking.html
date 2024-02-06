@@ -5,3 +5,13 @@
 		else window.addEventListener('load', h);
 	});
 </script>
+
+<script>
+let blobs = goo.children;
+document.addEventListener('mousemove', (e) => {
+	let x = (e.clientX / window.innerWidth - 0.5) * 2;
+	let y = (e.clientY / window.innerHeight - 0.5) * 2;
+	blobs[0].style.translate = `${x * 90}% ${y * 90}%`;
+	blobs[1].style.translate = `${x * -60}% ${y * - 60}%`;
+});
+</script>
