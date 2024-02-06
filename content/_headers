@@ -9,6 +9,18 @@ https://:project.pages.dev/*
 /404
     x-robots-tag: noindex
 
+/*.png
+    cache-control: public,max-age=31536000
+    cloudflare-cdn-cache-control: max-age=31536000
+    ! link
+	! cache-control
+
+/*.svg
+    cache-control: public,max-age=31536000
+    cloudflare-cdn-cache-control: max-age=31536000
+    ! link
+	! cache-control
+
 /fonts/*
     cache-control: public,max-age=31536000
     cloudflare-cdn-cache-control: max-age=31536000
