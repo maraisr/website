@@ -1,18 +1,14 @@
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 
 <title>{{ .Page.Title }} · {{ .Site.Title }}</title>
-
-<link rel="canonical" href="{{ .Permalink }}"/>
-
-<meta content="{{ .Summary }}" name="description"/>
-
-<meta content="summary" name="twitter:card"/>
-<meta content="@slightlycode" name="twitter:creator"/>
-
 {{ with resources.Get "favicon.png" }}
 	<link rel="shortcut icon" href="{{ .RelPermalink }}"/>
 {{ end }}
+
+<link rel="canonical" href="{{ .Permalink }}"/>
+
+<meta name="description" content="{{ .Summary }}"/>
+<meta name="twitter:creator" content="@slightlycode"/>
 
 {{ with resources.Get "styles/main.scss" }}
    {{- $css := . | resources.ToCSS (dict "includePaths" (slice "node_modules")) -}}
