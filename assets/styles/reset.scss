@@ -158,10 +158,15 @@ footer {
 	margin-block-start: 2rem;
 	margin-block-end: 3rem;
 
-	a {
+	[inert] a {
 		color: inherit;
 		font-weight: 400;
 	}
+}
+
+[rel="pgpkey"] {
+	font-size: 90%;
+	font-family: var(--mono);
 }
 
 hr {

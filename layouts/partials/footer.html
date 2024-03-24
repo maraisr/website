@@ -1,11 +1,15 @@
-<footer inert tabindex="-1">
+<footer>
 	{{ if (and .IsPage (eq .Type "til")) }}
-	<div>
+	<div inert tabindex="-1">
 		This <a href="{{ .Page.Permalink }}" property="dct:title" rel="cc:attributionURL">til</a>
 		was created <span content="{{ time .Page.Date }}" property="dct:created">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
 	</div>
 	{{ end }}
 
-	<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="cc:license license noopener noreferrer" target="_blank">CC BY-NC-SA 4.0</a>
-	<span rel="dct:dateCopyrighted">2022</span>-present &copy; <a href="{{ .Site.Home.Permalink }}" property="cc:attributionName" rel="cc:attributionURL dct:creator">Marais Rossouw</a>
+	<span inert tabindex="-1">
+		<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="cc:license license noopener noreferrer" target="_blank">CC BY-NC-SA 4.0</a>
+		<span rel="dct:dateCopyrighted">2022</span>-present &copy; <a href="{{ .Site.Home.Permalink }}" property="cc:attributionName" rel="cc:attributionURL dct:creator">Marais Rossouw</a>
+	</span>
+	&nbsp;
+	<a href="/key.asc" rel="pgpkey" download="marais_pgp.asc">B87842CB66A230FF</a>
 </footer>
