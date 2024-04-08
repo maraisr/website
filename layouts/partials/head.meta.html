@@ -11,20 +11,7 @@
 <meta name="twitter:creator" content="@slightlycode"/>
 
 {{ if .IsPage }}
-   {{ $base := resources.Get "og_base.png" }}
-   {{ $boldFont := resources.Get "quicksand-bold.ttf" }}
-   {{ $img := $base.Filter (images.Text .Page.Title (dict
-      "color" "#363C41"
-      "size" 64
-      "linespacing" 1
-      "x" 107
-      "y" 212
-      "font" $boldFont
-   ))}}
-   {{ $img = resources.Copy (path.Join .Page.RelPermalink "og.png") $img }}
-   <meta property="og:image" content="{{ $img.Permalink }}"/>
-   <meta property="og:image:width" content="{{ $img.Width }}"/>
-   <meta property="og:image:height" content="{{ $img.Height }}"/>
+{{ partial "og" . }}
 {{ end }}
 
 {{ with resources.Get "styles/main.scss" }}
