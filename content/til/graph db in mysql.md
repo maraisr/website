@@ -1,6 +1,6 @@
 ---
 title: Graph Database in MySQL
-summary: How to create a graph database in pure MySQL with the help of JSON columns.
+summary: Creating a graph database in pure MySQL with the help of JSON columns.
 date: 2022-09-20
 tags: [mysql]
 ---
