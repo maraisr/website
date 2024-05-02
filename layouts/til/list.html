@@ -25,4 +25,17 @@
 		{{ end }}
 	</ul>
 </div>
+
+<script type="module" defer>
+	let c = [], n = [], i = 0, d;
+	for (let item of document.querySelectorAll('.til-list a')) c.push(new URL(item.href).pathname), n.push(item);
+	let r = await fetch(`/v?_=${c.join('|')}`);
+	if (r.ok) for (d = await r.json(); i <= n.length; i++) {
+		if (!d[i]) continue;
+		c = document.createElement('span');
+		c.className = 'v'; c.innerText = d[i];
+		n[i].appendChild(c);
+	}
+</script>
+
 {{ end }}
