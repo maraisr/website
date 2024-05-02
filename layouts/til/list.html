@@ -15,14 +15,12 @@
 
 	<ul>
 		{{ range .Pages.ByDate.Reverse }}
-		<li class="item">
-			<a href="{{ .RelPermalink }}" aria-label="{{ .LinkTitle }}">{{ lower .LinkTitle }}</a>
-			<time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-			<ul class="tag-list">
-				{{ range .Params.Tags }}
-				<li>{{ . }}</li>
-				{{ end }}
-			</ul>
+		<li>
+			<a href="{{ .RelPermalink }}" aria-label="{{ .LinkTitle }} on {{ .Date.Format "Monday, January 2, 2006" }}" class="item">
+				<span class="t">{{ lower .LinkTitle }}</span>
+				<time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "2 Jan, 2006" }}</time>
+				<span class="s">{{ .Summary | truncate 60 }}</span>
+			</a>
 		</li>
 		{{ end }}
 	</ul>

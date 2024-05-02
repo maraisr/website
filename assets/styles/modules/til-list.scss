@@ -1,6 +1,7 @@
 .til-list {
 	ul {
 		padding: 0;
+		margin: 0;
 	}
 
 	ul:where(:not(.tag-list)) {
@@ -19,34 +20,40 @@
 		width: 100%;
 
 		display: grid;
-		grid-template-columns: auto auto;
-		gap: 0.5rem 1rem;
-		justify-content: space-between;
-	}
+		grid-template-columns: 1fr auto;
+	    align-items: center;
+		gap: 0.25rem 1rem;
 
-	time {
-		white-space: nowrap;
-		place-self: center flex-end;
-		font-size: 90%;
-	}
-
-	.tag-list {
-		grid-column: 1 / span 2;
-
-		display: flex;
-		flex: 1 0 auto;
-		gap: 0.5rem;
-
-		li {
-			padding: 0.1rem 0.3rem;
+		&::before {
+			content: '';
+			background-color: color-mix(in oklab, var(--accent) 0%, var(--bg-colour));
+			position: absolute;
+			z-index: -1;
+			inset: -0.5rem;
 			border-radius: 0.2rem;
-			background: var(--subtle-colour);
-			font-family: var(--mono);
-			font-size: 70%;
-
-			&:before {
-				content: '#';
-			}
+			transition: background-color 0.1s;
 		}
+
+		&:hover::before {
+			background-color: color-mix(in oklab, var(--accent) 40%, var(--bg-colour));
+		}
+	}
+
+	.v, time {
+		justify-self: flex-end;
+		font-family: var(--mono);
+		font-variant-numeric: tabular-nums;
+		font-size: 70%;
+	}
+
+	.s, .v, time {
+		color: var(--front-colour-light);
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	.s {
+		font-size: 90%;
 	}
 }
