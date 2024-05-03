@@ -1,7 +1,7 @@
 :root {
-	--bg-colour: color(display-p3 0.984 0.980 0.968);
+	--bg-colour: color(display-p3 0.984 0.98 0.968);
 	--front-colour: color(display-p3 0.211 0.235 0.254);
-	--front-colour-light: color(display-p3 0.423 0.450 0.482);
+	--front-colour-light: color(display-p3 0.423 0.45 0.482);
 
 	--link-colour: color(display-p3 0 0.454 0.619);
 	--accent: color(display-p3 0.854 0.949 0.988);
@@ -164,7 +164,7 @@ footer {
 	}
 }
 
-[rel="pgpkey"] {
+[rel='pgpkey'] {
 	font-size: 90%;
 	font-family: var(--mono);
 }
