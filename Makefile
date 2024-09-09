@@ -10,7 +10,8 @@ spell:
 
 .PHONY: format
 format:
-	bunx --bun prettier "**/*.{scss,js,md}" --write
+	bunx --bun prettier --print-width=120 --prose-wrap=always --write \
+		"**/*.{scss,js,md}"
 
 build: minify dist
 

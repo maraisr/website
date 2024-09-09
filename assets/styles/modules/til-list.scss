@@ -16,7 +16,7 @@
 		&:not(:last-child)::after {
 			display: block;
 			position: absolute;
-			bottom: calc(-1 * (0.75rem/2));
+			bottom: calc(-1 * (0.75rem / 2));
 			width: 100%;
 			height: 1px;
 			content: '';

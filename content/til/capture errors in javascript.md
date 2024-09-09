@@ -61,7 +61,9 @@ Another cool feature is the ability to provide a fallback value. Here's an examp
 
 ```typescript
 function onResponse(body: ResponseBody) {
-  if (!body.success) return captureError(new Error(body.text), "didn't work mate");
+  if (!body.success) {
+    return captureError(new Error(body.text), "didn't work mate");
+  }
 
   return 'worked mate';
 }

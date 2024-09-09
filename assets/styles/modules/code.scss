@@ -5,8 +5,7 @@
 	--bg: #fff;
 	position: relative;
 	border-radius: 0.2rem;
-	box-shadow: 4px 4px 0px
-		color-mix(in oklab, var(--accent) 40%, var(--bg-colour));
+	box-shadow: 4px 4px 0px color-mix(in oklab, var(--accent) 40%, var(--bg-colour));
 	border: 1px solid var(--accent);
 	background: var(--bg);
 
