@@ -7,18 +7,18 @@
 <article>
 	<h1>
 		<a href="/til/" aria-label="Today I learned">til</a>
-		<span aria-label="{{ .Page.Title }}">{{ lower .Page.Title }}</span>
+		<span aria-label="{{ .Page.Title }}">{{ lower .Page.Title | markdownify }}</span>
 	</h1>
 
 	{{- .Content -}}
 
 	<div class="next-prev">
 		{{ with .PrevInSection }}
-		<a class="prev" rel="prev" href="{{.RelPermalink}}">{{ lower .LinkTitle }}</a>
+		<a class="prev" rel="prev" href="{{.RelPermalink}}">{{ lower .LinkTitle | markdownify }}</a>
 		{{ end }}
 
 		{{ with .NextInSection }}
-		<a class="next" rel="next" href="{{.RelPermalink}}">{{ lower .LinkTitle }}</a>
+		<a class="next" rel="next" href="{{.RelPermalink}}">{{ lower .LinkTitle | markdownify }}</a>
 		{{ end }}
 	</div>
 </article>
@@ -43,7 +43,7 @@
 				"name": "Marais Rossouw",
 				"url": {{ .Site.Home.Permalink }}
 			},
-			"name": {{ .Page.Title }},
+			"name": {{ .Page.Title | markdownify | plainify }},
 			"datePublished": {{ time .Page.Date }},
 			"keywords": {{ .Params.tags }},
 			"inLanguage": "en-AU",
