@@ -4,7 +4,7 @@
 {{ $boldFont := resources.Get "quicksand-bold.ttf" }}
 {{ $regularFont := resources.Get "quicksand-regular.ttf" }}
 
-{{ $img := $base.Filter (images.Text (.Page.Title | truncate 28 | plainify | transform.HTMLEscape) (dict
+{{ $img := $base.Filter (images.Text (.Page.Title | truncate 28 | markdownify | plainify | transform.HTMLEscape) (dict
     "color" "#363C41"
     "size" 64
     "linespacing" 1
@@ -12,7 +12,7 @@
     "y" 148
     "font" $boldFont
 ))}}
-{{ $img = $img.Filter (images.Text (.Page.Summary | truncate 100 | plainify | transform.HTMLEscape) (dict
+{{ $img = $img.Filter (images.Text (.Page.Summary | truncate 100 | markdownify | plainify | transform.HTMLEscape) (dict
     "color" "#363C41"
     "size" 38
     "linespacing" 10

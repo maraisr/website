@@ -1,6 +1,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
-<title>{{ .Page.Title }} · {{ .Site.Title }}</title>
+<title>{{ .Page.Title | markdownify | plainify }} · {{ .Site.Title }}</title>
 {{ with resources.Get "favicon.png" }}
 	<link rel="shortcut icon" href="{{ .RelPermalink }}"/>
 {{ end }}
