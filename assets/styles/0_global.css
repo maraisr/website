@@ -14,7 +14,7 @@
 		--sans-serif: quicksand, system-ui, -apple-system, sans-serif;
 		--font-size: clamp(14px, 66vw / (60 * 0.32), 18px);
 
-		--canvas: light-dark(oklch(98.47% 0.005 89.19), oklch(38.85% 0.005 89.19));
+		--canvas: light-dark(oklch(98.47% 0.005 89.19), oklch(19.83% 0.005 89.19));
 		--canvasText: light-dark(oklch(35.15% 0.014 236.64), oklch(99.7% 0 236.64));
 		--accent: oklch(63.71% 0.21 236.64);
 		--muted: light-dark(oklch(99.7% 0 236.64), oklch(99.41% 0.0049 236.64));
@@ -343,7 +343,7 @@ code {
 	border-radius: 0.2rem;
 	box-shadow: 4px 4px 0px color-mix(in oklch, var(--accent) 10%, var(--muted));
 	border: 1px solid var(--accent);
-	background: var(--muted);
+	background-color: var(--muted);
 
 	font-family: var(--mono);
 
