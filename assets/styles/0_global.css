@@ -194,28 +194,33 @@ p svg {
 	transform: translateY(-2px);
 }
 
-#t,
 #bgt {
 	position: fixed;
 	margin-block: 0;
 	z-index: calc(infinity);
 	pointer-events: none;
 	transform: translateY(0);
-}
 
-#t {
-	inset: 0 0 auto 0;
-	height: 3rem;
-	mask-image: linear-gradient(to bottom, black, transparent);
-	background-color: var(--canvas);
-}
+	&,
+	svg {
+		inset: 0;
+		width: 100vw;
+		min-height: 100vh;
+	}
 
-#bgt {
-	inset: 0;
-	width: 100vw;
-	min-height: 100vh;
-	opacity: 0.2;
-	filter: contrast(60%) brightness(100%);
+	svg {
+		opacity: 0.2;
+		filter: contrast(60%) brightness(100%);
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 3rem;
+		mask-image: linear-gradient(to bottom, black, transparent);
+		background-color: var(--canvas);
+	}
 }
 
 /* Header */
