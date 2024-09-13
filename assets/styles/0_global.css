@@ -389,8 +389,8 @@ code {
 
 :not(pre) > code {
 	color: var(--accent);
-	background-color: color-mix(in oklch, var(--accent) 8%, var(--muted) 99%);
+	background-color: color-mix(in oklch, var(--accent) 8%, var(--muted) 80%);
 	padding: 0.1rem 0.17rem;
 	border-radius: 0.2rem;
-	font-size: 90%;
+	font-size: inherit;
 }
