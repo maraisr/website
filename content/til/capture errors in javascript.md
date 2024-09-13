@@ -30,7 +30,7 @@ While this works, it has some drawbacks:
 Here's an alternative that addresses these issues:
 
 ```typescript
-function captureError<Value = unknown>(error: unknown, value?: Value) {
+function captureError(error: unknown, value?: unknown) {
   if (__DEV__) {
     throw error;
   }
@@ -62,7 +62,7 @@ Another cool feature is the ability to provide a fallback value. Here's an examp
 ```typescript
 function onResponse(body: ResponseBody) {
   if (!body.success) {
-    return captureError(new Error(body.text), "didn't work mate");
+    return captureError(body.error, "didn't work mate");
   }
 
   return 'worked mate';

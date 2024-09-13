@@ -47,11 +47,14 @@ make
   Running 'npm install'...
   Running 'npm run build'...
 
-touch src/index.html            # trigger a change to a dep
+# trigger a change to a dep
+touch src/index.html
 
+# notice no `npm install` as it's already installed
 make
-  Running 'npm run build'...    # notice no `npm install` as it's already installed
+  Running 'npm run build'...
 
+# format will always run as its PHONY
 make format
-  Running 'npm run format'...   # format will always run as its PHONY
+  Running 'npm run format'..,
 ```
