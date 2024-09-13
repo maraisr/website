@@ -1,7 +1,0 @@
-<script async defer>
-	(window.requestIdleCallback || ((c) => c()))(() => {
-		let h = () => navigator.sendBeacon('/e', JSON.stringify([location.href, document.referrer || null, window.innerWidth]));
-		if (document.readyState === 'complete') h();
-		else window.addEventListener('load', h);
-	});
-</script>

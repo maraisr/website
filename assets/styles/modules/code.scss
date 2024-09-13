@@ -1,8 +1,47 @@
 @import 'code-style';
 
-.highlight {
-	--curtains: 1.5rem;
+.code-fence {
+	--curtains: 1.2rem;
+	--title-height: 42px;
 	--bg: #fff;
+
+	position: relative;
+
+	button {
+		--size: 30px;
+		--inset: calc((var(--title-height) - var(--size)) / 2);
+
+		all: unset;
+		display: revert;
+		cursor: pointer;
+
+		position: absolute;
+		inset: var(--inset) var(--inset) auto auto;
+
+		display: flex;
+		width: var(--size);
+		height: var(--size);
+
+		background-color: color-mix(in oklab, var(--accent) 40%, white 90%);
+		border-radius: 0.2rem;
+		place-content: center;
+		place-items: center;
+
+		overflow: hidden;
+
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: color-mix(in oklab, var(--accent) 80%, white);
+		}
+
+		&:active {
+			background-color: color-mix(in oklab, var(--accent), white);
+		}
+	}
+}
+
+.highlight {
 	position: relative;
 	border-radius: 0.2rem;
 	box-shadow: 4px 4px 0px color-mix(in oklab, var(--accent) 40%, var(--bg-colour));
@@ -12,15 +51,18 @@
 	font-family: var(--mono);
 	font-size: 0.85rem;
 
-	&:where([title]):before {
+	&[title]:before {
 		content: attr(title);
 
 		border-radius: 0.2rem 0.2rem 0 0;
-		display: block;
+		display: flex;
+		place-items: center;
 		position: sticky;
 		top: 0;
-		padding: 0.6rem var(--curtains);
+		padding: auto var(--curtains);
+		padding-left: var(--curtains);
 		border-bottom: 1px solid var(--accent);
+		height: var(--title-height);
 		user-select: text;
 		color: #363c41;
 		font-size: 90%;
@@ -30,28 +72,16 @@
 
 .chroma {
 	display: block;
-	padding-block: 2rem;
+	padding-block: var(--curtains);
 	overflow-x: auto;
-
-	code:after {
-		content: attr(data-lang);
-		display: inline-block;
-		position: absolute;
-		left: 0;
-		text-align: right;
-		width: 100%;
-		color: #363c41;
-		font-size: 0.65rem;
-		padding-inline: var(--curtains);
-		transform: translate(0.5rem, 0.5rem);
-	}
 
 	[data-lang^='sh'] {
 		.line {
 			&:before {
 				content: '❯ ';
-				font-weight: 700;
+				font-weight: 300;
 				user-select: none;
+				color: color-mix(in lch, currentColor, white 90%);
 			}
 		}
 	}

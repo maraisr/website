@@ -1,0 +1,13 @@
+{{ $result := transform.HighlightCodeBlock . }}
+<div class="code-fence">
+	{{ $result.Wrapped }}
+	<script type="text/plain" hidden>
+		{{ trim .Inner "\n\r\t" }}
+	</script>
+	<button data-clipboard>
+		<svg>
+			<title>Copy raw snippet</title>
+			<use xlink:href="#icon__copy"/>
+		</svg>
+	</button>
+</div>

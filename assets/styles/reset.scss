@@ -38,6 +38,10 @@ html {
 	background: var(--bg-colour);
 }
 
+:where([hidden]) {
+	display: none !important;
+}
+
 body {
 	width: 100vw;
 	overflow-x: hidden;

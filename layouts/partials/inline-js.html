@@ -1,0 +1,20 @@
+<script async defer>
+	function ready() {
+		navigator.sendBeacon('/e', JSON.stringify([location.href, document.referrer || null, window.innerWidth]));
+		try {
+			let el = document.querySelectorAll('[data-clipboard]');
+			el.forEach(function(e) {
+				if (!navigator.clipboard) return void e.setAttribute('hidden');
+				e.addEventListener('click', function() {
+					let p = e.previousElementSibling;
+					if (p.nodeName != 'SCRIPT') return;
+					navigator.clipboard.writeText(p.innerText);
+				});
+			});
+		} catch {}
+	}
+	(window.requestIdleCallback || ((c) => c()))(() => {
+		if (document.readyState === 'complete') ready();
+		else window.addEventListener('load', ready);
+	});
+</script>
