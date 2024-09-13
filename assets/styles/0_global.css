@@ -14,15 +14,15 @@
 		--sans-serif: quicksand, system-ui, -apple-system, sans-serif;
 		--font-size: clamp(14px, 66vw / (60 * 0.32), 18px);
 
-		--canvas: oklch(98.47% 0.005 89.19);
-		--canvasText: oklch(35.15% 0.014 236.64);
-		--accent: oklch(43.87% 0.259 283.028);
-		--white: oklch(99.7% 0 243.07);
+		--canvas: light-dark(oklch(98.47% 0.005 89.19), oklch(38.85% 0.005 89.19));
+		--canvasText: light-dark(oklch(35.15% 0.014 236.64), oklch(99.7% 0 236.64));
+		--accent: oklch(63.71% 0.21 236.64);
+		--muted: light-dark(oklch(99.7% 0 236.64), oklch(99.41% 0.0049 236.64));
 	}
 }
 
 html {
-	color-scheme: light;
+	color-scheme: light dark;
 	accent-color: var(--accent);
 	background-color: var(--canvas);
 	color: var(--canvasText);
@@ -274,7 +274,7 @@ code {
 		height: var(--size);
 
 		color: var(--accent);
-		background-color: color-mix(in oklch, var(--accent) var(--mix), var(--white));
+		background-color: color-mix(in oklch, var(--accent) var(--mix), var(--muted));
 		border-radius: 0.2rem;
 		place-content: center;
 		place-items: center;
@@ -296,9 +296,9 @@ code {
 .highlight {
 	position: relative;
 	border-radius: 0.2rem;
-	box-shadow: 4px 4px 0px color-mix(in oklch, var(--accent) 10%, var(--white));
+	box-shadow: 4px 4px 0px color-mix(in oklch, var(--accent) 10%, var(--muted));
 	border: 1px solid var(--accent);
-	background: var(--white);
+	background: var(--muted);
 
 	font-family: var(--mono);
 
@@ -331,7 +331,7 @@ code {
 				content: '❯ ';
 				font-weight: 300;
 				user-select: none;
-				color: color-mix(in oklch, currentColor, var(--white) 90%);
+				color: color-mix(in oklch, currentColor, var(--muted) 90%);
 			}
 		}
 	}
@@ -344,7 +344,7 @@ code {
 
 :not(pre) > code {
 	color: var(--accent);
-	background-color: color-mix(in oklch, var(--accent) 8%, var(--white) 99%);
+	background-color: color-mix(in oklch, var(--accent) 8%, var(--muted) 99%);
 	padding: 0.1rem 0.17rem;
 	border-radius: 0.2rem;
 	font-size: 90%;
