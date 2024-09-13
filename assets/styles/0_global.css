@@ -45,6 +45,20 @@ body {
 	}
 }
 
+*:focus-visible {
+	outline: 2px solid var(--accent) !important;
+	outline-offset: 4px;
+}
+
+a {
+	-webkit-tap-highlight-color: color-mix(in oklch, var(--accent) 90%, transparent 10%);
+}
+
+::selection {
+	color: var(--muted);
+	background-color: color-mix(in oklch, var(--accent) 90%, transparent 10%);
+}
+
 /* Footer */
 @layer facet {
 	footer {
@@ -283,8 +297,10 @@ code {
 
 		transition: background-color 0.2s;
 
-		&:hover {
-			--mix: 10%;
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				--mix: 10%;
+			}
 		}
 
 		&:active {
