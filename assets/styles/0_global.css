@@ -194,6 +194,19 @@ p svg {
 	transform: translateY(-2px);
 }
 
+#bgt {
+	position: fixed;
+	inset: 0;
+	z-index: calc(infinity);
+	margin-block: 0;
+	width: 100vw;
+	min-height: 100vh;
+	opacity: 0.2;
+	pointer-events: none;
+	transform: translateY(0);
+	filter: contrast(60%) brightness(100%);
+}
+
 /* Header */
 @layer facet {
 	@keyframes blink {
