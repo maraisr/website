@@ -5,14 +5,12 @@
 {{ end }}
 
 {{ define "main" }}
-<article>
+<main>
 	<h1 aria-label="{{ .Title }}">{{ lower .Title }}</h1>
 	{{- .Content -}}
-</article>
+</main>
 
 <div class="til-list">
-	<h2>log</h2>
-
 	<ul>
 		{{ range .Pages.ByDate.Reverse }}
 		<li>

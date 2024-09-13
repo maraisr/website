@@ -4,7 +4,7 @@
 {{ end }}
 
 {{ define "main" }}
-<article>
+<main>
 	<h1>
 		<a href="/til/" aria-label="Today I learned">til</a>
 		<span aria-label="{{ .Page.Title }}">{{ lower .Page.Title | markdownify }}</span>
@@ -21,7 +21,7 @@
 		<a class="next" rel="next" href="{{.RelPermalink}}">{{ lower .LinkTitle | markdownify }}</a>
 		{{ end }}
 	</div>
-</article>
+</main>
 {{ end }}
 
 {{ define "tail" }}

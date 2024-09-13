@@ -14,7 +14,5 @@
 {{ partial "og" . }}
 {{ end }}
 
-{{ with resources.Get "styles/main.scss" }}
-   {{- $css := . | resources.ToCSS (dict "includePaths" (slice "node_modules")) -}}
-   <style>{{ $css.Content | safeCSS }}</style>
-{{ end }}
+{{ $css := resources.Match "styles/**.css" | resources.Concat "style.css" }}
+<style>{{ $css.Content | safeCSS }}</style>

@@ -30,45 +30,37 @@ necessarily your own.
 The [staffeng.com](https://staffeng.com/guides/staff-archetypes) article describes these four archetypes in detail, but
 here is my understanding:
 
-- **Tech Lead**
+#### **Tech Lead** (Technical Excellence)
 
-  Technical Excellence
+The tech lead leads one or more teams in their approach and execution through day-to-day leadership. They are quite
+comfortable scoping work, building consensus, and picking up all the things that drop through the cracks. They share a
+clear technical vision, and step in and out of the implementation to realign the team in complex situations.
 
-  The tech lead leads one or more teams in their approach and execution through day-to-day leadership. They are quite
-  comfortable scoping work, building consensus, and picking up all the things that drop through the cracks. They share a
-  clear technical vision, and step in and out of the implementation to realign the team in complex situations.
+The _Tech Lead_ is commonly used as a title, and others use it as a role. It is entirely possible to be a Tech Lead
+without operating as a staff engineer.
 
-  The _Tech Lead_ is commonly used as a title, and others use it as a role. It is entirely possible to be a Tech Lead
-  without operating as a staff engineer.
+#### **Architect** (Vision Excellence)
 
-- **Architect**
+The architect has an intimate understanding of a specific technical domain. The API design, tech stack, etc. The
+specific domain must be crucial to the company's prerogative—as in its what the company money. The architect is also
+held accountable for this vision or understanding.
 
-  Vision Excellence
+#### **Solver** (Tactical Excellence)
 
-  The architect has an intimate understanding of a specific technical domain. The API design, tech stack, etc. The
-  specific domain must be crucial to the company's prerogative—as in its what the company money. The architect is also
-  held accountable for this vision or understanding.
+The solver can go deep to solve a problem no one else can. The company or leadership will steer them into these problems
+when there is not a clear approach or there is a high degree of risk. They'll tend to move on to the next thing once the
+problem is solved.
 
-- **Solver**
+#### **Right Hand** (Organized Excellence)
 
-  Tactical Excellence
-
-  The solver can go deep to solve a problem no one else can. The company or leadership will steer them into these
-  problems when there is not a clear approach or there is a high degree of risk. They'll tend to move on to the next
-  thing once the problem is solved.
-
-- **Right Hand**
-
-  Organized Excellence
-
-  The right hand is like an extension of a leader. They help widen the bandwidth by removing important problems from
-  their plate. The problems here tend to not be technical, but rather organizational or people-related. They are also
-  the ones who can step in and out of the leadership role when needed.
+The right hand is like an extension of a leader. They help widen the bandwidth by removing important problems from their
+plate. The problems here tend to not be technical, but rather organizational or people-related. They are also the ones
+who can step in and out of the leadership role when needed.
 
 What I love here is that they form a pretty nice Venn diagram of core competencies, because of this you may find you
 resonate with a particular archetype, with more than one, or even jump between them from one season to another.
 
-Staff engineers should all have these underlying qualities though:
+### Underlying qualities:
 
 - Utilize individual discretion in selecting methods, techniques and evaluation criteria for obtaining results.
 

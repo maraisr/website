@@ -1,0 +1,45 @@
+@layer reset {
+	*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+		all: unset;
+		display: revert;
+	}
+
+	*,
+	:before,
+	:after {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		font-kerning: normal;
+		scrollbar-gutter: stable;
+		text-rendering: geometricPrecision;
+		tap-highlight-color: transparent;
+		touch-callout: none;
+
+		-webkit-font-smoothing: antialiased;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+
+	a,
+	button {
+		cursor: revert;
+	}
+	img {
+		max-width: 100%;
+	}
+	:where([hidden]) {
+		display: none;
+	}
+	pre {
+		white-space: pre;
+	}
+	code {
+		text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+		-moz-text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%;
+	}
+}
