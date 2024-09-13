@@ -7,7 +7,7 @@
 				if (!navigator.clipboard) return void e.setAttribute('hidden');
 				e.addEventListener('click', function() {
 					let p = e.previousElementSibling;
-					if (p.nodeName != 'SCRIPT') return;
+					if (!p.hasAttribute('data-to-clip')) return;
 					navigator.clipboard.writeText(p.innerText);
 				});
 			});
