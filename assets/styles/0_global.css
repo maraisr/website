@@ -16,7 +16,7 @@
 
 		--canvas: light-dark(oklch(98.47% 0.005 89.19), oklch(19.83% 0.005 89.19));
 		--canvasText: light-dark(oklch(35.15% 0.014 236.64), oklch(99.7% 0 236.64));
-		--accent: oklch(63.71% 0.21 236.64);
+		--accent: oklch(64.04% 0.0585 236.64);
 		--muted: light-dark(oklch(99.7% 0 236.64), oklch(99.41% 0.0049 236.64));
 	}
 }
@@ -302,7 +302,7 @@ code {
 
 	button {
 		--size: 30px;
-		--mix: 0%;
+		--mix: 6%;
 		--inset: calc((var(--title-height) - var(--size)) / 2);
 
 		all: unset;
@@ -317,7 +317,7 @@ code {
 		height: var(--size);
 
 		color: var(--accent);
-		background-color: color-mix(in oklch, var(--accent) var(--mix), var(--muted));
+		background-color: oklch(from var(--accent) l calc(c * 0.2) h / var(--mix));
 		border-radius: 0.2rem;
 		place-content: center;
 		place-items: center;
@@ -328,12 +328,12 @@ code {
 
 		@media (hover: hover) and (pointer: fine) {
 			&:hover {
-				--mix: 10%;
+				--mix: 16%;
 			}
 		}
 
 		&:active {
-			--mix: 20%;
+			--mix: 30%;
 		}
 	}
 }
@@ -389,7 +389,7 @@ code {
 
 :not(pre) > code {
 	color: var(--accent);
-	background-color: color-mix(in oklch, var(--accent) 8%, var(--muted) 80%);
+	background-color: oklch(from var(--accent) l c h / 10%);
 	padding: 0.1rem 0.17rem;
 	border-radius: 0.2rem;
 	font-size: inherit;
