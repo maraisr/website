@@ -1,4 +1,4 @@
-<script async defer>
+<script defer>
 	function ready() {
 		navigator.sendBeacon('/e', JSON.stringify([location.href, document.referrer || null, window.innerWidth]));
 		try {
