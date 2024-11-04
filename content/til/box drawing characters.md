@@ -19,7 +19,7 @@ Here's an example of what I was trying to achieve:
 │  61 ms │       ┣━━━┫                            │◗ precompile
 │  82 ms │        ┣━━━━━┫                         │◗ verify
 │  68 ms │             ┣━━━━┫                     │◗ spawn thread
-│ 370 ms │                 ┣╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┫ │◗ doesnt finish
+│ 370 ms │                 ┣╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍┫ │◗ doesn't finish
 │ 344 ms │                 ┣━━━━━━━━━━━━━━━━━━━┫  │◗ running
 │ 344 ms │                 ┣━━━━━━━━━━━━━━━━━━━┫  │◗ e2e
 │  38 ms │                                  ┣━━┫  │◗ snapshot
