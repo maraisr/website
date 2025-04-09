@@ -9,6 +9,8 @@ export async function onRequestPost(ctx) {
 		}),
 	});
 	request.headers.delete('cookie');
+	request.headers.set('Seline-IP', request.headers.get('CF-Connecting-IP'));
+	request.headers.set('Seline-Country', request.headers.get('CF-IPCountry'));
 	ctx.waitUntil(fetch('https://api.seline.so/s/e', request));
 	return new Response(null, { status: 200 });
 }
