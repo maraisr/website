@@ -1,6 +1,6 @@
 <script defer>
 	function ready() {
-		navigator.sendBeacon('/e', JSON.stringify([location.href, document.referrer || null]));
+		navigator.sendBeacon('/e', JSON.stringify([location.href, document.referrer || null, window.innerWidth]));
 		try {
 			let el = document.querySelectorAll('[data-clipboard]');
 			el.forEach(function(e) {
