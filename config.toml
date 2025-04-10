@@ -9,7 +9,7 @@ relativeURLs = false
 publishDir = "dist"
 
 disableAliases = true
-disableKinds = ["RSS", "term", "taxonomy", "categories"]
+disableKinds = ["RSS", "term", "taxonomy"]
 
 [taxonomies]
   tag = "tags"
