@@ -18,7 +18,7 @@ export async function onRequestPost(ctx) {
 	const seline = new Request(request.clone(), {
 		body: JSON.stringify({
 			token: 'f17175beee2851b',
-			pathname: u,
+			pathname: new URL(u).pathname,
 			referrer: r,
 		}),
 	});
