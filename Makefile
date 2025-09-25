@@ -16,7 +16,7 @@ build: minify dist
 
 dist: minify layouts/*/* content/*/* assets/*/*
 	rm -rf dist/ || exit 0
-	hugo --minify --logLevel debug
+	hugo --minify
 	./minify/minify -vrs dist -o .
 	touch dist
 
