@@ -25,5 +25,6 @@ This is a paragraph with a footnote[^footnote]. And another[^another] one
 <!-- footnotes -->
 
 [^footnote]: This is the footnote text.
+
 [^another]: Another footnote, you're welcome.
 ```
