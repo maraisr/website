@@ -35,5 +35,5 @@ https://:project.pages.dev/*
 /robots.txt
     ! link
 
-/key.asc
+/key.gpg
     ! link
