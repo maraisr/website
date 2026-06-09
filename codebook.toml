@@ -1,0 +1,33 @@
+dictionaries = ["en_gb"]
+
+use_global = true
+
+include_paths = []
+ignore_paths = ["**/*.svg", "content/_headers"]
+
+# words shorter than this are ignored
+min_word_length = 3
+
+words = [
+	"aud",
+	"cloudflare",
+	"csr",
+	"digi",
+	"dkim",
+	"sectigo",
+	"atlassian",
+	"dep",
+	"g'day",
+	"gitattributes",
+	"gitconfig",
+	"lockfiles",
+	"lol",
+	"makefiles",
+	"marais",
+	"maraisr",
+	"phony",
+	"rebalance",
+	"rebalanced",
+	"rebalancing",
+	"rossouw",
+]

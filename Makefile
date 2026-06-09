@@ -6,7 +6,7 @@ serve:
 
 .PHONY: spell
 spell:
-	bunx cspell "content/**" -e "*.svg"
+	codebook-lsp lint --suggest content
 
 .PHONY: format
 format:

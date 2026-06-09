@@ -63,7 +63,7 @@ make sure to securely back it up.
 What you get from the provider are usually two `.crt` files, the CA bundle (which links my cert back to the CA), and my
 cert.
 
-But to use it on your devices, you neede a single file containing the private key, the cert, and the CA bundle. PKCS#12
+But to use it on your devices, you need a single file containing the private key, the cert, and the CA bundle. PKCS#12
 is a standard format for bundling these together.
 
 ```shell

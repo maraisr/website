@@ -47,4 +47,4 @@ how extend this further.
 
 Typically when dealing with generated files, or lockfiles as you're jumping between branches. Be nice for a piece of
 code to quickly correct some files so you don't have local conflicting files. Yarn's lock file, or
-[Relay](https://relay.dev)'s `__generated__` artifacts is notorious for this.
+[Relay](https://relay.dev)'s `__generated__` artefacts is notorious for this.

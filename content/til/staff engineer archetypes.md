@@ -10,11 +10,12 @@ staff engineer. I am writing this largely for myself to think through my underst
 I don't understand it.
 
 > <q cite="https://staffeng.com/guides/staff-archetypes">Being a Staff-engineer is not just a role. It's the
-> **intersection of the role**, your **behavior**, your **impact**, and the organization's recognition of all those
+> **intersection of the role**, your **behaviour**, your **impact**, and the organisations recognition of all those
 > things.</q>
 
 Once you reach that 10+ year experience mark, progression can stay technical and thus staff engineer—as opposed to a
-manager. At this point, most engineers traveled their journey, have their mode of impact, and have their way of working.
+manager. At this point, most engineers travelled their journey, have their mode of impact, and have their way of
+working.
 
 We are all different people, who bring our impact to the table, so rather than one set of expectations for the role,
 [Staff Engineer Archetypes](https://staffeng.com/guides/staff-archetypes) describes four archetypes—or personas—that
@@ -51,10 +52,10 @@ The solver can go deep to solve a problem no one else can. The company or leader
 when there is not a clear approach or there is a high degree of risk. They'll tend to move on to the next thing once the
 problem is solved.
 
-#### **Right Hand** (Organized Excellence)
+#### **Right Hand** (Organised Excellence)
 
 The right hand is like an extension of a leader. They help widen the bandwidth by removing important problems from their
-plate. The problems here tend to not be technical, but rather organizational or people-related. They are also the ones
+plate. The problems here tend to not be technical, but rather organisational or people-related. They are also the ones
 who can step in and out of the leadership role when needed.
 
 What I love here is that they form a pretty nice Venn diagram of core competencies, because of this you may find you
@@ -62,7 +63,7 @@ resonate with a particular archetype, with more than one, or even jump between t
 
 ### Underlying qualities:
 
-- Utilize individual discretion in selecting methods, techniques and evaluation criteria for obtaining results.
+- Utilise individual discretion in selecting methods, techniques and evaluation criteria for obtaining results.
 
 - Quickly identify flaws during initial iterations and integrate the lessons learned for future iterations.
 

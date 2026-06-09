@@ -9,7 +9,7 @@ tags: [systems design]
 
 I stumbled upon a pretty interesting concept for "balancing" nodes, called
 "[Consistent Hashing](https://en.wikipedia.org/wiki/Consistent_hashing)". The rough premise is a way to distribute
-things across a field (like servers, threads, continents, or you name it) — without rebalancing[^1] the members when
+things across a field (like servers, threads, continents, or you name it) without rebalancing[^1] the members when
 targets disappear.
 
 [^1]:
@@ -26,9 +26,9 @@ The implications of this are massive. Think of persistent connections and load-b
 offline, only the connections connected to it are moved (obviously), but as soon as the origin comes back online, it
 naturally balances back out, whereas ordinarily, we'd have to remember which nodes were moved before. Or if we think
 about a content delivery network, balancing content evenly amongst its edges, as edges go offline and online, it
-minimizes data movement.
+minimises data movement.
 
-> It's not only about balancing, but also about minimizing data movement when a rebalancing occurs.
+> It's not only about balancing, but also about minimising data movement when a rebalancing occurs.
 
 **What does it look like?**
 
