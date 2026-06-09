@@ -1,7 +1,6 @@
 baseURL = "https://marais.io"
 
 title = "Marais Rossouw"
-languageCode = "en"
 defaultContentLanguage = "en"
 disableHugoGeneratorInject = true
 relativeURLs = false
