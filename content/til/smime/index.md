@@ -58,7 +58,7 @@ make sure to securely back it up.
 2. Upload that CSR to the provider. Typically they'll send you a verification email, which usually takes about a minute.
 3. Download the cert! 🎉
 
-## Bundling into a `.pfx`
+## 3. Bundling into a `.pfx`
 
 What you get from the provider are usually two `.crt` files, the CA bundle (which links my cert back to the CA), and my
 cert.
@@ -76,7 +76,7 @@ openssl pkcs12 -export \
 
 > **Important:** give it an export password, iPhones require it.
 
-## 3. Installing it
+## 4. Installing it
 
 You'll need to install this `.pfx` file on every device you want to sign email on.
 
