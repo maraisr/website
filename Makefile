@@ -1,3 +1,5 @@
+OS_TYPE := $(shell uname -s | tr '[:upper:]' '[:lower:]')
+
 default: serve
 
 .PHONY: serve
@@ -21,7 +23,7 @@ dist: minify layouts/*/* content/*/* assets/*/*
 	touch dist
 
 minify:
-	curl -L https://github.com/tdewolff/minify/releases/download/v2.20.37/minify_linux_amd64.tar.gz > minify.tar.gz
+	curl -L https://github.com/tdewolff/minify/releases/download/v2.24.8/minify_$(OS_TYPE)_amd64.tar.gz > minify.tar.gz
 	mkdir -p minify
 	tar -xf minify.tar.gz -C minify
 	touch minify
